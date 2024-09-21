@@ -393,7 +393,7 @@
                         <div class="logo-header">
                             <div class="logo-header-inner logo-header-one">
                                 <a href="index-18.html">
-                                    <img src="~/ContentImage/images/spess.jpg" alt="">
+                                    <img src="~/ContentImage/images//rb.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -411,7 +411,7 @@
 
 
                         <!-- Header Right Section-->
-                        <div class="extra-nav header-2-nav">
+                        @*<div class="extra-nav header-2-nav">
 
                             <div class="extra-cell">
                                 <div class="header-nav-btn-section">
@@ -428,8 +428,8 @@
                                 </div>
                             </div>
 
-                        </div>
-
+                        </div>*@
+                        @{Html.RenderAction("GetLoginPost", "Menu"); }
 
 
                     </div>

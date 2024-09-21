@@ -4,7 +4,18 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="ModelJob.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tableimagemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeimage" Type="varchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
         <EntityType Name="tablemenu">
           <Key>
             <PropertyRef Name="id" />
@@ -42,7 +53,8 @@
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
-        <EntityContainer Name="testdbs2425ModelStoreContainer">
+        <EntityContainer Name="ModelJobStoreContainer">
+          <EntitySet Name="tableimagemenu" EntityType="Self.tableimagemenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenu" EntityType="Self.tablemenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenufunction" EntityType="Self.tablemenufunction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenupart" EntityType="Self.tablemenupart" Schema="dbo" store:Type="Tables" />
@@ -51,7 +63,18 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="ModelJob" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tableimagemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeimage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
         <EntityType Name="tablemenu">
           <Key>
             <PropertyRef Name="id" />
@@ -89,7 +112,8 @@
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="MyDB" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Mydb" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tableimagemenus" EntityType="Self.tableimagemenu" />
           <EntitySet Name="tablemenus" EntityType="Self.tablemenu" />
           <EntitySet Name="tablemenufunctions" EntityType="Self.tablemenufunction" />
           <EntitySet Name="tablemenuparts" EntityType="Self.tablemenupart" />
@@ -99,9 +123,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MyDB">
+        <EntityContainerMapping StorageEntityContainer="ModelJobStoreContainer" CdmEntityContainer="Mydb">
+          <EntitySetMapping Name="tableimagemenus">
+            <EntityTypeMapping TypeName="ModelJob.tableimagemenu">
+              <MappingFragment StoreEntitySet="tableimagemenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeimage" ColumnName="typeimage" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tablemenus">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenu">
+            <EntityTypeMapping TypeName="ModelJob.tablemenu">
               <MappingFragment StoreEntitySet="tablemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -114,7 +150,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenufunctions">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenufunction">
+            <EntityTypeMapping TypeName="ModelJob.tablemenufunction">
               <MappingFragment StoreEntitySet="tablemenufunction">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -127,7 +163,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenuparts">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenupart">
+            <EntityTypeMapping TypeName="ModelJob.tablemenupart">
               <MappingFragment StoreEntitySet="tablemenupart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
