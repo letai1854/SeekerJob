@@ -45,10 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -121,12 +129,139 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model1.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="JobModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JobModel.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="tablemenu.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablemenufunction.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablemenupart.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ContentImage\images\anhpia.jpg" />
+    <Content Include="ContentImage\images\apply-job-bg.png" />
+    <Content Include="ContentImage\images\blog\blog-single\1.jpg" />
+    <Content Include="ContentImage\images\blog\comment\pic1.jpg" />
+    <Content Include="ContentImage\images\blog\comment\pic2.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg1.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg2.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg3.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg4.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg5.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg6.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg7.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg8.jpg" />
+    <Content Include="ContentImage\images\blog\latest\bg9.jpg" />
+    <Content Include="ContentImage\images\blog\post-author.jpg" />
+    <Content Include="ContentImage\images\blog\recent-blog\pic1.jpg" />
+    <Content Include="ContentImage\images\blog\recent-blog\pic2.jpg" />
+    <Content Include="ContentImage\images\blog\recent-blog\pic3.jpg" />
+    <Content Include="ContentImage\images\blog\recent-blog\pic4.jpg" />
+    <Content Include="ContentImage\images\blog\recent-blog\pic5.jpg" />
+    <Content Include="ContentImage\images\candidates\pic1.jpg" />
+    <Content Include="ContentImage\images\candidates\pic10.jpg" />
+    <Content Include="ContentImage\images\candidates\pic2.jpg" />
+    <Content Include="ContentImage\images\candidates\pic3.jpg" />
+    <Content Include="ContentImage\images\candidates\pic4.jpg" />
+    <Content Include="ContentImage\images\candidates\pic5.jpg" />
+    <Content Include="ContentImage\images\candidates\pic6.jpg" />
+    <Content Include="ContentImage\images\candidates\pic7.jpg" />
+    <Content Include="ContentImage\images\candidates\pic8.jpg" />
+    <Content Include="ContentImage\images\candidates\pic9.jpg" />
+    <Content Include="ContentImage\images\client-logo\w1.png" />
+    <Content Include="ContentImage\images\client-logo\w2.png" />
+    <Content Include="ContentImage\images\client-logo\w3.png" />
+    <Content Include="ContentImage\images\client-logo\w4.png" />
+    <Content Include="ContentImage\images\client-logo\w5.png" />
+    <Content Include="ContentImage\images\client-logo\w6.png" />
+    <Content Include="ContentImage\images\cv1.png" />
+    <Content Include="ContentImage\images\cv2.png" />
+    <Content Include="ContentImage\images\cv3.png" />
+    <Content Include="ContentImage\images\cv4.png" />
+    <Content Include="ContentImage\images\cv5.png" />
+    <Content Include="ContentImage\images\cv6.png" />
+    <Content Include="ContentImage\images\cv7.png" />
+    <Content Include="ContentImage\images\cv8.png" />
+    <Content Include="ContentImage\images\cv9.png" />
+    <Content Include="ContentImage\images\gallery\thumb\pic1.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic10.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic11.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic12.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic2.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic3.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic4.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic5.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic6.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic7.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic8.jpg" />
+    <Content Include="ContentImage\images\gallery\thumb\pic9.jpg" />
+    <Content Include="ContentImage\images\google-icon.png" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\1.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\10.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\11.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\12.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\13.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\14.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\15.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\16.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\17.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\18.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\2.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\3.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\4.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\5.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\6.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\7.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\8.jpg" />
+    <Content Include="ContentImage\images\home-14\all-demo-pages\9.jpg" />
+    <Content Include="ContentImage\images\home-18\banner\bnr-pic.png" />
+    <Content Include="ContentImage\images\home-5\blog-avtar\pic1.jpg" />
+    <Content Include="ContentImage\images\home-5\blog-avtar\pic2.jpg" />
+    <Content Include="ContentImage\images\home-5\blog-avtar\pic3.jpg" />
+    <Content Include="ContentImage\images\home-5\blog\pic1.jpg" />
+    <Content Include="ContentImage\images\home-5\blog\pic2.jpg" />
+    <Content Include="ContentImage\images\home-5\blog\pic3.jpg" />
+    <Content Include="ContentImage\images\images.jpg" />
+    <Content Include="ContentImage\images\imageslogo.jpg" />
+    <Content Include="ContentImage\images\job-detail-bg.jpg" />
+    <Content Include="ContentImage\images\joblogo.png" />
+    <Content Include="ContentImage\images\jobs-company\pic1.jpg" />
+    <Content Include="ContentImage\images\jobs-company\pic2.jpg" />
+    <Content Include="ContentImage\images\jobs-company\pic3.jpg" />
+    <Content Include="ContentImage\images\jobs-company\pic4.jpg" />
+    <Content Include="ContentImage\images\jobs-company\pic5.jpg" />
+    <Content Include="ContentImage\images\login-bg.png" />
+    <Content Include="ContentImage\images\logo-dark.png" />
+    <Content Include="ContentImage\images\logo-light.png" />
+    <Content Include="ContentImage\images\logoconty.png" />
+    <Content Include="ContentImage\images\logojob.jpg" />
+    <Content Include="ContentImage\images\skins-logo\logo-skin-10.png" />
+    <Content Include="ContentImage\images\skins-logo\mainten-logo-10.png" />
+    <Content Include="ContentImage\images\spess.jpg" />
+    <Content Include="ContentImage\images\user-avtar\pic4.jpg" />
+    <Content Include="ContentImage\images\z5849860167946_6263f448142590524684b792ab6914e1.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -143,15 +278,50 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\bootstrap-select.min.css" />
+    <Content Include="Content\css\bootstrap.min.css" />
+    <Content Include="Content\css\dataTables.bootstrap5.min.css" />
+    <Content Include="Content\css\datepicker.css" />
+    <Content Include="Content\css\dropzone.css" />
+    <Content Include="Content\css\feather.css" />
+    <Content Include="Content\css\flaticon.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
+    <Content Include="Content\css\lc_lightbox.css" />
+    <Content Include="Content\css\magnific-popup.min.css" />
+    <Content Include="Content\css\owl.carousel.min.css" />
+    <Content Include="Content\css\scrollbar.css" />
+    <Content Include="Content\css\select.bootstrap5.min.css" />
+    <Content Include="Content\css\skins-type\skin-10.css" />
+    <Content Include="Content\css\skins-type\skin-6.css" />
+    <Content Include="Content\css\style.css" />
+    <Content Include="Content\css\swiper-bundle.min.css" />
+    <Content Include="Content\css\switcher.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>JobModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JobModel.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="JobModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JobModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="JobModel.edmx.diagram">
+      <DependentUpon>JobModel.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -162,6 +332,30 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\js\anm.js" />
+    <Content Include="Scripts\js\bootstrap-datepicker.js" />
+    <Content Include="Scripts\js\bootstrap-select.min.js" />
+    <Content Include="Scripts\js\bootstrap-slider.min.js" />
+    <Content Include="Scripts\js\bootstrap.min.js" />
+    <Content Include="Scripts\js\chart.js" />
+    <Content Include="Scripts\js\counterup.min.js" />
+    <Content Include="Scripts\js\custom.js" />
+    <Content Include="Scripts\js\dataTables.bootstrap5.min.js" />
+    <Content Include="Scripts\js\dropzone.js" />
+    <Content Include="Scripts\js\imagesloaded.pkgd.min.js" />
+    <Content Include="Scripts\js\isotope.pkgd.min.js" />
+    <Content Include="Scripts\js\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\js\jquery.dataTables.min.js" />
+    <Content Include="Scripts\js\jquery.scrollbar.js" />
+    <Content Include="Scripts\js\lc_lightbox.lite.js" />
+    <Content Include="Scripts\js\magnific-popup.min.js" />
+    <Content Include="Scripts\js\owl.carousel.min.js" />
+    <Content Include="Scripts\js\popper.min.js" />
+    <Content Include="Scripts\js\swiper-bundle.min.js" />
+    <Content Include="Scripts\js\switcher.js" />
+    <Content Include="Scripts\js\theia-sticky-sidebar.js" />
+    <Content Include="Scripts\js\waypoints-sticky.min.js" />
+    <Content Include="Scripts\js\waypoints.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -177,6 +371,7 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Menu\GetMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -208,6 +403,9 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

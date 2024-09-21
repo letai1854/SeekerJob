@@ -1,0 +1,34 @@
+﻿@using SeekerJob.Controllers
+@{
+    var tablemenus = ViewData["tablemenus"] as List<tablemenu>;
+    var tablemenuparts = ViewData["tablemenuparts"] as List<tablemenupart>;
+}
+<div class="nav-animation header-nav navbar-collapse collapse d-flex justify-content-center">
+
+    <ul class=" nav navbar-nav">
+        @foreach (var item in tablemenus)
+        {
+            if (item.name == "Trang chủ")
+            {
+                <li class="has-mega-menu">
+                    <a href="@item.link" style="font-weight:700;color:white">@item.name</a>
+                </li>
+            }
+            else
+            {
+                <li class="has-child">
+                    <a href="@item.link" style="font-weight:700;color:white">@item.name</a>
+                    @if (tablemenuparts.Any(p => p.idtable == item.id))
+                    {
+                        <ul class="sub-menu">
+                            @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id))
+                            {
+                                <li><a href="@part.link">@part.name</a></li>
+                            }
+                        </ul>
+                    }
+                </li>
+            }
+        }
+    </ul>
+</div>
