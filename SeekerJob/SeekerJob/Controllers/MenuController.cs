@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class MenuController : Controller
     {
         // GET: Menu
-        MyDB db = new MyDB();
+        Mydb db = new Mydb();
         public ActionResult Index()
         {
 
@@ -28,5 +28,10 @@ namespace SeekerJob.Controllers
 
             return PartialView("GetMenu");
         }
+        public ActionResult GetLoginPost()
+        {
+            var tableLoginPost = db.tablemenufunctions.Where( t =>t.hide == true).OrderBy(t => t.arrange).ToList();
+            return PartialView(tableLoginPost);
+        } 
     }
 }
