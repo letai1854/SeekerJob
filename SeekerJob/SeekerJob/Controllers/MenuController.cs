@@ -28,5 +28,6 @@ namespace SeekerJob.Controllers
 
             return PartialView("GetMenu");
         }
+
     }
 }
