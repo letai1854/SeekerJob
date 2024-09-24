@@ -1,0 +1,568 @@
+﻿
+@{
+    ViewBag.Title = "GetJobList";
+    Layout = "~/Views/Shared/_Mylayout.cshtml";
+}
+
+
+
+<div class="page-content" style="margin-top:150px; margin-bottom:150px">
+
+    <!-- INNER PAGE BANNER -->
+    <div class="container">
+        <div class="wt-bnr-inr-entry">
+            <div class="" style="display:  flex;  align-items:center">
+                <h2 style="color:rgb(4, 35, 108);; margin-right:10px">Danh sách việc làm</h2>
+
+                <h5 style="border-left: 1px solid black; padding-left:10px">Những việc làm hấp dẫn nhất</h5>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- OUR BLOG START -->
+    <div class="section-full   p-b90 site-bg-white">
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-4 col-md-12 rightSidebar">
+
+                    <div class="side-bar">
+
+                        <div class="sidebar-elements search-bx">
+
+                            <form>
+
+                                <div class="form-group mb-4">
+                                    <h4 class="section-head-small mb-4">Từ khóa</h4>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Tiêu đề công việc hoặc từ khóa">
+                                        <button class="btn" type="button"><i class="feather-search"></i></button>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <h4 class="section-head-small mb-4">Địa điểm</h4>
+                                    <select class="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size" data-size="10">
+                                        <option disabled selected value="">Chọn địa điểm</option>
+                                        <option value="An Giang">An Giang</option>
+                                        <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                        <option value="Bạc Liêu">Bạc Liêu</option>
+                                        <option value="Bắc Giang">Bắc Giang</option>
+                                        <option value="Bắc Kạn">Bắc Kạn</option>
+                                        <option value="Bắc Ninh">Bắc Ninh</option>
+                                        <option value="Bến Tre">Bến Tre</option>
+                                        <option value="Bình Dương">Bình Dương</option>
+                                        <option value="Bình Định">Bình Định</option>
+                                        <option value="Bình Phước">Bình Phước</option>
+                                        <option value="Bình Thuận">Bình Thuận</option>
+                                        <option value="Cà Mau">Cà Mau</option>
+                                        <option value="Cao Bằng">Cao Bằng</option>
+                                        <option value="Cần Thơ">Cần Thơ</option>
+                                        <option value="Đà Nẵng">Đà Nẵng</option>
+                                        <option value="Đắk Lắk">Đắk Lắk</option>
+                                        <option value="Đắk Nông">Đắk Nông</option>
+                                        <option value="Điện Biên">Điện Biên</option>
+                                        <option value="Đồng Nai">Đồng Nai</option>
+                                        <option value="Đồng Tháp">Đồng Tháp</option>
+                                        <option value="Gia Lai">Gia Lai</option>
+                                        <option value="Hà Giang">Hà Giang</option>
+                                        <option value="Hà Nam">Hà Nam</option>
+                                        <option value="Hà Nội">Hà Nội</option>
+                                        <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                        <option value="Hải Dương">Hải Dương</option>
+                                        <option value="Hải Phòng">Hải Phòng</option>
+                                        <option value="Hậu Giang">Hậu Giang</option>
+                                        <option value="Hòa Bình">Hòa Bình</option>
+                                        <option value="Hưng Yên">Hưng Yên</option>
+                                        <option value="Khánh Hòa">Khánh Hòa</option>
+                                        <option value="Kiên Giang">Kiên Giang</option>
+                                        <option value="Kon Tum">Kon Tum</option>
+                                        <option value="Lai Châu">Lai Châu</option>
+                                        <option value="Lâm Đồng">Lâm Đồng</option>
+                                        <option value="Lạng Sơn">Lạng Sơn</option>
+                                        <option value="Lào Cai">Lào Cai</option>
+                                        <option value="Long An">Long An</option>
+                                        <option value="Nam Định">Nam Định</option>
+                                        <option value="Nghệ An">Nghệ An</option>
+                                        <option value="Ninh Bình">Ninh Bình</option>
+                                        <option value="Ninh Thuận">Ninh Thuận</option>
+                                        <option value="Phú Thọ">Phú Thọ</option>
+                                        <option value="Phú Yên">Phú Yên</option>
+                                        <option value="Quảng Bình">Quảng Bình</option>
+                                        <option value="Quảng Nam">Quảng Nam</option>
+                                        <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                        <option value="Quảng Ninh">Quảng Ninh</option>
+                                        <option value="Quảng Trị">Quảng Trị</option>
+                                        <option value="Sóc Trăng">Sóc Trăng</option>
+                                        <option value="Sơn La">Sơn La</option>
+                                        <option value="Tây Ninh">Tây Ninh</option>
+                                        <option value="Thái Bình">Thái Bình</option>
+                                        <option value="Thái Nguyên">Thái Nguyên</option>
+                                        <option value="Thanh Hóa">Thanh Hóa</option>
+                                        <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                        <option value="Tiền Giang">Tiền Giang</option>
+                                        <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                                        <option value="Trà Vinh">Trà Vinh</option>
+                                        <option value="Tuyên Quang">Tuyên Quang</option>
+                                        <option value="Vĩnh Long">Vĩnh Long</option>
+                                        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                        <option value="Yên Bái">Yên Bái</option>
+                                    </select>
+                                </div>
+
+                                <div class="twm-sidebar-ele-filter">
+                                    <h4 class="section-head-small mb-4">Loại công việc</h4>
+                                    <ul>
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                                                <label class="form-check-label" for="exampleCheck1">Tự Do</label>
+                                            </div>
+                                            <span class="twm-job-type-count">09</span>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck2">
+                                                <label class="form-check-label" for="exampleCheck2">Toàn thời gian</label>
+                                            </div>
+                                            <span class="twm-job-type-count">07</span>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck3">
+                                                <label class="form-check-label" for="exampleCheck3">Thực tập</label>
+                                            </div>
+                                            <span class="twm-job-type-count">15</span>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck4">
+                                                <label class="form-check-label" for="exampleCheck4">Bán thời gian</label>
+                                            </div>
+                                            <span class="twm-job-type-count">20</span>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck5">
+                                                <label class="form-check-label" for="exampleCheck5">Tạm thời</label>
+                                            </div>
+                                            <span class="twm-job-type-count">22</span>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck6">
+                                                <label class="form-check-label" for="exampleCheck6">Tình nguyện</label>
+                                            </div>
+                                            <span class="twm-job-type-count">25</span>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="twm-sidebar-ele-filter">
+                                    <h4 class="section-head-small mb-4">Ngày đăng</h4>
+                                    <ul>
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio1">
+                                                <label class="form-check-label" for="exampleradio1">Trong giờ qua</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio2">
+                                                <label class="form-check-label" for="exampleradio2">Trong 24 giờ qua</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio3">
+                                                <label class="form-check-label" for="exampleradio3">Trong 7 ngày qua</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio4">
+                                                <label class="form-check-label" for="exampleradio4">Trong 14 ngày qua</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio5">
+                                                <label class="form-check-label" for="exampleradio5">Trong 30 ngày qua</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="exampleradio6">
+                                                <label class="form-check-label" for="exampleradio6">Tất cả</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="twm-sidebar-ele-filter">
+                                    <h4 class="section-head-small mb-4">Loại hình việc làm</h4>
+                                    <ul>
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="Freelance1">
+                                                <label class="form-check-label" for="Freelance1">Tự Do</label>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="FullTime1">
+                                                <label class="form-check-label" for="FullTime1">Toàn thời gian</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="Intership1">
+                                                <label class="form-check-label" for="Intership1">Thực tập</label>
+                                            </div>
+                                        </li>
+
+                                        <li>
+                                            <div class="form-check">
+                                                <input type="radio" class="form-check-input" id="Part-Time1">
+                                                <label class="form-check-label" for="Part-Time1">Bán thời gian</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="form-group col-xl-6 col-lg-6 col-md-6">
+                                    <button type="button" class="site-button">Tìm kiếm</button>
+                                </div>
+
+                            </form>
+
+
+                        </div>
+
+
+
+                    </div>
+
+
+
+                </div>
+
+                <div class="col-lg-8 col-md-12">
+                    <!--Filter Short By-->
+                    <div class="product-filter-wrap d-flex justify-content-between align-items-center m-b30">
+                        <span class="woocommerce-result-count-left">Hiển thị 2.150 việc làm</span>
+
+                        <form class="woocommerce-ordering twm-filter-select" method="get">
+                            <span class="woocommerce-result-count">Sắp xếp theo</span>
+                            <select class="wt-select-bar-2 selectpicker" data-live-search="true" data-bv-field="size">
+                                <option>Mới nhất</option>
+                                <option>Tự do</option>
+                                <option>Toàn thời gian</option>
+                                <option>Thực tập</option>
+                                <option>Bán thời gian</option>
+                                <option>Tạm thời</option>
+                            </select>
+                            <select class="wt-select-bar-2 selectpicker" data-live-search="true" data-bv-field="size">
+                                <option>Hiển thị 10</option>
+                                <option>Hiển thị 20</option>
+                                <option>Hiển thị 30</option>
+                                <option>Hiển thị 40</option>
+                                <option>Hiển thị 50</option>
+                                <option>Hiển thị 60</option>
+                            </select>
+                        </form>
+
+                    </div>
+
+                    <div class="twm-jobs-list-wrap">
+                        <table id="jobs_bookmark_table2" class="table table-bordered twm-candidate-save-job-list-wrap">
+                            <thead>
+                            <th></th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="twm-jobs-list-style1 mb-5">
+                                            <div class="twm-media">
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                                            </div>
+                                            <div class="twm-mid-content">
+                                                <a href="job-detail.html" class="twm-job-title">
+                                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                                </a>
+                                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                            </div>
+                                            <div class="twm-right-content">
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- OUR BLOG END -->
+
+
+
+
+</div>
+

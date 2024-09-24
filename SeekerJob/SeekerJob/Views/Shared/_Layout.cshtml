@@ -59,6 +59,10 @@
     <link rel="stylesheet" class="skin" type="text/css" href="~/Content/css/skins-type/skin-10.css">
     <!-- SIDE SWITCHER STYLE SHEET -->
     <link rel="stylesheet" type="text/css" href="~/Content/css/switcher.css">
+    <script>
+               var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+
+    </script>
 
 </head>
 <style>
@@ -410,25 +414,6 @@
                         @{ Html.RenderAction("GetMenu", "Menu"); }
 
 
-                        <!-- Header Right Section-->
-                        @*<div class="extra-nav header-2-nav">
-
-                            <div class="extra-cell">
-                                <div class="header-nav-btn-section">
-                                    <div class="twm-nav-btn-left">
-                                        <a style="background-color: rgb(4, 35, 108);" class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
-                                            <i data-feather="log-in"></i> Đăng nhập
-                                        </a>
-                                    </div>
-                                    <div class="twm-nav-btn-right">
-                                        <a href="dash-post-job.html" class="twm-nav-post-a-job">
-                                            <i data-feather="briefcase"></i> Đăng tuyển
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>*@
                         @{Html.RenderAction("GetLoginPost", "Menu"); }
 
 

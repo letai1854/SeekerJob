@@ -129,6 +129,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListJobController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -377,6 +378,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\GetMenu.cshtml" />
     <Content Include="Views\Menu\GetLoginPost.cshtml" />
+    <Content Include="Views\Shared\_Mylayout.cshtml" />
+    <Content Include="Views\ListJob\GetJobList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

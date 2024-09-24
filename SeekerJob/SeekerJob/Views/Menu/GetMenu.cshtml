@@ -1,4 +1,8 @@
 ﻿@using SeekerJob.Controllers
+<script>
+             var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+
+</script>
 @{
     var tablemenus = ViewData["tablemenus"] as List<tablemenu>;
     var tablemenuparts = ViewData["tablemenuparts"] as List<tablemenupart>;
