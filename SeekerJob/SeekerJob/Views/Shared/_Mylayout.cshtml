@@ -15,6 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM33HHsHq9smZQTB4E5p4Q1hv0sSMw5VKTJaRlz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM33HHsHq9smZQTB4E5p4Q1hv0sSMw5VKTJaRlz" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
     <link rel="icon" href="~/ContentImage/images/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="~/ContentImage/images/favicon.png" />
 
@@ -367,6 +370,29 @@
         border-color: #14044E;
         border-style: solid;
     }
+    .site-bg-white {
+        background-color: #73707029;
+    }
+    .p-b90 {
+        padding-bottom: 30px;
+        padding-top: 30px;
+    }
+    #jobs_bookmark_table2 {
+        border: none; /* Xoá viền của bảng */
+    }
+
+        #jobs_bookmark_table2 th, #jobs_bookmark_table2 td {
+            border: none; /* Xoá viền của các ô */
+        }
+
+    .search-container {
+        display: flex; /* Sử dụng Flexbox để căn chỉnh theo chiều ngang */
+        justify-content: flex-start; /* Đảm bảo các phần tử nằm ở đầu */
+        align-items: center; /* Căn giữa theo trục dọc */
+        margin-bottom: 10px; /* Tạo khoảng cách giữa phần trên và bảng */
+    }
+
+
 </style>
 
 <body data-anm=".anm">
@@ -432,12 +458,7 @@
 
 
 
-            <div class="section-full p-t120 p-b90 site-bg-light-purple twm-bg-ring-wrap">
-
-
-
-
-            </div>
+   
 
         </div>
     </div>
@@ -1016,7 +1037,7 @@
 </script>
 
 
-<script>
+@*<script>
     $(document).ready(function () {
         // Khởi tạo DataTables một lần duy nhất
         var jobsBookmarkTable = $('#jobs_bookmark_table2').DataTable({
@@ -1034,6 +1055,42 @@
             }
         });
     });
+</script>*@
+<script>
+    $(document).ready(function () {
+        // Khởi tạo DataTables một lần duy nhất
+        var jobsBookmarkTable = $('#jobs_bookmark_table2').DataTable({
+            "paging": true,
+            "pageLength": 10,
+            "lengthChange": false,
+            "searching": true,
+            "info": false,
+            "autoWidth": false,
+            "language": {
+                "paginate": {
+                    "previous": "Trước",
+                    "next": "Sau"
+                }
+            },
+            // Thêm callback để hiển thị thông tin số lượng việc làm
+            "initComplete": function (settings, json) {
+                // Tạo phần tử div bao quanh cho bộ lọc và số lượng việc làm
+                var searchContainer = $('<div class="search-container"></div>');
+
+                // Tạo phần tử span để hiển thị số lượng việc làm
+                var resultCount = $('<span class="woocommerce-result-count-left1">Hiển thị 2.150 việc làm</span>');
+
+                // Chuyển phần tử tìm kiếm vào div bao quanh mới tạo
+                $('#jobs_bookmark_table2_filter').wrap(searchContainer);
+
+                // Thêm phần tử số lượng việc làm vào div bao quanh, trước phần tìm kiếm
+                $('.search-container').prepend(resultCount);
+            }
+        });
+    });
+
+
+
 </script>
 
 </html>

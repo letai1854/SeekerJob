@@ -19,6 +19,11 @@ namespace SeekerJob
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Đăng tuyển",
+                url: "post-job",
+                defaults: new { controller = "PostJob", action = "ShowPostJob", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }

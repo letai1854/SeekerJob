@@ -125,16 +125,65 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Advertise.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\PostJobController.cs" />
+    <Compile Include="CV.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Job.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ListCandidate.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MYDBS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MYDBS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MYDBS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MYDBS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MYDBS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="News.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SaveJob.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tableimagemenu.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablemenu.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablemenufunction.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablemenupart.cs">
+      <DependentUpon>MYDBS.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ContentImage\images\anhpia.jpg" />
@@ -276,12 +325,29 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="MYDBS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MYDBS.edmx</DependentUpon>
+      <LastGenOutput>MYDBS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="MYDBS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MYDBS.edmx</DependentUpon>
+      <LastGenOutput>MYDBS.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="MYDBS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MYDBS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="MYDBS.edmx.diagram">
+      <DependentUpon>MYDBS.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -332,11 +398,10 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Menu\GetMenu.cshtml" />
-
     <Content Include="Views\Menu\GetLoginPost.cshtml" />
     <Content Include="Views\Shared\_Mylayout.cshtml" />
     <Content Include="Views\ListJob\GetJobList.cshtml" />
-
+    <Content Include="Views\PostJob\ShowPostJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

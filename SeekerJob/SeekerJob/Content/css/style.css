@@ -183,7 +183,7 @@ This files [Table of contents] are outlined below
 }
 
 .site-bg-white {
-  background-color: #fff;
+    background-color: #73707029;
 }
 
 .site-bg-light-purple {
@@ -623,7 +623,8 @@ ol li {
 }
 
 .p-b90 {
-  padding-bottom: 0px;
+  padding-bottom: 30px;
+  padding-top:30px;
 }
 
 .p-b100 {
