@@ -33,6 +33,7 @@ namespace SeekerJob.Controllers
         {
             var tableLoginPost = db.tablemenufunctions.Where( t =>t.hide == true).OrderBy(t => t.arrange).ToList();
             return PartialView(tableLoginPost);
-        } 
+        }
+        
     }
 }

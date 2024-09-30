@@ -121,6 +121,58 @@ This files [Table of contents] are outlined below
 @import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 /*===GENERAL===*/
+@media (max-width: 800px) {
+    .custom-search-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .wt-search-bar-select,
+    .custom-dropdown {
+        width: 100%;
+        /* Trên màn hình nhỏ, mỗi dropdown chiếm toàn bộ chiều ngang */
+        max-width: none;
+        /* Bỏ giới hạn chiều rộng khi màn hình nhỏ */
+    }
+}
+@media (max-width: 768px) {
+    .custom-search-bar {
+        flex-direction: column;
+    }
+}
+
+@media (min-width: 576px) {
+    .carousel-wrapper {
+        min-height: 400px;
+    }
+}
+
+@media (min-width: 768px) {
+    .carousel-wrapper {
+        min-height: 500px;
+    }
+}
+
+@media (min-width: 992px) {
+    .carousel-wrapper {
+        min-height: 600px;
+    }
+}
+@media (max-width: 768px) {
+    .custom-search-bar {
+        flex-direction: column;
+        /* Khi màn hình nhỏ, chuyển thành dạng cột */
+        align-items: stretch;
+        /* Đảm bảo các phần tử dàn đều theo chiều ngang */
+    }
+
+    .custom-search-input,
+    .custom-dropdown-container,
+    .site-button {
+        width: 100%;
+        /* Mỗi phần tử chiếm toàn bộ chiều ngang */
+    }
+}
 @media (min-width: 576px) {
     .carousel-wrapper {
         min-height: 400px;
