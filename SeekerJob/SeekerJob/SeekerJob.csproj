@@ -247,6 +247,7 @@
     <Content Include="ContentImage\images\gallery\thumb\pic7.jpg" />
     <Content Include="ContentImage\images\gallery\thumb\pic8.jpg" />
     <Content Include="ContentImage\images\gallery\thumb\pic9.jpg" />
+    <Content Include="ContentImage\images\goky.jpg" />
     <Content Include="ContentImage\images\google-icon.png" />
     <Content Include="ContentImage\images\home-14\all-demo-pages\1.jpg" />
     <Content Include="ContentImage\images\home-14\all-demo-pages\10.jpg" />
@@ -287,9 +288,11 @@
     <Content Include="ContentImage\images\logo-light.png" />
     <Content Include="ContentImage\images\logoconty.png" />
     <Content Include="ContentImage\images\logojob.jpg" />
+    <Content Include="ContentImage\images\rb.png" />
     <Content Include="ContentImage\images\skins-logo\logo-skin-10.png" />
     <Content Include="ContentImage\images\skins-logo\mainten-logo-10.png" />
     <Content Include="ContentImage\images\spess.jpg" />
+    <Content Include="ContentImage\images\univer.png" />
     <Content Include="ContentImage\images\user-avtar\pic4.jpg" />
     <Content Include="ContentImage\images\z5849860167946_6263f448142590524684b792ab6914e1.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
