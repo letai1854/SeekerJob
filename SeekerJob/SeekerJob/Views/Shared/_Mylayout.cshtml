@@ -66,6 +66,8 @@
               var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
 
     </script>
+    <script src="~/plugin/ckfinder/ckfinder.js"></script>
+    <script src="~/plugin/ckeditor/ckeditor.js"></script>
 </head>
 <style>
     .search-container {
@@ -370,13 +372,16 @@
         border-color: #14044E;
         border-style: solid;
     }
+
     .site-bg-white {
         background-color: #73707029;
     }
+
     .p-b90 {
         padding-bottom: 30px;
         padding-top: 30px;
     }
+
     #jobs_bookmark_table2 {
         border: none; /* Xoá viền của bảng */
     }
@@ -391,8 +396,6 @@
         align-items: center; /* Căn giữa theo trục dọc */
         margin-bottom: 10px; /* Tạo khoảng cách giữa phần trên và bảng */
     }
-
-
 </style>
 
 <body data-anm=".anm">
@@ -458,7 +461,7 @@
 
 
 
-   
+
 
         </div>
     </div>
@@ -1038,24 +1041,24 @@
 
 
 @*<script>
-    $(document).ready(function () {
-        // Khởi tạo DataTables một lần duy nhất
-        var jobsBookmarkTable = $('#jobs_bookmark_table2').DataTable({
-            "paging": true,
-            "pageLength": 10,
-            "lengthChange": false,
-            "searching": true,
-            "info": false,
-            "autoWidth": false,
-            "language": {
-                "paginate": {
-                    "previous": "Trước",
-                    "next": "Sau"
+        $(document).ready(function () {
+            // Khởi tạo DataTables một lần duy nhất
+            var jobsBookmarkTable = $('#jobs_bookmark_table2').DataTable({
+                "paging": true,
+                "pageLength": 10,
+                "lengthChange": false,
+                "searching": true,
+                "info": false,
+                "autoWidth": false,
+                "language": {
+                    "paginate": {
+                        "previous": "Trước",
+                        "next": "Sau"
+                    }
                 }
-            }
+            });
         });
-    });
-</script>*@
+    </script>*@
 <script>
     $(document).ready(function () {
         // Khởi tạo DataTables một lần duy nhất
@@ -1092,5 +1095,24 @@
 
 
 </script>
+@*<script>
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+                toolbar: [
+                    'heading', '|', 'bold', 'italic', 'alignment', 'bulletedList', 'numberedList', 'undo', 'redo'
+                ],
+                ckfinder: {
+                    uploadUrl: '/upload' // URL tải ảnh lên server
+                },
+                alignment: {
+                    options: ['left', 'center', 'right', 'justify'] // Tùy chọn căn lề
+                }
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>*@
+
+@RenderSection("scripts", false)
 
 </html>

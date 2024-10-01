@@ -280,7 +280,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mô Tả</label>
-                                                <textarea class="form-control" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
+                                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
                                             </div>
                                         </div>
 
@@ -331,4 +331,11 @@
 
 
 </div>
+
+@section scripts
+    {
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}
 
