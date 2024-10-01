@@ -374,7 +374,7 @@
     }
 
     .site-bg-white {
-        background-color: #73707029;
+        background-color: #63606038;
     }
 
     .p-b90 {
@@ -1073,26 +1073,30 @@
                 "paginate": {
                     "previous": "Trước",
                     "next": "Sau"
-                }
+                },
+                // Thay đổi placeholder của ô tìm kiếm thành "Tìm kiếm"
+                "search": "Tìm kiếm:"
             },
             // Thêm callback để hiển thị thông tin số lượng việc làm
             "initComplete": function (settings, json) {
                 // Tạo phần tử div bao quanh cho bộ lọc và số lượng việc làm
-                var searchContainer = $('<div class="search-container"></div>');
+                var searchContainer = $('<div class="search-container row"></div>');
 
                 // Tạo phần tử span để hiển thị số lượng việc làm
-                var resultCount = $('<span class="woocommerce-result-count-left1">Hiển thị 2.150 việc làm</span>');
+                var resultCount = $('<div class="col-sm-12 col-sl-6"><span class="woocommerce-result-count-left1">Hiển thị 2.150 việc làm</span></div>');
 
-                // Chuyển phần tử tìm kiếm vào div bao quanh mới tạo
-                $('#jobs_bookmark_table2_filter').wrap(searchContainer);
+                // Chuyển phần tử tìm kiếm vào div bao quanh mới tạo và gán vào cột còn lại
+                var searchCol = $('<div class="col-sm-12 col-sl-6"></div>');
+                $('#jobs_bookmark_table2_filter').wrap(searchCol);
 
                 // Thêm phần tử số lượng việc làm vào div bao quanh, trước phần tìm kiếm
                 $('.search-container').prepend(resultCount);
+
+                // Chèn toàn bộ cấu trúc vào vị trí cần hiển thị
+                $('#jobs_bookmark_table2_filter').parent().parent().prepend(searchContainer);
             }
         });
     });
-
-
 
 </script>
 @*<script>

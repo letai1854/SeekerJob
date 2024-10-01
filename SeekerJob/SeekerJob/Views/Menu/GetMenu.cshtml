@@ -31,7 +31,7 @@
                             <ul class="sub-menu">
                                 @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
                                 {
-                                    <li><a href="@part.link">@part.name</a></li>
+                                    <li><a href="@part.meta">@part.name</a></li>
                                 }
                             </ul>
                         }
