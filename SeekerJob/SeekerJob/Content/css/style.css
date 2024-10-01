@@ -3171,16 +3171,16 @@ ol li {
   }
 }
 .header-style-3 .has-child .submenu-toogle {
-  position: absolute;
-  right: 4px;
-  top: 4px;
-  color: #000;
-  background-color: transparent;
-  z-index: 900;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 14px;
-  display: none;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    color: #000;
+    background-color: #fff;
+    z-index: 900;
+    cursor: pointer;
+    padding: 10px;
+    font-size: 14px;
+    display: none;
 }
 @media (max-width: 991px) {
   .header-style-3 .has-child .submenu-toogle {
@@ -3207,17 +3207,17 @@ ol li {
   }
 }
 @media (max-width: 991px) {
-  .header-style-3.mobile-sider-drawer-menu .header-nav {
-    position: fixed;
-    width: 250px !important;
-    z-index: 999;
-    height: 100vh !important;
-    overflow-y: inherit !important;
-    left: -250px;
-    top: 0px;
-    transition: all 0.5s linear;
-    background-color: #fff;
-  }
+    .header-style-3.mobile-sider-drawer-menu .header-nav {
+        position: fixed;
+        width: 250px !important;
+        z-index: 999;
+        height: 100vh !important;
+        overflow-y: inherit !important;
+        left: -250px;
+        top: 0px;
+        transition: all 0.5s linear;
+        background-color: #0d052a;
+    }
   .header-style-3.mobile-sider-drawer-menu .header-nav .nav > li:hover > .sub-menu {
     animation: none !important;
   }

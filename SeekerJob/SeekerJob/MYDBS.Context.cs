@@ -32,6 +32,8 @@ namespace SeekerJob
         public virtual DbSet<Login> Logins { get; set; }
         public virtual DbSet<News> News { get; set; }
         public virtual DbSet<SaveJob> SaveJobs { get; set; }
+        public virtual DbSet<tablebanner> tablebanners { get; set; }
+        public virtual DbSet<tablebannerpart> tablebannerparts { get; set; }
         public virtual DbSet<tableimagemenu> tableimagemenus { get; set; }
         public virtual DbSet<tablemenu> tablemenus { get; set; }
         public virtual DbSet<tablemenufunction> tablemenufunctions { get; set; }

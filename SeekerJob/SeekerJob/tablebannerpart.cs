@@ -12,12 +12,15 @@ namespace SeekerJob
     using System;
     using System.Collections.Generic;
     
-    public partial class CV
+    public partial class tablebannerpart
     {
-        public string username { get; set; }
         public int id { get; set; }
-        public string title { get; set; }
+        public Nullable<int> idtable { get; set; }
+        public string content { get; set; }
         public string link { get; set; }
         public string meta { get; set; }
+        public Nullable<bool> hide { get; set; }
+        public Nullable<int> arrange { get; set; }
+        public Nullable<System.DateTime> datebegin { get; set; }
     }
 }
