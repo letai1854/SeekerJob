@@ -1,0 +1,22 @@
+﻿
+@using SeekerJob.Controllers
+<script>
+             var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+
+</script>
+@{
+    var tablebanner = ViewData["tablemenus"] as List<tablemenu>;
+    var tablebannerpart = ViewData["tablemenuparts"] as List<tablemenupart>;
+}
+
+<div class="section-full p-t120 p-b90 site-bg-light-purple twm-bg-ring-wrap" style="background-color: rgb(223, 223, 223);">
+
+
+    <div class="container my-2">
+        <div style="display: flex; align-items:center;">
+            <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px;">Việc làm hấp dẫn</h2>
+
+            <h5 style="border-left: 1px solid black; padding-left:10px;">Được đề xuất bởi top AI</h5>
+
+            <h5 style=" padding-left:10px; margin-left:auto;">Hiển thị <span style="color:red">2000+</span> việc làm</h5>
+        </div>

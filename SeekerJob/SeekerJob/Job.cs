@@ -17,9 +17,9 @@ namespace SeekerJob
         public string username { get; set; }
         public int id { get; set; }
         public string title { get; set; }
-        public string meta { get; set; }
         public string email { get; set; }
         public string address { get; set; }
+        public string addressdetail { get; set; }
         public string gender { get; set; }
         public string degree { get; set; }
         public Nullable<double> experience { get; set; }
@@ -29,5 +29,6 @@ namespace SeekerJob
         public Nullable<System.DateTime> startday { get; set; }
         public Nullable<System.DateTime> endday { get; set; }
         public string description { get; set; }
+        public string meta { get; set; }
     }
 }
