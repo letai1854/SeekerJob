@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MYDB.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -199,17 +199,19 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="TitlePage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="meta" Type="nvarchar" MaxLength="50" />
           <Property Name="tilteBig" Type="nvarchar" MaxLength="100" />
           <Property Name="titleMall" Type="nvarchar" MaxLength="100" />
           <Property Name="hide" Type="bit" />
           <Property Name="datebegin" Type="smalldatetime" />
           <Property Name="typePage" Type="varchar" MaxLength="100" />
-        </EntityType>-->
-        <EntityContainer Name="MYDBStoreContainer">
+        </EntityType>
+        <EntityContainer Name="testdbs2425ModelStoreContainer">
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
@@ -223,12 +225,13 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
           <EntitySet Name="tablemenu" EntityType="Self.tablemenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenufunction" EntityType="Self.tablemenufunction" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenupart" EntityType="Self.tablemenupart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TitlePage" EntityType="Self.TitlePage" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MYDB" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -383,7 +386,19 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
         </EntityType>
-        <EntityContainer Name="MYDBS" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="TitlePage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tilteBig" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="titleMall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="MYDbS" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
@@ -397,15 +412,16 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
           <EntitySet Name="tablemenus" EntityType="Self.tablemenu" />
           <EntitySet Name="tablemenufunctions" EntityType="Self.tablemenufunction" />
           <EntitySet Name="tablemenuparts" EntityType="Self.tablemenupart" />
+          <EntitySet Name="TitlePages" EntityType="Self.TitlePage" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MYDBStoreContainer" CdmEntityContainer="MYDBS">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYDbS">
           <EntitySetMapping Name="Advertises">
-            <EntityTypeMapping TypeName="MYDB.Advertise">
+            <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -418,7 +434,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CVs">
-            <EntityTypeMapping TypeName="MYDB.CV">
+            <EntityTypeMapping TypeName="testdbs2425Model.CV">
               <MappingFragment StoreEntitySet="CV">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -429,7 +445,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="MYDB.Job">
+            <EntityTypeMapping TypeName="testdbs2425Model.Job">
               <MappingFragment StoreEntitySet="Job">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -451,7 +467,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListCandidates">
-            <EntityTypeMapping TypeName="MYDB.ListCandidate">
+            <EntityTypeMapping TypeName="testdbs2425Model.ListCandidate">
               <MappingFragment StoreEntitySet="ListCandidate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -460,7 +476,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="MYDB.Login">
+            <EntityTypeMapping TypeName="testdbs2425Model.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -469,7 +485,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="MYDB.News">
+            <EntityTypeMapping TypeName="testdbs2425Model.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -483,7 +499,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SaveJobs">
-            <EntityTypeMapping TypeName="MYDB.SaveJob">
+            <EntityTypeMapping TypeName="testdbs2425Model.SaveJob">
               <MappingFragment StoreEntitySet="SaveJob">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -492,7 +508,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebanners">
-            <EntityTypeMapping TypeName="MYDB.tablebanner">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablebanner">
               <MappingFragment StoreEntitySet="tablebanner">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -506,7 +522,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebannerparts">
-            <EntityTypeMapping TypeName="MYDB.tablebannerpart">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablebannerpart">
               <MappingFragment StoreEntitySet="tablebannerpart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -520,7 +536,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tableimagemenus">
-            <EntityTypeMapping TypeName="MYDB.tableimagemenu">
+            <EntityTypeMapping TypeName="testdbs2425Model.tableimagemenu">
               <MappingFragment StoreEntitySet="tableimagemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -532,7 +548,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenus">
-            <EntityTypeMapping TypeName="MYDB.tablemenu">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenu">
               <MappingFragment StoreEntitySet="tablemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -545,7 +561,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenufunctions">
-            <EntityTypeMapping TypeName="MYDB.tablemenufunction">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenufunction">
               <MappingFragment StoreEntitySet="tablemenufunction">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -558,7 +574,7 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenuparts">
-            <EntityTypeMapping TypeName="MYDB.tablemenupart">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenupart">
               <MappingFragment StoreEntitySet="tablemenupart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -568,6 +584,19 @@ warning 6013: The table/view 'testdbs2425.dbo.TitlePage' does not have a primary
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="arrange" ColumnName="arrange" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitlePages">
+            <EntityTypeMapping TypeName="testdbs2425Model.TitlePage">
+              <MappingFragment StoreEntitySet="TitlePage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="tilteBig" ColumnName="tilteBig" />
+                <ScalarProperty Name="titleMall" ColumnName="titleMall" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typePage" ColumnName="typePage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
