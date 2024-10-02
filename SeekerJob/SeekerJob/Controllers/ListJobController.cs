@@ -16,11 +16,23 @@ namespace SeekerJob.Controllers
         }
         public ActionResult TitleJobList()
         {
-
             var tableTitleListJob = db.TitlePages
-                              .Where(t => t.hide == true && t.typePage == EnumType.Type.Danhsachvieclam.ToString())
-                              .ToList();
-            return View(tableTitleListJob.FirstOrDefault());
+                                .Where(t => t.hide == true && t.typePage == EnumType.Type.Danhsachvieclam.ToString()).OrderBy( t => t.datebegin).FirstOrDefault();
+
+            return PartialView(tableTitleListJob);
+        }
+        public ActionResult GetTitleSearchJob()
+        {
+
+            var tableTileSearchJob = db.tablebanners.Where(t=> t.hide ==true && t.typeRow == EnumType.Type.searchTitleJob.ToString()).OrderBy(t => t.arrange).ToList();
+
+
+            var tableElementTitleSearchJob = db.tablebannerparts.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
+
+            ViewData["tablebanners"] = tableTileSearchJob;
+            ViewData["tablebannerparts"] = tableElementTitleSearchJob;
+
+            return PartialView("GetTitleSearchJob");
         }
     }
 }

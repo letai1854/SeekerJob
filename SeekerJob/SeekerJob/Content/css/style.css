@@ -6294,9 +6294,9 @@ button.scroltop span {
 
 /*Blog Side Bar*/
 .side-bar {
-  background-color: #fcfcfc;
-  padding: 30px;
-  border-radius: 10px;
+    background-color: #6f6b6b3b;
+    padding: 30px;
+    border-radius: 10px;
 }
 @media (max-width: 991px) {
   .side-bar {

@@ -1410,6 +1410,7 @@
     <Content Include="Views\Home\GetBannerHome.cshtml" />
     <Content Include="Views\Home\GetTitileAndAmountJob1.cshtml" />
     <Content Include="Views\Home\GetListAttractiveJobInHome.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
