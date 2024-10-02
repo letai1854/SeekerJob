@@ -1,0 +1,306 @@
+﻿@model IEnumerable<SeekerJob.Job>
+@using SeekerJob.Controllers
+@using SeekerJob.DataSystem
+
+
+
+
+<div class="col-lg-8 col-md-12">
+    <!--Filter Short By-->
+
+
+    <div class="twm-jobs-list-wrap">
+        <table id="jobs_bookmark_table2" class="table table-bordered twm-candidate-save-job-list-wrap">
+
+            <thead>
+            <th>
+            </th>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    var relativeTime = data.GetRelativeTime((DateTime)item.startday);
+                    <tr>
+                        <td>
+                            <div class="twm-jobs-list-style1 mb-5">
+                                <div class="twm-media">
+                                    <img src="~/ContentImage/images/@item.image" alt="#">
+                                </div>
+                                <div class="twm-mid-content">
+                                    <a href="@item.meta/@item.id" class="twm-job-title">
+                                        <h4>@item.title<span class="twm-job-post-duration">/@relativeTime</span></h4>
+                                    </a>
+                                    <p class="twm-job-address">@item.addressdetail</p>
+                                    <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                                </div>
+                                <div class="twm-right-content">
+                                    <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                    <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                    <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="twm-jobs-list-style1 mb-5">
+                            <div class="twm-media">
+                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="#">
+                            </div>
+                            <div class="twm-mid-content">
+                                <a href="job-detail.html" class="twm-job-title">
+                                    <h4>Senior Web Designer<span class="twm-job-post-duration">/ 1 days ago</span></h4>
+                                </a>
+                                <p class="twm-job-address">1363-1385 Sunset Blvd Los Angeles, CA 90026, USA</p>
+                                <a href="https://themeforest.net/user/thewebmax/portfolio" class="twm-job-websites site-text-primary">https://thewebmax.com</a>
+                            </div>
+                            <div class="twm-right-content">
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                <div class="twm-jobs-amount">$2500 <span>/ Month</span></div>
+                                <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+    </div>
+
+
+
+</div>

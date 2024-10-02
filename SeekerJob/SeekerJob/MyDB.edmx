@@ -49,10 +49,11 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="twitter" Type="varchar" MaxLength="100" />
           <Property Name="linkedin" Type="varchar" MaxLength="100" />
         </EntityType>-->
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="InforEmployer">
-          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="namecompany" Type="nvarchar(max)" />
           <Property Name="phone" Type="int" />
           <Property Name="adrress" Type="nvarchar" MaxLength="100" />
@@ -66,7 +67,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="facebook" Type="varchar" MaxLength="100" />
           <Property Name="twitter" Type="varchar" MaxLength="100" />
           <Property Name="linkedin" Type="varchar" MaxLength="100" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="Job">
           <Key>
             <PropertyRef Name="id" />
@@ -87,6 +88,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="endday" Type="datetime" />
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="likeNumber" Type="int" />
         </EntityType>
         <EntityType Name="ListCandidate">
           <Key>
@@ -116,6 +118,18 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="daypost" Type="date" />
           <Property Name="shortbref" Type="nvarchar(max)" />
           <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PageTitle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="tilteBig" Type="nvarchar" MaxLength="100" />
+          <Property Name="titleMall" Type="nvarchar" MaxLength="100" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typePage" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SaveJob">
           <Key>
@@ -214,10 +228,12 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
         <EntityContainer Name="testdbs2425ModelStoreContainer">
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InforEmployer" EntityType="Self.InforEmployer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListCandidate" EntityType="Self.ListCandidate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageTitle" EntityType="Self.PageTitle" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SaveJob" EntityType="Self.SaveJob" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablebanner" EntityType="Self.tablebanner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablebannerpart" EntityType="Self.tablebannerpart" Schema="dbo" store:Type="Tables" />
@@ -254,6 +270,25 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="InforEmployer">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namecompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int32" />
+          <Property Name="adrress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="linkweb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="likecm" Type="Int32" />
+          <Property Name="instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Job">
           <Key>
             <PropertyRef Name="id" />
@@ -274,6 +309,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="endday" Type="DateTime" Precision="3" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="likeNumber" Type="Int32" />
         </EntityType>
         <EntityType Name="ListCandidate">
           <Key>
@@ -303,6 +339,18 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="daypost" Type="DateTime" Precision="0" />
           <Property Name="shortbref" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PageTitle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tilteBig" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="titleMall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SaveJob">
           <Key>
@@ -398,13 +446,15 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MYDbS" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MYdBS" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
+          <EntitySet Name="InforEmployers" EntityType="Self.InforEmployer" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
           <EntitySet Name="ListCandidates" EntityType="Self.ListCandidate" />
           <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="PageTitles" EntityType="Self.PageTitle" />
           <EntitySet Name="SaveJobs" EntityType="Self.SaveJob" />
           <EntitySet Name="tablebanners" EntityType="Self.tablebanner" />
           <EntitySet Name="tablebannerparts" EntityType="Self.tablebannerpart" />
@@ -419,7 +469,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYDbS">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYdBS">
           <EntitySetMapping Name="Advertises">
             <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
@@ -444,6 +494,26 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="InforEmployers">
+            <EntityTypeMapping TypeName="testdbs2425Model.InforEmployer">
+              <MappingFragment StoreEntitySet="InforEmployer">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="namecompany" ColumnName="namecompany" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adrress" ColumnName="adrress" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="report" ColumnName="report" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="linkweb" ColumnName="linkweb" />
+                <ScalarProperty Name="likecm" ColumnName="likecm" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
             <EntityTypeMapping TypeName="testdbs2425Model.Job">
               <MappingFragment StoreEntitySet="Job">
@@ -463,6 +533,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
                 <ScalarProperty Name="endday" ColumnName="endday" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="likeNumber" ColumnName="likeNumber" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -495,6 +566,19 @@ warning 6013: The table/view 'testdbs2425.dbo.InforEmployer' does not have a pri
                 <ScalarProperty Name="daypost" ColumnName="daypost" />
                 <ScalarProperty Name="shortbref" ColumnName="shortbref" />
                 <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageTitles">
+            <EntityTypeMapping TypeName="testdbs2425Model.PageTitle">
+              <MappingFragment StoreEntitySet="PageTitle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="tilteBig" ColumnName="tilteBig" />
+                <ScalarProperty Name="titleMall" ColumnName="titleMall" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typePage" ColumnName="typePage" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
