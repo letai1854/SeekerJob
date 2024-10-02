@@ -16,11 +16,15 @@
 
     <div class="container my-2">
         <div style="display: flex; align-items:center;">
+            @*<a href="#">
             <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px;">Việc làm hấp dẫn</h2>
+
+            </a>
 
             <h5 style="border-left: 1px solid black; padding-left:10px;">Được đề xuất bởi top AI</h5>
 
-            <h5 style=" padding-left:10px; margin-left:auto;">Hiển thị <span style="color:red">2000+</span> việc làm</h5>
+            <h5 style=" padding-left:10px; margin-left:auto;">Hiển thị <span style="color:red">2000+</span> việc làm</h5>*@
+            @{ Html.RenderAction("GetTitileAndAmountJob1", "Home");}
         </div>
         <!-- Search Bar -->
         <div class="custom-search-wrapper" style="margin-bottom: 10px;">
@@ -106,8 +110,8 @@
         </div>
 
         <div class="row">
-
-            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+            @{ Html.RenderAction("GetListAttractiveJobInHome", "Home");}
+            @*<div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="job-card bg-white border p-3 d-flex align-items-center">
                     <div class="job-card-image-wrapper position-relative">
                         <img src="~/ContentImage/images/jobs-company/pic3.jpg" alt="job-image" class="job-card-image">
@@ -124,8 +128,6 @@
                         <a href="job-detail.html" class="job-browse text-primary font-weight-bold" style="font-size: 13px">Browse Job</a>
                     </div>
                 </div>
-
-
             </div>
             <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
                 <div class="job-card bg-white border p-3 d-flex align-items-center">
@@ -346,7 +348,7 @@
                 </div>
 
 
-            </div>
+            </div>*@
         </div>
 
         <div class="text-center">

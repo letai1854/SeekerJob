@@ -1,0 +1,23 @@
+﻿
+
+@using SeekerJob.Controllers
+<script>
+    var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+</script>
+
+@{
+    var amount = ViewData["amount"];
+    var title = ViewData["title"] as List<TitlePage>;
+
+}
+
+
+
+<a href="#">
+    <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px;">@title.First().tilteBig</h2>
+
+</a>
+
+<h5 style="border-left: 1px solid black; padding-left:10px;">@title.First().titleMall</h5>
+
+<h5 style=" padding-left:10px; margin-left:auto;">Hiển thị <span style="color:red">@amount +</span> việc làm</h5>

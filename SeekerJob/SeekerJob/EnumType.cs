@@ -16,5 +16,15 @@ namespace SeekerJob
             Ngaydang,
             Mucluong
         }
+        public enum Banner
+        {
+            imgbanner,
+            imgperson
+        }
+        public enum TypeTitleHome
+        {
+            tieudetrangchu1,
+            tieudetrangchu2
+        }
     }
 }
