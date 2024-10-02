@@ -30,6 +30,7 @@ namespace SeekerJob
         {
             advertisehome1,
             advertisehome2
+
         }
     }
 }

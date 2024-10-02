@@ -11,6 +11,7 @@ namespace SeekerJob.Controllers
         // GET: Banner
         MYDBS db = new MYDBS();
 
+
         public ActionResult Index()
         {
             return View();
