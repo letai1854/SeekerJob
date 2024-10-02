@@ -22,14 +22,18 @@ namespace SeekerJob.Controllers
 
             var imgbanner = (from banner in db.tablebanners
                              join  part in db.tablebannerparts on banner.id equals part.idtable
-                             where banner.hide == true && part.hide == true && banner.typeRow== "imgbanner"
+                             where banner.hide == true && part.hide == true && banner.typeRow== EnumType.Banner.imgbanner.ToString()
                              orderby part.datebegin
                              select part).ToList();
-
+            var imgperson = (from banner in db.tablebanners
+                             join part in db.tablebannerparts on banner.id equals part.idtable
+                             where banner.hide == true && part.hide == true && banner.typeRow == EnumType.Banner.imgperson.ToString()
+                             orderby part.datebegin
+                             select part).ToList();
             ViewData["tablepanners"] = tablepanners;
             ViewData["tablebannerparts"] = tablebannerparts;
             ViewData["imgbanner"] = imgbanner;  // Might be null if no data is found
-
+            ViewData["imgperson"] = imgperson;
             return PartialView("GetBanner");
         }
 
