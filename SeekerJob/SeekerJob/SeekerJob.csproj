@@ -209,6 +209,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ContentImage\images\adv1.jpg" />
+    <Content Include="ContentImage\images\adv2.jpg" />
+    <Content Include="ContentImage\images\adv3.jpg" />
+    <Content Include="ContentImage\images\adv4.jpg" />
+    <Content Include="ContentImage\images\adv5.jpg" />
+    <Content Include="ContentImage\images\adv6.jpg" />
+    <Content Include="ContentImage\images\adv7.jpg" />
+    <Content Include="ContentImage\images\adv8.jpg" />
     <Content Include="ContentImage\images\anhpia.jpg" />
     <Content Include="ContentImage\images\apply-job-bg.png" />
     <Content Include="ContentImage\images\blog\blog-single\1.jpg" />
@@ -1417,7 +1425,9 @@
     <Content Include="Views\Home\GetBannerHome.cshtml" />
     <Content Include="Views\Home\GetTitileAndAmountJob1.cshtml" />
     <Content Include="Views\Home\GetListAttractiveJobInHome.cshtml" />
+    <Content Include="Views\Home\AdvertiseHomeFirst.cshtml" />
     <Content Include="Views\ListJob\GetListAllJob.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

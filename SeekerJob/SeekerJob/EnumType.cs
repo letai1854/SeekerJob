@@ -23,8 +23,13 @@ namespace SeekerJob
         }
         public enum TypeTitleHome
         {
-            titlepagehome1,
-            titlepagehome2
+            titlepagehome1
+                , titlepagehome2
+        }
+        public enum Adertise
+        {
+            advertisehome1
+
         }
     }
 }
