@@ -144,9 +144,13 @@
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
+    <Compile Include="DTO\JobEmployerViewModel.cs" />
     <Compile Include="EnumType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InforEmployer.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Job.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
@@ -173,6 +177,9 @@
       <DependentUpon>MyDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="News.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageTitle.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />

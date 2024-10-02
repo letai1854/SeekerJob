@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SeekerJob.DTO;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -36,10 +37,17 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListAllJob()
         {
+
             var listjob = (from j in db.Jobs join i in db.InforEmployers on j.username equals i.username
                            where j.endday > DateTime.Now
-                           orderby j.id select new { j,i}).ToList();
-            return PartialView(listjob);
+                           orderby j.id
+                           select new JobEmployerViewModel 
+                           {
+                               Job = j,
+                               InforEmployer = i
+                           }).ToList();
+            ViewData["listjob"] = listjob;
+            return PartialView("GetListAllJob");
         }
     }
 }

@@ -30,7 +30,7 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetTitileAndAmountJob1()
         {
-            var title = db.TitlePages.Where(t => t.hide == true && t.typePage==EnumType.TypeTitleHome.tieudetrangchu1.ToString()).OrderBy(t => t.datebegin).ToList();
+            var title = db.TitlePages.Where(t => t.hide == true && t.typePage==EnumType.TypeTitleHome.titlepagehome1.ToString()).OrderBy(t => t.datebegin).ToList();
 
 
             var amount = db.Jobs.Count().ToString();

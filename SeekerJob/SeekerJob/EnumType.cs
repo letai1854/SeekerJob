@@ -23,8 +23,8 @@ namespace SeekerJob
         }
         public enum TypeTitleHome
         {
-            tieudetrangchu1,
-            tieudetrangchu2
+            titlepagehome1,
+            titlepagehome2
         }
     }
 }

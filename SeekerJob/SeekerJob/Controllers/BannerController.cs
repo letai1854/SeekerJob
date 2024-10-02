@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class BannerController : Controller
     {
         // GET: Banner
-        MYDbS db = new MYDbS();
+        MYdBS db = new MYdBS();
 
         public ActionResult Index()
         {
