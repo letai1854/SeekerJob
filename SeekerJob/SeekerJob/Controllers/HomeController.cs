@@ -30,7 +30,7 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetTitileAndAmountJob1()
         {
-            var title = db.TitlePages.Where(t => t.hide == true && t.typePage==EnumType.TypeTitleHome.tieudetrangchu1.ToString()).OrderBy(t => t.datebegin).ToList();
+            var title = db.TitlePages.Where(t => t.hide == true && t.typePage==EnumType.TypeTitleHome.titlepagehome1.ToString()).OrderBy(t => t.datebegin).ToList();
 
 
             var amount = db.Jobs.Count().ToString();
@@ -41,11 +41,24 @@ namespace SeekerJob.Controllers
 
             return PartialView("GetTitileAndAmountJob1");
         }
+        public ActionResult GetTitlePageHome2()
+        {
+            var title = db.TitlePages.Where(t => t.hide == true && t.typePage == EnumType.TypeTitleHome.titlepagehome2.ToString()).OrderBy(t => t.datebegin).ToList();
+            ViewData["title"] = title;
+            return PartialView("GetTitlePageHome2");
+        }
         public ActionResult GetListAttractiveJobInHome()
         {
             var listjob = db.Jobs.Where(t => t.endday>=DateTime.Now).Take(12).ToList();
             ViewData["listjob"] = listjob;
             return PartialView("GetListAttractiveJobInHome");
+        }
+        public ActionResult AdvertiseHomeFirst()
+        {
+            var adv = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Adertise.advertisehome1.ToString()).FirstOrDefault();
+            var listadv = db.tablebannerparts.Where(t => t.hide == true && t.link != null && t.idtable == adv.id).Take(8).ToList();
+            ViewData["listadv"] = listadv;
+            return PartialView("AdvertiseHomeFirst");
         }
     }
 }

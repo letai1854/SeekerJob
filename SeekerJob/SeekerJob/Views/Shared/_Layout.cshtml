@@ -1151,7 +1151,7 @@
         document.querySelector('.prev-btn').addEventListener('click', prevSlide);
 
         // Automatic sliding every 3 seconds
-        setInterval(nextSlide, 5000);
+        setInterval(nextSlide, 7000);
 
         // Optional: Pause automatic sliding when hovering over the carousel
         const carouselContainer = document.querySelector('.carousel-container');
@@ -1159,7 +1159,7 @@
             clearInterval(autoSlide);
         });
         carouselContainer.addEventListener('mouseleave', () => {
-            autoSlide = setInterval(nextSlide, 5000);
+            autoSlide = setInterval(nextSlide, 7000);
         });
     });
 </script>
