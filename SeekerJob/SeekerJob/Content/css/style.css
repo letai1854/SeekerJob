@@ -6294,7 +6294,7 @@ button.scroltop span {
 
 /*Blog Side Bar*/
 .side-bar {
-    background-color: #6f6b6b3b;
+    background-color: #11122714;
     padding: 30px;
     border-radius: 10px;
 }
@@ -15375,14 +15375,14 @@ strong {
   width: 100% !important;
   display: block !important;
 }
-.wt-search-bar-select .btn-light {
-  font-size: 14px;
-  color: #000;
-  font-weight: 500;
-  background-color: transparent;
-  border: none;
-  padding: 7px 0px !important;
-}
+    .wt-search-bar-select .btn-light {
+        font-size: 14px;
+        color: #17171d;
+        font-weight: 500;
+        background-color: #f4f6fa;
+        border: none;
+        padding: 8px 6px !important;
+    }
 .wt-search-bar-select .btn-light:focus {
   box-shadow: none;
   outline: 0px !important;
