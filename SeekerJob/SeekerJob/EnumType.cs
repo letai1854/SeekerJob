@@ -28,7 +28,8 @@ namespace SeekerJob
         }
         public enum Adertise
         {
-            advertisehome1
+            advertisehome1,
+            advertisehome2
         }
     }
 }

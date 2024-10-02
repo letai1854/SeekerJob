@@ -8,7 +8,7 @@ namespace SeekerJob.Controllers
 {
     public class HomeController : Controller
     {
-        MYdBS db = new MYdBS();
+        MYDBS db = new MYDBS();
 
         public ActionResult Index()
         {
@@ -59,6 +59,23 @@ namespace SeekerJob.Controllers
             var listadv = db.tablebannerparts.Where(t => t.hide == true && t.link != null && t.idtable == adv.id).Take(8).ToList();
             ViewData["listadv"] = listadv;
             return PartialView("AdvertiseHomeFirst");
+        }
+        public ActionResult GetListJobLike()
+        {
+            var listjob = db.Jobs
+                            .Where(t => t.endday >= DateTime.Now)
+                            .OrderByDescending(t => t.likeNumber)
+                            .Take(8)
+                            .ToList();
+            ViewData["listjob"] = listjob;
+            return PartialView("GetListJobLike");
+        }
+        public ActionResult AdvertiseHomeSecond()
+        {
+            var adv = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Adertise.advertisehome2.ToString()).FirstOrDefault();
+            var listadv = db.tablebannerparts.Where(t => t.hide == true && t.link != null && t.idtable == adv.id).Take(3).ToList();
+            ViewData["listadv"] = listadv;
+            return PartialView("AdvertiseHomeSecond");
         }
     }
 }

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MYDBSMODEL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -225,7 +225,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="datebegin" Type="smalldatetime" />
           <Property Name="typePage" Type="varchar" MaxLength="100" />
         </EntityType>
-        <EntityContainer Name="testdbs2425ModelStoreContainer">
+        <EntityContainer Name="MYDBSMODELStoreContainer">
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InforEmployer" EntityType="Self.InforEmployer" Schema="dbo" store:Type="Tables" />
@@ -247,7 +247,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MYDBSMODEL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -446,7 +446,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MYdBS" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MYDBS" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
           <EntitySet Name="InforEmployers" EntityType="Self.InforEmployer" />
@@ -469,9 +469,9 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYdBS">
+        <EntityContainerMapping StorageEntityContainer="MYDBSMODELStoreContainer" CdmEntityContainer="MYDBS">
           <EntitySetMapping Name="Advertises">
-            <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
+            <EntityTypeMapping TypeName="MYDBSMODEL.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -484,7 +484,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CVs">
-            <EntityTypeMapping TypeName="testdbs2425Model.CV">
+            <EntityTypeMapping TypeName="MYDBSMODEL.CV">
               <MappingFragment StoreEntitySet="CV">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -495,7 +495,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InforEmployers">
-            <EntityTypeMapping TypeName="testdbs2425Model.InforEmployer">
+            <EntityTypeMapping TypeName="MYDBSMODEL.InforEmployer">
               <MappingFragment StoreEntitySet="InforEmployer">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="namecompany" ColumnName="namecompany" />
@@ -515,7 +515,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="testdbs2425Model.Job">
+            <EntityTypeMapping TypeName="MYDBSMODEL.Job">
               <MappingFragment StoreEntitySet="Job">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -538,7 +538,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListCandidates">
-            <EntityTypeMapping TypeName="testdbs2425Model.ListCandidate">
+            <EntityTypeMapping TypeName="MYDBSMODEL.ListCandidate">
               <MappingFragment StoreEntitySet="ListCandidate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -547,7 +547,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="testdbs2425Model.Login">
+            <EntityTypeMapping TypeName="MYDBSMODEL.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -556,7 +556,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="testdbs2425Model.News">
+            <EntityTypeMapping TypeName="MYDBSMODEL.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -570,7 +570,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PageTitles">
-            <EntityTypeMapping TypeName="testdbs2425Model.PageTitle">
+            <EntityTypeMapping TypeName="MYDBSMODEL.PageTitle">
               <MappingFragment StoreEntitySet="PageTitle">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
@@ -583,7 +583,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SaveJobs">
-            <EntityTypeMapping TypeName="testdbs2425Model.SaveJob">
+            <EntityTypeMapping TypeName="MYDBSMODEL.SaveJob">
               <MappingFragment StoreEntitySet="SaveJob">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -592,7 +592,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebanners">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablebanner">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tablebanner">
               <MappingFragment StoreEntitySet="tablebanner">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -606,7 +606,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebannerparts">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablebannerpart">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tablebannerpart">
               <MappingFragment StoreEntitySet="tablebannerpart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -620,7 +620,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tableimagemenus">
-            <EntityTypeMapping TypeName="testdbs2425Model.tableimagemenu">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tableimagemenu">
               <MappingFragment StoreEntitySet="tableimagemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -632,7 +632,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenus">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenu">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenu">
               <MappingFragment StoreEntitySet="tablemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -645,7 +645,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenufunctions">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenufunction">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenufunction">
               <MappingFragment StoreEntitySet="tablemenufunction">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -658,7 +658,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenuparts">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenupart">
+            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenupart">
               <MappingFragment StoreEntitySet="tablemenupart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -672,7 +672,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TitlePages">
-            <EntityTypeMapping TypeName="testdbs2425Model.TitlePage">
+            <EntityTypeMapping TypeName="MYDBSMODEL.TitlePage">
               <MappingFragment StoreEntitySet="TitlePage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />

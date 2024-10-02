@@ -148,6 +148,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InforEmployer.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Job.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -173,6 +176,9 @@
       <DependentUpon>MyDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="News.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PageTitle.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -204,6 +210,9 @@
   <ItemGroup>
     <Content Include="ContentImage\images\adv1.jpg" />
     <Content Include="ContentImage\images\adv2.jpg" />
+    <Content Include="ContentImage\images\adv2_1.jpg" />
+    <Content Include="ContentImage\images\adv2_2.jpg" />
+    <Content Include="ContentImage\images\adv2_3.jpg" />
     <Content Include="ContentImage\images\adv3.jpg" />
     <Content Include="ContentImage\images\adv4.jpg" />
     <Content Include="ContentImage\images\adv5.jpg" />
@@ -1420,7 +1429,9 @@
     <Content Include="Views\Home\GetListAttractiveJobInHome.cshtml" />
     <Content Include="Views\Home\AdvertiseHomeFirst.cshtml" />
     <Content Include="Views\ListJob\GetListAllJob.cshtml" />
-
+    <Content Include="Views\Home\GetTitlePageHome2.cshtml" />
+    <Content Include="Views\Home\GetListJobLike.cshtml" />
+    <Content Include="Views\Home\AdvertiseHomeSecond.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

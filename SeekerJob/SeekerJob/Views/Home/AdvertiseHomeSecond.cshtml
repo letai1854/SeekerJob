@@ -1,0 +1,46 @@
+﻿
+@using SeekerJob.Controllers
+<script>
+    var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+</script>
+@{
+    var listadv = ViewData["listadv"] as List<tablebannerpart>;
+    var part = 0;
+}
+
+<div class="col-lg-4 col-md-12 col-sm-12">
+        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                @if (listadv != null && listadv.Count > 0)
+                {
+                    foreach (var item in listadv)
+                    {
+                        if (part > 0)
+                        {
+                            <div class="carousel-item">
+                                <img style="height: 700px; width:300px" src="~/ContentImage/images/@item.link" class="d-block w-100" alt="...">
+                            </div>
+                            part++;
+
+                        }
+                        else
+                        {
+
+                            <div class="carousel-item active">
+                                <img style="height: 700px; width:300px" src="~/ContentImage/images/@item.link" class="d-block w-100" alt="...">
+                            </div>
+                            part++;
+                        }
+
+                    }
+                }
+
+            </div>
+        </div>
+
+ </div>

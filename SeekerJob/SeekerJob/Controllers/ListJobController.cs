@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class ListJobController : Controller
     {
         // GET: ListJob
-        MYdBS db = new MYdBS();
+        MYDBS db = new MYDBS();
         public ActionResult GetJobList()
         {
             return View();
