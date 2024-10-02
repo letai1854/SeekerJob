@@ -17,16 +17,21 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetBanner()
         {
-            var tablemenus = db.tablebanners.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
+            var tablepanners = db.tablebanners.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
+            var tablebannerparts = db.tablebannerparts.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
 
+            var imgbanner = (from banner in db.tablebanners
+                             join  part in db.tablebannerparts on banner.id equals part.idtable
+                             where banner.hide == true && part.hide == true && banner.typeRow== "imgbanner"
+                             orderby part.datebegin
+                             select part).ToList();
 
-            var tablemenuparts = db.tablemenuparts.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
-
-
-            ViewData["tablemenus"] = tablemenus;
-            ViewData["tablemenuparts"] = tablemenuparts;
+            ViewData["tablepanners"] = tablepanners;
+            ViewData["tablebannerparts"] = tablebannerparts;
+            ViewData["imgbanner"] = imgbanner;  // Might be null if no data is found
 
             return PartialView("GetBanner");
         }
+
     }
 }

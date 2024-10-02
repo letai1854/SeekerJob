@@ -1,22 +1,178 @@
-﻿
-@using SeekerJob.Controllers
+﻿@using SeekerJob.Controllers
 <script>
-             var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
-
+    var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
 </script>
+
 @{
-    var tablebanner = ViewData["tablemenus"] as List<tablemenu>;
-    var tablebannerpart = ViewData["tablemenuparts"] as List<tablemenupart>;
+    var tablebanner = ViewData["tablepanners"] as List<tablebanner>;
+    var tablebannerpart = ViewData["tablebannerparts"] as List<tablebannerpart>;
+    var imgbanner = ViewData["imgbanner"] as List<tablebannerpart>;
 }
 
-<div class="section-full p-t120 p-b90 site-bg-light-purple twm-bg-ring-wrap" style="background-color: rgb(223, 223, 223);">
 
 
-    <div class="container my-2">
-        <div style="display: flex; align-items:center;">
-            <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px;">Việc làm hấp dẫn</h2>
+<div class="row" style="background-image: url('@Url.Content("~/ContentImage/images/" + imgbanner.First().link)');">
 
-            <h5 style="border-left: 1px solid black; padding-left:10px;">Được đề xuất bởi top AI</h5>
+    <div class="col-xl-6 col-lg-6 col-md-12">
+        <div class="twm-bnr-left-section">
+            @foreach (var item in tablebanner)
+            {
+                if (tablebannerpart.Any(p => p.idtable == item.id))
+                {
+                    foreach (var part in tablebannerpart.Where(p => p.idtable == item.id && (p.hide ?? true)))
+                    {
 
-            <h5 style=" padding-left:10px; margin-left:auto;">Hiển thị <span style="color:red">2000+</span> việc làm</h5>
+                        if (item.typeRow == "bannerpage")
+                        {
+                            if (part.meta == "noi-dung-1")
+                            {
+                                <div class="twm-bnr-title-small" style="color:white;">@part.content</div>
+                            }
+                            else if (part.meta == "noi-dung-2")
+                            {
+                                <div class="twm-bnr-title-large" style="color:white;">@part.content</div>
+                            }
+                            else if (part.meta == "noi-dung-3")
+                            {
+                                <div class="twm-bnr-discription" style="color:white;">@part.content</div>
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            <div class="twm-bnr-search-bar">
+                <form>
+                    <div class="row">
+                        <!--Title-->
+                        <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                            <label for="job-title" style="color: black ; font-weight:500">Vị trí ứng tuyển</label>
+                            <div class="search-container">
+                                <input type="text" id="job-title" placeholder="Nhập vị trí ứng tuyển">
+                                <ul class="suggestions">
+                                    <li>Backend / Frontend Developer</li>
+                                    <li>QC / QA</li>
+                                    <li>Business Analyst</li>
+                                    <li>Product Owner / Product Manager / Project Manager</li>
+                                    <li>DevOps</li>
+                                    <li>Data Engineer / Data Scientist</li>
+                                    <li>Scrum Master / Agile Coach</li>
+                                    <li>UI/UX Designer</li>
+                                    <li>Cloud Engineer</li>
+                                    <li>Mobile Developer (iOS/Android)</li>
+                                    <li>Security Specialist</li>
+                                    <li>Database Administrator (DBA)</li>
+                                    <li>AI/ML Engineer</li>
+                                    <li>IT Support</li>
+                                    <li>System Administrator</li>
+                                    <li>Network Engineer</li>
+                                    <li>Blockchain Developer</li>
+                                    <li>Game Developer</li>
+                                    <li>Full Stack Developer</li>
+
+
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!--All Category-->
+                        <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                            <label style="color: black; font-weight:500">Địa điểm</label>
+                            <select class="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size" data-size="10">
+                                <option disabled selected value="">Chọn địa điểm</option>
+                                <option value="An Giang">An Giang</option>
+                                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                <option value="Bắc Giang">Bắc Giang</option>
+                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                <option value="Bến Tre">Bến Tre</option>
+                                <option value="Bình Dương">Bình Dương</option>
+                                <option value="Bình Định">Bình Định</option>
+                                <option value="Bình Phước">Bình Phước</option>
+                                <option value="Bình Thuận">Bình Thuận</option>
+                                <option value="Cà Mau">Cà Mau</option>
+                                <option value="Cao Bằng">Cao Bằng</option>
+                                <option value="Cần Thơ">Cần Thơ</option>
+                                <option value="Đà Nẵng">Đà Nẵng</option>
+                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                <option value="Đắk Nông">Đắk Nông</option>
+                                <option value="Điện Biên">Điện Biên</option>
+                                <option value="Đồng Nai">Đồng Nai</option>
+                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                <option value="Gia Lai">Gia Lai</option>
+                                <option value="Hà Giang">Hà Giang</option>
+                                <option value="Hà Nam">Hà Nam</option>
+                                <option value="Hà Nội">Hà Nội</option>
+                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                <option value="Hải Dương">Hải Dương</option>
+                                <option value="Hải Phòng">Hải Phòng</option>
+                                <option value="Hậu Giang">Hậu Giang</option>
+                                <option value="Hòa Bình">Hòa Bình</option>
+                                <option value="Hưng Yên">Hưng Yên</option>
+                                <option value="Khánh Hòa">Khánh Hòa</option>
+                                <option value="Kiên Giang">Kiên Giang</option>
+                                <option value="Kon Tum">Kon Tum</option>
+                                <option value="Lai Châu">Lai Châu</option>
+                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                <option value="Lào Cai">Lào Cai</option>
+                                <option value="Long An">Long An</option>
+                                <option value="Nam Định">Nam Định</option>
+                                <option value="Nghệ An">Nghệ An</option>
+                                <option value="Ninh Bình">Ninh Bình</option>
+                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                <option value="Phú Thọ">Phú Thọ</option>
+                                <option value="Phú Yên">Phú Yên</option>
+                                <option value="Quảng Bình">Quảng Bình</option>
+                                <option value="Quảng Nam">Quảng Nam</option>
+                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                <option value="Quảng Trị">Quảng Trị</option>
+                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                <option value="Sơn La">Sơn La</option>
+                                <option value="Tây Ninh">Tây Ninh</option>
+                                <option value="Thái Bình">Thái Bình</option>
+                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                <option value="Thanh Hóa">Thanh Hóa</option>
+                                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                <option value="Tiền Giang">Tiền Giang</option>
+                                <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                                <option value="Trà Vinh">Trà Vinh</option>
+                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                <option value="Yên Bái">Yên Bái</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group col-xl-3 col-lg-6 col-md-6">
+                            <button type="button" class="site-button">Tìm kiếm</button>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
         </div>
+    </div>
+
+    <!--right Section-->
+    <div class="col-xl-6 col-lg-6 col-md-12">
+        <div class="twm-h-page-18-bnr-right-section">
+            <div class="twm-h-page18-bnr-pic">
+                <img src="~/ContentImage/images/home-18/banner/bnr-pic.png" alt="#">
+            </div>
+
+            <!--Samll Ring Left-->
+            <div class="twm-shape-l bounce"></div>
+            <div class="twm-shape-2 bounce2"></div>
+        </div>
+    </div>
+</div>
+
+
+
