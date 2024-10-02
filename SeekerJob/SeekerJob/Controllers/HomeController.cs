@@ -8,7 +8,7 @@ namespace SeekerJob.Controllers
 {
     public class HomeController : Controller
     {
-        MYDbS db = new MYDbS();
+        MYdBS db = new MYdBS();
 
         public ActionResult Index()
         {

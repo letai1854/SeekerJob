@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class ListJobController : Controller
     {
         // GET: ListJob
-        MYDbS db = new MYDbS();
+        MYdBS db = new MYdBS();
         public ActionResult GetJobList()
         {
             return View();
@@ -33,6 +33,13 @@ namespace SeekerJob.Controllers
             ViewData["tablebannerparts"] = tableElementTitleSearchJob;
 
             return PartialView("GetTitleSearchJob");
+        }
+        public ActionResult GetListAllJob()
+        {
+            var listjob = (from j in db.Jobs join i in db.InforEmployers on j.username equals i.username
+                           where j.endday > DateTime.Now
+                           orderby j.id select new { j,i}).ToList();
+            return PartialView(listjob);
         }
     }
 }
