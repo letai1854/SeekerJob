@@ -1406,6 +1406,7 @@
     <Content Include="Views\PostJob\ShowPostJob.cshtml" />
     <Content Include="Views\Banner\GetBanner.cshtml" />
     <Content Include="Views\ListJob\TitleJobList.cshtml" />
+    <Content Include="Views\ListJob\GetTitleSearchJob.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

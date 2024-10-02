@@ -10,6 +10,11 @@ namespace SeekerJob
         public enum Type
         {
             Danhsachvieclam,
+            searchTitleJob,
+            Diadiem,
+            Loaicongviec,
+            Ngaydang,
+            Mucluong
         }
     }
 }
