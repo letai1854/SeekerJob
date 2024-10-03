@@ -147,171 +147,12 @@
 <div class="section-full p-t120 p-b90 site-bg-white " style="background-color: rgb(223, 223, 223)">
     <div class="container ">
 
-        <!-- TITLE START-->
-        <div class="" style="display: flex; align-items:center">
-            <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px">Tin tức và Blog</h2>
-
-            <h5 style="border-left: 1px solid black; margin-left:10px">Nhận tin tức mới nhất, cập nhật và các mẹo</h5>
-
-        </div>
-        <!-- TITLE END-->
-
+           @{ Html.RenderAction("GetTitlePageHomeNews", "Home");}
 
         <div class="section-content">
+            @{ Html.RenderAction("GetListNewsHome", "Home");}
 
-
-            <div class="twm-blog-post-h5-wrap">
-                <div class="row" style="display: flex; align-items: stretch;">
-                    <!-- Bài blog -->
-                    <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 90px;">
-                        <div class="row">
-                            <div class="col-lg-6 col-md-12">
-                                <!--Block one-->
-                                <div class="blog-post twm-blog-post-h5-outer">
-                                    <div class="wt-post-media">
-                                        <a href="blog-single.html"><img src="~/ContentImage/images/home-5/blog/pic1.jpg" alt=""></a>
-                                    </div>
-                                    <div class="wt-post-info">
-                                        <div class="post-author">
-                                            <div class="post-author-pic">
-                                                <div class="p-a-pic"><img src="~/ContentImage/images/home-5/blog-avtar/pic1.jpg" alt=""></div>
-                                                <div class="p-a-info">
-                                                    <a href="blog-single.html">Ralph Johnson</a>
-                                                    <p>12 January</p>
-                                                </div>
-                                            </div>
-                                            <div class="post-categories">
-                                                <a href="blog-single.html">Events</a>
-                                            </div>
-                                        </div>
-                                        <div class="wt-post-title">
-                                            <h4 class="post-title">
-                                                <a href="blog-single.html">How to convince recruiters and get your dream job</a>
-                                            </h4>
-                                        </div>
-                                        <div class="wt-post-text">
-                                            <p>
-                                                New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                                            </p>
-                                        </div>
-                                        <div class="wt-post-readmore">
-                                            <a href="blog-single.html" class="site-button-link site-text-primary">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <!--Block two-->
-                                <div class="blog-post twm-blog-post-h5-outer">
-                                    <div class="wt-post-media">
-                                        <a href="blog-single.html"><img src="~/ContentImage/images/home-5/blog/pic2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="wt-post-info">
-                                        <div class="post-author">
-                                            <div class="post-author-pic">
-                                                <div class="p-a-pic"><img src="~/ContentImage/images/home-5/blog-avtar/pic2.jpg" alt=""></div>
-                                                <div class="p-a-info">
-                                                    <a href="blog-single.html">Christina Fischer</a>
-                                                    <p>12 January</p>
-                                                </div>
-                                            </div>
-                                            <div class="post-categories">
-                                                <a href="blog-single.html">Events</a>
-                                            </div>
-                                        </div>
-                                        <div class="wt-post-title">
-                                            <h4 class="post-title">
-                                                <a href="blog-single.html">How to convince recruiters and get your dream job</a>
-                                            </h4>
-                                        </div>
-                                        <div class="wt-post-text">
-                                            <p>
-                                                New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                                            </p>
-                                        </div>
-                                        <div class="wt-post-readmore">
-                                            <a href="blog-single.html" class="site-button-link site-text-primary">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12">
-                                <!--Block two-->
-                                <div class="blog-post twm-blog-post-h5-outer">
-                                    <div class="wt-post-media">
-                                        <a href="blog-single.html"><img src="~/ContentImage/images/home-5/blog/pic2.jpg" alt=""></a>
-                                    </div>
-                                    <div class="wt-post-info">
-                                        <div class="post-author">
-                                            <div class="post-author-pic">
-                                                <div class="p-a-pic"><img src="~/ContentImage/images/home-5/blog-avtar/pic2.jpg" alt=""></div>
-                                                <div class="p-a-info">
-                                                    <a href="blog-single.html">Christina Fischer</a>
-                                                    <p>12 January</p>
-                                                </div>
-                                            </div>
-                                            <div class="post-categories">
-                                                <a href="blog-single.html">Events</a>
-                                            </div>
-                                        </div>
-                                        <div class="wt-post-title">
-                                            <h4 class="post-title">
-                                                <a href="blog-single.html">How to convince recruiters and get your dream job</a>
-                                            </h4>
-                                        </div>
-                                        <div class="wt-post-text">
-                                            <p>
-                                                New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                                            </p>
-                                        </div>
-                                        <div class="wt-post-readmore">
-                                            <a href="blog-single.html" class="site-button-link site-text-primary">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <!--Block three-->
-                            <div class="col-lg-6 col-md-12">
-                                <div class="blog-post twm-blog-post-h5-outer">
-                                    <div class="wt-post-media">
-                                        <a href="blog-single.html"><img src="~/ContentImage/images/home-5/blog/pic3.jpg" alt=""></a>
-                                    </div>
-                                    <div class="wt-post-info">
-                                        <div class="post-author">
-                                            <div class="post-author-pic">
-                                                <div class="p-a-pic"><img src="~/ContentImage/images/home-5/blog-avtar/pic3.jpg" alt=""></div>
-                                                <div class="p-a-info">
-                                                    <a href="blog-single.html">Peter Hawkins</a>
-                                                    <p>12 January</p>
-                                                </div>
-                                            </div>
-                                            <div class="post-categories">
-                                                <a href="blog-single.html">Events</a>
-                                            </div>
-                                        </div>
-                                        <div class="wt-post-title">
-                                            <h4 class="post-title">
-                                                <a href="blog-single.html">How to convince recruiters and get your dream job</a>
-                                            </h4>
-                                        </div>
-                                        <div class="wt-post-text">
-                                            <p>
-                                                New chip traps clusters of migrating tumor cells asperiortenetur, blanditiis odit.
-                                            </p>
-                                        </div>
-                                        <div class="wt-post-readmore">
-                                            <a href="blog-single.html" class="site-button-link site-text-primary">Read More</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+           
         </div>
 
 
@@ -319,10 +160,11 @@
 </div>
 <!-- OUR BLOG END -->
 <div class="section-head center wt-small-separator-outer ">
-    <div class="wt-small-separator site-text-primary ">
+    @*<div class="wt-small-separator site-text-primary ">
         <div>Các công ty hàng đầu</div>
     </div>
-    <h2 class="wt-title " style="color: rgb(4, 35, 108); padding-left:10px">Được tuyển dùng vào các công ty hàng đầu</h2>
+    <h2 class="wt-title " style="color: rgb(4, 35, 108); padding-left:10px">Được tuyển dùng vào các công ty hàng đầu</h2>*@
+    @{ Html.RenderAction("GetTitleListCompany", "Home");}
 </div>
 
 <div class="container ">
@@ -393,21 +235,7 @@
                 </div>
             </div>
 
-            <div class="item ">
-                <div class="ow-client-logo ">
-                    <div class="client-logo client-logo-media ">
-                        <a href="employer-list.html "><img src="~/ContentImage/images/client-logo/w3.png " alt=" "></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="item ">
-                <div class="ow-client-logo ">
-                    <div class="client-logo client-logo-media ">
-                        <a href="employer-list.html "><img src="~/ContentImage/images/client-logo/w5.png " alt=" "></a>
-                    </div>
-                </div>
-            </div>
+           
 
         </div>
     </div>

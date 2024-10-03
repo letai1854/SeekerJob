@@ -1,0 +1,127 @@
+﻿
+
+
+@using SeekerJob.Controllers
+
+@{
+    var inforEmployers = ViewData["infoemployee"] as List<SeekerJob.DTO.NewsEmployee>;
+    var inforCandidates = ViewData["infocandidate"] as List<SeekerJob.DTO.NewsCandidate>;
+}
+
+<style>
+
+    .wt-post-media img {
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+        object-fit: cover;
+    }
+
+</style>
+
+
+<div class="twm-blog-post-h5-wrap">
+    <div class="row" style="display: flex; align-items: stretch;">
+        <div class="col-lg-12 col-md-12 col-sm-12" style="margin-bottom: 90px;">
+            <div class="row">
+                @if (inforEmployers.Count() > 0)
+                {
+                    foreach (var item in inforEmployers)
+                    {
+                        if (item != null)
+                        {
+
+                            <div class="col-lg-6 col-md-12">
+                                <div class="blog-post twm-blog-post-h5-outer">
+                                    <div class="wt-post-media">
+                                        <a href="#"><img src="~/ContentImage/images/@item.newsinfo.image" alt=""></a>
+                                    </div>
+                                    <div class="wt-post-info">
+                                        <div class="post-author">
+                                            <div class="post-author-pic">
+                                                <div class="p-a-pic"><img src="~/ContentImage/images/@item.inforEmployer.image" alt=""></div>
+                                                <div class="p-a-info">
+                                                    <a href="#">@item.inforEmployer.namecompany</a>
+                                                    <p>@item.newsinfo.daypost</p>
+                                                </div>
+                                            </div>
+                                            <div class="post-categories">
+                                                <a href="#">Events</a>
+                                            </div>
+                                        </div>
+                                        <div class="wt-post-title">
+                                            <h4 class="post-title">
+                                                <a href="#">@item.newsinfo.title</a>
+                                            </h4>
+                                        </div>
+                                        <div class="wt-post-text">
+                                            <p>
+                                                @item.newsinfo.shortbref
+                                            </p>
+                                        </div>
+                                        <div class="wt-post-readmore">
+                                            <a href="#" class="site-button-link site-text-primary">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                }
+
+
+                @if (inforCandidates.Count() > 0)
+                {
+                    foreach (var item in inforCandidates)
+                    {
+                        if (item != null)
+                        {
+
+                            <div class="col-lg-6 col-md-12">
+                                <div class="blog-post twm-blog-post-h5-outer">
+                                    <div class="wt-post-media">
+                                        <a href="#"><img src="~/ContentImage/images/@item.newsinfo.image" alt=""></a>
+                                    </div>
+                                    <div class="wt-post-info">
+                                        <div class="post-author">
+                                            <div class="post-author-pic">
+                                                <div class="p-a-pic"><img src="~/ContentImage/images/@item.inforCandidate.image" alt=""></div>
+                                                <div class="p-a-info">
+                                                    <a href="#">@item.inforCandidate.name</a>
+                                                    <p>@item.newsinfo.daypost</p>
+                                                </div>
+                                            </div>
+                                            <div class="post-categories">
+                                                <a href="#">Events</a>
+                                            </div>
+                                        </div>
+                                        <div class="wt-post-title">
+                                            <h4 class="post-title">
+                                                <a href="#">@item.newsinfo.title</a>
+                                            </h4>
+                                        </div>
+                                        <div class="wt-post-text">
+                                            <p>
+                                                @item.newsinfo.shortbref
+                                            </p>
+                                        </div>
+                                        <div class="wt-post-readmore">
+                                            <a href="#" class="site-button-link site-text-primary">Read More</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    }
+
+                }
+
+
+            </div>
+        </div>
+
+    </div>
+</div>

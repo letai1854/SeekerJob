@@ -4,23 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="51f4b81367ac4183a122504bcb869015" Name="Diagram1">
-        <EntityTypeShape EntityType="MYDBSMODEL.Advertise" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.CV" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.InforEmployer" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.Job" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.ListCandidate" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.Login" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.News" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.PageTitle" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.SaveJob" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tablebanner" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tablebannerpart" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tableimagemenu" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tablemenu" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tablemenufunction" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.tablemenupart" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MYDBSMODEL.TitlePage" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+      <Diagram DiagramId="82d6070e567a497e9393479ee1f8c5b7" Name="Diagram1">
+        <EntityTypeShape EntityType="MYDBS.Advertise" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.CV" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.InforCandidate" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.InforEmployer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.Job" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.ListCandidate" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.Login" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.News" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.PageTitle" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.SaveJob" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablebanner" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablebannerpart" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablefooter" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablefooterpart" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tableimagemenu" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablemenu" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablemenufunction" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.tablemenupart" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MYDBS.TitlePage" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

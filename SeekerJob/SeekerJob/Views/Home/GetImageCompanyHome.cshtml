@@ -1,0 +1,34 @@
+﻿
+
+@using SeekerJob.Controllers
+
+@{
+    var title = ViewData["title"] as List<tablebannerpart>;
+
+}
+
+<div class="section-content ">
+    <div class="owl-carousel home-client-carousel2 owl-btn-vertical-center ">
+        @if (title != null)
+        {
+            foreach (var item in title)
+            {
+                <div class="item ">
+                    <div class="ow-client-logo ">
+                        <div class="client-logo client-logo-media ">
+                            <a href="employer-list.html "><img src="~/ContentImage/images/@item.link " alt=" "></a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+        }
+
+
+
+
+
+
+       
+    </div>
+</div>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MYDBSMODEL.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MYDBS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -27,10 +27,11 @@
           <Property Name="link" Type="varchar(max)" />
           <Property Name="meta" Type="varchar" MaxLength="200" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
         <EntityType Name="InforCandidate">
-          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="name" Type="nvarchar" MaxLength="100" />
           <Property Name="phone" Type="int" />
           <Property Name="adrress" Type="nvarchar" MaxLength="100" />
@@ -48,7 +49,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="facebook" Type="varchar" MaxLength="100" />
           <Property Name="twitter" Type="varchar" MaxLength="100" />
           <Property Name="linkedin" Type="varchar" MaxLength="100" />
-        </EntityType>-->
+        </EntityType>
         <EntityType Name="InforEmployer">
           <Key>
             <PropertyRef Name="username" />
@@ -151,6 +152,8 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
           <Property Name="typeRow" Type="varchar" MaxLength="200" />
+          <Property Name="icon" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="varchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tablebannerpart">
           <Key>
@@ -161,6 +164,35 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="content" Type="nvarchar(max)" />
           <Property Name="link" Type="nvarchar(max)" />
           <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tablefooter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="200" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="typerow" Type="varchar" MaxLength="200" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="content1" Type="nvarchar" MaxLength="200" />
+          <Property Name="content2" Type="nvarchar" MaxLength="200" />
+          <Property Name="content3" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tablefooterpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtable" Type="int" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="200" />
           <Property Name="hide" Type="bit" />
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
@@ -225,9 +257,10 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="datebegin" Type="smalldatetime" />
           <Property Name="typePage" Type="varchar" MaxLength="100" />
         </EntityType>
-        <EntityContainer Name="MYDBSMODELStoreContainer">
+        <EntityContainer Name="MYDBSStoreContainer">
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InforCandidate" EntityType="Self.InforCandidate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InforEmployer" EntityType="Self.InforEmployer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListCandidate" EntityType="Self.ListCandidate" Schema="dbo" store:Type="Tables" />
@@ -237,6 +270,8 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <EntitySet Name="SaveJob" EntityType="Self.SaveJob" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablebanner" EntityType="Self.tablebanner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablebannerpart" EntityType="Self.tablebannerpart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablefooter" EntityType="Self.tablefooter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablefooterpart" EntityType="Self.tablefooterpart" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tableimagemenu" EntityType="Self.tableimagemenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenu" EntityType="Self.tablemenu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tablemenufunction" EntityType="Self.tablemenufunction" Schema="dbo" store:Type="Tables" />
@@ -247,7 +282,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="MYDBSMODEL" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MYDBS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -269,6 +304,29 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InforCandidate">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int32" />
+          <Property Name="adrress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="skill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="experience" Type="Double" />
+          <Property Name="jobcategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="offerexpected" Type="Double" />
+          <Property Name="offercurrent" Type="Double" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="InforEmployer">
           <Key>
@@ -372,6 +430,8 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typeRow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="icon" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tablebannerpart">
           <Key>
@@ -382,6 +442,35 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tablefooter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="typerow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="content1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="content2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="content3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tablefooterpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtable" Type="Int32" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="hide" Type="Boolean" />
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
@@ -446,9 +535,10 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MYDBS" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MYSQL" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
+          <EntitySet Name="InforCandidates" EntityType="Self.InforCandidate" />
           <EntitySet Name="InforEmployers" EntityType="Self.InforEmployer" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
           <EntitySet Name="ListCandidates" EntityType="Self.ListCandidate" />
@@ -458,6 +548,8 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
           <EntitySet Name="SaveJobs" EntityType="Self.SaveJob" />
           <EntitySet Name="tablebanners" EntityType="Self.tablebanner" />
           <EntitySet Name="tablebannerparts" EntityType="Self.tablebannerpart" />
+          <EntitySet Name="tablefooters" EntityType="Self.tablefooter" />
+          <EntitySet Name="tablefooterparts" EntityType="Self.tablefooterpart" />
           <EntitySet Name="tableimagemenus" EntityType="Self.tableimagemenu" />
           <EntitySet Name="tablemenus" EntityType="Self.tablemenu" />
           <EntitySet Name="tablemenufunctions" EntityType="Self.tablemenufunction" />
@@ -469,9 +561,9 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MYDBSMODELStoreContainer" CdmEntityContainer="MYDBS">
+        <EntityContainerMapping StorageEntityContainer="MYDBSStoreContainer" CdmEntityContainer="MYSQL">
           <EntitySetMapping Name="Advertises">
-            <EntityTypeMapping TypeName="MYDBSMODEL.Advertise">
+            <EntityTypeMapping TypeName="MYDBS.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -484,7 +576,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CVs">
-            <EntityTypeMapping TypeName="MYDBSMODEL.CV">
+            <EntityTypeMapping TypeName="MYDBS.CV">
               <MappingFragment StoreEntitySet="CV">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -494,8 +586,32 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="InforCandidates">
+            <EntityTypeMapping TypeName="MYDBS.InforCandidate">
+              <MappingFragment StoreEntitySet="InforCandidate">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adrress" ColumnName="adrress" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="skill" ColumnName="skill" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="jobcategory" ColumnName="jobcategory" />
+                <ScalarProperty Name="offerexpected" ColumnName="offerexpected" />
+                <ScalarProperty Name="offercurrent" ColumnName="offercurrent" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="InforEmployers">
-            <EntityTypeMapping TypeName="MYDBSMODEL.InforEmployer">
+            <EntityTypeMapping TypeName="MYDBS.InforEmployer">
               <MappingFragment StoreEntitySet="InforEmployer">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="namecompany" ColumnName="namecompany" />
@@ -515,7 +631,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="MYDBSMODEL.Job">
+            <EntityTypeMapping TypeName="MYDBS.Job">
               <MappingFragment StoreEntitySet="Job">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -538,7 +654,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListCandidates">
-            <EntityTypeMapping TypeName="MYDBSMODEL.ListCandidate">
+            <EntityTypeMapping TypeName="MYDBS.ListCandidate">
               <MappingFragment StoreEntitySet="ListCandidate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -547,7 +663,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="MYDBSMODEL.Login">
+            <EntityTypeMapping TypeName="MYDBS.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -556,7 +672,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="MYDBSMODEL.News">
+            <EntityTypeMapping TypeName="MYDBS.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -570,7 +686,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PageTitles">
-            <EntityTypeMapping TypeName="MYDBSMODEL.PageTitle">
+            <EntityTypeMapping TypeName="MYDBS.PageTitle">
               <MappingFragment StoreEntitySet="PageTitle">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
@@ -583,7 +699,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SaveJobs">
-            <EntityTypeMapping TypeName="MYDBSMODEL.SaveJob">
+            <EntityTypeMapping TypeName="MYDBS.SaveJob">
               <MappingFragment StoreEntitySet="SaveJob">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -592,7 +708,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebanners">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tablebanner">
+            <EntityTypeMapping TypeName="MYDBS.tablebanner">
               <MappingFragment StoreEntitySet="tablebanner">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -602,11 +718,13 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
                 <ScalarProperty Name="arrange" ColumnName="arrange" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
                 <ScalarProperty Name="typeRow" ColumnName="typeRow" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="active" ColumnName="active" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebannerparts">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tablebannerpart">
+            <EntityTypeMapping TypeName="MYDBS.tablebannerpart">
               <MappingFragment StoreEntitySet="tablebannerpart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -619,8 +737,39 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tablefooters">
+            <EntityTypeMapping TypeName="MYDBS.tablefooter">
+              <MappingFragment StoreEntitySet="tablefooter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="typerow" ColumnName="typerow" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="content1" ColumnName="content1" />
+                <ScalarProperty Name="content2" ColumnName="content2" />
+                <ScalarProperty Name="content3" ColumnName="content3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablefooterparts">
+            <EntityTypeMapping TypeName="MYDBS.tablefooterpart">
+              <MappingFragment StoreEntitySet="tablefooterpart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtable" ColumnName="idtable" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tableimagemenus">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tableimagemenu">
+            <EntityTypeMapping TypeName="MYDBS.tableimagemenu">
               <MappingFragment StoreEntitySet="tableimagemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -632,7 +781,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenus">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenu">
+            <EntityTypeMapping TypeName="MYDBS.tablemenu">
               <MappingFragment StoreEntitySet="tablemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -645,7 +794,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenufunctions">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenufunction">
+            <EntityTypeMapping TypeName="MYDBS.tablemenufunction">
               <MappingFragment StoreEntitySet="tablemenufunction">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -658,7 +807,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenuparts">
-            <EntityTypeMapping TypeName="MYDBSMODEL.tablemenupart">
+            <EntityTypeMapping TypeName="MYDBS.tablemenupart">
               <MappingFragment StoreEntitySet="tablemenupart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -672,7 +821,7 @@ warning 6013: The table/view 'testdbs2425.dbo.InforCandidate' does not have a pr
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TitlePages">
-            <EntityTypeMapping TypeName="MYDBSMODEL.TitlePage">
+            <EntityTypeMapping TypeName="MYDBS.TitlePage">
               <MappingFragment StoreEntitySet="TitlePage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
