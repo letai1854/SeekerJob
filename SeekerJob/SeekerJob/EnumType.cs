@@ -23,7 +23,8 @@ namespace SeekerJob
         public enum Banner
         {
             imgbanner,
-            imgperson
+            imgperson, 
+            
         }
         public enum jobCategory
         {
@@ -39,11 +40,24 @@ namespace SeekerJob
         {
             titlepagehome1
                 , titlepagehome2
+                , titlepagehomenews,
+            titlepagehomecompany,
+            headercompany
         }
         public enum Adertise
         {
-            advertisehome1
+            advertisehome1,
+            advertisehome2
 
+        }
+        public enum footer
+        {
+            imgcompany,
+            packgagesoftware,
+            contactinfo,
+            infofooter,
+            copyright,
+            connectdiff
         }
     }
 }

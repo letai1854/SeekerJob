@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MYDBS.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -258,7 +258,7 @@
           <Property Name="datebegin" Type="smalldatetime" />
           <Property Name="typePage" Type="varchar" MaxLength="100" />
         </EntityType>
-        <EntityContainer Name="testdbs2425ModelStoreContainer">
+        <EntityContainer Name="MYDBSStoreContainer">
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InforCandidate" EntityType="Self.InforCandidate" Schema="dbo" store:Type="Tables" />
@@ -283,7 +283,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MYDBS" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -537,7 +537,9 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
+
         <EntityContainer Name="MYDBS" annotation:LazyLoadingEnabled="true">
+
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
           <EntitySet Name="InforCandidates" EntityType="Self.InforCandidate" />
@@ -563,9 +565,11 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+
         <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYDBS">
+
           <EntitySetMapping Name="Advertises">
-            <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
+            <EntityTypeMapping TypeName="MYDBS.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -578,7 +582,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CVs">
-            <EntityTypeMapping TypeName="testdbs2425Model.CV">
+            <EntityTypeMapping TypeName="MYDBS.CV">
               <MappingFragment StoreEntitySet="CV">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -589,7 +593,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InforCandidates">
+
             <EntityTypeMapping TypeName="testdbs2425Model.InforCandidate">
+
               <MappingFragment StoreEntitySet="InforCandidate">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -613,7 +619,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="InforEmployers">
-            <EntityTypeMapping TypeName="testdbs2425Model.InforEmployer">
+            <EntityTypeMapping TypeName="MYDBS.InforEmployer">
               <MappingFragment StoreEntitySet="InforEmployer">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="namecompany" ColumnName="namecompany" />
@@ -633,7 +639,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Jobs">
-            <EntityTypeMapping TypeName="testdbs2425Model.Job">
+            <EntityTypeMapping TypeName="MYDBS.Job">
               <MappingFragment StoreEntitySet="Job">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -656,7 +662,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ListCandidates">
-            <EntityTypeMapping TypeName="testdbs2425Model.ListCandidate">
+            <EntityTypeMapping TypeName="MYDBS.ListCandidate">
               <MappingFragment StoreEntitySet="ListCandidate">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -665,7 +671,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Logins">
-            <EntityTypeMapping TypeName="testdbs2425Model.Login">
+            <EntityTypeMapping TypeName="MYDBS.Login">
               <MappingFragment StoreEntitySet="Login">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
@@ -674,7 +680,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="News">
-            <EntityTypeMapping TypeName="testdbs2425Model.News">
+            <EntityTypeMapping TypeName="MYDBS.News">
               <MappingFragment StoreEntitySet="News">
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="id" ColumnName="id" />
@@ -688,7 +694,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PageTitles">
-            <EntityTypeMapping TypeName="testdbs2425Model.PageTitle">
+            <EntityTypeMapping TypeName="MYDBS.PageTitle">
               <MappingFragment StoreEntitySet="PageTitle">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
@@ -701,7 +707,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SaveJobs">
-            <EntityTypeMapping TypeName="testdbs2425Model.SaveJob">
+            <EntityTypeMapping TypeName="MYDBS.SaveJob">
               <MappingFragment StoreEntitySet="SaveJob">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
@@ -711,7 +717,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebanners">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablebanner">
+            <EntityTypeMapping TypeName="MYDBS.tablebanner">
               <MappingFragment StoreEntitySet="tablebanner">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -727,7 +733,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablebannerparts">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablebannerpart">
+            <EntityTypeMapping TypeName="MYDBS.tablebannerpart">
               <MappingFragment StoreEntitySet="tablebannerpart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -741,7 +747,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablefooters">
+
             <EntityTypeMapping TypeName="testdbs2425Model.tablefooter">
+
               <MappingFragment StoreEntitySet="tablefooter">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -758,7 +766,9 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablefooterparts">
+
             <EntityTypeMapping TypeName="testdbs2425Model.tablefooterpart">
+
               <MappingFragment StoreEntitySet="tablefooterpart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -772,7 +782,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tableimagemenus">
-            <EntityTypeMapping TypeName="testdbs2425Model.tableimagemenu">
+            <EntityTypeMapping TypeName="MYDBS.tableimagemenu">
               <MappingFragment StoreEntitySet="tableimagemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="typeimage" ColumnName="typeimage" />
@@ -784,7 +794,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenus">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenu">
+            <EntityTypeMapping TypeName="MYDBS.tablemenu">
               <MappingFragment StoreEntitySet="tablemenu">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -797,7 +807,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenufunctions">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenufunction">
+            <EntityTypeMapping TypeName="MYDBS.tablemenufunction">
               <MappingFragment StoreEntitySet="tablemenufunction">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
@@ -810,7 +820,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tablemenuparts">
-            <EntityTypeMapping TypeName="testdbs2425Model.tablemenupart">
+            <EntityTypeMapping TypeName="MYDBS.tablemenupart">
               <MappingFragment StoreEntitySet="tablemenupart">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idtable" ColumnName="idtable" />
@@ -824,7 +834,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TitlePages">
-            <EntityTypeMapping TypeName="testdbs2425Model.TitlePage">
+            <EntityTypeMapping TypeName="MYDBS.TitlePage">
               <MappingFragment StoreEntitySet="TitlePage">
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="meta" ColumnName="meta" />

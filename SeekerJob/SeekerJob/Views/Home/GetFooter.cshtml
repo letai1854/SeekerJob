@@ -1,0 +1,94 @@
+﻿
+@using SeekerJob.DTO
+@using SeekerJob.Controllers
+
+@{
+    var imgcompany = ViewData["imgcompany"] as tablefooter;
+    var package = ViewData["package"] as tablefooter;
+    var contact = ViewData["contact"] as List<tablefooter>;
+    var listfooter = ViewData["listfooter"] as List<FooterCombineTable>;
+    var copyright = ViewData["copyright"] as tablefooter;
+    var connectdiff = ViewData["connectdiff"]  as List<tablefooter> ;
+}
+
+
+
+
+<footer class="footer-dark" >
+    <div class="container ">
+        <div class="footer-top ">
+            <div class="row ">
+
+                <div class="col-lg-3 col-md-12 ">
+
+                    <div class="widget widget_about ">
+                        <div class="logo-footer clearfix ">
+                            <a href="index.html "><img src="~/ContentImage/images/@imgcompany.link " alt=" "></a>
+                        </div>
+                        <p>@package.name</p>
+                        <ul class="ftr-list ">
+
+                            @foreach(var p in contact)
+                            {
+                                <li>
+                                    <p><span>@p.name</span> @p.content1</p>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="col-lg-9 col-md-12 ">
+                    <div class="row ">
+                        @foreach (var item in listfooter)
+                        {
+                            <div class="col-lg-3 col-md-6 col-sm-6 ">
+                                <div class="widget widget_services ftr-list-center ">
+                                    <h3 class="widget-title ">@item.footercombine.Keys.First().name</h3>
+                                    <ul>
+                                        @foreach (var parts in item.footercombine.Values)
+                                        {
+                                            foreach (var p in parts)
+                                            {
+                                                <li><a href="#">@p.content</a></li>
+                                            }
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                       
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="footer-bottom ">
+
+            <div class="footer-bottom-info ">
+
+                <div class="footer-copy-right ">
+                    <span class="copyrights-text ">@copyright.name</span>
+                </div>
+                <ul class="social-icons ">
+                    @foreach (var item in connectdiff)
+                    {
+                        <li>
+                            <a href="javascript:void(0); " class="@item.name"></a>
+                        </li>
+                    }
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</footer>

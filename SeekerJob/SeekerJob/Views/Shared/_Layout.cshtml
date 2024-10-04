@@ -598,13 +598,9 @@
     @RenderBody()
 
 
-
-    <footer class="footer-dark " style="background-image: url('@Url.Content("images/f-bg.jpg")'); ">
+    @{ Html.RenderAction("GetFooter", "Home");}
+    @*<footer class="footer-dark " style="background-image: url('@Url.Content("images/f-bg.jpg")'); ">
         <div class="container ">
-
-            <!-- PHẦN BẢN TIN BẮT ĐẦU -->
-            <!-- PHẦN BẢN TIN KẾT THÚC -->
-            <!-- CÁC KHỐI CHÂN TRANG BẮT ĐẦU -->
             <div class="footer-top ">
                 <div class="row ">
 
@@ -691,7 +687,6 @@
 
                 </div>
             </div>
-            <!-- BẢN QUYỀN CHÂN TRANG -->
             <div class="footer-bottom ">
 
                 <div class="footer-bottom-info ">
@@ -720,7 +715,7 @@
 
         </div>
 
-    </footer>
+    </footer>*@
 
     <!-- FOOTER END -->
     <!-- BUTTON TOP START -->

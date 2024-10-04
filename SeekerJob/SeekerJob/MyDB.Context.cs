@@ -12,12 +12,15 @@ namespace SeekerJob
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+   
+
     public partial class MYDBS : DbContext
     {
         public MYDBS()
             : base("name=MYDBS")
+
         {
+
         }
     
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

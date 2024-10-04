@@ -8,8 +8,9 @@ namespace SeekerJob.Controllers
 {
     public class MenuController : Controller
     {
-        // GET: Menu
+
         MYDBS db = new MYDBS();
+
         public ActionResult Index()
         {
 
