@@ -30,7 +30,7 @@ namespace SeekerJob
             );
             routes.MapRoute(
                 name: "Đăng tuyển",
-                url: "Dang-tuyen-viec-lam",
+                url: "Dang-tuyen",
                 defaults: new { controller = "PostJob", action = "ShowPostJob", id = UrlParameter.Optional }
             );
             routes.MapRoute(
