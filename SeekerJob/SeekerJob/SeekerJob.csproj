@@ -141,12 +141,14 @@
     <Compile Include="Controllers\ManagerJobController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
+    <Compile Include="Controllers\PostNewsController.cs" />
     <Compile Include="Controllers\SavedJobCandidatesController.cs" />
     <Compile Include="CV.cs">
       <DependentUpon>MYDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
     <Compile Include="DTO\FooterCombineTable.cs" />
+    <Compile Include="DTO\JobApplicationViewModel.cs" />
     <Compile Include="DTO\JobEmployerViewModel.cs" />
     <Compile Include="DTO\SaveJobViewModal.cs" />
     <Compile Include="DTO\NewsCandidate.cs" />
@@ -1461,6 +1463,11 @@
     <Content Include="Views\Home\GetTitleListCompany.cshtml" />
     <Content Include="Views\Home\GetImageCompanyHome.cshtml" />
     <Content Include="Views\Home\GetFooter.cshtml" />
+    <Content Include="Views\ManagerJob\GetImageNameCompany.cshtml" />
+    <Content Include="Views\ManagerJob\TitleSavedJob.cshtml" />
+    <Content Include="Views\ManagerJob\GetListTitle.cshtml" />
+    <Content Include="Views\ManagerJob\GetListApplyJob.cshtml" />
+    <Content Include="Views\PostNews\IndexPostNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

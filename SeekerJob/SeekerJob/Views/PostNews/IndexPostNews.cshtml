@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "IndexPostNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content" style="margin-top:150px; margin-bottom:150px">
+
+    
+    <div class="section-full p-t120  p-b90 site-bg-white">
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-4 col-md-12 rightSidebar m-b30">
+
+                    <div class="side-bar-st-1">
+
+                        <div class="twm-candidate-profile-pic">
+
+                            <img src="jobzilla/images/jobs-company/pic1.jpg" alt="">
+                            <div class="upload-btn-wrapper">
+
+                                <div id="upload-image-grid"></div>
+                                <button class="site-button button-sm">Tải ảnh lên</button>
+                                <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+                            </div>
+
+                        </div>
+
+                        <div class="twm-mid-content text-center">
+                            <a href="candidate-detail.html" class="twm-job-title">
+                                <h4>Artistre Studio PVT Ltd</h4>
+                            </a>
+                        </div>
+
+                        <div class="twm-nav-list-1">
+                            <ul>
+                                <ul>
+                                    <li><a href="employer-manage-jobs.html"><i class="fa fa-suitcase"></i> Quản lý tin tức</a></li>
+                                    <li class="active"><a href="employer-post-job.html"><i class="fa fa-book-reader"></i> Đăng tin tức</a></li>
+                                    <li><a href="candidate-change-password.html"><i class="fa fa-fingerprint"></i> Đổi mật khẩu</a></li>
+                                    <li><a href="index.html"><i class="fa fa-share-square"></i> Đăng xuất</a></li>
+                                </ul>
+
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-xl-9 col-lg-8 col-md-12 m-b30">
+                    <!--Filter Short By-->
+                    <div class="twm-right-section-panel site-bg-gray">
+                        <form>
+                            <!--Basic Information-->
+                            <div class="panel panel-default">
+                                <div class="panel-heading wt-panel-heading p-a20">
+                                    <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Chi tiết tin tức</h4>
+                                </div>
+                                <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                                    <div class="row">
+                                        <!--Job title-->
+                                        <div class="col-xl-4 col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Tiêu đề tin tức</label>
+                                                <div class="ls-inputicon-box">
+                                                    <input class="form-control" name="company_name" type="text" placeholder="Devid Smith">
+                                                    <i class="fs-input-icon fa fa-address-card"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Nội dung chính</label>
+                                                <div class="ls-inputicon-box">
+                                                    <input class="form-control" name="company_short" type="text" placeholder="short brief">
+                                                    <i class="fs-input-icon fa fa-address-card"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Email </label>
+                                                <div class="ls-inputicon-box">
+                                                    <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
+                                                    <i class="fs-input-icon fas fa-at"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-lg-6 col-md-12">
+                                            <div class="form-group">
+                                                <label>Số điện thoại </label>
+                                                <div class="ls-inputicon-box">
+                                                    <input class="form-control" name="company_Email" type="email" placeholder="1111111">
+                                                    <i class="fs-input-icon fas fa-at"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Mô Tả</label>
+                                                <textarea class="form-control" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="twm-candidate-profile-pic">
+                                                <label>Ảnh bìa</label>
+                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="">
+                                                <div class="upload-btn-wrapper">
+
+                                                    <div id="upload-image-grid"></div>
+                                                    <button class="site-button button-sm">Tải ảnh lên</button>
+                                                    <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+
+
+                                        <!--Start Date-->
+                                        <!--End Date-->
+
+
+                                        <div class="col-lg-12 col-md-12">
+                                            <div class="text-left">
+                                                <button type="submit" class="site-button m-r5">Đăng Tin Tức</button>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- OUR BLOG END -->
+
+
+
+</div>
+
