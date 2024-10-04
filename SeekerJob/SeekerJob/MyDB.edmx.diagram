@@ -4,23 +4,26 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="106e2844e1304a9ca00548eed4b5e906" Name="Diagram1">
+      <Diagram DiagramId="92455dbaa7de495287fe189fa4673d5c" Name="Diagram1">
         <EntityTypeShape EntityType="testdbs2425Model.Advertise" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbs2425Model.CV" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.InforEmployer" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.Job" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.InforCandidate" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.InforEmployer" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.Job" Width="1.5" PointX="4.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbs2425Model.ListCandidate" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="testdbs2425Model.Login" Width="1.5" PointX="6.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.News" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.PageTitle" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.SaveJob" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tablebanner" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tablebannerpart" Width="1.5" PointX="8.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tableimagemenu" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tablemenu" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tablemenufunction" Width="1.5" PointX="2.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.tablemenupart" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="testdbs2425Model.TitlePage" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.News" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.PageTitle" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.SaveJob" Width="1.5" PointX="8.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablebanner" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablebannerpart" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablefooter" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablefooterpart" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tableimagemenu" Width="1.5" PointX="10.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablemenu" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablemenufunction" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.tablemenupart" Width="1.5" PointX="6.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="testdbs2425Model.TitlePage" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

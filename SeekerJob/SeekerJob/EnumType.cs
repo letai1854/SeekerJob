@@ -14,12 +14,26 @@ namespace SeekerJob
             Diadiem,
             Loaicongviec,
             Ngaydang,
-            Mucluong
+            Mucluong,
+            titlepagePostJob,
+            list,
+            titlepageSavedJob,
+            listCandidate,
         }
         public enum Banner
         {
             imgbanner,
             imgperson
+        }
+        public enum jobCategory
+        {
+            Fulltime,
+            Internship,
+            Parttime,
+            Temporary,
+            Volunteer,
+            Freelance,
+
         }
         public enum TypeTitleHome
         {

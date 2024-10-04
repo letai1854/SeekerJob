@@ -235,7 +235,7 @@ This files [Table of contents] are outlined below
 }
 
 .site-bg-white {
-    background-color: #73707029;
+    background-color: #27252529;
 }
 
 .site-bg-light-purple {
@@ -5946,7 +5946,7 @@ button.scroltop span {
   display: table-cell;
   vertical-align: bottom;
   text-align: center;
-  padding-bottom: 30px;
+  padding-bottom: 0px;
 }
 .wt-bnr-inr-entry .banner-title-outer {
   position: relative;

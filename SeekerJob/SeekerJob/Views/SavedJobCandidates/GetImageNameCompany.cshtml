@@ -1,0 +1,31 @@
+﻿@model SeekerJob.InforCandidate
+
+<div class="twm-candidate-profile-pic">
+    @if (!string.IsNullOrEmpty(Model.image))
+    {
+        <img src="~/ContentImage/images/candidates/@Model.image" alt="Company Image">
+
+    }
+    else
+    {
+        <img src="~/ContentImage/images/pic3.jpg" alt="Default Company Image">
+    }
+    <div class="upload-btn-wrapper">
+
+        <div id="upload-image-grid"></div>
+        <button class="site-button button-sm">Tải ảnh lên</button>
+        <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+    </div>
+
+</div>
+
+<div class="twm-mid-content text-center">
+    @if (!string.IsNullOrEmpty(Model.name))
+    {
+            <h4>@Model.name</h4>
+    }
+    else
+    {
+        <h4>Alex Robinson</h4>
+    }
+</div>

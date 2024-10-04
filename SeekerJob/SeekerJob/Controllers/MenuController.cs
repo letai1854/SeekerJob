@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class MenuController : Controller
     {
         // GET: Menu
-        MYdBS db = new MYdBS();
+        MYDBS db = new MYDBS();
         public ActionResult Index()
         {
 

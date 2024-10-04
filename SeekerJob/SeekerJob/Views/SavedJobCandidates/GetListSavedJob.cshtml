@@ -1,0 +1,89 @@
+﻿
+
+@using SeekerJob.DataSystem
+@using SeekerJob.DTO
+
+@{
+    var table = ViewData["savejob"] as List<SaveJobViewModal>;
+ 
+
+}
+
+
+
+<div class="col-xl-9 col-lg-8 col-md-12 m-b30">
+    <!--Filter Short By-->
+    <div class="twm-right-section-panel candidate-save-job site-bg-gray">
+        <div class="twm-D_table table-responsive">
+            <table id="jobs_bookmark_table" class="table table-bordered twm-candidate-save-job-list-wrap">
+                <thead>
+                    <tr>
+                        <th>Tiêu đề công việc</th>
+                        <th>Công ty</th>
+                        <th>Ngày</th>
+                        <th>Hành động</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!--1-->
+
+                    @foreach (var item in table)
+                    {
+                        <tr>
+                            <td>
+                                <div class="twm-candidate-save-job-list">
+                                    <div class="twm-media">
+                                        <div class="twm-media-pic">
+                                            <img src="~/ContentImage/images/jobs-company/@item.InforEmployer.image" alt="#">
+                                        </div>
+                                    </div>
+                                    <div class="twm-mid-content">
+                                            <h4>@item.Job.title</h4>
+                                    </div>
+
+                                </div>
+                            </td>
+                            <td><a href="@ViewBag.congty/@item.InforEmployer.namecompany">@item.InforEmployer.namecompany</a></td>
+                            <td>
+                                <div>@if (item.saveJob.saveDate != null)
+                                        {
+                                            <p>@item.saveJob.saveDate</p>
+                                            
+                                        }
+                                        else
+                                        {
+                                            <p>20/11/2028</p>
+                                        }
+                                
+                                </div>
+                            </td>
+
+                            <td>
+                                <div class="twm-table-controls">
+                                    <ul class="twm-DT-controls-icon list-unstyled">
+                                        <li>
+                                            <a data-bs-toggle="modal" href="@ViewBag.vieclam/@item.Job.meta/@item.Job.id" role="button" class="custom-toltip">
+                                                <span class="fa fa-eye"></span>
+                                                <span class="custom-toltip-block">Veiw</span>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <button title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <span class="far fa-trash-alt"></span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

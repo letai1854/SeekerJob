@@ -17,5 +17,6 @@ namespace SeekerJob
         public int id { get; set; }
         public Nullable<int> idjob { get; set; }
         public string usernamecandidate { get; set; }
+        public Nullable<System.DateTime> saveDate { get; set; }
     }
 }

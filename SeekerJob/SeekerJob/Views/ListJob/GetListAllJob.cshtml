@@ -39,9 +39,37 @@
                                     <a href="@item.InforEmployer.linkweb" class="twm-job-websites site-text-primary">@item.InforEmployer.linkweb</a>
                                 </div>
                                 <div class="twm-right-content">
-                                    <div class="twm-jobs-category green"><span class="twm-bg-green">@item.Job.jobcategory</span></div>
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Fulltime.ToString())
+                                    {
+                                        <div class="twm-jobs-category green"><span class="twm-bg-green">@item.Job.jobcategory</span></div>
+
+                                    }
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Parttime.ToString())
+                                    {
+                                        <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.Job.jobcategory</span></div>
+
+                                    }
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Internship.ToString())
+                                    {
+                                        <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.Job.jobcategory</span></div>
+
+                                    }
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Volunteer.ToString())
+                                    {
+                                        <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.Job.jobcategory</span></div>
+
+                                    }
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Freelance.ToString())
+                                    {
+                                        <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.Job.jobcategory</span></div>
+
+                                    }
+                                    @if (@item.Job.jobcategory == EnumType.jobCategory.Temporary.ToString())
+                                    {
+                                        <div class="twm-jobs-category red"><span class="twm-bg-red">@item.Job.jobcategory</span></div>
+                                    }
                                     <div class="twm-jobs-amount">@item.Job.offer <span>/ Month</span></div>
-                                    <a href="job-detail.html" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                    <a href="@item.Job.meta/@item.Job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
                                 </div>
                             </div>
                         </td>

@@ -13,10 +13,10 @@ namespace SeekerJob
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MYdBS : DbContext
+    public partial class MYDBS : DbContext
     {
-        public MYdBS()
-            : base("name=MYdBS")
+        public MYDBS()
+            : base("name=MYDBS")
         {
         }
     
@@ -27,6 +27,7 @@ namespace SeekerJob
     
         public virtual DbSet<Advertise> Advertises { get; set; }
         public virtual DbSet<CV> CVs { get; set; }
+        public virtual DbSet<InforCandidate> InforCandidates { get; set; }
         public virtual DbSet<InforEmployer> InforEmployers { get; set; }
         public virtual DbSet<Job> Jobs { get; set; }
         public virtual DbSet<ListCandidate> ListCandidates { get; set; }
@@ -36,6 +37,8 @@ namespace SeekerJob
         public virtual DbSet<SaveJob> SaveJobs { get; set; }
         public virtual DbSet<tablebanner> tablebanners { get; set; }
         public virtual DbSet<tablebannerpart> tablebannerparts { get; set; }
+        public virtual DbSet<tablefooter> tablefooters { get; set; }
+        public virtual DbSet<tablefooterpart> tablefooterparts { get; set; }
         public virtual DbSet<tableimagemenu> tableimagemenus { get; set; }
         public virtual DbSet<tablemenu> tablemenus { get; set; }
         public virtual DbSet<tablemenufunction> tablemenufunctions { get; set; }

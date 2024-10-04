@@ -138,16 +138,22 @@
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
+    <Compile Include="Controllers\ManagerJobController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
+    <Compile Include="Controllers\SavedJobCandidatesController.cs" />
     <Compile Include="CV.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
     <Compile Include="DTO\JobEmployerViewModel.cs" />
+    <Compile Include="DTO\SaveJobViewModal.cs" />
     <Compile Include="EnumType.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="InforCandidate.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
     <Compile Include="InforEmployer.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
@@ -192,6 +198,12 @@
     <Compile Include="tablebannerpart.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="tablefooter.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="tablefooterpart.cs">
+      <DependentUpon>MyDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="tableimagemenu.cs">
       <DependentUpon>MyDB.tt</DependentUpon>
     </Compile>
@@ -209,14 +221,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ContentImage\images\adv1.jpg" />
-    <Content Include="ContentImage\images\adv2.jpg" />
-    <Content Include="ContentImage\images\adv3.jpg" />
-    <Content Include="ContentImage\images\adv4.jpg" />
-    <Content Include="ContentImage\images\adv5.jpg" />
-    <Content Include="ContentImage\images\adv6.jpg" />
-    <Content Include="ContentImage\images\adv7.jpg" />
-    <Content Include="ContentImage\images\adv8.jpg" />
     <Content Include="ContentImage\images\anhpia.jpg" />
     <Content Include="ContentImage\images\apply-job-bg.png" />
     <Content Include="ContentImage\images\blog\blog-single\1.jpg" />
@@ -1425,9 +1429,16 @@
     <Content Include="Views\Home\GetBannerHome.cshtml" />
     <Content Include="Views\Home\GetTitileAndAmountJob1.cshtml" />
     <Content Include="Views\Home\GetListAttractiveJobInHome.cshtml" />
-    <Content Include="Views\Home\AdvertiseHomeFirst.cshtml" />
     <Content Include="Views\ListJob\GetListAllJob.cshtml" />
-
+    <Content Include="Views\PostJob\TitleJobList.cshtml" />
+    <Content Include="Views\PostJob\GetListTitle.cshtml" />
+    <Content Include="Views\PostJob\GetImageNameCompany.cshtml" />
+    <Content Include="Views\SavedJobCandidates\Index.cshtml" />
+    <Content Include="Views\SavedJobCandidates\TitleSavedJob.cshtml" />
+    <Content Include="Views\SavedJobCandidates\GetImageNameCompany.cshtml" />
+    <Content Include="Views\SavedJobCandidates\GetListTitle.cshtml" />
+    <Content Include="Views\SavedJobCandidates\GetListSavedJob.cshtml" />
+    <Content Include="Views\ManagerJob\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

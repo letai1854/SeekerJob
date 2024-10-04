@@ -1,0 +1,33 @@
+﻿@model SeekerJob.InforEmployer
+
+<div class="twm-candidate-profile-pic">
+    @if (!string.IsNullOrEmpty(Model.image))
+    {
+        <img src="~/ContentImage/images/jobs-company/@Model.image" alt="Company Image">
+
+    }
+    else
+    {
+        <img src="~/ContentImage/images/pic1.jpg" alt="Default Company Image">
+    }
+    <div class="upload-btn-wrapper">
+
+        <div id="upload-image-grid"></div>
+        <button class="site-button button-sm">Tải ảnh lên</button>
+        <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+    </div>
+
+</div>
+
+<div class="twm-mid-content text-center">
+    @if (!string.IsNullOrEmpty(Model.linkweb))
+    {
+        <a href="@Model.linkweb" class="twm-job-title">
+            <h4>@Model.namecompany</h4>
+        </a>
+    }
+    else
+    {
+        <h4>@Model.namecompany</h4>
+    }
+</div>
