@@ -137,6 +137,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BannerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobDetailController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
     <Compile Include="Controllers\ManagerJobController.cs" />
     <Compile Include="Controllers\ManagerNewsController.cs" />
@@ -148,6 +149,7 @@
       <DependentUpon>MYDB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
+    <Compile Include="DTO\CombineJobUser.cs" />
     <Compile Include="DTO\FooterCombineTable.cs" />
     <Compile Include="DTO\JobApplicationViewModel.cs" />
     <Compile Include="DTO\JobEmployerViewModel.cs" />
@@ -268,6 +270,15 @@
     <Content Include="ContentImage\images\candidates\pic7.jpg" />
     <Content Include="ContentImage\images\candidates\pic8.jpg" />
     <Content Include="ContentImage\images\candidates\pic9.jpg" />
+    <Content Include="ContentImage\images\icons8-like-50-blue.png" />
+    <Content Include="ContentImage\images\icons8-like-50-yellow.png" />
+    <Content Include="ContentImage\images\icons8-like-50.png" />
+    <Content Include="ContentImage\images\icons8-like-50_gray.png" />
+    <Content Include="ContentImage\images\icons8-save-50-blue.png" />
+    <Content Include="ContentImage\images\icons8-save-50-blue_2.png" />
+    <Content Include="ContentImage\images\icons8-save-50.png" />
+    <Content Include="ContentImage\images\icons8-save-50_gray.png" />
+    <Content Include="ContentImage\images\icons8-save-50_green.png" />
     <Content Include="ContentImage\images\w1.png" />
     <Content Include="ContentImage\images\w2.png" />
     <Content Include="ContentImage\images\w3.png" />
@@ -329,7 +340,7 @@
     <Content Include="ContentImage\images\jobs-company\pic1.jpg" />
     <Content Include="ContentImage\images\jobs-company\pic2.jpg" />
     <Content Include="ContentImage\images\pic3.jpg" />
-    <Content Include="ContentImage\images\jobs-company\pic4.jpg" />
+    <Content Include="ContentImage\images\pic4.jpg" />
     <Content Include="ContentImage\images\jobs-company\pic5.jpg" />
     <Content Include="ContentImage\images\login-bg.png" />
     <Content Include="ContentImage\images\logo-dark.png" />
@@ -1477,6 +1488,8 @@
     <Content Include="Views\ManagerNews\GetImageNameCompany.cshtml" />
     <Content Include="Views\ManagerNews\GetListTitle.cshtml" />
     <Content Include="Views\ManagerNews\GetListNews.cshtml" />
+    <Content Include="Views\JobDetail\IndexJobDetail.cshtml" />
+    <Content Include="Views\JobDetail\ViewJobDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

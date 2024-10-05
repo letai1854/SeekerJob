@@ -1,0 +1,236 @@
+﻿@using SeekerJob.Controllers
+@using SeekerJob.DataSystem
+@{
+    var jobuser = ViewData["jobuser"] as SeekerJob.DTO.CombineJobUser;
+    var relativeTime = data.GetRelativeTime((DateTime)jobuser.job.startday);
+
+}
+
+
+@{
+    ViewBag.Title = "IndexJobDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content" style="margin-top:-100px; ">
+
+    <!-- INNER PAGE BANNER -->
+    <div class="wt-bnr-inr overlay-wraper bg-center" style="background-image:url(jobzilla/images/banner/1.jpg);">
+        <div class="overlay-main site-bg-white opacity-01"></div>
+        <div class="container">
+            <div class="wt-bnr-inr-entry">
+                <div class="banner-title-outer">
+                    <div class="banner-title-name">
+                        <h2 class="wt-title">@jobuser.job.title</h2>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- INNER PAGE BANNER END -->
+    <!-- OUR BLOG START -->
+    <div class="section-full  p-t120 p-b90" style="background-color: rgb(230, 230, 230);">
+        <div class="container">
+
+            <!-- BLOG SECTION START -->
+            <div class="section-content">
+                <div class="row d-flex justify-content-center">
+
+                    <div class="col-lg-8 col-md-12" style="background-color: white; padding:10px">
+                        <!-- Candidate detail START -->
+                        <div class="cabdidate-de-info">
+                            <div class="twm-job-self-wrap">
+                                <div class="twm-job-self-info">
+                                    <div class="twm-job-self-top">
+                                        <div class="twm-media-bg">
+                                            <img src="~/ContentImage/images/@jobuser.job.image" alt="#">
+                                            <div class="twm-jobs-category green"><span class="twm-bg-green">New</span></div>
+                                        </div>
+
+
+                                        <div class="twm-mid-content">
+
+                                            <div class="twm-media">
+                                                <img src="~/ContentImage/images/@jobuser.employer.image" alt="#">
+                                            </div>
+
+                                            <h4 class=@jobuser.job.title <span class="twm-job-post-duration">/ @relativeTime</span></h4>
+                                            <p class="twm-job-address"><i class="feather-map-pin"></i>@jobuser.job.addressdetail</p>
+                                            <div class="twm-job-self-mid">
+                                                <div class="twm-job-self-mid-left">
+                                                    <a href="@jobuser.employer.linkweb" class="twm-job-websites site-text-primary">@jobuser.employer.linkweb</a>
+                                                    <div class="twm-jobs-amount">@jobuser.job.offer</div>
+                                                </div>
+                                                <div class="twm-job-apllication-area">
+                                                    Application ends:
+                                                    <span class="twm-job-apllication-date">@jobuser.job.endday</span>
+                                                </div>
+                                            </div>
+
+                                            <div class="twm-job-self-bottom">
+                                                <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup" role="button">
+                                                    Ứng tuyển ngay
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div>
+                                <p>@jobuser.job.description</p>
+                            </div>
+                            
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 rightSidebar">
+
+                        <div class="side-bar mb-4">
+                            <div class="twm-s-info2-wrap mb-5">
+                                <div class="twm-s-info2">
+                                    <h4 class="section-head-small mb-4">Job Information</h4>
+                                    <ul class="twm-job-hilites2">
+
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-calendar-alt"></i>
+                                                <span class="twm-title">Date Posted</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.startday</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-map-marker-alt"></i>
+                                                <span class="twm-title">Location</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.address</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-user-tie"></i>
+                                                <span class="twm-title">Job Title</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.title</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-clock"></i>
+                                                <span class="twm-title">Experience</span>
+                                                @if (jobuser.job.experience > 0)
+                                                {
+                                                    <div class="twm-s-info-discription">@jobuser.job.experience year</div>
+
+                                                }
+                                                else
+                                                {
+                                                    <div class="twm-s-info-discription">@jobuser.job.experience</div>
+
+                                                }
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-suitcase"></i>
+                                                <span class="twm-title">Qualification</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.degree</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+                                                <i class="fas fa-venus-mars"></i>
+                                                <span class="twm-title">Gender</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.gender</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="twm-s-info-inner">
+
+                                                <i class="fas fa-money-bill-wave"></i>
+                                                <span class="twm-title">Offered Salary</span>
+                                                <div class="twm-s-info-discription">@jobuser.job.offer / Tháng</div>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                            </div>
+
+                       
+                        </div>
+
+                        <div class="twm-s-info3-wrap mb-5">
+                            <div class="twm-s-info3">
+                                <div class="twm-s-info-logo-section">
+                                    <div class="twm-media">
+                                        <img src="~/ContentImage/images/@jobuser.employer.image" alt="#">
+                                    </div>
+                                    <h4 class="twm-title">@jobuser.job.title</h4>
+                                </div>
+                                <ul>
+
+                                    <li>
+                                        <div class="twm-s-info-inner">
+                                            <i class="fas fa-building"></i>
+                                            <span class="twm-title">Company</span>
+                                            <div class="twm-s-info-discription">@jobuser.employer.namecompany</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="twm-s-info-inner">
+                                            <i class="fas fa-mobile-alt"></i>
+                                            <span class="twm-title">Phone</span>
+                                            <div class="twm-s-info-discription">@jobuser.employer.phone</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="twm-s-info-inner">
+                                            <i class="fas fa-at"></i>
+                                            <span class="twm-title">Email</span>
+                                            <div class="twm-s-info-discription">@jobuser.employer.email</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="twm-s-info-inner">
+                                            <i class="fas fa-desktop"></i>
+                                            <span class="twm-title">Website</span>
+                                            <div class="twm-s-info-discription">@jobuser.employer.linkweb</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="twm-s-info-inner">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <span class="twm-title">Address</span>
+                                            <div class="twm-s-info-discription">@jobuser.job.addressdetail</div>
+                                        </div>
+                                    </li>
+
+                                </ul>
+                                <a href="about-1.html" class=" site-button">Vew Profile</a>
+
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+    <!-- OUR BLOG END -->
+
+
+</div>
+
+

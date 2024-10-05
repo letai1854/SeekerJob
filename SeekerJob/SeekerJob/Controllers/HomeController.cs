@@ -52,8 +52,8 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetImageCompanyHome()
         {
-            var table = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.TypeTitleHome.headercompany.ToString());
-            var title = db.tablebannerparts.Where(t => t.hide == true && t.idtable == table.First().id).OrderBy(t => t.datebegin).Take(8).ToList();
+            var table = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.TypeTitleHome.headercompany.ToString()).FirstOrDefault() ;
+            var title = db.tablebannerparts.Where(t => t.hide == true && t.idtable == table.id).OrderBy(t => t.datebegin).Take(8).ToList();
             ViewData["title"] = title;
             return PartialView("GetImageCompanyHome");
         }
@@ -65,8 +65,23 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListAttractiveJobInHome()
         {
-            var listjob = db.Jobs.Where(t => t.endday>=DateTime.Now).Take(12).ToList();
-            ViewData["listjob"] = listjob;
+             var listjobuser = new List<CombineJobUser>();
+            var listjob = db.Jobs.Where(t => t.endday>=DateTime.Now).OrderByDescending(t=>t.endday).Take(12).ToList();
+
+
+            foreach(var job in listjob)
+            {
+                var inforEmployer = db.InforEmployers
+                                     .Where(t => t.username == job.username)
+                                     .FirstOrDefault();
+                listjobuser.Add(new CombineJobUser()
+                {
+                    job=job,
+                    employer=inforEmployer
+                });
+            }
+            ViewBag.metacontroller = "chi-tiet-viec-lam";
+            ViewData["listjobuser"] = listjobuser;
             return PartialView("GetListAttractiveJobInHome");
         }
         public ActionResult GetTitleListCompany()
@@ -84,12 +99,25 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListJobLike()
         {
+            var listjobuser = new List<CombineJobUser>();
+
             var listjob = db.Jobs
                             .Where(t => t.endday >= DateTime.Now)
                             .OrderByDescending(t => t.likeNumber)
                             .Take(8)
                             .ToList();
-            ViewData["listjob"] = listjob;
+            foreach (var job in listjob)
+            {
+                var inforEmployer = db.InforEmployers
+                                     .Where(t => t.username == job.username)
+                                     .FirstOrDefault();
+                listjobuser.Add(new CombineJobUser()
+                {
+                    job = job,
+                    employer = inforEmployer
+                });
+            }
+            ViewData["listjobuser"] = listjobuser;
             return PartialView("GetListJobLike");
         }
         public ActionResult AdvertiseHomeSecond()
