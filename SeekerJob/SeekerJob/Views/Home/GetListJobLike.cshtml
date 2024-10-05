@@ -7,40 +7,40 @@
 </script>
 
 @{
-    var listjob = ViewData["listjob"] as List<Job>;
+    var listjob = ViewData["listjobuser"] as List<SeekerJob.DTO.CombineJobUser>;
 
 }
 
 <div class="col-lg-8 col-md-12 col-sm-12 mb-4 row">
     @foreach (var item in listjob)
     {
-        var relativeTime = data.GetRelativeTime((DateTime)item.startday); // Or use item.startday, depending on your use case
+        var relativeTime = data.GetRelativeTime((DateTime)item.job.startday); // Or use item.startday, depending on your use case
 
         <div class="col-lg-6 col-md-6 col-sm-12 mb-4">
             <div class="job-card bg-white border p-3 d-flex align-items-center">
                 <div class="job-card-image-wrapper position-relative">
-                    <img src="~/ContentImage/images/@item.image" alt="job-image" class="job-card-image">
+                    <img src="~/ContentImage/images/@item.employer.image" alt="job-image" class="job-card-image">
                 </div>
                 <div class="job-card-content flex-grow-1 pl-4">
                     <a href="job-detail.html" class="job-title text-dark font-weight-bold">
-                        <h4 style="font-size: 15px">@item.title <span class="text-success job-duration" style="font-size: 13px">/ @relativeTime</span></h4>
+                        <h4 style="font-size: 15px">@item.job.title <span class="text-success job-duration" style="font-size: 13px">/ @relativeTime</span></h4>
                     </a>
-                    <p class="job-address text-muted mb-2" style="font-size: 13px">@item.addressdetail</p>
+                    <p class="job-address text-muted mb-2" style="font-size: 13px">@item.job.addressdetail</p>
                 </div>
                 <div class="job-card-right-content text-right">
-                    @if (item.jobcategory == "Fulltime")
+                    @if (item.job.jobcategory == "Fulltime")
                     {
-                        <div class="job-category badge badge-fulltime" style="font-size: 11px">@item.jobcategory</div>
+                        <div class="job-category badge badge-fulltime" style="font-size: 11px">@item.job.jobcategory</div>
 
                     }
-                    else if (item.jobcategory == "Parttime")
+                    else if (item.job.jobcategory == "Parttime")
                     {
-                        <div class="job-category badge " style="font-size: 11px; background-color:brown">@item.jobcategory</div>
+                        <div class="job-category badge " style="font-size: 11px; background-color:brown">@item.job.jobcategory</div>
 
                     }
                     else
                     {
-                        <div class="job-category badge" style="font-size: 11px; background-color:chartreuse">@item.jobcategory</div>
+                        <div class="job-category badge" style="font-size: 11px; background-color:chartreuse">@item.job.jobcategory</div>
 
                     }
                     <div class="job-salary text-dark font-weight-bold" style="font-size: 13px">$1500 <span class="text-success" style="font-size: 13px">/ Tháng</span></div>
