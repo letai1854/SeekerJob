@@ -139,6 +139,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
     <Compile Include="Controllers\ManagerJobController.cs" />
+    <Compile Include="Controllers\ManagerNewsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
     <Compile Include="Controllers\PostNewsController.cs" />
@@ -1468,6 +1469,14 @@
     <Content Include="Views\ManagerJob\GetListTitle.cshtml" />
     <Content Include="Views\ManagerJob\GetListApplyJob.cshtml" />
     <Content Include="Views\PostNews\IndexPostNews.cshtml" />
+    <Content Include="Views\PostNews\GetImageNameCompany.cshtml" />
+    <Content Include="Views\PostNews\TitlePostNews.cshtml" />
+    <Content Include="Views\PostNews\GetListTitle.cshtml" />
+    <Content Include="Views\ManagerNews\IndexManagerNews.cshtml" />
+    <Content Include="Views\ManagerNews\TitleManagerNews.cshtml" />
+    <Content Include="Views\ManagerNews\GetImageNameCompany.cshtml" />
+    <Content Include="Views\ManagerNews\GetListTitle.cshtml" />
+    <Content Include="Views\ManagerNews\GetListNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

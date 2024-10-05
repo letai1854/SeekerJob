@@ -6,7 +6,8 @@
 
 <div class="page-content" style="margin-top:150px; margin-bottom:150px">
 
-    
+    @{Html.RenderAction("TitlePostNews", "PostNews"); }
+
     <div class="section-full p-t120  p-b90 site-bg-white">
 
 
@@ -17,35 +18,10 @@
 
                     <div class="side-bar-st-1">
 
-                        <div class="twm-candidate-profile-pic">
+                        @{Html.RenderAction("GetImageNameCompany", "PostNews"); }
 
-                            <img src="jobzilla/images/jobs-company/pic1.jpg" alt="">
-                            <div class="upload-btn-wrapper">
+                        @{Html.RenderAction("GetListTitle", "PostNews"); }
 
-                                <div id="upload-image-grid"></div>
-                                <button class="site-button button-sm">Tải ảnh lên</button>
-                                <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
-                            </div>
-
-                        </div>
-
-                        <div class="twm-mid-content text-center">
-                            <a href="candidate-detail.html" class="twm-job-title">
-                                <h4>Artistre Studio PVT Ltd</h4>
-                            </a>
-                        </div>
-
-                        <div class="twm-nav-list-1">
-                            <ul>
-                                <ul>
-                                    <li><a href="employer-manage-jobs.html"><i class="fa fa-suitcase"></i> Quản lý tin tức</a></li>
-                                    <li class="active"><a href="employer-post-job.html"><i class="fa fa-book-reader"></i> Đăng tin tức</a></li>
-                                    <li><a href="candidate-change-password.html"><i class="fa fa-fingerprint"></i> Đổi mật khẩu</a></li>
-                                    <li><a href="index.html"><i class="fa fa-share-square"></i> Đăng xuất</a></li>
-                                </ul>
-
-                            </ul>
-                        </div>
 
                     </div>
 
@@ -69,7 +45,7 @@
                                                 <label>Tiêu đề tin tức</label>
                                                 <div class="ls-inputicon-box">
                                                     <input class="form-control" name="company_name" type="text" placeholder="Devid Smith">
-                                                    <i class="fs-input-icon fa fa-address-card"></i>
+                                                    <i class="fs-input-icon fa fa-newspaper"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -78,7 +54,7 @@
                                                 <label>Nội dung chính</label>
                                                 <div class="ls-inputicon-box">
                                                     <input class="form-control" name="company_short" type="text" placeholder="short brief">
-                                                    <i class="fs-input-icon fa fa-address-card"></i>
+                                                    <i class="fs-input-icon fa fa-hacker-news-square"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -87,7 +63,7 @@
                                                 <label>Email </label>
                                                 <div class="ls-inputicon-box">
                                                     <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
-                                                    <i class="fs-input-icon fas fa-at"></i>
+                                                    <i class="fs-input-icon fas fa-mail-bulk"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -96,7 +72,7 @@
                                                 <label>Số điện thoại </label>
                                                 <div class="ls-inputicon-box">
                                                     <input class="form-control" name="company_Email" type="email" placeholder="1111111">
-                                                    <i class="fs-input-icon fas fa-at"></i>
+                                                    <i class="fs-input-icon fas fa-phone"></i>
                                                 </div>
                                             </div>
                                         </div>
@@ -104,13 +80,13 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label>Mô Tả</label>
-                                                <textarea class="form-control" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
+                                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="twm-candidate-profile-pic">
                                                 <label>Ảnh bìa</label>
-                                                <img src="jobzilla/images/jobs-company/pic1.jpg" alt="">
+                                                <img src="~/ContentImage/images/blog/blog-single/1.jpg" alt="">
                                                 <div class="upload-btn-wrapper">
 
                                                     <div id="upload-image-grid"></div>
@@ -152,4 +128,11 @@
 
 
 </div>
+
+@section scripts
+    {
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}
 

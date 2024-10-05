@@ -19,9 +19,19 @@ namespace SeekerJob
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Quản lý tin tức",
+                url: "quan-ly-tin-tuc",
+                defaults: new { controller = "ManagerNews", action = "IndexManagerNews", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Quản lý bài tuyển dụng",
                 url: "quan-ly-bai-tuyen-dung",
                 defaults: new { controller = "ManagerJob", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Đăng tin tức",
+                url: "dang-tin-tuc",
+                defaults: new { controller = "PostNews", action = "IndexPostNews", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Việc làm đã lưu",
