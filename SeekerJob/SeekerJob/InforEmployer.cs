@@ -28,5 +28,6 @@ namespace SeekerJob
         public string facebook { get; set; }
         public string twitter { get; set; }
         public string linkedin { get; set; }
+        public string addressDetail { get; set; }
     }
 }

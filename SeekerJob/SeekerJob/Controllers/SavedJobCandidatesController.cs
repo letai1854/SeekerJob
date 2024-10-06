@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     public class SavedJobCandidatesController : Controller
     {
         // GET: SavedJobCandidates
-        mydbs db = new mydbs();
+        MyDB db = new MyDB();
         public ActionResult Index()
         {
             return View();

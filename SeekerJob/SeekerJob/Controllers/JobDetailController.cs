@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class JobDetailController : Controller
     {
         // GET: JobDetail
-        mydbs db = new mydbs();
+        MyDB db = new MyDB();
         public ActionResult Index(long id)
         {
             var job = db.Jobs.Where(t=>t.id==id).FirstOrDefault();

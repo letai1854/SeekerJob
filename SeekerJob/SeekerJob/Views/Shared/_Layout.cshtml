@@ -537,6 +537,35 @@
     .no-wrap {
         white-space: nowrap; /* Ngăn không cho xuống dòng */
     }
+    .twm-log-reg-logo-head {
+     
+        padding: 20px 0px 10px 0px; 
+    }
+
+    .form-control {
+        background-color: #d3d4d682;
+    }
+    .twm-nav-sign-up {
+        color: inherit; 
+        transition: color 0.3s ease; 
+    }
+
+    .twm-nav-sign-up:hover {
+            color: blue; /* Màu xanh dương khi hover */
+       
+    }
+
+    .job-card:hover {
+    
+        transform: scale(1.02) !important ;
+    }
+
+
+        .job-card:hover h4 {
+            color: blue !important;
+            transition: color 0.2s ease;
+        }
+
 </style>
 
 <body data-anm=".anm">
@@ -1052,7 +1081,64 @@
         });
     });
 </script>
+<script>
+    let countdownInterval; // Để lưu bộ đếm thời gian hiện tại
+    let timer; // Biến lưu thời gian đếm ngược
 
+    // Hàm bắt đầu đếm ngược
+    function startCountdown() {
+        if (countdownInterval) {
+            clearInterval(countdownInterval); // Xóa bộ đếm cũ nếu có
+        }
+
+        // Hiện ô nhập mã xác thực và nút xác nhận
+        document.getElementById('verificationInput').style.display = 'block';
+        document.getElementById('confirmBtn').style.display = 'block';
+
+        // Hiện bộ đếm thời gian
+        document.getElementById('countdownTimer').style.display = 'block';
+
+        // Khởi động lại đếm ngược từ 2 phút
+        timer = 120;
+        var countdownElement = document.getElementById('time');
+        countdownElement.textContent = "02:00"; // Đặt lại văn bản về 02:00 khi bắt đầu
+
+        // Khởi động bộ đếm mới
+        countdownInterval = setInterval(function () {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+            countdownElement.textContent =
+                (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+            if (timer <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = "Hết giờ!";
+                hideCountdownAndInput(); // Ẩn sau 2 phút
+            } else {
+                timer--;
+            }
+        }, 1000);
+    }
+
+    // Hàm ẩn bộ đếm thời gian và ô nhập mã
+    function hideCountdownAndInput() {
+        document.getElementById('countdownTimer').style.display = 'none';
+        document.getElementById('verificationInput').style.display = 'none';
+        document.getElementById('confirmBtn').style.display = 'none';
+    }
+
+    // Xử lý khi người dùng bấm nút "Gửi"
+    document.getElementById('sendBtn').addEventListener('click', function () {
+        startCountdown();
+    });
+
+    // Xử lý khi popup bị đóng (người dùng thoát khỏi popup)
+    document.getElementById('forgot_password_popup').addEventListener('hidden.bs.modal', function () {
+        clearInterval(countdownInterval); // Dừng đếm ngược nếu popup bị đóng
+        hideCountdownAndInput(); // Ẩn ô nhập mã và bộ đếm
+    });
+
+</script>
 
 @*<script>
         document.addEventListener("DOMContentLoaded", function () {

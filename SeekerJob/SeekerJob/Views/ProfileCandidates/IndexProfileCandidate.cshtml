@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = "IndexProfileCandidate";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content" style="margin-top:150px; margin-bottom:150px">
+
+    <!-- INNER PAGE BANNER -->
+    <!-- INNER PAGE BANNER END -->
+    <!-- OUR BLOG START -->
+    @{Html.RenderAction("TitleProfileCandidates", "ProfileCandidates"); }
+    <div class="section-full p-t120  p-b90 site-bg-white">
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-4 col-md-12 rightSidebar m-b30">
+
+                    <div class="side-bar-st-1">
+
+                        @{Html.RenderAction("GetImageNameCandidates", "ProfileCandidates"); }
+
+
+                        @{Html.RenderAction("GetListTitle", "ProfileCandidates"); }
+
+
+                    </div>
+
+                </div>
+
+                @{Html.RenderAction("GetInfoCandidate", "ProfileCandidates"); }
+
+
+            </div>
+        </div>
+    </div>
+    <!-- OUR BLOG END -->
+
+
+
+</div>
+@section scripts
+    {
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}

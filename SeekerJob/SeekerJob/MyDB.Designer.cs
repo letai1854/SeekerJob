@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\WorkSpace\.NEt\SeekerJob\SeekerJob\SeekerJob\MYDB.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\HK1-Y3\c#DotNet\SeekerJob\SeekerJob\SeekerJob\MyDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

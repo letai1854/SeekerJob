@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class ListJobController : Controller
     {
 
-        mydbs db = new mydbs();
+        MyDB db = new MyDB();
 
         public ActionResult GetJobList()
         {

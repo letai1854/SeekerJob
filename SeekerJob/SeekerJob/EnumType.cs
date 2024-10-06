@@ -23,6 +23,8 @@ namespace SeekerJob
             titlepagePostNews,
             listNews,
             titlepageManagerNews,
+            titlepageProfileCompany,
+            titlepageProfileCandidate,
         }
         public enum Banner
         {

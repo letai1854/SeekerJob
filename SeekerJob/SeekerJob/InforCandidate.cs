@@ -24,7 +24,7 @@ namespace SeekerJob
         public Nullable<System.DateTime> birthday { get; set; }
         public Nullable<double> experience { get; set; }
         public string jobcategory { get; set; }
-        public Nullable<double> offerexpected { get; set; }
+        public string gender { get; set; }
         public Nullable<double> offercurrent { get; set; }
         public string image { get; set; }
         public string description { get; set; }

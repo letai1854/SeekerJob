@@ -344,7 +344,7 @@
     }
 
     .carousel-inner {
-        max-height: 500px;
+        max-height: 700px;
         /* Điều chỉnh chiều cao nếu cần */
         width: auto;
         object-fit: cover;
@@ -354,8 +354,17 @@
         height: 100%;
         width: 100%;
     }
+    /* Responsive Height */
 
+    .edit_h {
+        font-size: 14px;
+    }
 
+    .edit_p {
+        font-size: 13px;
+    }
+
+    /* Optional: Điều chỉnh các nút điều khiển nếu cần */
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
@@ -363,54 +372,176 @@
         border-radius: 50%;
     }
 
-    .twm-home18-banner-section .row .twm-h-page-18-bnr-right-section .twm-shape-l {
-        border-color: #0D0232;
-        border-style: solid;
+    .custom-search-bar {
+        display: flex;
+        flex-wrap: wrap;
+        /* Đảm bảo các phần tử xuống dòng khi màn hình nhỏ */
+        gap: 10px;
+        /* Khoảng cách giữa các phần tử */
     }
 
-    .twm-home18-banner-section .row .twm-h-page-18-bnr-right-section .twm-shape-2 {
-        border-color: #14044E;
-        border-style: solid;
+    .custom-search-input,
+    .custom-dropdown-container {
+        flex: 1;
+        /* Giúp input và dropdown mở rộng đều ra */
+        min-width: 150px;
+        /* Đảm bảo có kích thước tối thiểu cho input và dropdown */
     }
 
-    .site-bg-white {
-        background-color: #27252529;
+    .custom-dropdown-container {
+        display: flex;
+        gap: 10px;
     }
 
-    .p-b90 {
-        padding-bottom: 30px;
-        padding-top: 30px;
+    .site-button {
+        flex-shrink: 0;
+        /* Nút sẽ không bị thu nhỏ lại */
     }
 
-    #jobs_bookmark_table2 {
-        border: none; /* Xoá viền của bảng */
+
+
+    .custom-search-wrapper {
+        width: 100%;
+        /* Chiếm toàn bộ chiều rộng của vùng chứa */
+        padding: 10px;
+        /* Khoảng cách giữa nội dung và viền ngoài */
+        box-sizing: border-box;
+        /* Đảm bảo padding được tính vào tổng kích thước */
     }
 
-        #jobs_bookmark_table2 th, #jobs_bookmark_table2 td {
-            border: none; /* Xoá viền của các ô */
+    .custom-search-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        /* Đảm bảo các phần tử có khoảng cách hợp lý */
+        gap: 10px;
+    }
+
+    .custom-search-input {
+        flex: 2;
+        /* Input chiếm nhiều không gian hơn */
+        min-width: 250px;
+        /* Đảm bảo không quá nhỏ */
+    }
+
+    .custom-dropdown-container {
+        display: flex;
+        flex: 2;
+        /* Container chứa dropdown chiếm phần không gian còn lại */
+        gap: 10px;
+    }
+
+    .custom-dropdown,
+    .wt-search-bar-select {
+        flex: 1;
+        /* Cả hai dropdown sẽ chiếm không gian đều nhau */
+        min-width: 120px;
+        /* Đảm bảo dropdown không nhỏ quá khi màn hình hẹp */
+    }
+
+    .site-button {
+        flex-shrink: 0;
+        min-width: 120px;
+        /* Nút không quá nhỏ */
+    }
+
+
+
+    .custom-dropdown-container {
+        display: flex;
+        flex: 2;
+        gap: 10px;
+        justify-content: space-between;
+        /* Giữ khoảng cách giữa các dropdown */
+    }
+
+    .wt-search-bar-select,
+    .custom-dropdown {
+        flex: 1;
+        /* Giúp chia đều khoảng không gian */
+        max-width: 160px;
+        /* Giới hạn chiều rộng tối đa */
+        min-width: 100px;
+        /* Đảm bảo không quá nhỏ */
+        /* Chiếm toàn bộ chiều ngang trong container */
+    }
+
+
+
+    .has-children {
+        position: relative;
+    }
+
+    .sub-menu-child {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        min-width: 200px;
+        display: none;
+    }
+
+        .sub-menu-child li {
+            list-style-type: none;
+            padding: 5px 0;
         }
 
-    .search-container {
-        display: flex; /* Sử dụng Flexbox để căn chỉnh theo chiều ngang */
-        justify-content: flex-start; /* Đảm bảo các phần tử nằm ở đầu */
-        align-items: center; /* Căn giữa theo trục dọc */
-        margin-bottom: 10px; /* Tạo khoảng cách giữa phần trên và bảng */
+        .sub-menu-child a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .sub-menu-child a {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .sub-menu-child li {
+            list-style-type: none;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        .sub-menu-child li {
+            list-style-type: none;
+            padding: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+            .sub-menu-child li:hover {
+                color: #000;
+                background-color: #f5f5f5;
+                transform: scale(1.1);
+                box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+                z-index: 1;
+            }
+
+    .form-control {
+        background-color: #d3d4d682;
     }
-    .wt-bnr-inr-entry {
-        display: table-cell;
-        vertical-align: bottom;
-        text-align: center;
-        padding-bottom: 0px;
-    }
+
     .side-bar-st-1 {
         background: #8990a9cc;
     }
+
     .site-bg-white {
         background-color: #27252529;
     }
+
     .site-bg-gray {
         background-color: #a8a8ac2b;
     }
+
+
+    .no-wrap {
+        white-space: nowrap; /* Ngăn không cho xuống dòng */
+    }
+
 </style>
 
 <body data-anm=".anm">
@@ -1053,7 +1184,64 @@
         });
     });
 </script>
+<script>
+    let countdownInterval; // Để lưu bộ đếm thời gian hiện tại
+    let timer; // Biến lưu thời gian đếm ngược
 
+    // Hàm bắt đầu đếm ngược
+    function startCountdown() {
+        if (countdownInterval) {
+            clearInterval(countdownInterval); // Xóa bộ đếm cũ nếu có
+        }
+
+        // Hiện ô nhập mã xác thực và nút xác nhận
+        document.getElementById('verificationInput').style.display = 'block';
+        document.getElementById('confirmBtn').style.display = 'block';
+
+        // Hiện bộ đếm thời gian
+        document.getElementById('countdownTimer').style.display = 'block';
+
+        // Khởi động lại đếm ngược từ 2 phút
+        timer = 120;
+        var countdownElement = document.getElementById('time');
+        countdownElement.textContent = "02:00"; // Đặt lại văn bản về 02:00 khi bắt đầu
+
+        // Khởi động bộ đếm mới
+        countdownInterval = setInterval(function () {
+            var minutes = Math.floor(timer / 60);
+            var seconds = timer % 60;
+            countdownElement.textContent =
+                (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+
+            if (timer <= 0) {
+                clearInterval(countdownInterval);
+                countdownElement.textContent = "Hết giờ!";
+                hideCountdownAndInput(); // Ẩn sau 2 phút
+            } else {
+                timer--;
+            }
+        }, 1000);
+    }
+
+    // Hàm ẩn bộ đếm thời gian và ô nhập mã
+    function hideCountdownAndInput() {
+        document.getElementById('countdownTimer').style.display = 'none';
+        document.getElementById('verificationInput').style.display = 'none';
+        document.getElementById('confirmBtn').style.display = 'none';
+    }
+
+    // Xử lý khi người dùng bấm nút "Gửi"
+    document.getElementById('sendBtn').addEventListener('click', function () {
+        startCountdown();
+    });
+
+    // Xử lý khi popup bị đóng (người dùng thoát khỏi popup)
+    document.getElementById('forgot_password_popup').addEventListener('hidden.bs.modal', function () {
+        clearInterval(countdownInterval); // Dừng đếm ngược nếu popup bị đóng
+        hideCountdownAndInput(); // Ẩn ô nhập mã và bộ đếm
+    });
+
+</script>
 
 @*<script>
         $(document).ready(function () {

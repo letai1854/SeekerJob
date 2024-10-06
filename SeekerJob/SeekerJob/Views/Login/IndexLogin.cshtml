@@ -1,0 +1,603 @@
+﻿
+@{
+    ViewBag.Title = "IndexLogin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-wraper" style="margin-top:110px;">
+
+
+    <!-- CONTENT START -->
+    <div class="page-content">
+
+
+
+
+        <!-- Login Section Start -->
+        <div class="section-full ">
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-6 col-md-5 twm-log-reg-media-wrap">
+                        <div class="twm-log-reg-media">
+                            <div class="twm-l-media">
+                                <img src="~/ContentImage/images/login-bg.png" alt="">
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-7">
+                        <div class="twm-log-reg-form-wrap">
+                            <div class="twm-log-reg-logo-head ">
+                                <a href="index-18.html">
+                                    <img src="~/ContentImage/images/rb.png" alt="" class="logo">
+
+                                </a>
+                            </div>
+
+                            <div class="twm-log-reg-inner">
+                                <div class="twm-log-reg-head">
+                                    <div class="twm-log-reg-logo">
+                                        <span class="log-reg-form-title">Đăng nhập</span>
+                                    </div>
+                                </div>
+                                <div class="twm-tabs-style-2">
+
+                                    <ul class="nav nav-tabs" id="myTab2" role="tablist">
+
+                                        <!--Login Candidate-->
+                                        <li class="nav-item">
+                                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#twm-login-candidate" type="button"><i class="fas fa-user-tie"></i>Ứng viên</button>
+                                        </li>
+                                        <!--Login Employer-->
+                                        <li class="nav-item">
+                                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#twm-login-Employer" type="button"><i class="fas fa-building"></i>Tuyển dụng</button>
+                                        </li>
+
+                                    </ul>
+
+                                    <div class="tab-content" id="myTab2Content">
+                                        <!--Login Candidate Content-->
+                                        <div class="tab-pane fade show active" id="twm-login-candidate">
+                                            <div class="row">
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-3">
+                                                        <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-3">
+                                                        <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                    </div>
+                                                </div>
+
+
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="site-button">Đăng nhập</button>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6 text-center">
+                                                        <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#forgot_password_popup" role="button">
+                                                            Quên mật khẩu
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-6 text-center">
+                                                        <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
+                                                            Đăng ký
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+                                        <!--Login Employer Content-->
+                                        <div class="tab-pane fade" id="twm-login-Employer">
+                                            <div class="row">
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-3">
+                                                        <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12">
+                                                    <div class="form-group mb-3">
+                                                        <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <button type="submit" class="site-button">Đăng nhập</button>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row">
+                                                    <div class="col-md-6 text-center">
+
+                                                        <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#forgot_password_popup" role="button">
+                                                            Quên mật khẩu
+                                                        </a>
+                                                    </div>
+                                                    <div class="col-md-6 text-center">
+                                                        <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#sign_up_popup" role="button">
+                                                            Đăng ký
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Login Section End -->
+
+
+
+    </div>
+    <!-- CONTENT END -->
+    <!-- FOOTER START -->
+    <!-- FOOTER END -->
+    <!-- BUTTON TOP START -->
+    <button class="scroltop"><span class="fa fa-angle-up  relative" id="btn-vibrate"></span></button>
+
+    <!--Model Popup Section Start-->
+    <!--Signup popup -->
+    <div class="modal fade twm-sign-up" id="sign_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form>
+
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="sign_up_popupLabel">Đăng ký</h2>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="twm-tabs-style-2">
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+
+                                <!--Signup Candidate-->
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#sign-candidate" type="button"><i class="fas fa-user-tie"></i>Ứng viên</button>
+                                </li>
+                                <!--Signup Employer-->
+                                <li class="nav-item" role="presentation">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#sign-Employer" type="button"><i class="fas fa-building"></i>Tuyển dụng</button>
+                                </li>
+
+                            </ul>
+                            <div class="tab-content" id="myTabContent">
+                                <!--Signup Candidate Content-->
+                                <div class="tab-pane fade show active" id="sign-candidate">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="phone" type="text" class="form-control" required="" placeholder="Email*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="phone" type="text" class="form-control" required="" placeholder="Số điện thoại*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class=" form-check">
+                                                    <input type="checkbox" class="form-check-input" id="agree1">
+                                                    <label class="form-check-label" for="agree1">Tôi đồng ý <a href="javascript:;">điều khoản và điều kiện</a></label>
+                                                    <p>
+                                                        đã đọc?
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button">Đăng ký</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--Signup Employer Content-->
+                                <div class="tab-pane fade" id="sign-Employer">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên công ty*">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="phone" type="text" class="form-control" required="" placeholder="Email*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="phone" type="text" class="form-control" required="" placeholder="Số điện thoại*">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class="ls-inputicon-bo">
+                                                    <select class="wt-select-box selectpicker" data-live-search="true" title="" id="country" data-bv-field="size">
+                                                        <option disabled selected value="">Tỉnh/ Thành phố*</option>
+                                                        <option value="An Giang">An Giang</option>
+                                                        <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                                        <option value="Bạc Liêu">Bạc Liêu</option>
+                                                        <option value="Bắc Giang">Bắc Giang</option>
+                                                        <option value="Bắc Kạn">Bắc Kạn</option>
+                                                        <option value="Bắc Ninh">Bắc Ninh</option>
+                                                        <option value="Bến Tre">Bến Tre</option>
+                                                        <option value="Bình Dương">Bình Dương</option>
+                                                        <option value="Bình Định">Bình Định</option>
+                                                        <option value="Bình Phước">Bình Phước</option>
+                                                        <option value="Bình Thuận">Bình Thuận</option>
+                                                        <option value="Cà Mau">Cà Mau</option>
+                                                        <option value="Cao Bằng">Cao Bằng</option>
+                                                        <option value="Cần Thơ">Cần Thơ</option>
+                                                        <option value="Đà Nẵng">Đà Nẵng</option>
+                                                        <option value="Đắk Lắk">Đắk Lắk</option>
+                                                        <option value="Đắk Nông">Đắk Nông</option>
+                                                        <option value="Điện Biên">Điện Biên</option>
+                                                        <option value="Đồng Nai">Đồng Nai</option>
+                                                        <option value="Đồng Tháp">Đồng Tháp</option>
+                                                        <option value="Gia Lai">Gia Lai</option>
+                                                        <option value="Hà Giang">Hà Giang</option>
+                                                        <option value="Hà Nam">Hà Nam</option>
+                                                        <option value="Hà Nội">Hà Nội</option>
+                                                        <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                                        <option value="Hải Dương">Hải Dương</option>
+                                                        <option value="Hải Phòng">Hải Phòng</option>
+                                                        <option value="Hậu Giang">Hậu Giang</option>
+                                                        <option value="Hòa Bình">Hòa Bình</option>
+                                                        <option value="Hưng Yên">Hưng Yên</option>
+                                                        <option value="Khánh Hòa">Khánh Hòa</option>
+                                                        <option value="Kiên Giang">Kiên Giang</option>
+                                                        <option value="Kon Tum">Kon Tum</option>
+                                                        <option value="Lai Châu">Lai Châu</option>
+                                                        <option value="Lâm Đồng">Lâm Đồng</option>
+                                                        <option value="Lạng Sơn">Lạng Sơn</option>
+                                                        <option value="Lào Cai">Lào Cai</option>
+                                                        <option value="Long An">Long An</option>
+                                                        <option value="Nam Định">Nam Định</option>
+                                                        <option value="Nghệ An">Nghệ An</option>
+                                                        <option value="Ninh Bình">Ninh Bình</option>
+                                                        <option value="Ninh Thuận">Ninh Thuận</option>
+                                                        <option value="Phú Thọ">Phú Thọ</option>
+                                                        <option value="Phú Yên">Phú Yên</option>
+                                                        <option value="Quảng Bình">Quảng Bình</option>
+                                                        <option value="Quảng Nam">Quảng Nam</option>
+                                                        <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                                        <option value="Quảng Ninh">Quảng Ninh</option>
+                                                        <option value="Quảng Trị">Quảng Trị</option>
+                                                        <option value="Sóc Trăng">Sóc Trăng</option>
+                                                        <option value="Sơn La">Sơn La</option>
+                                                        <option value="Tây Ninh">Tây Ninh</option>
+                                                        <option value="Thái Bình">Thái Bình</option>
+                                                        <option value="Thái Nguyên">Thái Nguyên</option>
+                                                        <option value="Thanh Hóa">Thanh Hóa</option>
+                                                        <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                                        <option value="Tiền Giang">Tiền Giang</option>
+                                                        <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                                                        <option value="Trà Vinh">Trà Vinh</option>
+                                                        <option value="Tuyên Quang">Tuyên Quang</option>
+                                                        <option value="Vĩnh Long">Vĩnh Long</option>
+                                                        <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                                        <option value="Yên Bái">Yên Bái</option>
+                                                    </select>
+                                                    <p id="ms" style="color:red;"></p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="phone" type="text" class="form-control" required="" placeholder="Địa chỉ*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class=" form-check">
+                                                    <input type="checkbox" class="form-check-input" id="agree1">
+                                                    <label class="form-check-label" for="agree1">Tôi đồng ý <a href="javascript:;"> điều khoản và điều kiện</a></label>
+                                                    <p>
+                                                        đã đọc?
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button">Đăng ký</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <!--Login popup -->
+    <div class="modal fade twm-sign-up" id="sign_up_popup2" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <form>
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="sign_up_popupLabel2">Login</h2>
+                        <p>Login and get access to all the features of Jobzilla</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="twm-tabs-style-2">
+                            <ul class="nav nav-tabs" id="myTab2" role="tablist">
+
+                                <!--Login Candidate-->
+                                <li class="nav-item">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#login-candidate" type="button"><i class="fas fa-user-tie"></i>Candidate</button>
+                                </li>
+                                <!--Login Employer-->
+                                <li class="nav-item">
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#login-Employer" type="button"><i class="fas fa-building"></i>Employer</button>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" id="myTab2Content">
+                                <!--Login Candidate Content-->
+                                <div class="tab-pane fade show active" id="login-candidate">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Usearname*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="email" type="text" class="form-control" required="" placeholder="Password*">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class=" form-check">
+                                                    <input type="checkbox" class="form-check-input" id="Password3">
+                                                    <label class="form-check-label rem-forgot" for="Password3">Remember me <a href="javascript:;">Forgot Password</a></label>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button">Log in</button>
+                                            <div class="mt-3 mb-3">
+                                                Don't have an account ?
+                                                <button class="twm-backto-login" data-bs-target="#sign_up_popup" data-bs-toggle="modal" data-bs-dismiss="modal">Sign Up</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--Login Employer Content-->
+                                <div class="tab-pane fade" id="login-Employer">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Usearname*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="email" type="text" class="form-control" required="" placeholder="Password*">
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class=" form-check">
+                                                    <input type="checkbox" class="form-check-input" id="Password4">
+                                                    <label class="form-check-label rem-forgot" for="Password4">Remember me <a href="javascript:;">Forgot Password</a></label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button">Log in</button>
+                                            <div class="mt-3 mb-3">
+                                                Don't have an account ?
+                                                <button class="twm-backto-login" data-bs-target="#sign_up_popup" data-bs-toggle="modal" data-bs-dismiss="modal">Sign Up</button>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <span class="modal-f-title">Login or Sign up with</span>
+                        <ul class="twm-modal-social">
+                            <li><a href="javascript" class="facebook-clr"><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href="javascript" class="twitter-clr"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="javascript" class="linkedin-clr"><i class="fab fa-linkedin-in"></i></a></li>
+                            <li><a href="javascript" class="google-clr"><i class="fab fa-google"></i></a></li>
+                        </ul>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade twm-sign-up" id="forgot_password_popup" aria-hidden="true" aria-labelledby="forgot_password_popupLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="forgotPasswordForm">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="forgot_password_popupLabel">Quên mật khẩu</h2>
+                        <p>Vui lòng nhập email của bạn để khôi phục mật khẩu</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="twm-tabs-style-2">
+                            <div class="tab-content" id="myTabContent">
+                                <div class="tab-pane fade show active" id="sign-candidate">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="row">
+                                                <div class="col-xl-9 col-md-9 col-8">
+                                                    <div class="form-group mb-3">
+                                                        <input name="email" type="email" class="form-control" required="" placeholder="Email*" id="emailInput">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xl-3 col-md-3 col-4 mb-3">
+                                                    <button type="button" class="site-button" id="sendBtn">Gửi</button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12" id="countdownTimer" style="display: none;">
+                                            <p>Thời gian còn lại: <span id="time">02:00</span></p>
+                                        </div>
+
+                                        <div class="col-lg-12" id="verificationInput" style="display: none;">
+                                            <div class="form-group mb-3">
+                                                <input name="verification" type="text" class="form-control" required="" placeholder="Nhập mã xác thực*" id="verificationCode">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12" id="confirmBtn" style="display: none;">
+                                            <a type="submit" class="site-button" class="twm-nav-sign-up" data-bs-toggle="modal" href="#changepass_up_popup" role="button">
+                                                Xác nhận
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--Model Popup Section End-->
+
+
+    <div class="modal fade twm-sign-up" id="changepass_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel3" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <form>
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="sign_up_popupLabel3">Cập nhật mật khẩu mới</h2>
+                        <p>Hãy cập nhật mật khẩu mới để tiếp tục truy cập tất cả các tính năng</p>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="twm-tabs-style-2">
+
+
+                            <div class="tab-content" id="myTab2Content">
+                                <!--Login Candidate Content-->
+                                <div class="tab-pane fade show active" id="login-candidate">
+                                    <div class="row">
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="username" type="text" required="" class="form-control" placeholder="Mật khẩu mới*">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="email" type="text" class="form-control" required="" placeholder="Nhập lại mật khẩu mới*">
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="col-md-12">
+                                            <button type="submit" class="site-button">Xác nhận</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!--Login Employer Content-->
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

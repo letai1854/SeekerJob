@@ -1,0 +1,219 @@
+﻿
+@model SeekerJob.InforCandidate
+
+<div class="col-xl-9 col-lg-8 col-md-12 m-b30">
+    <!--Filter Short By-->
+    <div class="twm-right-section-panel site-bg-gray">
+        <form>
+
+
+            <!--Basic Information-->
+            <div class="panel panel-default">
+                <div class="panel-heading wt-panel-heading p-a20">
+                    <h4 class="panel-tittle m-a0">Thông tin cơ bản</h4>
+                </div>
+                <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                    <div class="row">
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Tên của bạn</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_name" type="text" placeholder="Devid Smith"  value="@Model.name">
+                                    <i class="fs-input-icon fa fa-user "></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                <div class="ls-inputicon-box">
+                                    <select class="wt-select-box selectpicker" data-live-search="true" title="" id="gender" data-bv-field="size">
+                                        <option value="Nam" @(Model.gender == "Nam" ? "selected" : "")>Nam</option>
+                                        <option value="Nữ" @(Model.gender == "Nữ" ? "selected" : "")>Nữ</option>
+ 
+                                    </select>
+                                    <i class="fs-input-icon fa fa-venus-mars"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Ngày sinh</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy" value="@Model.birthday.Value.ToString("MM/dd/yyyy")">
+                                    <i class="fs-input-icon far fa-calendar"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Số điện thoại</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_phone" type="text" placeholder="(251) 1234-456-7890"value="@Model.phone">
+                                    <i class="fs-input-icon fa fa-phone-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Mail</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com" value="@Model.email">
+                                    <i class="fs-input-icon fas fa-at"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Trình độ</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_since" type="text" placeholder="BTech" value="@Model.qualification">
+                                    <i class="fs-input-icon fa fa-user-graduate"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Kĩ năng</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_since" type="text" placeholder="e.x English, Spanish" value="@Model.skill">
+                                    <i class="fs-input-icon fa fa-language"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group city-outer-bx has-feedback">
+                                <label>Chuyên ngành</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_since" type="text" placeholder="IT & Software" value="@Model.jobcategory">
+                                    <i class="fs-input-icon fa fa-border-all"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-12">
+                            <div class="form-group city-outer-bx has-feedback">
+                                <label>Kinh nghiệm</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_since" type="text" placeholder="05 Years"value="@Model.experience">
+                                    <i class="fs-input-icon fa fa-user-edit"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+                        <div class="col-xl-12 col-lg-12 col-md-12">
+                            <div class="form-group city-outer-bx has-feedback">
+                                <label>Địa chỉ đầy đủ</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Angeles, CA 90026 ,USA" value="@Model.adrress">
+                                    <i class="fs-input-icon fas fa-map-marker-alt"></i>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="" >@Model.description</textarea>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+
+            <!--Social Network-->
+            <div class="panel panel-default">
+                <div class="panel-heading wt-panel-heading p-a20">
+                    <h4 class="panel-tittle m-a0">Mạng xã hội</h4>
+                </div>
+                <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                    <div class="row">
+
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Facebook</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.facebook" placeholder="https://www.facebook.com/">
+                                    <i class="fs-input-icon fab fa-facebook-f"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Twitter</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.twitter" placeholder="https://twitter.com/">
+                                    <i class="fs-input-icon fab fa-twitter"></i>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>linkedin</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.linkedin" placeholder="https://in.linkedin.com/">
+                                    <i class="fs-input-icon fab fa-linkedin-in"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Instagram</label>
+                                <div class="ls-inputicon-box">
+                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.instagram" placeholder="https://www.instagram.com/">
+                                    <i class="fs-input-icon fab fa-instagram"></i>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="text-left">
+                                <button type="submit" class="site-button">Lưu thay đổi</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
