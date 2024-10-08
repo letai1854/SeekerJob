@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     {
         // GET: PostNews
 
-        MyDB db = new MyDB();
+        MySql db = new MySql();
         public ActionResult IndexPostNews()
         {
             return View();

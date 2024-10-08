@@ -1,0 +1,892 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeimage" Type="varchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="link" Type="varchar(max)" />
+          <Property Name="meta" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="InforCandidate">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" />
+          <Property Name="phone" Type="int" />
+          <Property Name="adrress" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="skill" Type="nvarchar(max)" />
+          <Property Name="qualification" Type="nvarchar" MaxLength="100" />
+          <Property Name="birthday" Type="date" />
+          <Property Name="experience" Type="float" />
+          <Property Name="jobcategory" Type="nvarchar(max)" />
+          <Property Name="gender" Type="nvarchar" MaxLength="100" />
+          <Property Name="offercurrent" Type="float" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="instagram" Type="varchar" MaxLength="100" />
+          <Property Name="facebook" Type="varchar" MaxLength="100" />
+          <Property Name="twitter" Type="varchar" MaxLength="100" />
+          <Property Name="linkedin" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="InforEmployer">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="namecompany" Type="nvarchar(max)" />
+          <Property Name="phone" Type="int" />
+          <Property Name="adrress" Type="nvarchar" MaxLength="100" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="report" Type="nvarchar(max)" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="linkweb" Type="varchar" MaxLength="100" />
+          <Property Name="likecm" Type="int" />
+          <Property Name="instagram" Type="varchar" MaxLength="100" />
+          <Property Name="facebook" Type="varchar" MaxLength="100" />
+          <Property Name="twitter" Type="varchar" MaxLength="100" />
+          <Property Name="linkedin" Type="varchar" MaxLength="100" />
+          <Property Name="addressDetail" Type="nvarchar" MaxLength="400" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="email" Type="varchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="addressdetail" Type="nvarchar(max)" />
+          <Property Name="gender" Type="nvarchar" MaxLength="100" />
+          <Property Name="degree" Type="nvarchar(max)" />
+          <Property Name="experience" Type="float" />
+          <Property Name="offer" Type="float" />
+          <Property Name="jobcategory" Type="nvarchar(max)" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="startday" Type="datetime" />
+          <Property Name="endday" Type="datetime" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="likeNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="likenews">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="200" />
+          <Property Name="idnews" Type="int" />
+        </EntityType>
+        <EntityType Name="ListCandidate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idjob" Type="int" />
+          <Property Name="usernamecandidate" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="password" Type="varchar" MaxLength="100" />
+          <Property Name="status" Type="bit" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="nvarchar(max)" />
+          <Property Name="image" Type="varchar(max)" />
+          <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="daypost" Type="date" />
+          <Property Name="shortbref" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="PageTitle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="tilteBig" Type="nvarchar" MaxLength="100" />
+          <Property Name="titleMall" Type="nvarchar" MaxLength="100" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typePage" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="SaveJob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idjob" Type="int" />
+          <Property Name="usernamecandidate" Type="varchar" MaxLength="100" />
+          <Property Name="saveDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tablebanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typeRow" Type="varchar" MaxLength="200" />
+          <Property Name="icon" Type="varchar" MaxLength="200" />
+          <Property Name="active" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tablebannerpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtable" Type="int" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tablefooter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="200" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="200" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="typerow" Type="varchar" MaxLength="200" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="content1" Type="nvarchar" MaxLength="200" />
+          <Property Name="content2" Type="nvarchar" MaxLength="200" />
+          <Property Name="content3" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tablefooterpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtable" Type="int" />
+          <Property Name="content" Type="nvarchar(max)" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="200" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tableimagemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="typeimage" Type="varchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tablemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tablemenufunction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="tablemenupart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="idtable" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+          <Property Name="link" Type="nvarchar(max)" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="arrange" Type="int" />
+          <Property Name="datebegin" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="TitlePage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="meta" Type="nvarchar" MaxLength="50" />
+          <Property Name="tilteBig" Type="nvarchar" MaxLength="100" />
+          <Property Name="titleMall" Type="nvarchar" MaxLength="100" />
+          <Property Name="hide" Type="bit" />
+          <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typePage" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityContainer Name="testdbs2425ModelStoreContainer">
+          <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InforCandidate" EntityType="Self.InforCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InforEmployer" EntityType="Self.InforEmployer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="likenews" EntityType="Self.likenews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ListCandidate" EntityType="Self.ListCandidate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PageTitle" EntityType="Self.PageTitle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SaveJob" EntityType="Self.SaveJob" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablebanner" EntityType="Self.tablebanner" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablebannerpart" EntityType="Self.tablebannerpart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablefooter" EntityType="Self.tablefooter" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablefooterpart" EntityType="Self.tablefooterpart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tableimagemenu" EntityType="Self.tableimagemenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablemenu" EntityType="Self.tablemenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablemenufunction" EntityType="Self.tablemenufunction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tablemenupart" EntityType="Self.tablemenupart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TitlePage" EntityType="Self.TitlePage" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Advertise">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeimage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="CV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InforCandidate">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int32" />
+          <Property Name="adrress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="skill" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="qualification" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTime" Precision="0" />
+          <Property Name="experience" Type="Double" />
+          <Property Name="jobcategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="offercurrent" Type="Double" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="InforEmployer">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="namecompany" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="phone" Type="Int32" />
+          <Property Name="adrress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="report" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="linkweb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="likecm" Type="Int32" />
+          <Property Name="instagram" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="addressDetail" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Job">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="addressdetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="degree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="experience" Type="Double" />
+          <Property Name="offer" Type="Double" />
+          <Property Name="jobcategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="startday" Type="DateTime" Precision="3" />
+          <Property Name="endday" Type="DateTime" Precision="3" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="likeNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="likenew">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idnews" Type="Int32" />
+        </EntityType>
+        <EntityType Name="ListCandidate">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idjob" Type="Int32" />
+          <Property Name="usernamecandidate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Login">
+          <Key>
+            <PropertyRef Name="username" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="News">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="daypost" Type="DateTime" Precision="0" />
+          <Property Name="shortbref" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PageTitle">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tilteBig" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="titleMall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="SaveJob">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idjob" Type="Int32" />
+          <Property Name="usernamecandidate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="saveDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tablebanner">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typeRow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="icon" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tablebannerpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtable" Type="Int32" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tablefooter">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="typerow" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="content1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="content2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="content3" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tablefooterpart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtable" Type="Int32" />
+          <Property Name="content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tableimagemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="typeimage" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tablemenu">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tablemenufunction">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tablemenupart">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idtable" Type="Int32" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="link" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="arrange" Type="Int32" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="TitlePage">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="meta" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="tilteBig" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="titleMall" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="hide" Type="Boolean" />
+          <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="MySql" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Advertises" EntityType="Self.Advertise" />
+          <EntitySet Name="CVs" EntityType="Self.CV" />
+          <EntitySet Name="InforCandidates" EntityType="Self.InforCandidate" />
+          <EntitySet Name="InforEmployers" EntityType="Self.InforEmployer" />
+          <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="likenews" EntityType="Self.likenew" />
+          <EntitySet Name="ListCandidates" EntityType="Self.ListCandidate" />
+          <EntitySet Name="Logins" EntityType="Self.Login" />
+          <EntitySet Name="News" EntityType="Self.News" />
+          <EntitySet Name="PageTitles" EntityType="Self.PageTitle" />
+          <EntitySet Name="SaveJobs" EntityType="Self.SaveJob" />
+          <EntitySet Name="tablebanners" EntityType="Self.tablebanner" />
+          <EntitySet Name="tablebannerparts" EntityType="Self.tablebannerpart" />
+          <EntitySet Name="tablefooters" EntityType="Self.tablefooter" />
+          <EntitySet Name="tablefooterparts" EntityType="Self.tablefooterpart" />
+          <EntitySet Name="tableimagemenus" EntityType="Self.tableimagemenu" />
+          <EntitySet Name="tablemenus" EntityType="Self.tablemenu" />
+          <EntitySet Name="tablemenufunctions" EntityType="Self.tablemenufunction" />
+          <EntitySet Name="tablemenuparts" EntityType="Self.tablemenupart" />
+          <EntitySet Name="TitlePages" EntityType="Self.TitlePage" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MySql">
+          <EntitySetMapping Name="Advertises">
+            <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
+              <MappingFragment StoreEntitySet="Advertise">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeimage" ColumnName="typeimage" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CVs">
+            <EntityTypeMapping TypeName="testdbs2425Model.CV">
+              <MappingFragment StoreEntitySet="CV">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InforCandidates">
+            <EntityTypeMapping TypeName="testdbs2425Model.InforCandidate">
+              <MappingFragment StoreEntitySet="InforCandidate">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adrress" ColumnName="adrress" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="skill" ColumnName="skill" />
+                <ScalarProperty Name="qualification" ColumnName="qualification" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="jobcategory" ColumnName="jobcategory" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="offercurrent" ColumnName="offercurrent" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InforEmployers">
+            <EntityTypeMapping TypeName="testdbs2425Model.InforEmployer">
+              <MappingFragment StoreEntitySet="InforEmployer">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="namecompany" ColumnName="namecompany" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="adrress" ColumnName="adrress" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="report" ColumnName="report" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="linkweb" ColumnName="linkweb" />
+                <ScalarProperty Name="likecm" ColumnName="likecm" />
+                <ScalarProperty Name="instagram" ColumnName="instagram" />
+                <ScalarProperty Name="facebook" ColumnName="facebook" />
+                <ScalarProperty Name="twitter" ColumnName="twitter" />
+                <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="addressDetail" ColumnName="addressDetail" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Jobs">
+            <EntityTypeMapping TypeName="testdbs2425Model.Job">
+              <MappingFragment StoreEntitySet="Job">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="addressdetail" ColumnName="addressdetail" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="degree" ColumnName="degree" />
+                <ScalarProperty Name="experience" ColumnName="experience" />
+                <ScalarProperty Name="offer" ColumnName="offer" />
+                <ScalarProperty Name="jobcategory" ColumnName="jobcategory" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="startday" ColumnName="startday" />
+                <ScalarProperty Name="endday" ColumnName="endday" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="likeNumber" ColumnName="likeNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="likenews">
+            <EntityTypeMapping TypeName="testdbs2425Model.likenew">
+              <MappingFragment StoreEntitySet="likenews">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="idnews" ColumnName="idnews" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ListCandidates">
+            <EntityTypeMapping TypeName="testdbs2425Model.ListCandidate">
+              <MappingFragment StoreEntitySet="ListCandidate">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idjob" ColumnName="idjob" />
+                <ScalarProperty Name="usernamecandidate" ColumnName="usernamecandidate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Logins">
+            <EntityTypeMapping TypeName="testdbs2425Model.Login">
+              <MappingFragment StoreEntitySet="Login">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="status" ColumnName="status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="testdbs2425Model.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="daypost" ColumnName="daypost" />
+                <ScalarProperty Name="shortbref" ColumnName="shortbref" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PageTitles">
+            <EntityTypeMapping TypeName="testdbs2425Model.PageTitle">
+              <MappingFragment StoreEntitySet="PageTitle">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="tilteBig" ColumnName="tilteBig" />
+                <ScalarProperty Name="titleMall" ColumnName="titleMall" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typePage" ColumnName="typePage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SaveJobs">
+            <EntityTypeMapping TypeName="testdbs2425Model.SaveJob">
+              <MappingFragment StoreEntitySet="SaveJob">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idjob" ColumnName="idjob" />
+                <ScalarProperty Name="usernamecandidate" ColumnName="usernamecandidate" />
+                <ScalarProperty Name="saveDate" ColumnName="saveDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablebanners">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablebanner">
+              <MappingFragment StoreEntitySet="tablebanner">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typeRow" ColumnName="typeRow" />
+                <ScalarProperty Name="icon" ColumnName="icon" />
+                <ScalarProperty Name="active" ColumnName="active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablebannerparts">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablebannerpart">
+              <MappingFragment StoreEntitySet="tablebannerpart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtable" ColumnName="idtable" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablefooters">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablefooter">
+              <MappingFragment StoreEntitySet="tablefooter">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="typerow" ColumnName="typerow" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="content1" ColumnName="content1" />
+                <ScalarProperty Name="content2" ColumnName="content2" />
+                <ScalarProperty Name="content3" ColumnName="content3" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablefooterparts">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablefooterpart">
+              <MappingFragment StoreEntitySet="tablefooterpart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtable" ColumnName="idtable" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tableimagemenus">
+            <EntityTypeMapping TypeName="testdbs2425Model.tableimagemenu">
+              <MappingFragment StoreEntitySet="tableimagemenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="typeimage" ColumnName="typeimage" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablemenus">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenu">
+              <MappingFragment StoreEntitySet="tablemenu">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablemenufunctions">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenufunction">
+              <MappingFragment StoreEntitySet="tablemenufunction">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tablemenuparts">
+            <EntityTypeMapping TypeName="testdbs2425Model.tablemenupart">
+              <MappingFragment StoreEntitySet="tablemenupart">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="idtable" ColumnName="idtable" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="link" ColumnName="link" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="arrange" ColumnName="arrange" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TitlePages">
+            <EntityTypeMapping TypeName="testdbs2425Model.TitlePage">
+              <MappingFragment StoreEntitySet="TitlePage">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="tilteBig" ColumnName="tilteBig" />
+                <ScalarProperty Name="titleMall" ColumnName="titleMall" />
+                <ScalarProperty Name="hide" ColumnName="hide" />
+                <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typePage" ColumnName="typePage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
