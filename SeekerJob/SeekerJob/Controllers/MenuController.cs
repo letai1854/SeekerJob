@@ -9,7 +9,8 @@ namespace SeekerJob.Controllers
     public class MenuController : Controller
     {
 
-        testdbs2425Entities db = new testdbs2425Entities();
+
+        MyDB db = new MyDB();
 
         public ActionResult Index()
         {

@@ -9,7 +9,8 @@ namespace SeekerJob.Controllers
     public class BannerController : Controller
     {
 
-        testdbs2425Entities db = new testdbs2425Entities();
+
+        MyDB db = new MyDB();
 
 
 

@@ -9,7 +9,8 @@ namespace SeekerJob.Controllers
     public class PostNewsController : Controller
     {
         // GET: PostNews
-        testdbs2425Entities db = new testdbs2425Entities();
+
+        MyDB db = new MyDB();
         public ActionResult IndexPostNews()
         {
             return View();

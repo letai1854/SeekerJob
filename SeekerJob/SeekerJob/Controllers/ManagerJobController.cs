@@ -10,7 +10,8 @@ namespace SeekerJob.Controllers
     public class ManagerJobController : Controller
     {
         // GET: ManagerJob
-        testdbs2425Entities db = new testdbs2425Entities();
+
+        MyDB db = new MyDB();
         public ActionResult Index()
         {
             return View();

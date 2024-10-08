@@ -1597,9 +1597,9 @@ Home page 11 banner
   border: 1px solid #727d8f;
   color: #727d8f;
 }
-.twm-tabs-style-2 .nav-tabs .nav-item .nav-link.active {
-  background-color: #727d8f !important;
-}
+	.twm-tabs-style-2 .nav-tabs .nav-item .nav-link.active {
+		background-color: #0d052a !important;
+	}
 
 /*iconfont*/
 .icon-font-block {

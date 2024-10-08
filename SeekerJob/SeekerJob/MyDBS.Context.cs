@@ -13,10 +13,11 @@ namespace SeekerJob
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class testdbs2425Entities : DbContext
+
+    public partial class MyDB : DbContext
     {
-        public testdbs2425Entities()
-            : base("name=testdbs2425Entities")
+        public MyDB()
+            : base("name=MyDB")
         {
         }
     
