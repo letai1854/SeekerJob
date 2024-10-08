@@ -18,6 +18,27 @@ namespace SeekerJob
                 url: "Danh-sach-viec-lam",
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Hồ sơ thí sinh}",
+                url: "ho-so-thi-sinh/{id}",
+                defaults: new { controller = "ProfileCandidate", action = "ViewProfileCandidate", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+              name: "Hồ sơ công ty",
+              url: "ho-so-cong-ty/{id}",
+              defaults: new { controller = "ProfileEmployer", action = "ViewProfileEmployer", id = UrlParameter.Optional }
+          );
+            routes.MapRoute(
+                name: "Danh sách tin tức",
+                url: "xem-tin-tuc",
+                defaults: new { controller = "ListNews", action = "ViewListNew", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Chi tiết tin tức",
+                url: "Chi-tiet-tin-tuc/{meta}/{id}",
+                defaults: new { controller = "NewsDetail", action = "ViewNewsDetail", id = UrlParameter.Optional }
+            );
+
 
             routes.MapRoute(
                 name: "Chi tiết việc làm",

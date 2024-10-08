@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class MenuController : Controller
     {
 
-        mydbs db = new mydbs();
+        testdbs2425Entities db = new testdbs2425Entities();
 
         public ActionResult Index()
         {
@@ -23,7 +23,7 @@ namespace SeekerJob.Controllers
 
             var tablemenuparts = db.tablemenuparts.Where(t => t.hide == true).OrderBy(t => t.arrange).ToList();
 
-
+            ViewBag.metaNews = "tin-tuc";
             ViewData["tablemenus"] = tablemenus;
             ViewData["tablemenuparts"] = tablemenuparts;
 
@@ -32,7 +32,10 @@ namespace SeekerJob.Controllers
 
         public ActionResult GetLoginPost()
         {
+            var inforcandidate = db.InforCandidates.Where(t => t.username == "totenla").FirstOrDefault();
             var tableLoginPost = db.tablemenufunctions.Where( t =>t.hide == true).OrderBy(t => t.arrange).ToList();
+            ViewBag.metaprofile = "ho-so-thi-sinh";
+            ViewData["infocandidate"] = inforcandidate;
             return PartialView(tableLoginPost);
         }
         

@@ -1,0 +1,346 @@
+﻿
+@using SeekerJob.Controllers
+@using SeekerJob.DataSystem
+@{
+    var newsemployer = ViewData["newsemployer"] as SeekerJob.DTO.NewsEmployee;
+    var newscandidate = ViewData["newscandidate"] as SeekerJob.DTO.NewsCandidate;
+    var listemployee = ViewBag.infoemployee as List<SeekerJob.DTO.NewsEmployee>;
+    var listcandidate = ViewBag.infocandidate as List<SeekerJob.DTO.NewsCandidate>;
+    string relativeTime = null;
+
+    if (newsemployer?.inforEmployer != null)
+    {
+        relativeTime = data.GetRelativeTime((DateTime)newsemployer.newsinfo.daypost);
+    }
+    else if (newscandidate?.inforCandidate != null)
+    {
+        relativeTime = data.GetRelativeTime((DateTime)newscandidate.newsinfo.daypost);
+    }
+    var viewbag = ViewBag.metacontroller;
+}
+
+
+
+@{
+    ViewBag.Title = "ViewNewsDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (newsemployer?.inforEmployer != null)
+{
+    <div class="page-content">
+
+        <div class="wt-bnr-inr overlay-wraper bg-center" style="margin-top:-120px">
+            <div class="overlay-main site-bg-white opacity-01"></div>
+            <div class="container">
+                <div class="wt-bnr-inr-entry">
+                    <div class="banner-title-outer">
+                        <div class="banner-title-name">
+                            <h2 class="wt-title">Tin Tức Chi Tiết</h2>
+                        </div>
+                    </div>
+                    <!-- BREADCRUMB ROW -->
+                    @*<div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li><a href="index.html">Trang chủ</a></li>
+                                <li>Tin Tức Chi Tiết</li>
+                            </ul>
+                        </div>*@
+
+                    <!-- BREADCRUMB ROW END -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section-full  p-t120 p-b90 bg-white">
+            <div class="container">
+
+                <div class="section-content">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="col-lg-8 col-md-12">
+                            <div class="blog-post-single-outer">
+                                <div class="blog-post-single bg-white">
+
+                                    <div class="wt-post-info">
+
+                                        <div class="wt-post-media m-b30">
+                                            <img style="width:100%; height:350px" src="~/ContentImage/images/@newsemployer.newsinfo.image" alt="">
+                                        </div>
+
+                                        <div class="wt-post-title ">
+                                            <div class="wt-post-meta-list">
+                                                <div class="wt-list-content post-date">@newsemployer.newsinfo.daypost</div>
+                                                <div class="wt-list-content post-author">By @newsemployer.inforEmployer.username</div>
+                                            </div>
+                                            <h3 class="post-title">@newsemployer.newsinfo.title</h3>
+
+                                        </div>
+
+                                        <div class="wt-post-discription">
+
+                                            @Html.Raw(newsemployer.newsinfo.description)
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 rightSidebar">
+
+                            <div class="side-bar">
+
+
+
+
+                                <div class="widget recent-posts-entry">
+                                    <h4 class="section-head-small mb-4">Tin Tức Mới Nhất</h4>
+                                    <div class="section-content">
+                                        <div class="widget-post-bx">
+                                            @if (listemployee != null)
+                                            {
+                                                foreach (var item in listemployee)
+                                                {
+                                                    <div class="widget-post clearfix">
+                                                        <div class="wt-post-media">
+                                                            <img src="~/ContentImage/images/@item.newsinfo.image" alt="">
+                                                        </div>
+                                                        <div class="wt-post-info">
+                                                            <div class="wt-post-header">
+                                                                <span class="post-date">@item.newsinfo.daypost</span>
+                                                                <span class="post-title">
+                                                                    <a href="/@ViewBag.metacontroller/@item.newsinfo.meta/@item.newsinfo.id">@item.newsinfo.title</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+
+                                            @if (listcandidate != null)
+                                            {
+                                                foreach (var item in listcandidate)
+                                                {
+                                                    <div class="widget-post clearfix">
+                                                        <div class="wt-post-media">
+                                                            <img src="~/ContentImage/images/@item.newsinfo.image" alt="">
+                                                        </div>
+                                                        <div class="wt-post-info">
+                                                            <div class="wt-post-header">
+                                                                <span class="post-date">@item.newsinfo.daypost</span>
+                                                                <span class="post-title">
+                                                                    <a href="/@ViewBag.metacontroller/@item.newsinfo.meta/@item.newsinfo.id">@item.newsinfo.title</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+}
+
+
+@if (newscandidate?.inforCandidate != null)
+{
+    <div class="page-content">
+
+        <div class="wt-bnr-inr overlay-wraper bg-center" style="margin-top:-120px">
+            <div class="overlay-main site-bg-white opacity-01"></div>
+            <div class="container">
+                <div class="wt-bnr-inr-entry">
+                    <div class="banner-title-outer">
+                        <div class="banner-title-name">
+                            <h2 class="wt-title">Tin Tức Chi Tiết</h2>
+                        </div>
+                    </div>
+                    <!-- BREADCRUMB ROW -->
+                    @*<div>
+                            <ul class="wt-breadcrumb breadcrumb-style-2">
+                                <li><a href="index.html">Trang chủ</a></li>
+                                <li>Tin Tức Chi Tiết</li>
+                            </ul>
+                        </div>*@
+
+                    <!-- BREADCRUMB ROW END -->
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="section-full  p-t120 p-b90 bg-white">
+            <div class="container">
+
+                <div class="section-content">
+                    <div class="row d-flex justify-content-center">
+
+                        <div class="col-lg-8 col-md-12">
+                            <div class="blog-post-single-outer">
+                                <div class="blog-post-single bg-white">
+
+                                    <div class="wt-post-info">
+
+                                        <div class="wt-post-media m-b30">
+                                            <img style="width:100%; height:350px" src="~/ContentImage/images/@newscandidate.newsinfo.image" alt="">
+                                        </div>
+
+                                        <div class="wt-post-title ">
+                                            <div class="wt-post-meta-list">
+                                                <div class="wt-list-content post-date">@newscandidate.newsinfo.daypost</div>
+                                                <div class="wt-list-content post-author">By @newscandidate.inforCandidate.username</div>
+                                            </div>
+                                            <h3 class="post-title">@newscandidate.newsinfo.title</h3>
+
+                                        </div>
+
+                                        <div class="wt-post-discription">
+
+                                            @Html.Raw(newscandidate.newsinfo.description)
+
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-12 rightSidebar">
+
+                            <div class="side-bar">
+
+
+
+
+                                <div class="widget recent-posts-entry">
+                                    <h4 class="section-head-small mb-4">Tin Tức Mới Nhất</h4>
+                                    <div class="section-content">
+                                        <div class="widget-post-bx">
+                                            @if (listemployee != null)
+                                            {
+                                                foreach (var item in listemployee)
+                                                {
+                                                    <div class="widget-post clearfix">
+                                                        <div class="wt-post-media">
+                                                            <img src="~/ContentImage/images/@item.newsinfo.image" alt="">
+                                                        </div>
+                                                        <div class="wt-post-info">
+                                                            <div class="wt-post-header">
+                                                                <span class="post-date">@item.newsinfo.daypost</span>
+                                                                <span class="post-title">
+                                                                    <a href="@item.newsinfo.id">@item.newsinfo.title</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+
+                                            @if (listcandidate != null)
+                                            {
+                                                foreach (var item in listcandidate)
+                                                {
+                                                    <div class="widget-post clearfix">
+                                                        <div class="wt-post-media">
+                                                            <img src="~/ContentImage/images/@item.newsinfo.image" alt="">
+                                                        </div>
+                                                        <div class="wt-post-info">
+                                                            <div class="wt-post-header">
+                                                                <span class="post-date">@item.newsinfo.daypost</span>
+                                                                <span class="post-title">
+                                                                    <a href="@item.newsinfo.id">@item.newsinfo.title</a>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+}

@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class HomeController : Controller
     {
 
-        mydbs db = new mydbs();
+        testdbs2425Entities db = new testdbs2425Entities();
 
 
         public ActionResult Index()
@@ -166,7 +166,7 @@ namespace SeekerJob.Controllers
                     });
                 }
             }
-
+            ViewBag.metacontroller = "Chi-tiet-tin-tuc";
             ViewData["infoemployee"] = infoemployee;
             ViewData["infocandidate"] = infocandidate;
 

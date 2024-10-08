@@ -3206,6 +3206,22 @@ ol li {
     position: inherit;
   }
 }
+
+
+.masonry-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: auto; /* Default for smaller screens */
+}
+
+@media (min-width: 992px) {
+    .img_news {
+        height: 270px;
+    }
+}
+
+
 @media (max-width: 991px) {
     .header-style-3.mobile-sider-drawer-menu .header-nav {
         position: fixed;

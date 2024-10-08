@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class JobDetailController : Controller
     {
         // GET: JobDetail
-        mydbs db = new mydbs();
+        testdbs2425Entities db = new testdbs2425Entities();
         public ActionResult Index(long id)
         {
             var job = db.Jobs.Where(t=>t.id==id).FirstOrDefault();
@@ -49,6 +49,7 @@ namespace SeekerJob.Controllers
             ViewBag.metacontroller = "chi-tiet-viec-lam";
             ViewData["jobuser"] = jobuser;
             ViewData["listjobuser"] = listjobuser;
+            ViewBag.metaprofile = "ho-so-cong-ty";
             return View(jobuser);
         }
     }

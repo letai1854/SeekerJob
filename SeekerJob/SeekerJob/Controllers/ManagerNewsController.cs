@@ -8,7 +8,7 @@ namespace SeekerJob.Controllers
 {
     public class ManagerNewsController : Controller
     {
-        mydbs db = new mydbs();
+        testdbs2425Entities db = new testdbs2425Entities();
         public ActionResult IndexManagerNews()
         {
             return View();

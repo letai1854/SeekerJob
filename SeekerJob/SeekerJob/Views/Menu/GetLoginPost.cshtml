@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<SeekerJob.tablemenufunction>
 
 
+@{ 
+    var inforcandidate = ViewData["infocandidate"] as InforCandidate;
+}
+
 <div class="extra-nav header-2-nav">
 
     <div class="extra-cell">
@@ -27,8 +31,11 @@
                 }
             }
             <div class="twm-nav-btn-right" style="margin-left: 50px;">
-                <div class="has-children" id="menuToggle" style="cursor:pointer; width: 55px; height: 55px; border-radius: 50px; background-image: url('@Url.Content("~/ContentImage/images/goky.jpg")'); background-size: cover; background-position: center; border: 3px solid white; position: relative;">
-                </div>
+                <a href="/@ViewBag.metaprofile/@inforcandidate.username">
+                    <div class="has-children" id="menuToggle" style="cursor:pointer; width: 55px; height: 55px; border-radius: 50px; background-image: url('@Url.Content("~/ContentImage/images/" + inforcandidate.image)'); background-size: cover; background-position: center; border: 3px solid white; position: relative;">
+                    </div>
+
+                </a>
             </div>
 
 

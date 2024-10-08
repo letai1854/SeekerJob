@@ -41,7 +41,7 @@
           <Property Name="birthday" Type="date" />
           <Property Name="experience" Type="float" />
           <Property Name="jobcategory" Type="nvarchar(max)" />
-          <Property Name="offerexpected" Type="float" />
+          <Property Name="gender" Type="nvarchar" MaxLength="100" />
           <Property Name="offercurrent" Type="float" />
           <Property Name="image" Type="varchar(max)" />
           <Property Name="description" Type="nvarchar(max)" />
@@ -68,6 +68,7 @@
           <Property Name="facebook" Type="varchar" MaxLength="100" />
           <Property Name="twitter" Type="varchar" MaxLength="100" />
           <Property Name="linkedin" Type="varchar" MaxLength="100" />
+          <Property Name="addressDetail" Type="nvarchar" MaxLength="400" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -90,6 +91,14 @@
           <Property Name="description" Type="nvarchar(max)" />
           <Property Name="meta" Type="varchar" MaxLength="200" />
           <Property Name="likeNumber" Type="int" />
+        </EntityType>
+        <EntityType Name="likenews">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="200" />
+          <Property Name="idnews" Type="int" />
         </EntityType>
         <EntityType Name="ListCandidate">
           <Key>
@@ -264,6 +273,7 @@
           <EntitySet Name="InforCandidate" EntityType="Self.InforCandidate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InforEmployer" EntityType="Self.InforEmployer" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Job" EntityType="Self.Job" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="likenews" EntityType="Self.likenews" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListCandidate" EntityType="Self.ListCandidate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="News" EntityType="Self.News" Schema="dbo" store:Type="Tables" />
@@ -320,7 +330,7 @@
           <Property Name="birthday" Type="DateTime" Precision="0" />
           <Property Name="experience" Type="Double" />
           <Property Name="jobcategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="offerexpected" Type="Double" />
+          <Property Name="gender" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="offercurrent" Type="Double" />
           <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -347,6 +357,7 @@
           <Property Name="facebook" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="twitter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="linkedin" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="addressDetail" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Job">
           <Key>
@@ -369,6 +380,14 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="likeNumber" Type="Int32" />
+        </EntityType>
+        <EntityType Name="likenew">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="idnews" Type="Int32" />
         </EntityType>
         <EntityType Name="ListCandidate">
           <Key>
@@ -537,12 +556,13 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="mydbs" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="testdbs2425Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
           <EntitySet Name="InforCandidates" EntityType="Self.InforCandidate" />
           <EntitySet Name="InforEmployers" EntityType="Self.InforEmployer" />
           <EntitySet Name="Jobs" EntityType="Self.Job" />
+          <EntitySet Name="likenews" EntityType="Self.likenew" />
           <EntitySet Name="ListCandidates" EntityType="Self.ListCandidate" />
           <EntitySet Name="Logins" EntityType="Self.Login" />
           <EntitySet Name="News" EntityType="Self.News" />
@@ -563,7 +583,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="mydbs">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="testdbs2425Entities">
           <EntitySetMapping Name="Advertises">
             <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
@@ -601,7 +621,7 @@
                 <ScalarProperty Name="birthday" ColumnName="birthday" />
                 <ScalarProperty Name="experience" ColumnName="experience" />
                 <ScalarProperty Name="jobcategory" ColumnName="jobcategory" />
-                <ScalarProperty Name="offerexpected" ColumnName="offerexpected" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
                 <ScalarProperty Name="offercurrent" ColumnName="offercurrent" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="description" ColumnName="description" />
@@ -629,6 +649,7 @@
                 <ScalarProperty Name="facebook" ColumnName="facebook" />
                 <ScalarProperty Name="twitter" ColumnName="twitter" />
                 <ScalarProperty Name="linkedin" ColumnName="linkedin" />
+                <ScalarProperty Name="addressDetail" ColumnName="addressDetail" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -652,6 +673,15 @@
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
                 <ScalarProperty Name="likeNumber" ColumnName="likeNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="likenews">
+            <EntityTypeMapping TypeName="testdbs2425Model.likenew">
+              <MappingFragment StoreEntitySet="likenews">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="idnews" ColumnName="idnews" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

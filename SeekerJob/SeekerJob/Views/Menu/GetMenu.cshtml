@@ -62,11 +62,11 @@
                 })
                 .ToList()
         })
-        .Where(item => item.parts.Any()) // Ensure there are parts for this item
+        .Where(item => item.parts.Any())
         .SelectMany(item => item.parts)
         .ToList();
 
-    var serializedMenuItems = JsonConvert.SerializeObject(menuItems); // or System.Text.Json.JsonSerializer.Serialize(menuItems)
+    var serializedMenuItems = JsonConvert.SerializeObject(menuItems);
 }
 
 <script>
@@ -75,7 +75,6 @@
         var subMenu = null;
         var timeoutId = null;
 
-        // Inject server-side JSON into JavaScript
         var menuItems = @Html.Raw(serializedMenuItems);
 
         function createSubMenu() {
@@ -111,13 +110,12 @@
                 if (subMenu) {
                     subMenu.style.display = 'none';
                 }
-            }, 300); // Delay 300ms before hiding the menu
+            }, 300);
         }
 
         menuToggle.addEventListener("mouseenter", showMenu);
         menuToggle.addEventListener("mouseleave", hideMenu);
 
-        // Add event listeners to the submenu as well
         menuToggle.addEventListener("mouseover", function (event) {
             if (event.target.closest('.sub-menu-child')) {
                 showMenu();

@@ -56,6 +56,12 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -122,6 +128,9 @@
       <Private>True</Private>
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="X.PagedList, Version=10.2.1.0, Culture=neutral, PublicKeyToken=525ccaa9023f010c, processorArchitecture=MSIL">
+      <HintPath>..\packages\X.PagedList.10.2.1\lib\netstandard2.0\X.PagedList.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
@@ -130,7 +139,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Advertise.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
@@ -139,20 +148,29 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobDetailController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
+    <Compile Include="Controllers\ListNewsController.cs" />
     <Compile Include="Controllers\ManagerJobController.cs" />
     <Compile Include="Controllers\ManagerNewsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\NewsDetailController.cs" />
     <Compile Include="Controllers\PostJobController.cs" />
     <Compile Include="Controllers\PostNewsController.cs" />
+    <Compile Include="Controllers\ProfileCandidateController.cs" />
+    <Compile Include="Controllers\ProfileEmployerController.cs" />
     <Compile Include="Controllers\SavedJobCandidatesController.cs" />
     <Compile Include="CV.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
     <Compile Include="DTO\CombineJobUser.cs" />
+    <Compile Include="DTO\Combinelikenewscandidate.cs" />
+    <Compile Include="DTO\CombineNewsLikeEmployee.cs" />
+    <Compile Include="DTO\ComeNewsLikeNews.cs" />
     <Compile Include="DTO\FooterCombineTable.cs" />
     <Compile Include="DTO\JobApplicationViewModel.cs" />
     <Compile Include="DTO\JobEmployerViewModel.cs" />
+    <Compile Include="DTO\NewsViewModel.cs" />
+    <Compile Include="DTO\NewsWrapper.cs" />
     <Compile Include="DTO\SaveJobViewModal.cs" />
     <Compile Include="DTO\NewsCandidate.cs" />
     <Compile Include="DTO\NewsEmployee.cs" />
@@ -161,71 +179,74 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InforCandidate.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="InforEmployer.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="Job.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="likenew.cs">
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="ListCandidate.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
-    <Compile Include="MYDB.Context.cs">
+    <Compile Include="MyDBS.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MYDB.Context.tt</DependentUpon>
+      <DependentUpon>MyDBS.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MYDB.cs">
+    <Compile Include="MyDBS.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
-    <Compile Include="MYDB.Designer.cs">
+    <Compile Include="MyDBS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MYDB.edmx</DependentUpon>
+      <DependentUpon>MyDBS.edmx</DependentUpon>
     </Compile>
     <Compile Include="News.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="PageTitle.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveJob.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablebanner.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablebannerpart.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablefooter.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablefooterpart.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tableimagemenu.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenu.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenufunction.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenupart.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
     <Compile Include="TitlePage.cs">
-      <DependentUpon>MYDB.tt</DependentUpon>
+      <DependentUpon>MyDBS.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -270,15 +291,19 @@
     <Content Include="ContentImage\images\candidates\pic7.jpg" />
     <Content Include="ContentImage\images\candidates\pic8.jpg" />
     <Content Include="ContentImage\images\candidates\pic9.jpg" />
+    <Content Include="ContentImage\images\icons8-facebook-50.png" />
+    <Content Include="ContentImage\images\icons8-instagram-48.png" />
     <Content Include="ContentImage\images\icons8-like-50-blue.png" />
     <Content Include="ContentImage\images\icons8-like-50-yellow.png" />
     <Content Include="ContentImage\images\icons8-like-50.png" />
     <Content Include="ContentImage\images\icons8-like-50_gray.png" />
+    <Content Include="ContentImage\images\icons8-linkedin-48.png" />
     <Content Include="ContentImage\images\icons8-save-50-blue.png" />
     <Content Include="ContentImage\images\icons8-save-50-blue_2.png" />
     <Content Include="ContentImage\images\icons8-save-50.png" />
     <Content Include="ContentImage\images\icons8-save-50_gray.png" />
     <Content Include="ContentImage\images\icons8-save-50_green.png" />
+    <Content Include="ContentImage\images\icons8-twitter-48.png" />
     <Content Include="ContentImage\images\w1.png" />
     <Content Include="ContentImage\images\w2.png" />
     <Content Include="ContentImage\images\w3.png" />
@@ -388,18 +413,19 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\swiper-bundle.min.css" />
     <Content Include="Content\css\switcher.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="MYDB.Context.tt">
+    <Content Include="MyDBS.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MYDB.edmx</DependentUpon>
-      <LastGenOutput>MYDB.Context.cs</LastGenOutput>
+      <DependentUpon>MyDBS.edmx</DependentUpon>
+      <LastGenOutput>MyDBS.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MYDB.tt">
+    <Content Include="MyDBS.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MYDB.edmx</DependentUpon>
-      <LastGenOutput>MYDB.cs</LastGenOutput>
+      <DependentUpon>MyDBS.edmx</DependentUpon>
+      <LastGenOutput>MyDBS.cs</LastGenOutput>
     </Content>
     <Content Include="plugin\ckeditor\adapters\jquery.js" />
     <Content Include="plugin\ckeditor\build-config.js" />
@@ -1391,12 +1417,12 @@
     <Content Include="plugin\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="plugin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="plugin\ckfinder\userfiles\.htaccess" />
-    <EntityDeploy Include="MYDB.edmx">
+    <EntityDeploy Include="MyDBS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MYDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>MyDBS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="MYDB.edmx.diagram">
-      <DependentUpon>MYDB.edmx</DependentUpon>
+    <Content Include="MyDBS.edmx.diagram">
+      <DependentUpon>MyDBS.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1490,6 +1516,11 @@
     <Content Include="Views\ManagerNews\GetListNews.cshtml" />
     <Content Include="Views\JobDetail\IndexJobDetail.cshtml" />
     <Content Include="Views\JobDetail\ViewJobDetail.cshtml" />
+    <Content Include="Views\NewsDetail\ViewNewsDetail.cshtml" />
+    <Content Include="Views\ListNews\ViewListNew.cshtml" />
+    <Content Include="Views\ProfileEmployer\ViewProfile.cshtml" />
+    <Content Include="Views\ProfileEmployer\ViewProfileEmployer.cshtml" />
+    <Content Include="Views\ProfileCandidate\ViewProfileCandidate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

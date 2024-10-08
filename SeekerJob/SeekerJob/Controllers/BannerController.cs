@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class BannerController : Controller
     {
 
-        mydbs db = new mydbs();
+        testdbs2425Entities db = new testdbs2425Entities();
 
 
 
@@ -34,7 +34,7 @@ namespace SeekerJob.Controllers
                              select part).ToList();
             ViewData["tablepanners"] = tablepanners;
             ViewData["tablebannerparts"] = tablebannerparts;
-            ViewData["imgbanner"] = imgbanner;  // Might be null if no data is found
+            ViewData["imgbanner"] = imgbanner; 
             ViewData["imgperson"] = imgperson;
             return PartialView("GetBanner");
         }
