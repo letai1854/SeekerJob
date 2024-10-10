@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class ChangepasswordCandidateController : Controller
     {
         // GET: ChangepasswordCandidate
-        mydb db = new mydb();
+        MyDB db = new MyDB();
         public ActionResult Index()
         {
             return View();

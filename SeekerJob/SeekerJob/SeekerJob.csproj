@@ -174,7 +174,6 @@
     <Compile Include="Controllers\SavedJobCandidatesController.cs" />
     <Compile Include="Controllers\ViewListNewsController.cs" />
     <Compile Include="CV.cs">
-
       <DependentUpon>DBS.tt</DependentUpon>
 
     </Compile>
@@ -240,6 +239,23 @@
     <Compile Include="SaveJob.cs">
       <DependentUpon>DBS.tt</DependentUpon>
 
+      
+    <!-- <Compile Include="mydb.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mydb.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mydb.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="mydb.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>mydb.edmx</DependentUpon>
+    </Compile> -->
+   
     </Compile>
     <Compile Include="Services\JotFormService.cs" />
     <Compile Include="tablebanner.cs">
@@ -1558,6 +1574,7 @@
     <Content Include="Views\ProfileCandidates\GetListTitle.cshtml" />
     <Content Include="Views\ProfileCandidates\GetInfoCandidate.cshtml" />
     <Content Include="Views\Login\IndexLogin.cshtml" />
+
     <Content Include="Views\ListCV\IndexListCV.cshtml" />
     <Content Include="Views\ListCV\GetListCV.cshtml" />
     <Content Include="Views\ListCV\GetListCVTC.cshtml" />
