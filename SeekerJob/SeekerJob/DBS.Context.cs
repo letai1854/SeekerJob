@@ -13,10 +13,10 @@ namespace SeekerJob
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class MySql : DbContext
+    public partial class MyDB : DbContext
     {
-        public MySql()
-            : base("name=MySql")
+        public MyDB()
+            : base("name=MyDB")
         {
         }
     
@@ -25,6 +25,7 @@ namespace SeekerJob
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<AddCV> AddCVs { get; set; }
         public virtual DbSet<Advertise> Advertises { get; set; }
         public virtual DbSet<CV> CVs { get; set; }
         public virtual DbSet<InforCandidate> InforCandidates { get; set; }

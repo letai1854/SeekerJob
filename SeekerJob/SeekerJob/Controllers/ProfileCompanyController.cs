@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class ProfileCompanyController : Controller
     {
         // GET: ProfileCompany
-        MySql db = new MySql();
+        MyDB db = new MyDB();
         public ActionResult IndexProfileCompany()
         {
             return View();

@@ -1,0 +1,46 @@
+﻿@model   List<SeekerJob.AddCV>
+    
+
+
+
+
+<div class="masonry-wrap row d-flex">
+    <!--Block one-->
+    @foreach (var item in Model)
+    {
+        <div class="masonry-item col-lg-3 col-md-12">
+
+            <div class="blog-post twm-blog-post-1-outer">
+                <div class="wt-post-media">
+                    <img src="~/ContentImage/images/@item.image" alt="">
+                </div>
+                <div class="wt-post-info">
+                    <div class="wt-post-meta ">
+                        <ul>
+                        </ul>
+                    </div>
+                    <div class="wt-post-title ">
+                        <h4 class="post-title">
+                            @item.tilteBig
+                        </h4>
+                    </div>
+                    <div class="wt-post-text ">
+                        <p>
+                            @item.titleMall
+                        </p>
+                    </div>
+                    <div class="wt-post-readmore ">
+
+                        <a class="site-button-link site-text-primary" class="twm-nav-sign-up"
+                           data-bs-toggle="modal" href="@item.meta" role="button">Xem chi tiết</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+
+
+
+</div>

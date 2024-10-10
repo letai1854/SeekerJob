@@ -1,0 +1,13 @@
+﻿@model SeekerJob.DTO.FormViewModel
+
+@{
+    ViewBag.Title = "JotForm Display";
+}
+
+<h2>Form Content</h2>
+
+@Html.Raw(Model.FormHtml)  <!-- Safely render the HTML -->
+
+<br />
+
+

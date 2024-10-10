@@ -14,6 +14,16 @@ namespace SeekerJob
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+                name: "Mẫu cv",
+                url: "mau-cv",
+                defaults: new { controller = "ListCV", action = "IndexListCV", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+            name: "ShowFormWithDownload",
+            url: "JotForm/ShowFormWithDownload/{formId}",
+            defaults: new { controller = "JotForm", action = "ShowFormWithDownload", formId = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Danh sách việc làm",
                 url: "Danh-sach-viec-lam",
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }

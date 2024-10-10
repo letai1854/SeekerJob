@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     {
 
 
-        MySql db = new MySql();
+        MyDB db = new MyDB();
 
 
 

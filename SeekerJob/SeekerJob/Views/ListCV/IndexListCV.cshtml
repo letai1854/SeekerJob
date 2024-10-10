@@ -1,0 +1,714 @@
+﻿
+@{
+    ViewBag.Title = "IndexListCV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content">
+
+    <!-- INNER PAGE BANNER -->
+    <div class="wt-bnr-inr overlay-wraper bg-center" style="background-image:url(jobzilla/images/banner/1.jpg);">
+        <div class="overlay-main site-bg-white opacity-01"></div>
+        <div class="container">
+            <div class="wt-bnr-inr-entry">
+                <div class="banner-title-outer">
+                    <div class="banner-title-name">
+                        <h2 class="wt-title">Mẫu CV</h2>
+                    </div>
+                </div>
+                <!-- BREADCRUMB ROW -->
+
+                <div>
+                    <ul class="wt-breadcrumb breadcrumb-style-2">
+                        <li><a href="index-18.html">Trang Chủ</a></li>
+                        <li>Mẫu CV</li>
+                    </ul>
+                </div>
+
+                <!-- BREADCRUMB ROW END -->
+            </div>
+        </div>
+    </div>
+    <!-- INNER PAGE BANNER END -->
+    <!-- OUR BLOG START -->
+    <div class="section-full p-t120  p-b90 site-bg-white">
+        <div class="container">
+
+            <div class="" style="display: flex; align-items:center">
+                <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px">CV Chuyên nghiệp</h2>
+
+                <h5 style="border-left: 1px solid black; margin-left:10px">Đẳng cấp từ mọi chi tiết, thể hiện sự chuyên nghiệp của bạn!</h5>
+
+            </div>
+
+            @{Html.RenderAction("GetListCV", "ListCV"); }
+
+            <div class="" style="display: flex; align-items:center">
+                <h2 style="color:rgb(4, 35, 108); margin-right:10px; font-size:30px">CV Cơ Bản</h2>
+
+                <h5 style="border-left: 1px solid black; margin-left:10px">Tối giản nhưng mạnh mẽ, gây ấn tượng ngay từ cái nhìn đầu tiên</h5>
+
+            </div>
+
+            @{Html.RenderAction("GetListCVTC", "ListCV"); }
+
+
+
+        </div>
+    </div>
+    <!-- OUR BLOG END -->
+
+
+
+</div>
+
+
+
+
+<div class="modal fade twm-sign-up" id="cv1_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container" id="cv1">
+                <!-- Left Side -->
+                <div class="left-side">
+                    <img id="avatar1" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" onclick="document.getElementById('avatarInput1').click()">
+                    <input type="file" id="avatarInput1" onchange="loadAvatar(event, 'avatar1')" style="display: none;">
+
+                    <h2 contenteditable="true">Họ tên</h2>
+                    <p contenteditable="true">Vị trí ứng tuyển</p>
+                    <div class="section">
+                        <h3>Thông tin cá nhân</h3>
+                        <p contenteditable="true">01234 456 789</p>
+                        <p contenteditable="true">example@gmail.com</p>
+                        <p contenteditable="true">facebook.com///////</p>
+                        <p contenteditable="true">Quận 4, thành phố Hà Nội</p>
+                    </div>
+                    <div class="section">
+                        <h3>Các kỹ năng</h3>
+                        <p contenteditable="true">Kỹ năng 1</p>
+                        <p contenteditable="true">Kỹ năng 2</p>
+                    </div>
+                    <div class="section">
+                        <h3>Sở thích</h3>
+                        <p contenteditable="true">Sở thích của bạn</p>
+                    </div>
+                    <div class="section">
+                        <h3>Người giới thiệu</h3>
+                        <p contenteditable="true">Thông tin người giới thiệu</p>
+                    </div>
+                </div>
+
+                <!-- Right Side -->
+                <div class="right-side">
+                    <div class="section">
+                        <h3>Mục tiêu nghề nghiệp</h3>
+                        <p contenteditable="true">Mục tiêu nghề nghiệp của bạn</p>
+                    </div>
+                    <div class="section">
+                        <h3>Kinh nghiệm làm việc</h3>
+                        <p contenteditable="true">Vị trí công việc</p>
+                        <p contenteditable="true">Tên công ty</p>
+                        <p contenteditable="true">Mô tả kinh nghiệm làm việc</p>
+                    </div>
+                    <div class="section">
+                        <h3>Học vấn</h3>
+                        <p contenteditable="true">Ngành học / Môn học</p>
+                        <p contenteditable="true">Tên trường học</p>
+                        <p contenteditable="true">Bắt đầu - Kết thúc</p>
+                    </div>
+                    <div class="section">
+                        <h3>Danh hiệu và giải thưởng</h3>
+                        <p contenteditable="true">Thời gian</p>
+                        <p contenteditable="true">Tên giải thưởng</p>
+                    </div>
+                    <div class="section">
+                        <h3>Chứng chỉ</h3>
+                        <p contenteditable="true">Thời gian</p>
+                        <p contenteditable="true">Tên chứng chỉ</p>
+                    </div>
+                    <div class="section">
+                        <h3>Hoạt động</h3>
+                        <p contenteditable="true">Tên hoạt động</p>
+                        <p contenteditable="true">Vị trí của bạn</p>
+                    </div>
+                    <div class="section">
+                        <h3>Dự án</h3>
+                        <p contenteditable="true">Tên dự án</p>
+                        <p contenteditable="true">Khách hàng</p>
+                        <p contenteditable="true">Số lượng người tham gia</p>
+                        <p contenteditable="true">Công nghệ sử dụng</p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+<!--cv2-->
+<div class="modal fade twm-sign-up" id="cv2_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container1" id="cv2">
+                <!-- Header -->
+                <div class="header1">
+                    <div class="avatar-container">
+                        <img id="avatar2" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" onclick="document.getElementById('avatarInput2').click()">
+                        <input type="file" id="avatarInput2" onchange="loadAvatar(event, 'avatar2')" style="display: none;">
+                    </div>
+                    <div class="info">
+                        <h2 contenteditable="true">Họ tên</h2>
+                        <p contenteditable="true">Nhân viên kinh doanh</p>
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="personal-info">
+                    <p contenteditable="true">Nam | 19/05/1992</p>
+                    <p contenteditable="true">Số 10, đường 10, Top1</p>
+                    <p contenteditable="true">01234 456 789</p>
+                </div>
+
+                <!-- Sections -->
+                <div class="section">
+                    <h3>Học vấn</h3>
+                    <div class="section-content">
+                        <div class="left">
+                            <p contenteditable="true">Đại học TOP1, Quản trị Doanh nghiệp</p>
+                            <p contenteditable="true">10/2010 - 05/2014</p>
+                        </div>
+                        <div class="right">
+                            <p contenteditable="true">Tốt nghiệp loại Giỏi, điểm trung bình 8.0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Kinh nghiệm làm việc</h3>
+                    <div class="section-content">
+                        <div class="left">
+                            <p contenteditable="true">Công ty TOP1, Nhân viên bán hàng</p>
+                            <p contenteditable="true">05/2015 - Hiện tại</p>
+                        </div>
+                        <div class="right">
+                            <p contenteditable="true">- Hỗ trợ tư vấn khách hàng qua kênh online...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Các kỹ năng</h3>
+                    <div class="section-content">
+                        <div class="left">
+                            <p contenteditable="true">Tin học văn phòng TOP1</p>
+                        </div>
+                        <div class="right">
+                            <p contenteditable="true">- Sử dụng thành thạo các công cụ Word, Excel, PowerPoint</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Danh hiệu và giải thưởng</h3>
+                    <p contenteditable="true">2014: Nhân viên xuất sắc năm công ty TOP1</p>
+                </div>
+
+                <div class="section">
+                    <h3>Hoạt động</h3>
+                    <p contenteditable="true">Thành viên nhóm TOPCV Tình nguyện viên</p>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+<!--cv3-->
+<div class="modal fade twm-sign-up" id="cv3_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container2" id="cv3">
+                <!-- Header -->
+                <div class="header2">
+                    <div class="avatar-container">
+                        <img id="avatar3" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" onclick="document.getElementById('avatarInput3').click()">
+                        <input type="file" id="avatarInput3" onchange="loadAvatar(event, 'avatar3')" style="display: none;">
+                    </div>
+                    <div class="info">
+                        <h2 contenteditable="true">Họ tên</h2>
+                        <p contenteditable="true">Nhân viên kinh doanh</p>
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="personal-info2">
+                    <p contenteditable="true">Nam | 19/05/1992</p>
+                    <p contenteditable="true">Số 10, đường 10, Top1</p>
+                    <p contenteditable="true">01234 456 789</p>
+                </div>
+
+                <!-- Sections -->
+                <div class="section2">
+                    <h3>Học vấn</h3>
+                    <div class="section-content2">
+                        <div class="left">
+                            <p contenteditable="true">Đại học TOP1, Quản trị Doanh nghiệp</p>
+                            <p contenteditable="true">10/2010 - 05/2014</p>
+                        </div>
+                        <div class="right">
+                            <p contenteditable="true">Tốt nghiệp loại Giỏi, điểm trung bình 8.0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section2">
+                    <h3>Kinh nghiệm làm việc</h3>
+                    <div class="section-content">
+                        <div class="left">
+                            <p contenteditable="true">Công ty TOP1, Nhân viên bán hàng</p>
+                            <p contenteditable="true">05/2015 - Hiện tại</p>
+                        </div>
+                        <div class="right">
+                            <p contenteditable="true">- Hỗ trợ tư vấn khách hàng qua kênh online...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section2">
+                    <h3>Kỹ năng</h3>
+                    <div class="section-content">
+                        <div class="left">
+                            <p contenteditable="true">Tiếng anh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section2">
+                    <h3>Danh hiệu và giải thưởng</h3>
+                    <p contenteditable="true">2014: Nhân viên xuất sắc năm công ty TOPCV</p>
+                </div>
+
+                <div class="section2">
+                    <h3>Hoạt động</h3>
+                    <p contenteditable="true">Thành viên nhóm TOPCV Tình nguyện viên</p>
+                </div>
+
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+
+<div class="modal fade twm-sign-up" id="cv4_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container4" id="cv4">
+                <!-- Header -->
+
+                <div class="header4">
+                    <div class="info">
+                        <h1 contenteditable="true">Họ tên</h1>
+                        <p contenteditable="true">Nhân Viên Kinh Doanh</p>
+                    </div>
+                    <div class="avatar-container">
+                        <img id="avatar4" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" onclick="document.getElementById('avatarInput4').click()">
+                        <input type="file" id="avatarInput4" onchange="loadAvatar(event, 'avatar4')" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="personal-info4">
+                    <div>
+                        <p contenteditable="true"><strong>Ngày sinh:</strong> 19/05/1992</p>
+                        <p contenteditable="true"><strong>Điện thoại:</strong> 01234 456 789</p>
+                        <p contenteditable="true"><strong>Địa chỉ:</strong> Số 10, đường 10, TopCV</p>
+                    </div>
+                    <div>
+                        <p contenteditable="true"><strong>Giới tính:</strong> Nam</p>
+                        <p contenteditable="true"><strong>Email:</strong> diachiemail@gmail.com</p>
+                        <p contenteditable="true"><strong>Website:</strong> https://fb.com/topcv.vn</p>
+                    </div>
+                </div>
+
+                <!-- Career Objective -->
+                <div class="section4">
+                    <h2 contenteditable="true">Mục tiêu nghề nghiệp</h2>
+                    <p contenteditable="true">Áp dụng những kinh nghiệm và kỹ năng bán hàng và sự hiểu biết thị trường để trở thành một nhân viên bán hàng chuyên nghiệp, mang đến nhiều giá trị cho khách hàng. Từ đó giúp công ty tăng số lượng khách hàng và mở rộng tập khách hàng.</p>
+                </div>
+
+                <!-- Skills -->
+                <div class="section4 skills4">
+                    <h2 contenteditable="true">Kỹ năng</h2>
+                    <p contenteditable="true">Tin học</p>
+                    <p contenteditable="true">Tiếng anh</p>
+                </div>
+
+                <!-- Education and Experience -->
+                <div class="column-container4">
+                    <!-- Education -->
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Học vấn</h2>
+                            <p contenteditable="true"><strong>10/2010 - 05/2014</strong></p>
+                            <p contenteditable="true">Đại học TOPCV - Quản trị Doanh nghiệp</p>
+                            <p contenteditable="true">Tốt nghiệp loại Giỏi, điểm trung bình 8.0</p>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Kinh nghiệm làm việc</h2>
+                            <p contenteditable="true"><strong>03/2015 - Hiện tại</strong></p>
+                            <p contenteditable="true">Nhân viên bán hàng tại Công ty TOPCV</p>
+                            <p contenteditable="true">- Hỗ trợ tư vấn sản phẩm qua các kênh facebook, email, điện thoại.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards and Activities -->
+                <div class="column-container4">
+                    <!-- Awards -->
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Danh hiệu và giải thưởng</h2>
+                            <p contenteditable="true">Giải nhất Tài năng TOPCV 2013</p>
+                        </div>
+                    </div>
+
+                    <!-- Activities -->
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Hoạt động</h2>
+                            <p contenteditable="true">Tình nguyện viên tại TOPCV Tình nguyện 2014</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="column-container4">
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Sở thích</h2>
+                            <p contenteditable="true">Đọc sách, Đá bóng</p>
+                        </div>
+                    </div>
+
+                    <div class="column4">
+                        <div class="section4">
+                            <h2 contenteditable="true">Thông tin thêm</h2>
+                            <p contenteditable="true">Đã tiêm đủ 2 mũi vắc-xin.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+
+<div class="modal fade twm-sign-up" id="cv5_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container5" id="cv5">
+                <!-- Header -->
+                <div class="header5">
+                    <h1 contenteditable="true">Họ tên</h1>
+                    <p contenteditable="true">Nhân Viên Kinh Doanh</p>
+                    <div class="avatar-upload5">
+                        <img id="avatar5" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" class="avatar5 " onclick="document.getElementById('avatarInput5').click()">
+                        <input type="file" id="avatarInput5" onchange="loadAvatar(event, 'avatar5')" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="personal-info5">
+                    <div>
+                        <p contenteditable="true"><strong>Ngày sinh:</strong> 19/05/1992</p>
+                        <p contenteditable="true"><strong>Điện thoại:</strong> 01234 456 789</p>
+                        <p contenteditable="true"><strong>Địa chỉ:</strong> Số 10, đường 10, TopCV</p>
+                    </div>
+                    <div>
+                        <p contenteditable="true"><strong>Giới tính:</strong> Nam</p>
+                        <p contenteditable="true"><strong>Email:</strong> diachiemail@gmail.com</p>
+                        <p contenteditable="true"><strong>Website:</strong> https://topcv.vn</p>
+                    </div>
+                </div>
+
+                <!-- Career Objective -->
+                <div class="section5">
+                    <h2>Mục tiêu nghề nghiệp</h2>
+                    <p contenteditable="true">Áp dụng những kinh nghiệm và kỹ năng bán hàng để trở thành một nhân viên bán hàng chuyên nghiệp, mang lại giá trị cho khách hàng và giúp công ty phát triển.</p>
+                </div>
+
+                <!-- Skills -->
+                <div class="section5">
+                    <h2>Kỹ năng</h2>
+                    <p contenteditable="true">- Tin học văn phòng</p>
+                    <p contenteditable="true">- Tiếng Anh giao tiếp</p>
+                </div>
+
+                <!-- Education and Work Experience -->
+                <div class="column-container5">
+                    <!-- Education -->
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Học vấn</h2>
+                            <p contenteditable="true"><strong>10/2010 - 05/2014</strong></p>
+                            <p contenteditable="true">Đại học TOPCV - Quản trị Doanh nghiệp</p>
+                            <p contenteditable="true">Tốt nghiệp loại Giỏi, điểm trung bình 8.0</p>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Kinh nghiệm làm việc</h2>
+                            <p contenteditable="true"><strong>05/2015 - Hiện tại</strong></p>
+                            <p contenteditable="true">Nhân viên bán hàng tại Công ty TOPCV</p>
+                            <p contenteditable="true">- Hỗ trợ tư vấn sản phẩm qua các kênh online như Facebook, email, điện thoại.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards and Activities -->
+                <div class="column-container5">
+                    <!-- Awards -->
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Danh hiệu và giải thưởng</h2>
+                            <p contenteditable="true">Nhân viên xuất sắc năm 2014 tại TOPCV</p>
+                        </div>
+                    </div>
+
+                    <!-- Activities -->
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Hoạt động</h2>
+                            <p contenteditable="true">Tình nguyện viên tại TOPCV từ 2013 đến 2014</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Additional Information -->
+                <div class="column-container5">
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Sở thích</h2>
+                            <p contenteditable="true">Đọc sách, đá bóng</p>
+                        </div>
+                    </div>
+
+                    <div class="column5">
+                        <div class="section5">
+                            <h2>Người giới thiệu</h2>
+                            <p contenteditable="true">Chị Hoa - Trưởng phòng kinh doanh tại Công ty TOPCV</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+
+<div class="modal fade twm-sign-up" id="cv6_up_popup" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered " style="max-width: 1000px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="cv-container6" id="cv6">
+                <!-- Header -->
+                <div class="header6">
+                    <h1 contenteditable="true">Họ tên</h1>
+                    <p contenteditable="true">Nhân Viên Kinh Doanh</p>
+                    <div class="avatar-upload6">
+                        <img id="avatar6" src="~/ContentImage/images/candidates/pic1.jpg" alt="Avatar" class="avatar6" onclick="document.getElementById('avatarInput6').click()">
+                        <input type="file" id="avatarInput6" onchange="loadAvatar(event, 'avatar6')" style="display: none;">
+                    </div>
+                </div>
+
+                <!-- Personal Info -->
+                <div class="section6">
+                    <h2>Thông tin cá nhân</h2>
+                    <p contenteditable="true"><strong>Ngày sinh:</strong> 19/05/1992</p>
+                    <p contenteditable="true"><strong>Email:</strong> diachiemail@gmail.com</p>
+                    <p contenteditable="true"><strong>Điện thoại:</strong> 01234 456 789</p>
+                    <p contenteditable="true"><strong>Website:</strong> https://topcv.vn</p>
+                    <p contenteditable="true"><strong>Địa chỉ:</strong> Số 10, đường 10, TopCV</p>
+                </div>
+
+                <!-- Career Objective -->
+                <div class="section6">
+                    <h2>Mục tiêu nghề nghiệp</h2>
+                    <p contenteditable="true">Áp dụng những kinh nghiệm và kỹ năng bán hàng để trở thành một nhân viên bán hàng chuyên nghiệp, mang lại giá trị cho khách hàng và giúp công ty phát triển.</p>
+                </div>
+
+                <!-- Skills -->
+                <div class="section6">
+                    <h2>Kỹ năng</h2>
+                    <p contenteditable="true">- Tin học văn phòng</p>
+                    <p contenteditable="true">- Tiếng Anh giao tiếp</p>
+                </div>
+
+                <!-- Education and Work Experience -->
+                <div class="column-container6">
+                    <!-- Education -->
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Học vấn</h2>
+                            <p contenteditable="true"><strong>10/2010 - 05/2014</strong></p>
+                            <p contenteditable="true">Đại học TOPCV - Quản trị Doanh nghiệp</p>
+                            <p contenteditable="true">Tốt nghiệp loại Giỏi, điểm trung bình 8.0</p>
+                        </div>
+                    </div>
+
+                    <!-- Work Experience -->
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Kinh nghiệm làm việc</h2>
+                            <p contenteditable="true"><strong>03/2015 - Hiện tại</strong></p>
+                            <p contenteditable="true">Nhân viên bán hàng tại Công ty TOPCV</p>
+                            <p contenteditable="true">- Hỗ trợ tư vấn sản phẩm qua các kênh như Facebook, email, điện thoại.</p>
+                        </div>
+                        <div class="section6">
+                            <h2>Cửa hàng TOPCV</h2>
+                            <p contenteditable="true"><strong>06/2014 - 05/2015</strong></p>
+                            <p contenteditable="true">Bán hàng trực tiếp tại cửa hàng, lập báo cáo doanh thu hàng ngày.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Awards and Certifications -->
+                <div class="column-container6">
+                    <!-- Awards -->
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Danh hiệu và giải thưởng</h2>
+                            <p contenteditable="true">Nhân viên xuất sắc năm 2014 tại TOPCV</p>
+                        </div>
+                    </div>
+
+                    <!-- Certifications -->
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Chứng chỉ</h2>
+                            <p contenteditable="true">Giải nhất Tài năng TOPCV 2013</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="column-container6">
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Sở thích</h2>
+                            <p contenteditable="true">Đọc sách, đá bóng</p>
+                        </div>
+                    </div>
+
+                    <div class="column6">
+                        <div class="section6">
+                            <h2>Người giới thiệu</h2>
+                            <p contenteditable="true">Chị Hoa - Trưởng phòng kinh doanh tại Công ty TOPCV</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-7 col-xl-7"></div>
+                <div class="form-group col-5 col-xl-5" style="display: flex; justify-content: center;align-items:center; padding: 20px;">
+                    <button type="button" class="site-button" onclick="downloadCV()">Tải xuống PDF</button>
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+    <!--Model Popup Section End-->
+
+</div>
+

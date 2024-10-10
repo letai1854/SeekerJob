@@ -5,6 +5,17 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="testdbs2425Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AddCV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="tilteBig" Type="nvarchar(max)" />
+          <Property Name="titleMall" Type="nvarchar(max)" />
+          <Property Name="image" Type="varchar" MaxLength="200" />
+          <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="typeCv" Type="nvarchar" MaxLength="200" />
+        </EntityType>
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -115,6 +126,7 @@
           <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="password" Type="varchar" MaxLength="100" />
           <Property Name="status" Type="bit" />
+          <Property Name="typeRow" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -268,6 +280,7 @@
           <Property Name="typePage" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityContainer Name="testdbs2425ModelStoreContainer">
+          <EntitySet Name="AddCV" EntityType="Self.AddCV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Advertise" EntityType="Self.Advertise" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CV" EntityType="Self.CV" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InforCandidate" EntityType="Self.InforCandidate" Schema="dbo" store:Type="Tables" />
@@ -294,6 +307,17 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="testdbs2425Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AddCV">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="tilteBig" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="titleMall" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="typeCv" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="Advertise">
           <Key>
             <PropertyRef Name="id" />
@@ -404,6 +428,7 @@
           <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Boolean" />
+          <Property Name="typeRow" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="News">
           <Key>
@@ -556,7 +581,8 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MySql" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyDB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AddCVs" EntityType="Self.AddCV" />
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
           <EntitySet Name="InforCandidates" EntityType="Self.InforCandidate" />
@@ -583,7 +609,19 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MySql">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MyDB">
+          <EntitySetMapping Name="AddCVs">
+            <EntityTypeMapping TypeName="testdbs2425Model.AddCV">
+              <MappingFragment StoreEntitySet="AddCV">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="tilteBig" ColumnName="tilteBig" />
+                <ScalarProperty Name="titleMall" ColumnName="titleMall" />
+                <ScalarProperty Name="image" ColumnName="image" />
+                <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="typeCv" ColumnName="typeCv" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Advertises">
             <EntityTypeMapping TypeName="testdbs2425Model.Advertise">
               <MappingFragment StoreEntitySet="Advertise">
@@ -700,6 +738,7 @@
                 <ScalarProperty Name="username" ColumnName="username" />
                 <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="typeRow" ColumnName="typeRow" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
