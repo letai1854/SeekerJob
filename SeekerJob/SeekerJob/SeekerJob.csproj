@@ -138,13 +138,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddCV.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
     <Compile Include="Advertise.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminManageNewsController.cs" />
+    <Compile Include="Controllers\AdminManagePostController.cs" />
+    <Compile Include="Controllers\AdminManageUserController.cs" />
     <Compile Include="Controllers\BannerController.cs" />
+    <Compile Include="Controllers\ChangePassworCompanyController.cs" />
+    <Compile Include="Controllers\ChangepasswordCandidateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobDetailController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
@@ -160,8 +168,9 @@
     <Compile Include="Controllers\ProfileCandidatesController.cs" />
     <Compile Include="Controllers\ProfileCompanyController.cs" />
     <Compile Include="Controllers\SavedJobCandidatesController.cs" />
+    <Compile Include="Controllers\ViewListNewsController.cs" />
     <Compile Include="CV.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="DataSystem\data.cs" />
     <Compile Include="DTO\CombineJobUser.cs" />
@@ -181,74 +190,74 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InforCandidate.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="InforEmployer.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Job.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="likenew.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="ListCandidate.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="MySql.Context.cs">
+    <Compile Include="mydb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MySql.Context.tt</DependentUpon>
+      <DependentUpon>mydb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="MySql.cs">
+    <Compile Include="mydb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="MySql.Designer.cs">
+    <Compile Include="mydb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>MySql.edmx</DependentUpon>
+      <DependentUpon>mydb.edmx</DependentUpon>
     </Compile>
     <Compile Include="News.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="PageTitle.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SaveJob.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablebanner.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablebannerpart.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablefooter.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablefooterpart.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tableimagemenu.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenu.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenufunction.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="tablemenupart.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="TitlePage.cs">
-      <DependentUpon>MySql.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -419,15 +428,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="MySql.Context.tt">
+    <Content Include="mydb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MySql.edmx</DependentUpon>
-      <LastGenOutput>MySql.Context.cs</LastGenOutput>
+      <DependentUpon>mydb.edmx</DependentUpon>
+      <LastGenOutput>mydb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="MySql.tt">
+    <Content Include="mydb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>MySql.edmx</DependentUpon>
-      <LastGenOutput>MySql.cs</LastGenOutput>
+      <DependentUpon>mydb.edmx</DependentUpon>
+      <LastGenOutput>mydb.cs</LastGenOutput>
     </Content>
     <Content Include="plugin\ckeditor\adapters\jquery.js" />
     <Content Include="plugin\ckeditor\build-config.js" />
@@ -1419,12 +1428,12 @@
     <Content Include="plugin\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="plugin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="plugin\ckfinder\userfiles\.htaccess" />
-    <EntityDeploy Include="MySql.edmx">
+    <EntityDeploy Include="mydb.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>MySql.Designer.cs</LastGenOutput>
+      <LastGenOutput>mydb.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="MySql.edmx.diagram">
-      <DependentUpon>MySql.edmx</DependentUpon>
+    <Content Include="mydb.edmx.diagram">
+      <DependentUpon>mydb.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -1534,6 +1543,31 @@
     <Content Include="Views\ProfileCandidates\GetListTitle.cshtml" />
     <Content Include="Views\ProfileCandidates\GetInfoCandidate.cshtml" />
     <Content Include="Views\Login\IndexLogin.cshtml" />
+    <Content Include="Views\ViewListNews\ViewListNew.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\IndexChangePasswordCandidate.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\Changepassword.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\GetTitle.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\GetListChoosen.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\GetInfoChangepassword.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\IndexChangePassword.cshtml" />
+    <Content Include="Views\ChangepasswordCandidate\IndexViewChangePassword.cshtml" />
+    <Content Include="Views\ChangePassworCompany\IndexViewChangePassword.cshtml" />
+    <Content Include="Views\ChangePassworCompany\GetListTitle.cshtml" />
+    <Content Include="Views\ChangePassworCompany\GetInfoChangePassword.cshtml" />
+    <Content Include="Views\ChangePassworCompany\TitleChangePassword.cshtml" />
+    <Content Include="Views\AdminManageNews\IndexViewNews.cshtml" />
+    <Content Include="Views\AdminManageNews\TitleManageNews.cshtml" />
+    <Content Include="Views\AdminManageNews\GetListTitle.cshtml" />
+    <Content Include="Views\AdminManageNews\GetInfoChangePassword.cshtml" />
+    <Content Include="Views\AdminManageNews\GetListNews.cshtml" />
+    <Content Include="Views\AdminManagePost\IndexPost.cshtml" />
+    <Content Include="Views\AdminManagePost\TitleManagePost.cshtml" />
+    <Content Include="Views\AdminManagePost\GetListTitle.cshtml" />
+    <Content Include="Views\AdminManagePost\GetListPost.cshtml" />
+    <Content Include="Views\AdminManageUser\IndexUser.cshtml" />
+    <Content Include="Views\AdminManageUser\TitleManageUser.cshtml" />
+    <Content Include="Views\AdminManageUser\GetListUser.cshtml" />
+    <Content Include="Views\AdminManageUser\GetListTitle.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

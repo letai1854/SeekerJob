@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     {
         // GET: ManagerJob
 
-        MySql db = new MySql();
+        mydb db = new mydb();
         public ActionResult Index()
         {
             return View();

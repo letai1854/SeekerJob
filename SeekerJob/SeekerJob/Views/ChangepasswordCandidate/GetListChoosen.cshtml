@@ -1,12 +1,14 @@
 ﻿
-@model List<SeekerJob.tablebanner>
+@{ 
+    var table = ViewData["list"] as List<tablebanner>;
+}
 
 <div class="twm-nav-list-1">
     <ul>
         <ul>
-            @foreach (var item in Model)
+            @foreach (var item in table)
             {
-                if (item.meta == "Ho-so")
+                if (item.meta == "doi-mat-khau-ung-tuyen")
                 {
                     <li class="@item.active"><a href="@item.meta"><i class="@item.icon"></i> @item.name</a></li>
                 }
@@ -19,3 +21,4 @@
 
     </ul>
 </div>
+

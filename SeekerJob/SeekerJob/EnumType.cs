@@ -25,6 +25,12 @@ namespace SeekerJob
             titlepageManagerNews,
             titlepageProfileCompany,
             titlepageProfileCandidate,
+            changepasswordcandidate,
+            changepasswordcompany,
+            adminnews,
+            adminmange,
+            adminpost,
+            adminusers
         }
         public enum Banner
         {

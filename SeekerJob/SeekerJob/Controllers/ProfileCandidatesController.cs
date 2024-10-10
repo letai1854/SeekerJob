@@ -8,7 +8,7 @@ namespace SeekerJob.Controllers
 {
     public class ProfileCandidatesController : Controller
     {
-        MySql db = new MySql();
+        mydb db = new mydb();
         public ActionResult IndexProfileCandidate()
         {
             return View();

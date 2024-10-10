@@ -18,7 +18,7 @@
             if (item.name == "Trang chủ" && (item.hide ?? true))
             {
                 <li class="has-mega-menu">
-                    <a href="/@item.link" style="font-weight: 700; color: white; background-color: #0d052a">@item.name</a>
+                    <a href="/@item.meta" style="font-weight: 700; color: white; background-color: #0d052a">@item.name</a>
                 </li>
             }
             else
@@ -57,7 +57,7 @@
                 .Where(p => p.idtable == item.id && (p.hide ?? true))
                 .Select(p => new
                 {
-                    href = p.link,
+                    href = p.meta,
                     text = p.name
                 })
                 .ToList()
@@ -84,7 +84,7 @@
             menuItems.forEach(function (item) {
                 var li = document.createElement('li');
                 var a = document.createElement('a');
-                a.href = item.href;
+                a.href = "/"+item.href;
                 a.textContent = item.text;
                 li.appendChild(a);
                 ul.appendChild(li);
