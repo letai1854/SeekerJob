@@ -254,28 +254,73 @@
 
                 </div>
                 <div class="row" style="margin-top:30px">
+                    <div class="col-8">
+
                     <h3 style="margin-bottom:10px">Các việc làm liên quan</h3>
-                    @foreach (var item in listjob)
-                    {
-                        <div class="col-lg-3 col-md-6 col-sm-12 mb-4">
-                            <div class="job-card bg-white border p-3 d-flex flex-column align-items-stretch">
-                                <div class="job-card-image-wrapper position-relative">
-                                    <img src="~/ContentImage/images/@item.employer.image" alt="job-image" class="job-card-image">
+                        <div class="col-12">
+                            @foreach (var item in listjob)
+                            {
+                                <div class="col-12 mb-4" >
+                                    <div class="job-card bg-white border p-3 d-flex flex-column align-items-stretch">
+                                        <div class="d-flex">
+                                            <div class="job-card-image-wrapper position-relative">
+                                                <img src="~/ContentImage/images/@item.job.image" alt="job-image" class="job-card-image">
+                                            </div>
+                                            <div class="twm-mid-content" >
+                                                <div style="display:flex;">
+
+                                                    <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-job-title">
+                                                        <h4>@item.job.title</h4>
+                                                    </a>
+                                                    <p class="twm-job-post-duration"  style="margin-right:10px">/@relativeTime</p>
+                                                    <div style="display:flex; justify-content:flex-end">
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Fulltime.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category green"><span class="twm-bg-green">@item.job.jobcategory</span></div>
+
+                                                        }
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Parttime.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.job.jobcategory</span></div>
+
+                                                        }
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Internship.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.job.jobcategory</span></div>
+
+                                                        }
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Volunteer.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.job.jobcategory</span></div>
+
+                                                        }
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Freelance.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.job.jobcategory</span></div>
+
+                                                        }
+                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Temporary.ToString())
+                                                        {
+                                                            <div class="twm-jobs-category red"><span class="twm-bg-red">@item.job.jobcategory</span></div>
+                                                        }
+                                                    </div>
+                                                </div>
+                                                    <p class="twm-job-address" style="margin-right:10px">@item.job.addressdetail</p>
+
+
+                                            </div>
+
+                                        </div>
+                                        <div class="twm-right-content" style="display:flex; justify-content:flex-end">
+                                            
+                                            <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="job-card-content flex-grow-1 pl-4">
-                                    <a href="@item.job.id" class="job-title text-dark font-weight-bold">
-                                        <h4 style="font-size: 15px">@item.job.title<span class="text-success job-duration" style="font-size: 13px">/ @relativeTime</span></h4>
-                                    </a>
-                                    <p class="job-address text-muted mb-2" style="font-size: 13px">@item.job.addressdetail</p>
-                                </div>
-                                <div class="job-card-right-content text-right">
-                                    <div class="job-category badge badge-fulltime" style="font-size: 11px">@item.job.jobcategory</div>
-                                    <div class="job-salary text-dark font-weight-bold" style="font-size: 13px">$@item.job.offer <span class="text-success" style="font-size: 13px">/ Tháng</span></div>
-                                    <a href="@item.job.id" class="job-browse text-primary font-weight-bold" style="font-size: 13px">Browse Job</a>
-                                </div>
-                            </div>
+                            }
+
                         </div>
-                    }
+                    </div>
                 </div>
 
 

@@ -15,6 +15,7 @@ namespace SeekerJob.Controllers
 
 
 
+
         public ActionResult Index()
         {
             return View();

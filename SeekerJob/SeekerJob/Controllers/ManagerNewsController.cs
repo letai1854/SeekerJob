@@ -10,6 +10,7 @@ namespace SeekerJob.Controllers
     {
 
         MyDB db = new MyDB();
+
         public ActionResult IndexManagerNews()
         {
             return View();

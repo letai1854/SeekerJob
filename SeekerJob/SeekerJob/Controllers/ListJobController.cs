@@ -13,6 +13,7 @@ namespace SeekerJob.Controllers
 
         MyDB db = new MyDB();
 
+
         public ActionResult GetJobList()
         {
             return View();
@@ -49,6 +50,7 @@ namespace SeekerJob.Controllers
                                InforEmployer = i
                            }).ToList();
             ViewData["listjob"] = listjob;
+            ViewBag.metacontroller = "chi-tiet-viec-lam";
             return PartialView("GetListAllJob");
         }
     }

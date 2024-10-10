@@ -1,0 +1,25 @@
+﻿
+
+@{
+    var table = ViewData["list"] as List<tablebanner>;
+}
+
+<div class="twm-nav-list-1">
+    <ul>
+        <ul>
+            @foreach (var item in table)
+            {
+                if (item.meta == "admin-quan-ly-tin-tuc")
+                {
+                    <li class="@item.active"><a href="@item.meta"><i class="@item.icon"></i> @item.name</a></li>
+                }
+                else
+                {
+                    <li><a href="@item.meta"><i class="@item.icon"></i> @item.name</a></li>
+                }
+            }
+        </ul>
+
+    </ul>
+</div>
+

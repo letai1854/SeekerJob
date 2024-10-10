@@ -32,7 +32,7 @@
                                     <img src="~/ContentImage/images/@item.Job.image" alt="#">
                                 </div>
                                 <div class="twm-mid-content">
-                                    <a href="@item.Job.meta/@item.Job.id" class="twm-job-title">
+                                    <a href="/@ViewBag.metacontroller/@item.Job.meta/@item.Job.id" class="twm-job-title">
                                         <h4>@item.Job.title<span class="twm-job-post-duration">/@relativeTime</span></h4>
                                     </a>
                                     <p class="twm-job-address">@item.Job.addressdetail</p>
@@ -69,7 +69,7 @@
                                         <div class="twm-jobs-category red"><span class="twm-bg-red">@item.Job.jobcategory</span></div>
                                     }
                                     <div class="twm-jobs-amount">@item.Job.offer <span>/ Month</span></div>
-                                    <a href="@item.Job.meta/@item.Job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
+                                    <a href="/@ViewBag.metacontroller/@item.Job.meta/@item.Job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
                                 </div>
                             </div>
                         </td>

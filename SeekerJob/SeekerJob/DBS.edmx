@@ -582,6 +582,7 @@
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="MyDB" annotation:LazyLoadingEnabled="true">
+
           <EntitySet Name="AddCVs" EntityType="Self.AddCV" />
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />

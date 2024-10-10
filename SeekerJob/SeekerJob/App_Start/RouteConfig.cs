@@ -29,6 +29,32 @@ namespace SeekerJob
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Đổi mật khẩu tuyển dụng",
+                url: "doi-mat-khau-tuyen-dung",
+                defaults: new { controller = "ChangePassworCompany", action = "IndexViewChangePassword", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Admin quản lý tài khoản",
+                url: "admin-quan-ly-tai-khoan",
+                defaults: new { controller = "AdminManageUser", action = "IndexUser", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Admin quản lý tin tức",
+                url: "admin-quan-ly-tin-tuc",
+                defaults: new { controller = "AdminManageNews", action = "IndexViewNews", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Admin quản lý bài tuyển dụng",
+                url: "admin-quan-ly-bai-tuyen-dung",
+                defaults: new { controller = "AdminManagePost", action = "IndexPost", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Đổi mật khẩu thí sinh",
+                url: "doi-mat-khau-ung-tuyen",
+                defaults: new { controller = "ChangepasswordCandidate", action = "IndexViewChangePassword", id = UrlParameter.Optional }
+            );
+
+            routes.MapRoute(
                 name: "Hồ sơ thí sinh}",
                 url: "ho-so-thi-sinh/{id}",
                 defaults: new { controller = "ProfileCandidate", action = "ViewProfileCandidate", id = UrlParameter.Optional }
@@ -41,7 +67,7 @@ namespace SeekerJob
             routes.MapRoute(
                 name: "Danh sách tin tức",
                 url: "xem-tin-tuc",
-                defaults: new { controller = "ListNews", action = "ViewListNew", id = UrlParameter.Optional }
+                defaults: new { controller = "ViewListNews", action = "ViewListNew", id = UrlParameter.Optional }
             );
             routes.MapRoute(
                 name: "Chi tiết tin tức",
@@ -56,7 +82,7 @@ namespace SeekerJob
             );
             routes.MapRoute(
                 name: "Hồ sơ công ty",
-                url: "Ho-so-cong-ty",
+                url: "ho-so-tuyen-dung",
                 defaults: new { controller = "ProfileCompany", action = "IndexProfileCompany", id = UrlParameter.Optional }
             );
             routes.MapRoute(
@@ -95,6 +121,11 @@ namespace SeekerJob
                 url: "Dang-tuyen",
                 defaults: new { controller = "PostJob", action = "ShowPostJob", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                  name: "Trang chủ",
+                  url: "{trang-chu}",
+                  defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+              );
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

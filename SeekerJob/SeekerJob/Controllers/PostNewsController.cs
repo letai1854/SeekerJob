@@ -11,6 +11,7 @@ namespace SeekerJob.Controllers
         // GET: PostNews
 
         MyDB db = new MyDB();
+
         public ActionResult IndexPostNews()
         {
             return View();

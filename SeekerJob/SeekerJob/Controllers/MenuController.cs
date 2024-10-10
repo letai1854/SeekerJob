@@ -12,6 +12,7 @@ namespace SeekerJob.Controllers
 
         MyDB db = new MyDB();
 
+
         public ActionResult Index()
         {
 

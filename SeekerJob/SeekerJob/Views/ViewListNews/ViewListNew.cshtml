@@ -1,0 +1,262 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@{
+    var infocandidatelist = ViewBag.infocandidatelist as List<SeekerJob.DTO.NewsCandidate>;
+    var infoemployeelist = ViewBag.infoemployeelist as List<SeekerJob.DTO.NewsEmployee>;
+
+    var newslike = ViewBag.newslike as List<SeekerJob.DTO.ComeNewsLikeNews>;
+    //var pagelist = ViewBag.pagedList as List<SeekerJob.DTO.NewsWrapper>;
+
+}
+@{
+    var pagelist = ViewBag.pagedList as IPagedList<SeekerJob.DTO.NewsWrapper>;
+}
+
+
+@{
+    ViewBag.Title = "ViewListNew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .masonry-item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .twm-blog-post-1-outer {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100%; /* Đảm bảo chiều cao thẻ đầy đủ */
+    }
+
+    .wt-post-info {
+        flex-grow: 1;
+    }
+
+    .wt-post-text p {
+        display: -webkit-box;
+        -webkit-line-clamp: 4; /* Số dòng giới hạn */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        height: 60px; /* Chiều cao tối đa cho đoạn text */
+    }
+
+    /* Đảm bảo hình ảnh và nội dung có chiều cao cân bằng */
+    .wt-post-media img {
+        width: 100%;
+        height: auto;
+        max-height: 200px; /* Chiều cao tối đa của hình ảnh */
+        object-fit: cover;
+    }
+
+    .masonry-item {
+        margin-bottom: 20px;
+    }
+
+    .wt-post-readmore {
+        margin-top: auto;
+    }
+
+    .pagination-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+    }
+
+    .pagination-content {
+        display: inline-block;
+        padding: 10px 15px;
+        border-radius: 4px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+        .pagination-content a, .pagination-content span {
+            display: inline-block;
+            margin: 0 5px;
+            padding: 8px 12px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #dee2e6;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+            .pagination-content a:hover {
+                background-color: #007bff;
+                color: #fff;
+            }
+
+        .pagination-content .active a, .pagination-content .active span {
+            background-color: #0d052a; /* Orange background for active page */
+            color: #fff;
+            border-color: #0d052a;
+        }
+
+        .pagination-content a.disabled, .pagination-content a.disabled:hover {
+            color: #6c757d;
+            background-color: #e9ecef;
+            border-color: #dee2e6;
+            cursor: not-allowed;
+        }
+</style>
+<div class="page-content" style="margin-top:-120px">
+
+    <!-- INNER PAGE BANNER -->
+    <div class="wt-bnr-inr overlay-wraper bg-center">
+        <div class="overlay-main site-bg-white opacity-01"></div>
+        <div class="container">
+            <div class="wt-bnr-inr-entry">
+                <div class="banner-title-outer">
+                    <div class="banner-title-name">
+                        <h2 class="wt-title">Cập nhật tin tức mới mỗi ngày</h2>
+                    </div>
+                </div>
+
+                <div>
+                    <ul class="wt-breadcrumb breadcrumb-style-2">
+                        <li>Tin tức hấp dẫn</li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="section-full p-t120  p-b90 site-bg-white">
+
+
+        <div class="container">
+            <div class="row d-flex">
+                <div class="col-lg-8 col-md-12">
+
+                    <div class="row">
+                        @if (pagelist != null)
+                        {
+                            foreach (var item in pagelist)
+                            {
+                                <div class="masonry-item col-lg-6 col-md-12">
+                                    <div class="blog-post twm-blog-post-1-outer">
+                                        <div class="wt-post-media">
+                                            <a href="/@ViewBag.metacontroller/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.meta : item.NewsCandidate.newsinfo.meta)/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.id : item.NewsCandidate.newsinfo.id)">
+                                                <img class="img_news" src="~/ContentImage/images/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.image : item.NewsCandidate.newsinfo.image)" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="wt-post-info">
+                                            <div class="wt-post-meta">
+                                                <ul>
+                                                    <li class="post-date">
+                                                        @{
+                                                            var dayPost = item.NewsEmployee?.newsinfo.daypost ?? item.NewsCandidate?.newsinfo.daypost;
+                                                            if (dayPost != null)
+                                                            {
+                                                                @dayPost.Value.ToString("dd/MM/yyyy")
+                                                            }
+                                                            else
+                                                            {
+                                                                @:No Date Available
+                                                            }
+                                                        }
+                                                    </li>
+                                                    <li class="post-author">
+                                                        By
+                                                        <a href="candidate-detail.html">
+                                                            @(item.NewsEmployee != null ? item.NewsEmployee.inforEmployer.namecompany : item.NewsCandidate.inforCandidate.name)
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="wt-post-title">
+                                                <h4 class="post-title">
+                                                    <a href="@ViewBag.metacontroller/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.meta : item.NewsCandidate.newsinfo.meta)/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.id : item.NewsCandidate.newsinfo.id)">
+                                                        @(item.NewsEmployee?.newsinfo.title ?? item.NewsCandidate?.newsinfo.title)
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                            <div class="wt-post-text">
+                                                <p>@(item.NewsEmployee?.newsinfo.shortbref ?? item.NewsCandidate?.newsinfo.shortbref)</p>
+                                            </div>
+                                            <div class="wt-post-readmore">
+                                                <a href="/@ViewBag.metacontroller/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.meta : item.NewsCandidate.newsinfo.meta)/@(item.NewsEmployee != null ? item.NewsEmployee.newsinfo.id : item.NewsCandidate.newsinfo.id)" class="site-button-link site-text-primary">Read More</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                        <!-- Pagination -->
+                        <div class="pagination-container">
+                            <div class="pagination-content">
+                                @Html.PagedListPager((IPagedList<SeekerJob.DTO.NewsWrapper>)ViewBag.pagedList, page => Url.Action("ViewListNew", new { page = page }), PagedListRenderOptions.Classic)
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-lg-4 col-md-12 rightSidebar">
+
+                    <div class="side-bar">
+                        <div class="widget search-bx">
+
+                            <form role="search" method="post">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search">
+                                    <button class="btn" type="button" id="button-addon2"><i class="feather-search"></i></button>
+                                </div>
+                            </form>
+
+                        </div>
+
+
+                        <div class="widget recent-posts-entry">
+                            <h4 class="section-head-small mb-4">Featured news</h4>
+                            <div class="section-content">
+                                <div class="widget-post-bx">
+                                    @if (newslike != null)
+                                    {
+                                        foreach (var item in newslike)
+                                        {
+                                            <div class="widget-post clearfix">
+                                                <div class="wt-post-media">
+                                                    <img src="~/ContentImage/images/@item.Image" alt="">
+                                                </div>
+                                                <div class="wt-post-info">
+                                                    <div class="wt-post-header">
+                                                        <span class="post-date">@item.DayPost</span>
+                                                        <span class="post-title">
+                                                            <a href="/@ViewBag.metacontroller/@item.Meta/@item.Id">@item.Title</a>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- OUR BLOG END -->
+
+
+
+</div>
