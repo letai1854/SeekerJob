@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class AdminManageNewsController : Controller
     {
         // GET: AdminManageNews
-        mydb db = new mydb();
+        mysql db = new mysql();
         public ActionResult Index()
         {
             return View();
@@ -62,7 +62,7 @@ namespace SeekerJob.Controllers
             ViewData["listnewscandidate"] = listnewscandidate;
             ViewData["listnewsemployer"] = listnewsemployer;
             ViewBag.tintuc = "Chi-tiet-tin-tuc";
-            ViewBag.suatintuc = "sua-tin-tuc";
+            ViewBag.suatintuc = "Sua-tin-tuc";
             return PartialView();
         }
     }

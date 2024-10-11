@@ -19,5 +19,6 @@ namespace SeekerJob
         public string titleMall { get; set; }
         public string image { get; set; }
         public string meta { get; set; }
+        public string typeCv { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     {
         // GET: JobDetail
 
-        mydb db = new mydb();
+        mysql db = new mysql();
         public ActionResult Index(long id)
         {
             var job = db.Jobs.Where(t=>t.id==id).FirstOrDefault();

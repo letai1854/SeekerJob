@@ -14,6 +14,7 @@
           <Property Name="titleMall" Type="nvarchar(max)" />
           <Property Name="image" Type="varchar" MaxLength="200" />
           <Property Name="meta" Type="varchar" MaxLength="200" />
+          <Property Name="typeCv" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Advertise">
           <Key>
@@ -188,6 +189,7 @@
           <Property Name="hide" Type="bit" />
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typeRow" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tablefooter">
           <Key>
@@ -315,6 +317,7 @@
           <Property Name="titleMall" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="image" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="meta" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="typeCv" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Advertise">
           <Key>
@@ -489,6 +492,7 @@
           <Property Name="hide" Type="Boolean" />
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typeRow" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tablefooter">
           <Key>
@@ -579,7 +583,7 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="mydb" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="mysql" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddCVs" EntityType="Self.AddCV" />
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
@@ -607,7 +611,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="mydb">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="mysql">
           <EntitySetMapping Name="AddCVs">
             <EntityTypeMapping TypeName="testdbs2425Model.AddCV">
               <MappingFragment StoreEntitySet="AddCV">
@@ -616,6 +620,7 @@
                 <ScalarProperty Name="titleMall" ColumnName="titleMall" />
                 <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="meta" ColumnName="meta" />
+                <ScalarProperty Name="typeCv" ColumnName="typeCv" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -803,6 +808,7 @@
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="arrange" ColumnName="arrange" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typeRow" ColumnName="typeRow" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

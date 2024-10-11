@@ -12,7 +12,7 @@ namespace SeekerJob.Controllers
     {
         // GET: SavedJobCandidates
 
-        mydb db = new mydb();
+        mysql db = new mysql();
         public ActionResult Index()
         {
             return View();

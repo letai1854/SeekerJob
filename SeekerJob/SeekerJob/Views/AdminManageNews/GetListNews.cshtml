@@ -105,15 +105,20 @@
                                 <div class="twm-table-controls">
                                     <ul class="twm-DT-controls-icon list-unstyled">
                                         <li>
-                                            <a data-bs-toggle="modal" href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id" role="button" class="custom-toltip">
-                                                <span class="fa fa-eye"></span>
-                                                <span class="custom-toltip-block">Veiw</span>
-                                            </a>
+                                                <a href="/@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id">
+                                                    <button title="View" type="button" data-bs-toggle="tooltip" data-bs-placement="top">
+
+                                                        <span class="fa fa-eye"></span>
+                                                    </button>
+
+                                                </a>
                                         </li>
                                         <li>
-                                            <a data-bs-toggle="modal" href="@ViewBag.suatintuc/@item.newsinfo.meta/@item.newsinfo.id" role="button" class="custom-toltip">
-                                                <span class="fa fa-edit"></span>
-                                                <span class="custom-toltip-block">Edit</span>
+                                            <a href="/@ViewBag.suatintuc/@item.newsinfo.meta/@item.newsinfo.id">
+                                                <button title="Edit" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                    <span class="fa fa-edit"></span>
+                                                </button>
+
                                             </a>
                                         </li>
                                         <li>

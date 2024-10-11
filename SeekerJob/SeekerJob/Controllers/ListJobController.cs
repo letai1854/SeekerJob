@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     {
 
 
-        mydb db = new mydb();
+        mysql db = new mysql();
 
         public ActionResult GetJobList()
         {

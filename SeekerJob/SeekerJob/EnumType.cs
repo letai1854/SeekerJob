@@ -30,7 +30,11 @@ namespace SeekerJob
             adminnews,
             adminmange,
             adminpost,
-            adminusers
+            adminusers,
+            adminadv,
+            advproduct,
+            advnews,
+            advcompany
         }
         public enum Banner
         {

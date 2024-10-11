@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     public class AdminManageUserController : Controller
     {
         // GET: AdminManageUser
-        mydb db = new mydb();
+        mysql db = new mysql();
         public ActionResult Index()
         {
             return View();

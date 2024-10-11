@@ -12,12 +12,21 @@ namespace SeekerJob
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+                 name: "Chi tiết tin tức",
+                 url: "Chi-tiet-tin-tuc/{meta}/{id}",
+                 defaults: new { controller = "NewsDetail", action = "ViewNewsDetail", id = UrlParameter.Optional }
+             );
             routes.MapRoute(
                 name: "Danh sách việc làm",
                 url: "Danh-sach-viec-lam",
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+               name: "Sửa tin tức",
+               url: "Sua-tin-tuc/{meta}/{id}",
+               defaults: new { controller = "EditNews", action = "IndexPostNews", id = UrlParameter.Optional }
+           );
             routes.MapRoute(
                 name: "Đổi mật khẩu tuyển dụng",
                 url: "doi-mat-khau-tuyen-dung",
@@ -28,6 +37,13 @@ namespace SeekerJob
                 url: "admin-quan-ly-tai-khoan",
                 defaults: new { controller = "AdminManageUser", action = "IndexUser", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "Admin quản lý quảng cáo",
+                url: "admin-quan-ly-quang-cao",
+                defaults: new { controller = "AdminManageAdvertisement", action = "IndexViewAdverstisement", id = UrlParameter.Optional }
+            );
+
             routes.MapRoute(
                 name: "Admin quản lý tin tức",
                 url: "admin-quan-ly-tin-tuc",
@@ -59,11 +75,7 @@ namespace SeekerJob
                 url: "xem-tin-tuc",
                 defaults: new { controller = "ViewListNews", action = "ViewListNew", id = UrlParameter.Optional }
             );
-            routes.MapRoute(
-                name: "Chi tiết tin tức",
-                url: "Chi-tiet-tin-tuc/{meta}/{id}",
-                defaults: new { controller = "NewsDetail", action = "ViewNewsDetail", id = UrlParameter.Optional }
-            );
+ 
 
            routes.MapRoute(
                 name: "Đăng nhập",
