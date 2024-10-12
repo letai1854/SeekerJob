@@ -4,13 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
 namespace SeekerJob.Controllers
 {
     public class AdminManagePostController : Controller
     {
         // GET: AdminManagePost
-        mysql db = new mysql();
+
+        mydatabase db = new mydatabase();
         public ActionResult Index()
         {
             return View();

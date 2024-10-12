@@ -11,7 +11,10 @@ namespace SeekerJob.Controllers
     {
         // GET: ManagerJob
 
-        mysql db = new mysql();
+
+
+        mydatabase db = new mydatabase();
+
         public ActionResult Index()
         {
             return View();
@@ -40,6 +43,7 @@ namespace SeekerJob.Controllers
                           where j.username == "tuanta"
                           group l by new
                           {
+                              j.meta,
                               j.title,
                               j.offer,
                               j.startday,
@@ -55,7 +59,9 @@ namespace SeekerJob.Controllers
                               JobCategory = g.Key.jobcategory,
                               Address = g.Key.address,
                               IdJob = (int)g.Key.idjob,
-                              CandidateCount = g.Count()
+                              CandidateCount = g.Count(),
+                              meta = g.Key.meta,
+
                           }).ToList();
 
             ViewBag.vieclam = "Viec-lam";
@@ -63,5 +69,24 @@ namespace SeekerJob.Controllers
             ViewData["applyjob"] = result;
             return PartialView("GetListApplyJob");
         }
+        public ActionResult GetListCandidateApplyJob(int id)
+        {
+            var result = (from j in db.Jobs
+                          join l in db.ListCandidates on j.id equals l.idjob
+                          join i in db.InforCandidates on l.usernamecandidate equals i.username
+                          where j.id == id
+                          select new ListCandidateApplyJob
+                          {
+                             id=  j.id,
+                             image = i.image,
+                             name=  i.name,
+                             filecandidate = l.filecandiate,
+                              datesend =  l.datesend
+                          }).ToList();
+
+            ViewData["applyjobcandidate"] = result;
+            return PartialView("GetListCandidateApplyJob");
+        }
+
     }
 }

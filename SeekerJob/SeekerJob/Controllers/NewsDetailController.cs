@@ -10,7 +10,10 @@ namespace SeekerJob.Controllers
     public class NewsDetailController : Controller
     {
         // GET: NewsDetail
-        mysql db = new mysql();
+
+
+        mydatabase db = new mydatabase();
+
         public ActionResult Index()
         {
             return View();

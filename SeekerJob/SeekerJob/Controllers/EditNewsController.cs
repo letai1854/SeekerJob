@@ -9,7 +9,8 @@ namespace SeekerJob.Controllers
     public class EditNewsController : Controller
     {
         // GET: EditNews
-        mysql db = new mysql();
+        mydatabase db = new mydatabase();
+
         public ActionResult Index()
         {
             return View();

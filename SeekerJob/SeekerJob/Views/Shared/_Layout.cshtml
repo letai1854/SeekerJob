@@ -537,27 +537,27 @@
     .no-wrap {
         white-space: nowrap; /* Ngăn không cho xuống dòng */
     }
+
     .twm-log-reg-logo-head {
-     
-        padding: 20px 0px 10px 0px; 
+        padding: 20px 0px 10px 0px;
     }
 
     .form-control {
-        background-color: #d3d4d682;
-    }
-    .twm-nav-sign-up {
-        color: inherit; 
-        transition: color 0.3s ease; 
+        background-color: #f6f7fb82;
     }
 
-    .twm-nav-sign-up:hover {
-            color: blue; /* Màu xanh dương khi hover */
-       
+
+    .twm-nav-sign-up {
+        color: inherit;
+        transition: color 0.3s ease;
     }
+
+        .twm-nav-sign-up:hover {
+            color: blue; /* Màu xanh dương khi hover */
+        }
 
     .job-card:hover {
-    
-        transform: scale(1.02) !important ;
+        transform: scale(1.02) !important;
     }
 
 
@@ -566,6 +566,537 @@
             transition: color 0.2s ease;
         }
 
+    .cv-container {
+        display: flex;
+        width: 100%;
+        max-width: 1200px;
+        margin: 20px auto;
+        background-color: white;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .left-side {
+        background-color: #333;
+        color: white;
+        width: 30%;
+        padding: 20px;
+    }
+
+        .left-side img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            display: block;
+            margin: 0 auto 20px;
+            cursor: pointer; /* Thêm hiệu ứng con trỏ để nhấn vào ảnh */
+        }
+
+        .left-side h2 {
+            text-align: center;
+            color: #fdb515;
+        }
+
+        .left-side p {
+            color: white;
+        }
+
+        .left-side .section {
+            margin-bottom: 20px;
+        }
+
+    .right-side {
+        width: 70%;
+        padding: 20px;
+    }
+
+        .right-side h3 {
+            color: #fdb515;
+            border-bottom: 1px solid #fdb515;
+            padding-bottom: 5px;
+        }
+
+    .editable {
+        background-color: #f9f9f9;
+        border: none;
+        width: 100%;
+        padding: 5px;
+        margin-bottom: 10px;
+        box-sizing: border-box;
+    }
+
+        .editable:focus {
+            outline: none;
+            background-color: #e9e9e9;
+        }
+
+    .cv-container1 {
+        display: flex;
+        flex-direction: column;
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 30px;
+    }
+
+    .header1 {
+        display: flex;
+        justify-content: space-between;
+        background-color: #e6f7f9;
+        padding: 20px;
+        border-radius: 8px;
+    }
+
+        .header1 .avatar-container1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header1 img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #f1f1f1;
+            cursor: pointer;
+        }
+
+        .header1 .info {
+            text-align: center;
+        }
+
+            .header1 .info h2 {
+                font-size: 24px;
+                color: #333;
+                margin: 10px 0;
+            }
+
+            .header1 .info p {
+                font-size: 14px;
+                color: #999;
+            }
+
+    .personal-info {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        background-color: #f1f9fb;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+        .personal-info p {
+            font-size: 14px;
+            color: #666;
+            margin: 5px 0;
+        }
+
+    .section {
+        margin-top: 30px;
+    }
+
+        .section h3 {
+            font-size: 18px;
+            color: #39a7c6;
+            border-bottom: 2px solid #39a7c6;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+    .section-content {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .section-content .left, .section-content .right {
+            width: 48%;
+        }
+
+        .section-content p {
+            font-size: 14px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+    .cv-container2 {
+        margin: 20px auto;
+        background-color: white;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+    .header2 {
+        display: flex;
+        justify-content: space-between;
+        background-color: #d4f1d4;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+        .header2 .avatar-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .header2 img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 2px solid #f1f1f1;
+            cursor: pointer;
+        }
+
+        .header2 .info {
+            flex-grow: 1;
+            padding-left: 20px;
+        }
+
+            .header2 .info h2 {
+                font-size: 24px;
+                color: #2b8a3e;
+                margin: 5px 0;
+            }
+
+            .header2 .info p {
+                font-size: 14px;
+                color: #666;
+            }
+
+    .personal-info2 {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 20px;
+        background-color: #f0f9f0;
+        padding: 10px;
+        border-radius: 10px;
+    }
+
+        .personal-info2 p {
+            font-size: 14px;
+            color: #444;
+            margin: 0;
+        }
+
+    .section2 {
+        margin-top: 30px;
+    }
+
+        .section2 h3 {
+            font-size: 18px;
+            color: #4caf50;
+            border-bottom: 2px solid #4caf50;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+    .section-content2 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+        .section-content2 .left, .section-content2 .right {
+            width: 48%;
+        }
+
+        .section-content2 p {
+            font-size: 14px;
+            color: #333;
+            margin: 5px 0;
+        }
+
+    .skills-bar {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+        .skills-bar span {
+            width: 100px;
+        }
+
+        .skills-bar .progress {
+            flex-grow: 1;
+            height: 10px;
+            background-color: #ddd;
+            margin-left: 10px;
+            border-radius: 5px;
+        }
+
+        .skills-bar .progress-fill {
+            height: 10px;
+            background-color: #4caf50;
+            border-radius: 5px;
+        }
+
+    .cv-container4 {
+        width: 800px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .header4 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+        .header4 .info {
+            flex-grow: 1;
+        }
+
+            .header4 .info h1 {
+                font-size: 28px;
+                margin: 0;
+                color: #333;
+            }
+
+            .header4 .info p {
+                font-size: 14px;
+                color: #777;
+                margin: 5px 0;
+            }
+
+        .header4 .avatar-container {
+            text-align: center;
+        }
+
+            .header4 .avatar-container img {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;
+                background-color: #e0e0e0;
+                cursor: pointer;
+            }
+
+            .header4 .avatar-container p {
+                margin-top: 10px;
+                font-size: 12px;
+                color: #999;
+            }
+
+    .personal-info4 {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .section4 {
+        margin-bottom: 20px;
+    }
+
+        .section4 h2 {
+            font-size: 16px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .section4 p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+    .skills4 .skill-bar {
+        margin-bottom: 10px;
+    }
+
+        .skills4 .skill-bar span {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .skills4 .skill-bar .progress {
+            height: 8px;
+            background-color: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 5px;
+        }
+
+            .skills4 .skill-bar .progress .fill {
+                background-color: #4CAF50;
+                height: 100%;
+            }
+
+    .column-container4 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column4 {
+        width: 48%;
+    }
+
+    .cv-container5 {
+        width: 800px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    .header5 {
+        text-align: center;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #4CAF50;
+    }
+
+        .header5 h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .header5 p {
+            font-size: 14px;
+            color: #777;
+        }
+
+    .personal-info5 {
+        display: flex;
+        justify-content: space-between;
+        margin: 20px 0;
+        font-size: 14px;
+        color: #555;
+    }
+
+        .personal-info5 div {
+            width: 48%;
+        }
+
+    .section5 {
+        margin-bottom: 20px;
+    }
+
+        .section5 h2 {
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            margin: 0 -20px 10px -20px;
+            text-align: center;
+        }
+
+        .section5 p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+    .column-container5 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column5 {
+        width: 48%;
+    }
+
+    .avatar5 {
+        display: block;
+        margin: 10px auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        object-fit: cover;
+        cursor: pointer;
+    }
+
+    .avatar-upload5 {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        cursor: pointer;
+    }
+
+    .cv-container6 {
+        width: 800px;
+        margin: 20px auto;
+        background-color: white;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        color: #333;
+    }
+
+    .header6 {
+        text-align: left;
+        padding-bottom: 20px;
+        border-bottom: 2px solid #007ACC;
+    }
+
+        .header6 h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #007ACC;
+        }
+
+        .header6 p {
+            font-size: 14px;
+            color: #007ACC;
+        }
+
+    .avatar6 {
+        float: right;
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        object-fit: cover;
+    }
+
+    .section6 {
+        margin-bottom: 20px;
+    }
+
+        .section6 h2 {
+            font-size: 18px;
+            color: #007ACC;
+            margin-bottom: 10px;
+        }
+
+        .section6 p {
+            margin: 5px 0;
+        }
+
+    .column-container6 {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .column6 {
+        width: 48%;
+    }
+
+    .skills6 p, .experience p, .education p {
+        margin: 0;
+        padding: 5px 0;
+    }
+
+    .section-title6 {
+        font-weight: bold;
+    }
+
+    .avatar-upload6 {
+        text-align: center;
+        font-size: 12px;
+        color: #999;
+        cursor: pointer;
+    }
 </style>
 
 <body data-anm=".anm">
@@ -634,7 +1165,6 @@
     <!-- CONTENT START -->
     @RenderBody()
 
-
     @{ Html.RenderAction("GetFooter", "Home");}
     <button class="scroltop "><span class="fa fa-angle-up relative " id="btn-vibrate "></span></button>
 
@@ -670,7 +1200,7 @@
 
                                         <div class="col-lg-12 ">
                                             <div class="form-group mb-3 ">
-                                                <input name="username " type="text " required=" " class="form-control " placeholder="Usearname* ">
+                                                <input name="username " type="text " required="form-control " class="form-control " placeholder="Usearname* ">
                                             </div>
                                         </div>
 
@@ -777,7 +1307,7 @@
 
     </div>
     <!--Login popup -->
-    <div class="modal fade twm-sign-up " id="sign_up_popup2 " aria-hidden="true " aria-labelledby="sign_up_popupLabel2 " tabindex="-1 ">
+    <div class="modal fade twm-sign-up " id="sign_up_popup3 " aria-hidden="true " aria-labelledby="sign_up_popupLabel2 " tabindex="-1 ">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content ">
 
@@ -892,86 +1422,216 @@
             </div>
         </div>
     </div>
-    <!--Model Popup Section End-->
-    <div class="modal fade" id="apply_job_popup" aria-hidden="true" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
+    <div class="modal fade twm-sign-up" id="sign_up_popup2" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+        <div style=" max-width:800px" class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h4 class="modal-title" id="sign_up_popupLabel">Ứng tuyển công việc</h4>
+                    <h2 class="modal-title" id="sign_up_popupLabel">Danh sách ứng viên nộp đơn</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
-                    <div class="apl-job-inpopup">
-                        <!--Basic Information-->
-                        <div class="panel panel-default">
+                    <div class="twm-tabs-style-2">
+                        <div class="section-full p-t120  p-b90 site-bg-white">
+                            <!--Filter Short By-->
+                            <div class="twm-right-section-panel candidate-save-job site-bg-gray">
+                                <div class="twm-D_table table-responsive">
+                                    <table style=" width: 100%" id="jobs_bookmark_table_job_candidate" class="table table-bordered twm-candidate-save-job-list-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Ứng viên</th>
+                                                <th>Đơn ứng tuyển</th>
+                                                <th>Ngày ứng tuyển</th>
+                                                <th>Hàng động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--1-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic1.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
 
-                            <div class="panel-body wt-panel-body p-a20 ">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Senior Web Designer</h4>
+                                                            </a>
+                                                        </div>
 
-                                <div class="twm-tabs-style-1">
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Herbal Ltd</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
 
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <label>Tên của bạn</label>
-                                                <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_name" type="text" placeholder="Devid Smith">
-                                                    <i class="fs-input-icon fa fa-user "></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <label>Địa chỉ email</label>
-                                                <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
-                                                    <i class="fs-input-icon fas fa-at"></i>
-                                                </div>
-                                            </div>
-                                        </div>
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="far fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label>Lời nhắn</label>
-                                                <textarea class="form-control" rows="3" placeholder="Message sent to the employer"></textarea>
-                                            </div>
-                                        </div>
+                                            <!--2-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic2.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Sr. Rolling Stock Technician</h4>
+                                                            </a>
 
-                                        <div class="col-lg-12 col-md-12">
-                                            <div class="form-group">
-                                                <label>Tải hồ sơ</label>
-                                                <form action="upload.php" class="dropzone dz-clickable">
-                                                    <div class="dz-default dz-message"><span><i class="sl sl-icon-plus"></i> Click here or drop files to upload</span></div>
-                                                </form>
-                                                <small>
-                                                    Nếu bạn không có tài liệu sơ yếu lý lịch, bạn có thể viết hồ sơ chuyên môn ngắn gọn của mình <a class="site-text-primary" href="javascript:void(0);">here</a>
-                                                </small>
-                                            </div>
-                                        </div>
+                                                        </div>
 
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Dot Circle PVT Ltd</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
 
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="far fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
-                                        <div class="col-xl-12 col-lg-12 col-md-12">
-                                            <div class="text-left">
-                                                <button type="submit" class="site-button">Gửi đơn</button>
-                                            </div>
-                                        </div>
+                                            <!--3-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic3.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>IT Department Manager</h4>
+                                                            </a>
 
+                                                        </div>
 
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Microsoft solution</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
 
-                                    </div>
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="far fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
 
+                                            <!--4-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic4.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Art Production Specialist</h4>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Coderbotics solutions</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="far fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+      
+                                        </tbody>
+
+                                    </table>
                                 </div>
-
                             </div>
+
+
+
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
+
 
 
 
@@ -1028,7 +1688,13 @@
 
 
 
+
+
+
+
 </body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const input = document.getElementById('job-title');
@@ -1218,6 +1884,60 @@
 
 </script>
 
+<script>
+    function downloadCV(cvId) {
+        var element = document.getElementById(cvId);
+        if (element) {
+            html2pdf().from(element).save(cvId + '.pdf');
+        }
+    }
+
+    function loadAvatar(event, avatarId) {
+        var avatar = document.getElementById(avatarId);
+        if (avatar) {
+            avatar.src = URL.createObjectURL(event.target.files[0]);
+        }
+    }
+
+
+    for (let i = 1; i <= 6; i++) {
+        let cvId = 'cv' + i; // luôn thêm số i vào sau cv
+        let popupId = 'cv' + i + '_up_popup';
+
+        let button = document.querySelector('#' + popupId + ' .site-button');
+        if (button) {
+            button.addEventListener('click', function () {
+                downloadCV(cvId); // gọi đúng id
+            });
+        }
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        // Khởi tạo DataTables cho bảng trong modal ngay từ đầu
+        var jobsBookmarkTable = $('#jobs_bookmark_table_job_candidate').DataTable({
+            "paging": true,
+            "searching": true,
+            "info": true,
+            "lengthChange": false,
+            "pageLength": 5
+        });
+
+        // Xử lý sự kiện khi modal được hiển thị
+        $('#sign_up_popup2').on('shown.bs.modal', function () {
+            // Cập nhật lại kích thước của DataTables sau khi modal được hiển thị
+            jobsBookmarkTable.columns.adjust().draw();
+        });
+
+        // Ngăn chặn modal đóng khi click vào bên trong
+        $('#sign_up_popup2').on('click', function (event) {
+            // Nếu click vào phần tử bên trong modal mà không phải vào nút đóng, thì ngăn chặn sự kiện đóng modal
+            if ($(event.target).closest('.modal-content').length) {
+                event.stopPropagation();
+            }
+        });
+    });
+</script>
 @*<script>
         document.addEventListener("DOMContentLoaded", function () {
             var menuToggle = document.getElementById("menuToggle");

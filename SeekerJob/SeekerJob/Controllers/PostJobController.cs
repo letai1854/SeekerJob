@@ -10,7 +10,9 @@ namespace SeekerJob.Controllers
     {
         // GET: PostJob
 
-        mysql db = new mysql();
+
+        mydatabase db = new mydatabase();
+
         public ActionResult ShowPostJob()
         {
             return View();

@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class AdminManageAdvertisementController : Controller
     {
         // GET: AdminManageAdvertisement
-        mysql db = new mysql();
+        mydatabase db = new mydatabase();
         public ActionResult Index()
         {
             return View();

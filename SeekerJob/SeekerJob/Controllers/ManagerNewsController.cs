@@ -9,7 +9,9 @@ namespace SeekerJob.Controllers
     public class ManagerNewsController : Controller
     {
 
-        mysql db = new mysql();
+
+        mydatabase db = new mydatabase();
+
         public ActionResult IndexManagerNews()
         {
             return View();

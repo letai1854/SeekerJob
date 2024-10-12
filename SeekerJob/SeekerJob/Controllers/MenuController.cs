@@ -10,7 +10,9 @@ namespace SeekerJob.Controllers
     {
 
 
-        mysql db = new mysql();
+
+        mydatabase db = new mydatabase();
+
 
         public ActionResult Index()
         {

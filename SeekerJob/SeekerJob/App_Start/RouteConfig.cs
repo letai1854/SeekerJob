@@ -18,6 +18,21 @@ namespace SeekerJob
                  defaults: new { controller = "NewsDetail", action = "ViewNewsDetail", id = UrlParameter.Optional }
              );
             routes.MapRoute(
+                name: "Mẫu cv",
+                url: "mau-cv",
+                defaults: new { controller = "ListCV", action = "IndexListCV", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+                name: "Tạo cv",
+                url: "admin-tao-cv",
+                defaults: new { controller = "AddManagerCV", action = "IndexCV", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
+            name: "ShowFormWithDownload",
+            url: "JotForm/ShowFormWithDownload/{formId}",
+            defaults: new { controller = "JotForm", action = "ShowFormWithDownload", formId = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Danh sách việc làm",
                 url: "Danh-sach-viec-lam",
                 defaults: new { controller = "ListJob", action = "GetJobList", id = UrlParameter.Optional }
@@ -97,7 +112,11 @@ namespace SeekerJob
                 url: "chi-tiet-viec-lam/{meta}/{id}",
                 defaults: new { controller = "JobDetail", action = "ViewJobDetail", id = UrlParameter.Optional }
             );
-
+            routes.MapRoute(
+               name: "Sửa việc làm",
+               url: "sua-viec-lam/{meta}/{id}",
+               defaults: new { controller = "EditPostJob", action = "IndexEditPostJob", id = UrlParameter.Optional }
+           );
             routes.MapRoute(
                 name: "Quản lý tin tức",
                 url: "quan-ly-tin-tuc",

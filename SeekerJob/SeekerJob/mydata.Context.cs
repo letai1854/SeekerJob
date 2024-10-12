@@ -13,10 +13,10 @@ namespace SeekerJob
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class mysql : DbContext
+    public partial class mydatabase : DbContext
     {
-        public mysql()
-            : base("name=mysql")
+        public mydatabase()
+            : base("name=mydatabase")
         {
         }
     

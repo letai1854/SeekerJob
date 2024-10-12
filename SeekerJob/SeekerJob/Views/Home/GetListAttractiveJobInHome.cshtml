@@ -1,8 +1,5 @@
 ﻿@using SeekerJob.Controllers
 @using SeekerJob.DataSystem
-<script>
-    var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
-</script>
 @{
     var listjob = ViewData["listjobuser"] as List<SeekerJob.DTO.CombineJobUser>;
 }

@@ -13,16 +13,16 @@
                     <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Quản Lý Công Việc</h4>
                 </div>
                 <div class="panel-body wt-panel-body m-b30 " style="background-color: rgba(168, 168, 172, 0.17) !important;">
-                    <div class="twm-D_table p-a20 table-responsive" >
+                    <div class="twm-D_table p-a20 table-responsive">
                         <table id="jobs_bookmark_table" class="table table-bordered twm-bookmark-list-wrap">
                             <thead>
                                 <tr>
-                                    <th >Tiêu Đề</th>
+                                    <th>Tiêu Đề</th>
                                     <th>Lương</th>
-                                    <th >Ngày Đăng</th>
-                                    <th >Loại công việc</th>
-                                    <th >Số Lượng</th>
-                                    <th >Hành Động</th>
+                                    <th>Ngày Đăng</th>
+                                    <th>Loại công việc</th>
+                                    <th>Số Lượng</th>
+                                    <th>Hành Động</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -72,19 +72,22 @@
                                                 <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
                                             }
                                         </td>
-                                        <td>@item.CandidateCount</td>
+                                        <td><a class="twm-nav-sign-up" data-bs-toggle="modal" href="/#sign_up_popup2" role="button">@item.CandidateCount Applied</a></td>
                                         <td>
                                             <div class="twm-table-controls">
                                                 <ul class="twm-DT-controls-icon list-unstyled">
                                                     <li>
-                                                        <button title="View" type="button" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                        <a href="/chi-tiet-viec-lam/@item.meta/@item.IdJob" class="custom-toltip">
                                                             <span class="fa fa-eye"></span>
-                                                        </button>
+                                                            <span class="custom-toltip-block">Veiw</span>
+                                                        </a>
+
                                                     </li>
                                                     <li>
-                                                        <button title="Edit" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                        <a href="/sua-viec-lam/@item.meta/@item.IdJob" class="custom-toltip">
                                                             <span class="fa fa-edit"></span>
-                                                        </button>
+                                                            <span class="custom-toltip-block">Edit</span>
+                                                        </a>
                                                     </li>
                                                     <li>
                                                         <button title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
@@ -104,3 +107,4 @@
         </form>
     </div>
 </div>
+
