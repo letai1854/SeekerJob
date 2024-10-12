@@ -28,6 +28,11 @@ namespace SeekerJob
                 defaults: new { controller = "AddManagerCV", action = "IndexCV", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Công việc đã ứng tuyển",
+                url: "Cong-viec-da-ung-tuyen",
+                defaults: new { controller = "JobApplied", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
             name: "ShowFormWithDownload",
             url: "JotForm/ShowFormWithDownload/{formId}",
             defaults: new { controller = "JotForm", action = "ShowFormWithDownload", formId = UrlParameter.Optional }
