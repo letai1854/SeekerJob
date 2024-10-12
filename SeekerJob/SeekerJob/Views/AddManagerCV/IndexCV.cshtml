@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "IndexCV";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-content" style="margin-top:150px; margin-bottom:150px">
+
+    <!-- INNER PAGE BANNER -->
+    @{ Html.RenderAction("TitleManageNews", "AdminManageNews");}
+    <!-- INNER PAGE BANNER END -->
+    <!-- OUR BLOG START -->
+    <div class="section-full p-t120  p-b90 site-bg-white">
+
+
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xl-3 col-lg-4 col-md-12 rightSidebar m-b30">
+
+                    <div class="side-bar-st-1">
+
+                        @{ Html.RenderAction("GetImageNameCompany", "ManagerNews");}
+
+
+                        @{ Html.RenderAction("GetListTitle", "AddManagerCV");}
+
+
+                    </div>
+
+                </div>
+
+                @{ Html.RenderAction("GetListCV", "AddManagerCV");}
+
+               
+
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+
+

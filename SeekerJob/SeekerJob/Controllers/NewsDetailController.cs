@@ -11,7 +11,7 @@ namespace SeekerJob.Controllers
     {
         // GET: NewsDetail
 
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
 
         public ActionResult Index()
         {

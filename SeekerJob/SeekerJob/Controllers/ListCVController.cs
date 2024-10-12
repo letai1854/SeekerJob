@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
     public class ListCVController : Controller
     {
         // GET: ListCV
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
         public ActionResult IndexListCV()
         {
             return View();

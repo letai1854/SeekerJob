@@ -10,7 +10,7 @@ namespace SeekerJob.Controllers
     {
 
 
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
 
 
 

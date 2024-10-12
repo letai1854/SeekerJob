@@ -543,8 +543,9 @@
     }
 
     .form-control {
-        background-color: #d3d4d682;
+        background-color: #f6f7fb82;
     }
+
 
     .twm-nav-sign-up {
         color: inherit;
@@ -564,6 +565,7 @@
             color: blue !important;
             transition: color 0.2s ease;
         }
+
     .cv-container {
         display: flex;
         width: 100%;
@@ -1305,7 +1307,7 @@
 
     </div>
     <!--Login popup -->
-    <div class="modal fade twm-sign-up " id="sign_up_popup2 " aria-hidden="true " aria-labelledby="sign_up_popupLabel2 " tabindex="-1 ">
+    <div class="modal fade twm-sign-up " id="sign_up_popup3 " aria-hidden="true " aria-labelledby="sign_up_popupLabel2 " tabindex="-1 ">
         <div class="modal-dialog modal-dialog-centered ">
             <div class="modal-content ">
 
@@ -1421,6 +1423,213 @@
         </div>
     </div>
     <!--Model Popup Section End-->
+    <div class="modal fade twm-sign-up" id="sign_up_popup2" aria-hidden="true" aria-labelledby="sign_up_popupLabel2" tabindex="-1">
+        <div style=" max-width:800px" class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h2 class="modal-title" id="sign_up_popupLabel">Danh sách ứng viên nộp đơn</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="twm-tabs-style-2">
+                        <div class="section-full p-t120  p-b90 site-bg-white">
+                            <!--Filter Short By-->
+                            <div class="twm-right-section-panel candidate-save-job site-bg-gray">
+                                <div class="twm-D_table table-responsive">
+                                    <table style=" width: 100%" id="jobs_bookmark_table_job_candidate" class="table table-bordered twm-candidate-save-job-list-wrap">
+                                        <thead>
+                                            <tr>
+                                                <th>Ứng viên</th>
+                                                <th>Đơn ứng tuyển</th>
+                                                <th>Ngày ứng tuyển</th>
+                                                <th>Hàng động</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!--1-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic1.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Senior Web Designer</h4>
+                                                            </a>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Herbal Ltd</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="fas fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!--2-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic2.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Sr. Rolling Stock Technician</h4>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Dot Circle PVT Ltd</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="fas fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!--3-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic3.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>IT Department Manager</h4>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Microsoft solution</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="fas fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                            <!--4-->
+                                            <tr>
+                                                <td>
+                                                    <div class="twm-candidate-save-job-list">
+                                                        <div class="twm-media">
+                                                            <div class="twm-media-pic">
+                                                                <img src="~/ContentImage/images/pic4.jpg" alt="#">
+                                                            </div>
+                                                        </div>
+                                                        <div class="twm-mid-content">
+                                                            <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
+                                                                <h4>Art Production Specialist</h4>
+                                                            </a>
+
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                                <td><a href="javascript:;">Coderbotics solutions</a></td>
+                                                <td>
+                                                    <div>28/06/2023</div>
+                                                </td>
+
+                                                <td>
+                                                    <div class="twm-table-controls">
+                                                        <ul class="twm-DT-controls-icon list-unstyled">
+                                                            <li>
+                                                                <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                                                    <span class="fa fa-eye"></span>
+                                                                    <span class="custom-toltip-block">Veiw</span>
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                    <span class="fas fa-download"></span>
+                                                                </button>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </td>
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -1697,6 +1906,32 @@
             });
         }
     }
+</script>
+<script>
+    $(document).ready(function () {
+        // Khởi tạo DataTables cho bảng trong modal ngay từ đầu
+        var jobsBookmarkTable = $('#jobs_bookmark_table_job_candidate').DataTable({
+            "paging": true,
+            "searching": true,
+            "info": true,
+            "lengthChange": false,
+            "pageLength": 5
+        });
+
+        // Xử lý sự kiện khi modal được hiển thị
+        $('#sign_up_popup2').on('shown.bs.modal', function () {
+            // Cập nhật lại kích thước của DataTables sau khi modal được hiển thị
+            jobsBookmarkTable.columns.adjust().draw();
+        });
+
+        // Ngăn chặn modal đóng khi click vào bên trong
+        $('#sign_up_popup2').on('click', function (event) {
+            // Nếu click vào phần tử bên trong modal mà không phải vào nút đóng, thì ngăn chặn sự kiện đóng modal
+            if ($(event.target).closest('.modal-content').length) {
+                event.stopPropagation();
+            }
+        });
+    });
 </script>
 @*<script>
         document.addEventListener("DOMContentLoaded", function () {

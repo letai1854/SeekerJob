@@ -22,5 +22,6 @@ namespace SeekerJob
         public Nullable<bool> hide { get; set; }
         public Nullable<int> arrange { get; set; }
         public Nullable<System.DateTime> datebegin { get; set; }
+        public string typeRow { get; set; }
     }
 }

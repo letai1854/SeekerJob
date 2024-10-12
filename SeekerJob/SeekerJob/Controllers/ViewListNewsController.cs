@@ -9,7 +9,7 @@ namespace SeekerJob.Controllers
 {
     public class ViewListNewsController : Controller
     {
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
         public ActionResult Index()
         {
             return View();

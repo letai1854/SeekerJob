@@ -13,7 +13,7 @@ namespace SeekerJob.Controllers
         // GET: SavedJobCandidates
 
 
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
 
         public ActionResult Index()
         {

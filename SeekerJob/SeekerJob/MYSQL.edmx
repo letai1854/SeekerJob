@@ -118,6 +118,8 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="idjob" Type="int" />
           <Property Name="usernamecandidate" Type="varchar" MaxLength="100" />
+          <Property Name="filecandiate" Type="varchar(max)" />
+          <Property Name="datesend" Type="date" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -189,6 +191,7 @@
           <Property Name="hide" Type="bit" />
           <Property Name="arrange" Type="int" />
           <Property Name="datebegin" Type="smalldatetime" />
+          <Property Name="typeRow" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="tablefooter">
           <Key>
@@ -420,6 +423,8 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="idjob" Type="Int32" />
           <Property Name="usernamecandidate" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="filecandiate" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="datesend" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="Login">
           <Key>
@@ -491,6 +496,7 @@
           <Property Name="hide" Type="Boolean" />
           <Property Name="arrange" Type="Int32" />
           <Property Name="datebegin" Type="DateTime" Precision="0" />
+          <Property Name="typeRow" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tablefooter">
           <Key>
@@ -581,8 +587,7 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="MyDB" annotation:LazyLoadingEnabled="true">
-
+        <EntityContainer Name="MYDB" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddCVs" EntityType="Self.AddCV" />
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
@@ -610,7 +615,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MyDB">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="MYDB">
           <EntitySetMapping Name="AddCVs">
             <EntityTypeMapping TypeName="testdbs2425Model.AddCV">
               <MappingFragment StoreEntitySet="AddCV">
@@ -730,6 +735,8 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="idjob" ColumnName="idjob" />
                 <ScalarProperty Name="usernamecandidate" ColumnName="usernamecandidate" />
+                <ScalarProperty Name="filecandiate" ColumnName="filecandiate" />
+                <ScalarProperty Name="datesend" ColumnName="datesend" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -807,6 +814,7 @@
                 <ScalarProperty Name="hide" ColumnName="hide" />
                 <ScalarProperty Name="arrange" ColumnName="arrange" />
                 <ScalarProperty Name="datebegin" ColumnName="datebegin" />
+                <ScalarProperty Name="typeRow" ColumnName="typeRow" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

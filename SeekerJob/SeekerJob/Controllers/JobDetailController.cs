@@ -12,7 +12,7 @@ namespace SeekerJob.Controllers
         // GET: JobDetail
 
 
-        MyDB db = new MyDB();
+        MYDB db = new MYDB();
 
         public ActionResult Index(long id)
         {
