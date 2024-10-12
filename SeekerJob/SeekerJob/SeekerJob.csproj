@@ -158,6 +158,7 @@
     <Compile Include="Controllers\EditNewsController.cs" />
     <Compile Include="Controllers\EditPostJobController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobAppliedController.cs" />
     <Compile Include="Controllers\JobDetailController.cs" />
     <Compile Include="Controllers\JotFormController.cs" />
     <Compile Include="Controllers\ListCVController.cs" />
@@ -1594,6 +1595,11 @@
     <Content Include="Views\EditPostJob\IndexEditPostJob.cshtml" />
     <Content Include="Views\EditPostJob\GetListTitle.cshtml" />
     <Content Include="Views\ManagerJob\GetListCandidateApplyJob.cshtml" />
+    <Content Include="Views\JobApplied\Index.cshtml" />
+    <Content Include="Views\JobApplied\GetListTitle.cshtml" />
+    <Content Include="Views\JobApplied\GetListAppliedJob.cshtml" />
+    <Content Include="Views\JobApplied\GetListAppliedJobCandidate.cshtml" />
+    <Content Include="Views\JobApplied\GetListJobApplied.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
