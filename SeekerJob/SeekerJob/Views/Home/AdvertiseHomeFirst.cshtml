@@ -18,11 +18,14 @@
             <div class="carousel-track">
                 @if (listadv != null && listadv.Count > 0)
                 {
-                    foreach (var item in listadv)
-                    {
-                        <img style="width:240px; height:170px" src="~/ContentImage/images/@item.link" alt="Image @part">
-                        part++;
-                    }
+                foreach (var item in listadv)
+                {
+                <a href="/3452345" style="width: 240px; height: 170px; display: inline-block;">
+                    <img style="width:240px; height:170px" src="~/ContentImage/images/@item.link" alt="Image @part">
+                </a>
+
+                part++;
+                }
                 }
             </div>
         </div>
