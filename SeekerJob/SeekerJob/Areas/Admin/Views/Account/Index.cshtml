@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+@{
+    var table = ViewData["table"] as List<Login>;
+}
+@section _header{
+    <link href="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên tài khoản</th>
+                    <th>Loại</th>
+                    <th>Trạng thái</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ var Number = 1;}
+                @foreach (var item in table)
+                {
+                    <tr style="background-color: #fff; color: black;">
+                        <td>@Html.Raw(Number++)</td>
+                        <td>@Html.DisplayFor(modelItem => item.username)</td>
+                        <td>@Html.DisplayFor(modelItem => item.typeRow)</td>
+                        <td>
+
+                            @if (item.status == true)
+                            {
+                                <p>On</p>
+                            }
+                            else
+                            {
+                                <p>Off</p>
+                            }
+
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "menus", new { id = item.username }) "
+                               title="Sửa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                <span class="far fa-edit"></span>
+                            </a>
+                            
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section _footer{
+    <!-- Page level plugins -->
+    <script src="~/Areas/admin/Content/vendor_/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
+
+}
