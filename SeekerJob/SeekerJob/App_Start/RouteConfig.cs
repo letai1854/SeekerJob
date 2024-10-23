@@ -12,6 +12,7 @@ namespace SeekerJob
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
             routes.MapRoute(
                  name: "Chi tiết tin tức",
                  url: "Chi-tiet-tin-tuc/{meta}/{id}",
