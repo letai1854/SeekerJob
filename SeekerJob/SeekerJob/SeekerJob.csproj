@@ -152,6 +152,7 @@
     <Compile Include="Areas\Admin\Controllers\AdvertiseController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerAndTitleController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ListJobController.cs" />
     <Compile Include="Areas\Admin\Controllers\menusController.cs" />
     <Compile Include="Controllers\AdminManageAdvertisementController.cs" />
     <Compile Include="Controllers\AddManagerCVController.cs" />
@@ -4876,6 +4877,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\ListJob\" />
     <Folder Include="ContentImage\images\client-logo\" />
     <Folder Include="ContentImage\images\home-18\banner\" />
     <Folder Include="DATA\" />
