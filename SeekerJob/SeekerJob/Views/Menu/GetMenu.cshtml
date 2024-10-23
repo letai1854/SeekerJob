@@ -18,7 +18,7 @@
             if (item.name == "Trang chủ" && (item.hide ?? true))
             {
                 <li class="has-mega-menu">
-                    <a href="/@item.meta" style="font-weight: 700; color: white; background-color: #0d052a">@item.name</a>
+                    <a href="/@item.meta" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
                 </li>
             }
             else
@@ -26,13 +26,13 @@
                 if (item.hide ?? true)
                 {
                     <li class="has-child">
-                        <a href="/@item.link" style="font-weight: 700; color: white; background-color: #0d052a">@item.name</a>
+                        <a href="/@item.link" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
                         @if (tablemenuparts.Any(p => p.idtable == item.id))
                         {
                             <ul class="sub-menu">
                                 @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
                                 {
-                                    <li><a href="/@part.meta">@part.name</a></li>
+                                    <li><a style="color: rgb(60, 161, 207);" href="/@part.meta">@part.name</a></li>
                                 }
                             </ul>
                         }

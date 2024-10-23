@@ -17,6 +17,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
     <link rel="icon" href="~/ContentImage/images/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" type="image/x-icon" href="~/ContentImage/images/favicon.png" />
+    <script type="text/javascript" src="~/scripts/jquery-3.4.1.min.js"></script>
 
     <!-- PAGE TITLE HERE -->
     <title>Trang chủ</title>
@@ -1097,6 +1098,16 @@
         color: #999;
         cursor: pointer;
     }
+    .twm-home18-banner-section {
+        max-width: 100%;
+        min-height: 00vh;
+        overflow: hidden;
+        position: relative;
+        z-index: 4;
+        padding-top: 130px;
+        z-index: 1;
+        background-color: #f9f9f9;
+    }
 </style>
 
 <body data-anm=".anm">
@@ -1111,10 +1122,10 @@
     </div>
     <!-- LOADING AREA  END ====== -->
     <!-- HEADER START -->
-    <header class="site-header header-style-3 h-page-18-hdr mobile-sider-drawer-menu " style="background-color: #0d052a;">
+    <header class="site-header header-style-3 h-page-18-hdr mobile-sider-drawer-menu " style="background-color: rgb(222, 152, 23);">
 
         <div class="sticky-header main-bar-wraper  navbar-expand-lg">
-            <div class="main-bar" style="background-color: #0d052a;">
+            <div class="main-bar" style="background-color: rgb(222, 152, 23);">
 
                 <div class="container-fluid clearfix">
 
@@ -1614,7 +1625,7 @@
                                                 </td>
                                             </tr>
 
-      
+
                                         </tbody>
 
                                     </table>
@@ -1911,32 +1922,56 @@
         }
     }
 </script>
+
+<script>
+    //$(document).ready(function () {
+
+    //    var jobsBookmarkTable = $('#jobs_bookmark_table_job_candidate').DataTable({
+    //        "paging": true,
+    //        "searching": true,
+    //        "info": true,
+    //        "lengthChange": false,
+    //        "pageLength": 5
+    //    });
+
+    //    $('#sign_up_popup2').on('shown.bs.modal', function () {
+
+    //        jobsBookmarkTable.columns.adjust().draw();
+    //    });
+
+
+    //    $('#sign_up_popup2').on('click', function (event) {
+
+    //        if ($(event.target).closest('.modal-content').length) {
+    //            event.stopPropagation();
+    //        }
+    //    });
+    //});
+</script>
 <script>
     $(document).ready(function () {
-        // Khởi tạo DataTables cho bảng trong modal ngay từ đầu
-        var jobsBookmarkTable = $('#jobs_bookmark_table_job_candidate').DataTable({
-            "paging": true,
-            "searching": true,
-            "info": true,
-            "lengthChange": false,
-            "pageLength": 5
-        });
+        if (!$.fn.DataTable.isDataTable('#jobs_bookmark_table_job_candidate')) {
+            var jobsBookmarkTable = $('#jobs_bookmark_table_job_candidate').DataTable({
+                "paging": true,
+                "searching": true,
+                "info": true,
+                "lengthChange": false,
+                "pageLength": 5
+            });
+        }
 
-        // Xử lý sự kiện khi modal được hiển thị
         $('#sign_up_popup2').on('shown.bs.modal', function () {
-            // Cập nhật lại kích thước của DataTables sau khi modal được hiển thị
-            jobsBookmarkTable.columns.adjust().draw();
+            $('#jobs_bookmark_table_job_candidate').DataTable().columns.adjust().draw();
         });
 
-        // Ngăn chặn modal đóng khi click vào bên trong
         $('#sign_up_popup2').on('click', function (event) {
-            // Nếu click vào phần tử bên trong modal mà không phải vào nút đóng, thì ngăn chặn sự kiện đóng modal
             if ($(event.target).closest('.modal-content').length) {
                 event.stopPropagation();
             }
         });
     });
 </script>
+
 @*<script>
         document.addEventListener("DOMContentLoaded", function () {
             var menuToggle = document.getElementById("menuToggle");

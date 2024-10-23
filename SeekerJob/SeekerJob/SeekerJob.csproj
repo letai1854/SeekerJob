@@ -3273,6 +3273,7 @@
     <Content Include="ContentImage\images\adv6.jpg" />
     <Content Include="ContentImage\images\adv7.jpg" />
     <Content Include="ContentImage\images\adv8.jpg" />
+    <Content Include="ContentImage\images\anhbanner.jpg" />
     <Content Include="ContentImage\images\anhpia.jpg" />
     <Content Include="ContentImage\images\apply-job-bg.png" />
     <Content Include="ContentImage\images\blog\blog-single\1.jpg" />
@@ -3316,6 +3317,7 @@
     <Content Include="ContentImage\images\icons8-save-50_gray.png" />
     <Content Include="ContentImage\images\icons8-save-50_green.png" />
     <Content Include="ContentImage\images\icons8-twitter-48.png" />
+    <Content Include="ContentImage\images\top 1 -vin-1.jpg" />
     <Content Include="ContentImage\images\w1.png" />
     <Content Include="ContentImage\images\w2.png" />
     <Content Include="ContentImage\images\w3.png" />

@@ -22,6 +22,7 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListCV()
         {
+            
             var table = db.AddCVs.ToList();
 
             ViewData["table"] = table;

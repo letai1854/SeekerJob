@@ -31,12 +31,12 @@
                             }
                             else if (part.meta == "noi-dung-2")
                             {
-                                <div class="twm-bnr-title-large" style="color:white;">@part.content</div>
+                                <div class="twm-bnr-title-large" style="color: rgb(35, 168, 234);">@part.content</div>
                             }
-                            else if (part.meta == "noi-dung-3")
+                            @*else if (part.meta == "noi-dung-3")
                             {
                                 <div class="twm-bnr-discription" style="color:white;">@part.content</div>
-                            }
+                            }*@
 
                         }
 
@@ -44,7 +44,7 @@
                 }
             }
 
-            <div class="twm-bnr-search-bar">
+            <div class="twm-bnr-search-bar" style="margin-bottom:10px">
                 <form>
                     <div class="row">
                         <!--Title-->
@@ -150,7 +150,7 @@
                         </div>
 
                         <div class="form-group col-xl-3 col-lg-6 col-md-6">
-                            <button type="button" class="site-button">Tìm kiếm</button>
+                            <button type="button" class="site-button" style="background-color: rgb(35, 168, 234);">Tìm kiếm</button>
                         </div>
 
                     </div>
@@ -165,12 +165,9 @@
     <div class="col-xl-6 col-lg-6 col-md-12">
         <div class="twm-h-page-18-bnr-right-section">
             <div class="twm-h-page18-bnr-pic">
-                <img src="~/ContentImage/images/@imgperson.First().link" alt="#">
             </div>
 
-            <!--Samll Ring Left-->
-            <div class="twm-shape-l bounce"></div>
-            <div class="twm-shape-2 bounce2"></div>
+ 
         </div>
     </div>
 </div>

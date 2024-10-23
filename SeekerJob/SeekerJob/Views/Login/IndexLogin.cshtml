@@ -3,7 +3,33 @@
     ViewBag.Title = "IndexLogin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    /* Container để căn giữa nút */
+    .login-btn-container {
+        display: flex; /* Sử dụng Flexbox */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+        margin-top: 20px; /* Khoảng cách từ phía trên */
+    }
 
+    /* Kiểu cho nút */
+    .login-btn {
+        width: 500px; /* Đặt lại độ rộng nút */
+        padding: 10px 0; /* Tạo đệm phía trên và dưới nút */
+        text-align: center; /* Căn giữa chữ bên trong nút */
+        background-color: #666; /* Màu nền của nút */
+        color: #fff; /* Màu chữ */
+        border-radius: 8px; /* Bo góc nút */
+        cursor: pointer; /* Con trỏ chuột chuyển thành biểu tượng tay khi hover */
+        font-size: 16px; /* Kích thước chữ */
+        transition: background-color 0.3s ease; /* Tạo hiệu ứng chuyển màu khi hover */
+    }
+
+        /* Hiệu ứng khi hover */
+        .login-btn:hover {
+            background-color: #555; /* Thay đổi màu nền khi hover */
+        }
+
+</style>
 <div class="page-wraper" style="margin-top:110px;">
 
 
@@ -63,22 +89,24 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                                        <input id="candidateusername" name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                        <input id="candidatepassword" name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
                                                     </div>
                                                 </div>
 
 
 
                                                 <div class="col-md-12">
-                                                    <div class="form-group">
-                                                        <button type="submit" class="site-button">Đăng nhập</button>
+                                                    <div class="form-group" style="display:flex; justify-content:center;align-items:center">
+                                                        @*<button type="submit" class="site-button">Đăng nhập</button>*@
+                                                        <div id="btnLoginCandidate" onclick="LoginCandidateAccount()"  class="site-button">Đăng nhập</div>
                                                     </div>
+                                                        <p id="ms" style="color:red;"></p>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-md-6 text-center">
@@ -601,3 +629,59 @@
     </div>
 </div>
 
+<script type="text/javascript">
+    var isRunning = false;
+    function LoginCandidateAccount() {
+        if (!isRunning) {
+            isRunning = true;
+            var uid = $('#candidateusername').val();
+            var pwd = $('#candidatepassword').val();
+            if (uid == '' || pwd == '') {
+                $('#ms').html('Vui lòng nhập đầy đủ thông tin');
+                isRunning = false;
+            }
+            else {
+                var form = new FormData();
+                form.append("uid", uid);
+                form.append("pwd", pwd);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '/Login/CheckLoginCandidate', true);
+
+                xhr.timeout = 30000;
+                xhr.ontimeout = function () {
+                    $('#ms').html('Mạng xãy ra vấn đề');
+                    isRunning = false;
+                }
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var r = xhr.responseText;
+                        var j = JSON.parse(r);
+                        if (j.Data.status == "OK") {
+                            window.location = domain + '/trang-chu';
+                        }
+                        else {
+                            $('#ms').html('Sai tài khoản hoặc mật khẩu');
+
+                        }
+                        isRunning = false;
+
+                    }
+                }
+                xhr.send(form);
+            }
+        }
+    }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#candidateusername').on('input', function () {
+            $('#ms').html('');  
+        });
+
+        $('#candidatepassword').on('input', function () {
+            $('#ms').html('');  
+        });
+    });
+</script>

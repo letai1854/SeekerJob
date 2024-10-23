@@ -7,10 +7,7 @@
     var relativeTime = data.GetRelativeTime((DateTime)jobuser.job.startday);
 
 }
-@{
-    var address = jobuser.employer.adrress;
-    var googleMapsUrl = "https://www.google.com/maps/embed/v1/place?key=YOUR_VALID_API_KEY&q=" + Url.Encode("102, đường 39, tân quy, quận 7");
-}
+
 
 @{
     ViewBag.Title = "ViewJobDetail";
