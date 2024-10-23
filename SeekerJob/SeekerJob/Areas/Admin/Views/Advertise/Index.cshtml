@@ -1,0 +1,151 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+@{ 
+    var tablepro = ViewData["tablepro"] as List<tablebannerpart>;
+    var tablenews = ViewData["tablenews"] as List<tablebannerpart>;
+    var tablecompany = ViewData["tablecompany"] as List<tablebannerpart>;
+}
+
+@section _header{
+    <link href="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Loại quảng cáo</th>
+                    <th>Ảnh</th>
+                    <th>Link</th>
+                    <th>meta</th>
+                    <th>hide</th>
+                    <th>Sắp xếp</th>
+                    <th>Ngày</th>
+                    <th>Hành động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ var Number = 1;}
+                @foreach (var item in tablepro)
+                {
+                    <tr style="background-color: #fff; color: black;">
+                        <td>@Html.Raw(Number++)</td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
+                        <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.link)</td>
+                        <td>@Html.DisplayFor(modelItem => item.meta)</td>
+                        <td>
+
+                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
+                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
+                            }, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.arrange)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
+                               title="Sửa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                <span class="far fa-edit"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in tablenews)
+                {
+                    <tr style="background-color: #fff; color: black;">
+                        <td>@Html.Raw(Number++)</td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
+                        <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.link)</td>
+                        <td>@Html.DisplayFor(modelItem => item.meta)</td>
+                        <td>
+
+                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
+                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
+                            }, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.arrange)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
+                               title="Sửa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                <span class="far fa-edit"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+                @foreach (var item in tablecompany)
+                {
+                    <tr style="background-color: #fff; color: black;">
+                        <td>@Html.Raw(Number++)</td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
+                        <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.link)</td>
+                        <td>@Html.DisplayFor(modelItem => item.meta)</td>
+                        <td>
+
+                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
+                            {
+                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
+                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
+                            }, new { @class = "form-control" })
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.arrange)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
+                               title="Sửa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                <span class="far fa-edit"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section _footer{
+    <!-- Page level plugins -->
+    <script src="~/Areas/admin/Content/vendor_/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
+
+}
+
