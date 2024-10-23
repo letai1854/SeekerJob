@@ -27,7 +27,44 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM33HHsHq9smZQTB4E5p4Q1hv0sSMw5VKTJaRlz" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.28.0/feather.min.js"></script>
+    <script>
+             var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+
+    </script>
+    <script src="~/plugin/ckfinder/ckfinder.js"></script>
+    <script src="~/plugin/ckeditor/ckeditor.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="~/Content/css/style.css">
+    <!-- MAIN STYLE SHEET -->
+    <!-- THEME COLOR CHANGE STYLE SHEET -->
+    <link rel="stylesheet" class="skin" type="text/css" href="~/Content/css/skins-type/skin-10.css">
+    <!-- SIDE SWITCHER STYLE SHEET -->
+    <link rel="stylesheet" type="text/css" href="~/Content/css/switcher.css">
 </head>
+<style>
+    .custom-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: black;
+        color: white;
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+        padding: 10px 15px; /* Button padding */
+        border-radius: 5px;
+        text-decoration: none; /* Remove default link underline */
+    }
+
+        .custom-button:hover {
+            background-color: #555555; /* Darker gray on hover */
+            color: white;
+            text-decoration: none; /* Remove default link underline */
+        }
+
+    .card-header {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        text-align: right; /*Align content to the right*/
+    }
+</style>
 <body>
     <div id="wrapper">
         <!-- Navigation -->
@@ -45,9 +82,9 @@
             <ul class="nav navbar-top-links navbar-right">
 
                 <li class="">
-                    
-                    <a class=""  href="/trang-chu">
-                        <i class="fa fa-home fa-fw"></i> 
+
+                    <a class="" href="/trang-chu">
+                        <i class="fa fa-home fa-fw"></i>
                     </a>
                     <!-- /.dropdown-user -->
                 </li>
@@ -73,7 +110,7 @@
                             <a href="@Url.Action("Index","cart") "><i class="fa fa-th-list fa-fw"></i> Quản lý tài khoản</a>
                         </li>
                         <li>
-                            <a href="@Url.Action("Index","contact") "><i class="fa fa-th-list fa-fw"></i> Quản lý CV</a>
+                            <a href="@Url.Action("Index","CV") "><i class="fa fa-th-list fa-fw"></i> Quản lý CV</a>
                         </li>
                         <li>
                             <a href="@Url.Action("Index","contact") "><i class="fa fa-th-list fa-fw"></i> Quản lý quảng cáo</a>
@@ -104,5 +141,60 @@
     <script src="/Areas/admin/Content/dist/js/sb-admin-2.js"></script>
     @RenderSection("_Header", false);
     @RenderSection("_Footer", false);
+    <script src="~/Scripts/js/jquery-3.6.0.min.js "></script>
+    <script src="~/Scripts/js/jquery-3.6.0.min.js "></script>
+    <!-- JQUERY.MIN JS -->
+    <script src="~/Scripts/js/popper.min.js "></script>
+    <!-- POPPER.MIN JS -->
+    <script src="~/Scripts/js/bootstrap.min.js "></script>
+    <!-- BOOTSTRAP.MIN JS -->
+    <script src="~/Scripts/js/magnific-popup.min.js "></script>
+    <!-- MAGNIFIC-POPUP JS -->
+    <script src="~/Scripts/js/waypoints.min.js "></script>
+    <!-- WAYPOINTS JS -->
+    <script src="~/Scripts/js/counterup.min.js "></script>
+    <!-- COUNTERUP JS -->
+    <script src="~/Scripts/js/waypoints-sticky.min.js "></script>
+    <!-- STICKY HEADER -->
+    <script src="~/Scripts/js/isotope.pkgd.min.js "></script>
+    <!-- MASONRY  -->
+    <script src="~/Scripts/js/imagesloaded.pkgd.min.js "></script>
+    <!-- MASONRY  -->
+    <script src="~/Scripts/js/owl.carousel.min.js "></script>
+    <!-- OWL  SLIDER  -->
+    <script src="~/Scripts/js/theia-sticky-sidebar.js "></script>
+    <!-- STICKY SIDEBAR  -->
+    <script src="~/Scripts/js/lc_lightbox.lite.js "></script>
+    <!-- IMAGE POPUP -->
+    <script src="~/Scripts/js/bootstrap-select.min.js "></script>
+    <!-- Form js -->
+    <script src="~/Scripts/js/dropzone.js "></script>
+    <!-- IMAGE UPLOAD  -->
+    <script src="~/Scripts/js/jquery.scrollbar.js "></script>
+    <!-- scroller -->
+    <script src="~/Scripts/js/bootstrap-datepicker.js "></script>
+    <!-- scroller -->
+    <script src="~/Scripts/js/jquery.dataTables.min.js "></script>
+    <!-- Datatable -->
+    <script src="~/Scripts/js/dataTables.bootstrap5.min.js "></script>
+    <!-- Datatable -->
+    <script src="~/Scripts/js/chart.js "></script>
+    <!-- Chart -->
+    <script src="~/Scripts/js/anm.js "></script>
+    <script src="~/Scripts/js/bootstrap-slider.min.js "></script>
+    <!-- Price range slider -->
+    <script src="~/Scripts/js/swiper-bundle.min.js "></script>
+    <!-- Swiper JS -->
+    <script src="~/Scripts/js/custom.js "></script>
+    <!-- CUSTOM FUCTIONS  -->
+    <script src="~/Scripts/js/switcher.js "></script>
+    <!-- SHORTCODE FUCTIONS  -->
+
+
+
+
+
 </body>
 </html>
+@RenderSection("scripts", required: false)
+

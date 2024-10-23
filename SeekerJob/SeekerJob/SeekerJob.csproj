@@ -148,8 +148,10 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\CVController.cs" />
     <Compile Include="Areas\Admin\Controllers\DefaultController.cs" />
     <Compile Include="Areas\Admin\Controllers\menusController.cs" />
+    <Compile Include="Areas\Admin\Controllers\newsController.cs" />
     <Compile Include="Controllers\AdminManageAdvertisementController.cs" />
     <Compile Include="Controllers\AddManagerCVController.cs" />
     <Compile Include="Controllers\AdminManageNewsController.cs" />
@@ -4709,6 +4711,9 @@
     <Content Include="Areas\Admin\Views\Default\Index.cshtml" />
     <Content Include="Areas\Admin\Views\menus\Index.cshtml" />
     <Content Include="Areas\Admin\Views\menus\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\news\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\news\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\CV\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
