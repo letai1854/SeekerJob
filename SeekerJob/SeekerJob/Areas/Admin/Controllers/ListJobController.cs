@@ -13,7 +13,7 @@ namespace SeekerJob.Areas.Admin.Controllers
         mydatabase db = new mydatabase();
         public ActionResult Index()
         {
-            var table = db.Jobs.Where(t => t.endday >= DateTime.Now).OrderBy(t => t.endday).ToList();
+            var table = db.Jobs.OrderBy(t => t.endday).ToList();
             var listnewsemployer = new List<CombineJobUser>();
 
             foreach (var item in table)
@@ -32,6 +32,11 @@ namespace SeekerJob.Areas.Admin.Controllers
             ViewData["listnewsemployer"] = listnewsemployer;
             ViewBag.vieclam = "chi-tiet-viec-lam";
             ViewBag.suatintuc = "sua-viec-lam";
+            return PartialView();
+        }
+        public ActionResult Create()
+        {
+
             return PartialView();
         }
     }

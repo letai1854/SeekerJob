@@ -4723,7 +4723,12 @@
     <Content Include="Areas\Admin\Views\BannerAndTitle\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Advertise\Index.cshtml" />
+
     <Content Include="Areas\Admin\Views\CV\Create.cshtml" />
+
+    <Content Include="Areas\Admin\Views\ListJob\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ListJob\Create.cshtml" />
+
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4883,7 +4888,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
-    <Folder Include="Areas\Admin\Views\ListJob\" />
     <Folder Include="ContentImage\images\client-logo\" />
     <Folder Include="ContentImage\images\home-18\banner\" />
     <Folder Include="DATA\" />

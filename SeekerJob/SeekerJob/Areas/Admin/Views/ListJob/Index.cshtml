@@ -1,0 +1,127 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+@{
+    var listnewsemployer = ViewData["listnewsemployer"] as List<SeekerJob.DTO.CombineJobUser>;
+}
+<style>
+    .custom-button {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        background-color: black;
+        color: white;
+        transition: background-color 0.3s ease; /* Smooth hover effect */
+        padding: 10px 15px; /* Button padding */
+        border-radius: 5px;
+        text-decoration: none; /* Remove default link underline */
+    }
+
+        .custom-button:hover {
+            background-color: #555555; /* Darker gray on hover */
+            color: white;
+            text-decoration: none; /* Remove default link underline */
+        }
+
+    .card-header {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        text-align: right; /*Align content to the right*/
+    }
+</style>
+
+@section _header{
+    <link href="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+<div class="card-header py-3">
+    <a href="@Url.Action("Create")" class="custom-button">+ Thêm mới</a>
+</div>
+<div class="card-body">
+    <div class="table-responsive">
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tiêu Đề</th>
+                    <th>Người đăng</th>
+                    <th>Ngày Đăng</th>
+                    <th>Loại công việc</th>
+                    <th>Hành Động</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{ var Number = 1;}
+                @foreach (var item in listnewsemployer)
+                {
+                    <tr style="background-color: #fff; color: black;">
+                        <td>@Html.Raw(Number++)</td>
+                        <td>@Html.DisplayFor(modelItem => item.job.title)</td>
+                        <td>@Html.DisplayFor(modelItem => item.employer.namecompany)</td>
+                        <td>@string.Format("{0:dd/MM/yyyy}", item.job.startday)</td>
+                        <td>
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Fulltime.ToString())
+                            {
+                                <div class="twm-jobs-category green"><span class="twm-bg-green">@item.job.jobcategory</span></div>
+
+                            }
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Parttime.ToString())
+                            {
+                                <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.job.jobcategory</span></div>
+
+                            }
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Internship.ToString())
+                            {
+                                <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.job.jobcategory</span></div>
+
+                            }
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Volunteer.ToString())
+                            {
+                                <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.job.jobcategory</span></div>
+
+                            }
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Freelance.ToString())
+                            {
+                                <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.job.jobcategory</span></div>
+
+                            }
+                            @if (@item.job.jobcategory == EnumType.jobCategory.Temporary.ToString())
+                            {
+                                <div class="twm-jobs-category red"><span class="twm-bg-red">@item.job.jobcategory</span></div>
+                            }
+                        </td>
+                        <td>
+                            <a href="@Url.Action("Edit", "menus", new { id = item.job.id }) "
+                               title="Sửa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                <span class="far fa-edit"></span>
+                            </a>
+                            <a href="@Url.Action("Delete", "menus", new { id = item.job.id })"
+                               title="Xóa"
+                               data-bs-toggle="tooltip"
+                               data-bs-placement="top"
+                               style="background-color: red; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; margin-left: 2px;">
+                                <span class="far fa-trash-alt"></span>
+                            </a>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+@section _footer{
+    <!-- Page level plugins -->
+    <script src="~/Areas/admin/Content/vendor_/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Page level custom scripts -->
+    <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
+
+}
+

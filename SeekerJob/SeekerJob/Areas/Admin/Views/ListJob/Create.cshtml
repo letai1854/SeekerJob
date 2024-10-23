@@ -1,0 +1,293 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-red">
+            <div class="panel-heading">
+                Thêm mới bài tuyển dụng
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <form>
+                    <div class="panel panel-default">
+                        <div class="panel-heading wt-panel-heading p-a20">
+                            <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Chi tiết việc làm</h4>
+                        </div>
+                        <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                            <div class="row">
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Tiêu đề việc làm</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_name" type="text" placeholder="Devid Smith">
+                                            <p id="ms" style="color:red;"></p>
+                                            <i class="fs-input-icon fa fa-address-card"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Loại việc làm</label>
+                                        <div class="ls-inputicon-box">
+                                            <select class="wt-select-box selectpicker" data-live-search="true" title="" id="s-category" data-bv-field="size">
+                                                <option class="bs-title-option" value="">Chọn Danh Mục</option>
+                                                <option>Toàn thời gian</option>
+                                                <option>Tự do</option>
+                                                <option>Bán thời gian</option>
+                                                <option>Thực tập</option>
+                                                <option>Tạm thời</option>
+                                            </select>
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-file-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Lương đề nghị</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_Salary" type="salary" placeholder="E.g. 3000">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-dollar-sign"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Kinh nghiệm</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_Email" type="email" placeholder="E.g. ít nhất 3 năm kinh nghiệm">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-user-edit"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Trình độ</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_Email" type="email" placeholder="trình độ">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-user-graduate"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Giới tính</label>
+                                        <div class="ls-inputicon-box">
+                                            <select class="wt-select-box selectpicker" data-live-search="true" title="" id="gender" data-bv-field="size">
+                                                <option class="bs-title-option" value="">Giới tính</option>
+                                                <option>Nam</option>
+                                                <option>Nữ</option>
+                                                <option>không yêu cầu</option>
+                                            </select>
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-venus-mars"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Tỉnh/ Thành phố</label>
+                                        <div class="ls-inputicon-box">
+                                            <select class="wt-select-box selectpicker" data-live-search="true" title="" id="country" data-bv-field="size">
+                                                <option disabled selected value="">Chọn địa điểm</option>
+                                                <option value="An Giang">An Giang</option>
+                                                <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                                <option value="Bạc Liêu">Bạc Liêu</option>
+                                                <option value="Bắc Giang">Bắc Giang</option>
+                                                <option value="Bắc Kạn">Bắc Kạn</option>
+                                                <option value="Bắc Ninh">Bắc Ninh</option>
+                                                <option value="Bến Tre">Bến Tre</option>
+                                                <option value="Bình Dương">Bình Dương</option>
+                                                <option value="Bình Định">Bình Định</option>
+                                                <option value="Bình Phước">Bình Phước</option>
+                                                <option value="Bình Thuận">Bình Thuận</option>
+                                                <option value="Cà Mau">Cà Mau</option>
+                                                <option value="Cao Bằng">Cao Bằng</option>
+                                                <option value="Cần Thơ">Cần Thơ</option>
+                                                <option value="Đà Nẵng">Đà Nẵng</option>
+                                                <option value="Đắk Lắk">Đắk Lắk</option>
+                                                <option value="Đắk Nông">Đắk Nông</option>
+                                                <option value="Điện Biên">Điện Biên</option>
+                                                <option value="Đồng Nai">Đồng Nai</option>
+                                                <option value="Đồng Tháp">Đồng Tháp</option>
+                                                <option value="Gia Lai">Gia Lai</option>
+                                                <option value="Hà Giang">Hà Giang</option>
+                                                <option value="Hà Nam">Hà Nam</option>
+                                                <option value="Hà Nội">Hà Nội</option>
+                                                <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                                <option value="Hải Dương">Hải Dương</option>
+                                                <option value="Hải Phòng">Hải Phòng</option>
+                                                <option value="Hậu Giang">Hậu Giang</option>
+                                                <option value="Hòa Bình">Hòa Bình</option>
+                                                <option value="Hưng Yên">Hưng Yên</option>
+                                                <option value="Khánh Hòa">Khánh Hòa</option>
+                                                <option value="Kiên Giang">Kiên Giang</option>
+                                                <option value="Kon Tum">Kon Tum</option>
+                                                <option value="Lai Châu">Lai Châu</option>
+                                                <option value="Lâm Đồng">Lâm Đồng</option>
+                                                <option value="Lạng Sơn">Lạng Sơn</option>
+                                                <option value="Lào Cai">Lào Cai</option>
+                                                <option value="Long An">Long An</option>
+                                                <option value="Nam Định">Nam Định</option>
+                                                <option value="Nghệ An">Nghệ An</option>
+                                                <option value="Ninh Bình">Ninh Bình</option>
+                                                <option value="Ninh Thuận">Ninh Thuận</option>
+                                                <option value="Phú Thọ">Phú Thọ</option>
+                                                <option value="Phú Yên">Phú Yên</option>
+                                                <option value="Quảng Bình">Quảng Bình</option>
+                                                <option value="Quảng Nam">Quảng Nam</option>
+                                                <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                                <option value="Quảng Ninh">Quảng Ninh</option>
+                                                <option value="Quảng Trị">Quảng Trị</option>
+                                                <option value="Sóc Trăng">Sóc Trăng</option>
+                                                <option value="Sơn La">Sơn La</option>
+                                                <option value="Tây Ninh">Tây Ninh</option>
+                                                <option value="Thái Bình">Thái Bình</option>
+                                                <option value="Thái Nguyên">Thái Nguyên</option>
+                                                <option value="Thanh Hóa">Thanh Hóa</option>
+                                                <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                                <option value="Tiền Giang">Tiền Giang</option>
+                                                <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                                                <option value="Trà Vinh">Trà Vinh</option>
+                                                <option value="Tuyên Quang">Tuyên Quang</option>
+                                                <option value="Vĩnh Long">Vĩnh Long</option>
+                                                <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                                <option value="Yên Bái">Yên Bái</option>
+                                            </select>
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-globe-americas"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-4 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Email </label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fas fa-at"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-xl-12 col-lg-6 col-md-12">
+                                    <div class="form-group">
+                                        <label>Địa Chỉ Hoàn Chỉnh</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Los Angeles, CA 90026, USA">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon fa fa-home"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Mô Tả</label>
+                                        <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
+                                        <p id="ms" style="color:red;"></p>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Ngày bắt đầu</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon far fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Ngày kết thúc</label>
+                                        <div class="ls-inputicon-box">
+                                            <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
+                                            <p id="ms" style="color:red;"></p>
+
+                                            <i class="fs-input-icon far fa-calendar"></i>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="text-left">
+                                        <div id="btnpostjobg" onclick="PostJob()" class="site-button m-r5">Đăng Tin Tuyển Dụng</div>
+                                    </div>
+                                </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+
+                <div>
+                    @Html.ActionLink("Trở lại", "Index")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section _Footer
+{
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.replace("description");
+        var editor = CKEDITOR.replace("description", { height: '600px' });
+        customConfig: '/Areas/admin/Content/ckeditor/config.js';
+    </script>
+    <script>
+        $(function () {
+            $("#name").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+                text_create = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a").replace(/\ /g, '-').replace(/đ/g, "d").replace(/đ/g, "d").replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y").replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u").replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ.+/g, "o").replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ.+/g, "e").replace(/ì|í|ị|ỉ|ĩ/g, "i");
+                $('#meta').val(text_create);
+            }).keyup();
+        });
+    </script>
+}
+
+
+@section scripts
+    {
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}
+
