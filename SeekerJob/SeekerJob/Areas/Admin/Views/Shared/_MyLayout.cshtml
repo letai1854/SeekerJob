@@ -196,5 +196,33 @@
 
 </body>
 </html>
+<script>
+    function downloadCV(cvId) {
+        var element = document.getElementById(cvId);
+        if (element) {
+            html2pdf().from(element).save(cvId + '.pdf');
+        }
+    }
+
+    function loadAvatar(event, avatarId) {
+        var avatar = document.getElementById(avatarId);
+        if (avatar) {
+            avatar.src = URL.createObjectURL(event.target.files[0]);
+        }
+    }
+
+
+    for (let i = 1; i <= 6; i++) {
+        let cvId = 'cv' + i; // luôn thêm số i vào sau cv
+        let popupId = 'cv' + i + '_up_popup';
+
+        let button = document.querySelector('#' + popupId + ' .site-button');
+        if (button) {
+            button.addEventListener('click', function () {
+                downloadCV(cvId); // gọi đúng id
+            });
+        }
+    }
+</script>
 @RenderSection("scripts", required: false)
 
