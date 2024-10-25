@@ -3,7 +3,7 @@
 <script>
     var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
 </script>
-
+@using SeekerJob.Models
 @{
     var tablebanner = ViewData["tablepanners"] as List<tablebanner>;
     var tablebannerpart = ViewData["tablebannerparts"] as List<tablebannerpart>;

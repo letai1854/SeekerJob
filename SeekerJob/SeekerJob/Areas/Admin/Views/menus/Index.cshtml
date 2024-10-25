@@ -1,4 +1,5 @@
-﻿@{
+﻿@using SeekerJob.Models
+@{
     var tablemenus = ViewData["tablemenus"] as List<tablemenu>;
     var tablemenuparts = ViewData["tablemenuparts"] as List<tablemenupart>;
 }
@@ -35,143 +36,143 @@
 </style>
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
-    
+
     <div class="card-header py-3">
         <a href="@Url.Action("Create")" class="custom-button">+ Thêm mới</a>
     </div>
-    </div>
+</div>
 
-    <div class="card-body">
-        <div class="table-responsive">
+<div class="card-body">
+    <div class="table-responsive">
 
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <thead>
-                    <tr>
-                        <th>
-                            STT
-                        </th>
-                        <th>
-                            Tên menu
-                        </th>
-                        <th>
-                            Liên kết
-                        </th>
-                        <th>
-                            Meta
-                        </th>
-                        <th>
-                            hide
-                        </th>
-                        <th>
-                            Ngày chỉnh
-                        </th>
-                        <th></th>
-                    </tr>
-                </thead>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>
+                        STT
+                    </th>
+                    <th>
+                        Tên menu
+                    </th>
+                    <th>
+                        Liên kết
+                    </th>
+                    <th>
+                        Meta
+                    </th>
+                    <th>
+                        hide
+                    </th>
+                    <th>
+                        Ngày chỉnh
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
 
 
-                @{var Number = 1; }
-                @foreach (var item in tablemenus)
-                {
+            @{var Number = 1; }
+            @foreach (var item in tablemenus)
+            {
 
-                    <tr style="background-color: #f0f0f0; color: black;">
+                <tr style="background-color: #f0f0f0; color: black;">
 
-                        <td>
-                            @Html.Raw(Number++)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.name)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.link)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.meta)
-                        </td>
-                        <td>
+                    <td>
+                        @Html.Raw(Number++)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.link)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.meta)
+                    </td>
+                    <td>
 
-                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
-                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
-                            }, new { @class = "form-control" })
-                        </td>
-                        <td>
-                            @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
-                        </td>
-                        <td>
-
-                            @*<button title="Sửa" data-bs-toggle="tooltip" data-bs-placement="top" style="background-color: green; color: white;">
-            <span class="far fa-edit"></span>
-        </button>*@
-
-                            <a href="@Url.Action("Edit", "menus", new { id = item.id })"
-                               title="Sửa"
-                               data-bs-toggle="tooltip"
-                               data-bs-placement="top"
-                               style="background-color: green; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px;">
-                                <span class="far fa-edit"></span>
-                            </a>
-                        </td>
-                    </tr>
-                    if (tablemenuparts.Any(p => p.idtable == item.id))
-                    {
-                        foreach (var part in tablemenuparts.Where(p => p.idtable == item.id).OrderBy(p => p.arrange))
+                        @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
                         {
-                            <tr>
+                            new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
+                            new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
+                        }, new { @class = "form-control" })
+                    </td>
+                    <td>
+                        @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
+                    </td>
+                    <td>
 
-                                <td>
-                                    @Html.Raw(Number++)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => part.name)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => part.link)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => part.meta)
-                                </td>
-                                <td>
-                                    @Html.DropDownListFor(modelItem => part.hide, new List<SelectListItem>
-                                     {
-                                         new SelectListItem { Text = "True", Value = "True", Selected = part.hide == true },
-                                         new SelectListItem { Text = "False", Value = "False", Selected = part.hide == false }
-                                     }, new { @class = "form-control" })
-                                </td>
-                                <td>
-                                    @string.Format("{0:dd/MM/yyyy}", part.datebegin.Value)
-                                </td>
-                                <td>
-                                    @*<button title="Sửa" data-bs-toggle="tooltip" data-bs-placement="top" style="background-color: green; color: white;">
+                        @*<button title="Sửa" data-bs-toggle="tooltip" data-bs-placement="top" style="background-color: green; color: white;">
+                                <span class="far fa-edit"></span>
+                            </button>*@
+
+                        <a href="@Url.Action("Edit", "menus", new { id = item.id })"
+                           title="Sửa"
+                           data-bs-toggle="tooltip"
+                           data-bs-placement="top"
+                           style="background-color: green; color: white; padding: 8px 12px; text-decoration: none; border-radius: 4px;">
+                            <span class="far fa-edit"></span>
+                        </a>
+                    </td>
+                </tr>
+                if (tablemenuparts.Any(p => p.idtable == item.id))
+                {
+                    foreach (var part in tablemenuparts.Where(p => p.idtable == item.id).OrderBy(p => p.arrange))
+                    {
+                        <tr>
+
+                            <td>
+                                @Html.Raw(Number++)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => part.name)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => part.link)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => part.meta)
+                            </td>
+                            <td>
+                                @Html.DropDownListFor(modelItem => part.hide, new List<SelectListItem>
+                                 {
+                                     new SelectListItem { Text = "True", Value = "True", Selected = part.hide == true },
+                                     new SelectListItem { Text = "False", Value = "False", Selected = part.hide == false }
+                                 }, new { @class = "form-control" })
+                            </td>
+                            <td>
+                                @string.Format("{0:dd/MM/yyyy}", part.datebegin.Value)
+                            </td>
+                            <td>
+                                @*<button title="Sửa" data-bs-toggle="tooltip" data-bs-placement="top" style="background-color: green; color: white;">
                                         <span class="far fa-edit"></span>
                                     </button>
                                     <button title="Xóa" data-bs-toggle="tooltip" data-bs-placement="top" style="background-color: red; color: white;">
                                         <span class="far fa-trash-alt"></span>
                                     </button>*@
-                                    <a href="@Url.Action("Edit", "menus", new { id = part.id }) "
-                                       title="Sửa"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-placement="top"
-                                       style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
-                                        <span class="far fa-edit"></span> 
-                                    </a>
-                                    <a href="@Url.Action("Delete", "menus", new { id = part.id })"
-                                       title="Xóa"
-                                       data-bs-toggle="tooltip"
-                                       data-bs-placement="top"
-                                       style="background-color: red; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; margin-left: 2px;">
-                                        <span class="far fa-trash-alt"></span>
-                                    </a>
-                                </td>
-                            </tr>
-                        }
+                                <a href="@Url.Action("Edit", "menus", new { id = part.id }) "
+                                   title="Sửa"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                                    <span class="far fa-edit"></span>
+                                </a>
+                                <a href="@Url.Action("Delete", "menus", new { id = part.id })"
+                                   title="Xóa"
+                                   data-bs-toggle="tooltip"
+                                   data-bs-placement="top"
+                                   style="background-color: red; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; margin-left: 2px;">
+                                    <span class="far fa-trash-alt"></span>
+                                </a>
+                            </td>
+                        </tr>
                     }
                 }
+            }
 
-            </table>
-        </div>
+        </table>
     </div>
+</div>
 </div>
 @section _footer{
     <!-- Page level plugins -->

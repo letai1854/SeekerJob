@@ -1,5 +1,5 @@
-﻿
-@{ 
+﻿@using SeekerJob.Models
+@{
     var info = ViewData["info"] as InforEmployer;
 }
 
@@ -59,7 +59,7 @@
                         <h4 class="t-white">Giới thiệu công ty</h4>
                     </div>
                     <p style="margin-top: 10px;">
-                       
+
                         @Html.Raw(@info.description)
                     </p>
 

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<SeekerJob.tablemenufunction>
+﻿@model IEnumerable<SeekerJob.Models.tablemenufunction>
+@using SeekerJob.Models
 
-
-@{ 
+@{
     var inforcandidate = ViewData["infocandidate"] as InforCandidate;
 }
 
@@ -15,7 +15,7 @@
                 if (item.meta == "dang-nhap")
                 {
                     <div class="twm-nav-btn-left">
-                        <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up"  href="/@item.link">
+                        <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
                             <i data-feather="log-in"></i> @item.name
                         </a>
                     </div>

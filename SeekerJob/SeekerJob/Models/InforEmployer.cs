@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;

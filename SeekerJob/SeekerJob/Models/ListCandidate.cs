@@ -7,19 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TitlePage
+    public partial class ListCandidate
     {
         public int id { get; set; }
-        public string meta { get; set; }
-        public string tilteBig { get; set; }
-        public string titleMall { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<System.DateTime> datebegin { get; set; }
-        public string typePage { get; set; }
+        public Nullable<int> idjob { get; set; }
+        public string usernamecandidate { get; set; }
+        public string filecandiate { get; set; }
+        public Nullable<System.DateTime> datesend { get; set; }
     }
 }

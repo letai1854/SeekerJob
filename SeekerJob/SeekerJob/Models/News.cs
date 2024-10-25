@@ -7,17 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class CV
+    public partial class News
     {
         public string username { get; set; }
         public int id { get; set; }
         public string title { get; set; }
-        public string link { get; set; }
+        public string image { get; set; }
         public string meta { get; set; }
+        public Nullable<System.DateTime> daypost { get; set; }
+        public string shortbref { get; set; }
+        public string description { get; set; }
     }
 }

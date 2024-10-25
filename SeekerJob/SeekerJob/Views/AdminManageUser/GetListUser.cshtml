@@ -1,7 +1,7 @@
-﻿
+﻿@using SeekerJob.Models
 
-@{ 
-    var table = ViewData["table"] as List< Login>;
+@{
+    var table = ViewData["table"] as List<Login>;
 
 }
 
@@ -32,52 +32,55 @@
                                 <div>@item.typeRow</div>
                             </td>
                             <td>
-                                <div>@if (item.status == true)
-                                {
-                                    <p>On</p>
-                                }
-                                else { 
-                                <p>Off</p>
-                                }</div>
-                            </td>
+                                <div>
+                                    @if (item.status == true)
+                                    {
+                                        <p>On</p>
+                                    }
+                                    else
+                                    {
+                                        <p>Off</p>
+                                    }
+                            </div>
+                        </td>
 
-                            <td>
-                                <div class="twm-table-controls">
-                                    <ul class="twm-DT-controls-icon list-unstyled">
-                                        <li>
-                                            @if (item.typeRow == "Thí sinh")
-                                            {
-                                                <a data-bs-toggle="modal" href="@ViewBag.hoso/@item.username" role="button" class="custom-toltip">
-                                                    <span class="fa fa-eye"></span>
-                                                    <span class="custom-toltip-block">Veiw</span>
-                                                </a>
-
-                                            }
-                                            else
-                                            {
-                                                <a data-bs-toggle="modal" href="@ViewBag.hosocongty/@item.username" role="button" class="custom-toltip">
-                                                    <span class="fa fa-eye"></span>
-                                                    <span class="custom-toltip-block">Veiw</span>
-                                                </a>
-                                            }
-
-                                        </li>
-                                        <li>
-                                            <a data-bs-toggle="modal" href="#" role="button" class="custom-toltip">
-                                                <span class="fa fa-edit"></span>
-                                                <span class="custom-toltip-block">Edit</span>
+                        <td>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+                                    <li>
+                                        @if (item.typeRow == "Thí sinh")
+                                        {
+                                            <a data-bs-toggle="modal" href="@ViewBag.hoso/@item.username" role="button" class="custom-toltip">
+                                                <span class="fa fa-eye"></span>
+                                                <span class="custom-toltip-block">Veiw</span>
                                             </a>
-                                        </li>
-                                        @*<li>
+
+                                        }
+                                        else
+                                        {
+                                            <a data-bs-toggle="modal" href="@ViewBag.hosocongty/@item.username" role="button" class="custom-toltip">
+                                                <span class="fa fa-eye"></span>
+                                                <span class="custom-toltip-block">Veiw</span>
+                                            </a>
+                                        }
+
+                                    </li>
+                                    <li>
+                                        <a data-bs-toggle="modal" href="#" role="button" class="custom-toltip">
+                                            <span class="fa fa-edit"></span>
+                                            <span class="custom-toltip-block">Edit</span>
+                                        </a>
+                                    </li>
+                                    @*<li>
                                             <button title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
                                                 <span class="far fa-trash-alt"></span>
                                             </button>
                                         </li>*@
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    }
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
 
 
 

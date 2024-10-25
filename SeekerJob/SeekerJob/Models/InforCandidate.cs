@@ -7,29 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Job
+    public partial class InforCandidate
     {
         public string username { get; set; }
-        public int id { get; set; }
-        public string title { get; set; }
+        public string name { get; set; }
+        public Nullable<int> phone { get; set; }
+        public string adrress { get; set; }
         public string email { get; set; }
-        public string address { get; set; }
-        public string addressdetail { get; set; }
-        public string gender { get; set; }
-        public string degree { get; set; }
+        public string skill { get; set; }
+        public string qualification { get; set; }
+        public Nullable<System.DateTime> birthday { get; set; }
         public Nullable<double> experience { get; set; }
-        public Nullable<double> offer { get; set; }
         public string jobcategory { get; set; }
+        public string gender { get; set; }
+        public Nullable<double> offercurrent { get; set; }
         public string image { get; set; }
-        public Nullable<System.DateTime> startday { get; set; }
-        public Nullable<System.DateTime> endday { get; set; }
         public string description { get; set; }
-        public string meta { get; set; }
-        public Nullable<int> likeNumber { get; set; }
+        public string instagram { get; set; }
+        public string facebook { get; set; }
+        public string twitter { get; set; }
+        public string linkedin { get; set; }
     }
 }

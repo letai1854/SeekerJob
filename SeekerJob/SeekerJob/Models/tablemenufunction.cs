@@ -7,19 +7,19 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class PageTitle
+    public partial class tablemenufunction
     {
         public int id { get; set; }
+        public string name { get; set; }
+        public string link { get; set; }
         public string meta { get; set; }
-        public string tilteBig { get; set; }
-        public string titleMall { get; set; }
         public Nullable<bool> hide { get; set; }
+        public Nullable<int> arrange { get; set; }
         public Nullable<System.DateTime> datebegin { get; set; }
-        public string typePage { get; set; }
     }
 }

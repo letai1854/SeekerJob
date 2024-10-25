@@ -7,16 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Login
+    public partial class AddCV
     {
-        public string username { get; set; }
-        public string password { get; set; }
-        public Nullable<bool> status { get; set; }
-        public string typeRow { get; set; }
+        public int id { get; set; }
+        public string tilteBig { get; set; }
+        public string titleMall { get; set; }
+        public string image { get; set; }
+        public string meta { get; set; }
+        public string typeCv { get; set; }
     }
 }

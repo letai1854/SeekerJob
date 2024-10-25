@@ -7,21 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tablebannerpart
+    public partial class SaveJob
     {
         public int id { get; set; }
-        public Nullable<int> idtable { get; set; }
-        public string content { get; set; }
-        public string link { get; set; }
-        public string meta { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> arrange { get; set; }
-        public Nullable<System.DateTime> datebegin { get; set; }
-        public string typeRow { get; set; }
+        public Nullable<int> idjob { get; set; }
+        public string usernamecandidate { get; set; }
+        public Nullable<System.DateTime> saveDate { get; set; }
     }
 }

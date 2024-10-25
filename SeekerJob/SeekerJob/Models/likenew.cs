@@ -7,23 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tablefooter
+    public partial class likenew
     {
         public int id { get; set; }
-        public string name { get; set; }
-        public string link { get; set; }
-        public string meta { get; set; }
-        public Nullable<bool> hide { get; set; }
-        public Nullable<int> arrange { get; set; }
-        public string typerow { get; set; }
-        public Nullable<System.DateTime> datebegin { get; set; }
-        public string content1 { get; set; }
-        public string content2 { get; set; }
-        public string content3 { get; set; }
+        public string username { get; set; }
+        public Nullable<int> idnews { get; set; }
     }
 }

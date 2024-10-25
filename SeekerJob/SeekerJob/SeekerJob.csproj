@@ -138,12 +138,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddCV.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Advertise.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -185,9 +179,6 @@
     <Compile Include="Controllers\ProfileCompanyController.cs" />
     <Compile Include="Controllers\SavedJobCandidatesController.cs" />
     <Compile Include="Controllers\ViewListNewsController.cs" />
-    <Compile Include="CV.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
     <Compile Include="DataSystem\data.cs" />
     <Compile Include="DTO\CombineJobUser.cs" />
     <Compile Include="DTO\Combinelikenewscandidate.cs" />
@@ -207,77 +198,86 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="InforCandidate.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\AddCV.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="InforEmployer.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\Advertise.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Job.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\CV.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="likenew.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\InforCandidate.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="ListCandidate.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\InforEmployer.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\Job.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydata.Context.cs">
+    <Compile Include="Models\likenew.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ListCandidate.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Login.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\mydb.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydata.Context.tt</DependentUpon>
+      <DependentUpon>mydb.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydata.cs">
+    <Compile Include="Models\mydb.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydata.tt</DependentUpon>
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="mydata.Designer.cs">
+    <Compile Include="Models\mydb.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>mydata.edmx</DependentUpon>
+      <DependentUpon>mydb.edmx</DependentUpon>
     </Compile>
-    <Compile Include="News.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\News.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
-    <Compile Include="PageTitle.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
+    <Compile Include="Models\PageTitle.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SaveJob.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablebanner.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablebannerpart.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablefooter.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablefooterpart.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tableimagemenu.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablemenu.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablemenufunction.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tablemenupart.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TitlePage.cs">
+      <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaveJob.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
     <Compile Include="Services\JotFormService.cs" />
-    <Compile Include="tablebanner.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablebannerpart.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablefooter.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablefooterpart.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tableimagemenu.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablemenu.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablemenufunction.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tablemenupart.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TitlePage.cs">
-      <DependentUpon>mydata.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\ckeditor\adapters\jquery.js" />
@@ -3435,15 +3435,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="mydata.Context.tt">
+    <Content Include="Models\mydb.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mydata.edmx</DependentUpon>
-      <LastGenOutput>mydata.Context.cs</LastGenOutput>
+      <DependentUpon>mydb.edmx</DependentUpon>
+      <LastGenOutput>mydb.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="mydata.tt">
+    <Content Include="Models\mydb.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>mydata.edmx</DependentUpon>
-      <LastGenOutput>mydata.cs</LastGenOutput>
+      <DependentUpon>mydb.edmx</DependentUpon>
+      <LastGenOutput>mydb.cs</LastGenOutput>
     </Content>
     <Content Include="plugin\ckeditor\adapters\jquery.js" />
     <Content Include="plugin\ckeditor\build-config.js" />
@@ -4435,13 +4435,6 @@
     <Content Include="plugin\ckeditor\skins\moono-lisa\readme.md" />
     <Content Include="plugin\ckfinder\plugins\fileeditor\codemirror\LICENSE" />
     <Content Include="plugin\ckfinder\userfiles\.htaccess" />
-    <EntityDeploy Include="mydata.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>mydata.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="mydata.edmx.diagram">
-      <DependentUpon>mydata.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Content\ckeditor\CHANGES.md" />
     <Content Include="Areas\Admin\Content\ckeditor\LICENSE.md" />
@@ -4725,6 +4718,13 @@
     <Content Include="Areas\Admin\Views\Advertise\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ListJob\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ListJob\Create.cshtml" />
+    <EntityDeploy Include="Models\mydb.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>mydb.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\mydb.edmx.diagram">
+      <DependentUpon>mydb.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4778,6 +4778,7 @@
     <Content Include="Views\Menu\GetLoginPost.cshtml" />
     <Content Include="Views\Shared\_Mylayout.cshtml" />
     <Content Include="Views\ListJob\GetJobList.cshtml" />
+    <Content Include="Views\ListJob\GetTitleSearchJob.cshtml" />
     <Content Include="Views\PostJob\ShowPostJob.cshtml" />
     <Content Include="Views\Banner\GetBanner.cshtml" />
     <Content Include="Views\ListJob\TitleJobList.cshtml" />
@@ -4797,6 +4798,7 @@
     <Content Include="Views\Home\GetTitlePageHome2.cshtml" />
     <Content Include="Views\Home\GetListJobLike.cshtml" />
     <Content Include="Views\Home\AdvertiseHomeSecond.cshtml" />
+    <Content Include="Views\Home\AdvertiseHomeFirst.cshtml" />
     <Content Include="Views\Home\GetTitlePageHomeNews.cshtml" />
     <Content Include="Views\Home\GetListNewsHome.cshtml" />
     <Content Include="Views\Home\GetTitleListCompany.cshtml" />
@@ -4889,7 +4891,6 @@
     <Folder Include="DATA\" />
     <Folder Include="FILES\" />
     <Folder Include="Images\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\JotFormt\" />
   </ItemGroup>
   <ItemGroup>

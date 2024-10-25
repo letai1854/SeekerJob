@@ -7,12 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tablebanner
+    public partial class tablefooter
     {
         public int id { get; set; }
         public string name { get; set; }
@@ -20,9 +20,10 @@ namespace SeekerJob
         public string meta { get; set; }
         public Nullable<bool> hide { get; set; }
         public Nullable<int> arrange { get; set; }
+        public string typerow { get; set; }
         public Nullable<System.DateTime> datebegin { get; set; }
-        public string typeRow { get; set; }
-        public string icon { get; set; }
-        public string active { get; set; }
+        public string content1 { get; set; }
+        public string content2 { get; set; }
+        public string content3 { get; set; }
     }
 }

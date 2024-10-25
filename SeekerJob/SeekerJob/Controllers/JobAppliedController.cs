@@ -1,4 +1,5 @@
 ﻿using SeekerJob.DTO;
+using SeekerJob.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace SeekerJob.Controllers
     public class JobAppliedController : Controller
     {
         // GET: JobApplied
-        mydatabase db = new mydatabase();
+        testdbs2425Entities db = new testdbs2425Entities();
         public ActionResult Index()
         {
             return View();
