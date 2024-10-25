@@ -1,20 +1,20 @@
 ﻿
 @using SeekerJob.DTO
 @using SeekerJob.Controllers
-
+@using SeekerJob.Models
 @{
     var imgcompany = ViewData["imgcompany"] as tablefooter;
     var package = ViewData["package"] as tablefooter;
     var contact = ViewData["contact"] as List<tablefooter>;
     var listfooter = ViewData["listfooter"] as List<FooterCombineTable>;
     var copyright = ViewData["copyright"] as tablefooter;
-    var connectdiff = ViewData["connectdiff"]  as List<tablefooter> ;
+    var connectdiff = ViewData["connectdiff"] as List<tablefooter>;
 }
 
 
 
 
-<footer class="footer-dark" >
+<footer class="footer-dark">
     <div class="container ">
         <div class="footer-top ">
             <div class="row ">
@@ -28,7 +28,7 @@
                         <p>@package.name</p>
                         <ul class="ftr-list ">
 
-                            @foreach(var p in contact)
+                            @foreach (var p in contact)
                             {
                                 <li>
                                     <p><span>@p.name</span> @p.content1</p>
@@ -58,7 +58,7 @@
                                 </div>
                             </div>
                         }
-                       
+
 
 
 

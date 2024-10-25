@@ -587,7 +587,7 @@
           <Property Name="datebegin" Type="DateTime" Precision="0" />
           <Property Name="typePage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityContainer Name="mydatabase" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="testdbs2425Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AddCVs" EntityType="Self.AddCV" />
           <EntitySet Name="Advertises" EntityType="Self.Advertise" />
           <EntitySet Name="CVs" EntityType="Self.CV" />
@@ -615,7 +615,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="mydatabase">
+        <EntityContainerMapping StorageEntityContainer="testdbs2425ModelStoreContainer" CdmEntityContainer="testdbs2425Entities">
           <EntitySetMapping Name="AddCVs">
             <EntityTypeMapping TypeName="testdbs2425Model.AddCV">
               <MappingFragment StoreEntitySet="AddCV">

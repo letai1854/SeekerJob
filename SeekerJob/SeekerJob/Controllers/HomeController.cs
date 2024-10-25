@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using SeekerJob.Models;
 namespace SeekerJob.Controllers
 {
     public class HomeController : Controller
@@ -12,7 +12,7 @@ namespace SeekerJob.Controllers
 
 
 
-        mydatabase db = new mydatabase();
+        testdbs2425Entities db = new testdbs2425Entities();
 
 
 

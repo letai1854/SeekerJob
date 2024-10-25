@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class mydatabase : DbContext
+    public partial class testdbs2425Entities : DbContext
     {
-        public mydatabase()
-            : base("name=mydatabase")
+        public testdbs2425Entities()
+            : base("name=testdbs2425Entities")
         {
         }
     

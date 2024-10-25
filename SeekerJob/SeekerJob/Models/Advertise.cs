@@ -7,16 +7,15 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SeekerJob
+namespace SeekerJob.Models
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class tablefooterpart
+    public partial class Advertise
     {
         public int id { get; set; }
-        public Nullable<int> idtable { get; set; }
-        public string content { get; set; }
+        public string typeimage { get; set; }
         public string link { get; set; }
         public string meta { get; set; }
         public Nullable<bool> hide { get; set; }

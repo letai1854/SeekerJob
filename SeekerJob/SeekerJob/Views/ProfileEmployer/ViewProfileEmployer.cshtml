@@ -1,5 +1,6 @@
 ﻿@using SeekerJob.Controllers
 @using SeekerJob.DataSystem
+@using SeekerJob.Models
 @{
     var info = ViewData["info"] as InforEmployer;
     var table = ViewData["table"] as List<Job>;
@@ -40,9 +41,11 @@
     .t-white {
         color: #fff;
     }
+
     p::-webkit-scrollbar {
         display: none; /* Ẩn thanh cuộn */
     }
+
     table {
         border: none !important;
     }
@@ -194,21 +197,21 @@
 </div>
 
 <script>
-        $(document).ready(function() {
-            // Khởi tạo DataTables một lần duy nhất
-            var jobsBookmarkTable = $('#jobs_bookmark_table_search').DataTable({
-                "paging": true,
-                "pageLength": 4,
-                "lengthChange": false,
-                "searching": true,
-                "info": false,
-                "autoWidth": false,
-                "language": {
-                    "paginate": {
-                        "previous": "Trước",
-                        "next": "Sau"
-                    }
+    $(document).ready(function () {
+        // Khởi tạo DataTables một lần duy nhất
+        var jobsBookmarkTable = $('#jobs_bookmark_table_search').DataTable({
+            "paging": true,
+            "pageLength": 4,
+            "lengthChange": false,
+            "searching": true,
+            "info": false,
+            "autoWidth": false,
+            "language": {
+                "paginate": {
+                    "previous": "Trước",
+                    "next": "Sau"
                 }
-            });
+            }
         });
+    });
 </script>

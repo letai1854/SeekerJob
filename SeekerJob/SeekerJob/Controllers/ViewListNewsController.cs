@@ -5,12 +5,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
+using SeekerJob.Models;
 namespace SeekerJob.Controllers
 {
     public class ViewListNewsController : Controller
     {
 
-        mydatabase db = new mydatabase();
+        testdbs2425Entities db = new testdbs2425Entities();
         public ActionResult Index()
         {
             return View();

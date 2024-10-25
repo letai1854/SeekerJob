@@ -1,9 +1,9 @@
-﻿
+﻿@using SeekerJob.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
 }
-@{ 
+@{
     var tablepro = ViewData["tablepro"] as List<tablebannerpart>;
     var tablenews = ViewData["tablenews"] as List<tablebannerpart>;
     var tablecompany = ViewData["tablecompany"] as List<tablebannerpart>;

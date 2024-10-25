@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using SeekerJob.Models;
 namespace SeekerJob.Controllers
 {
     public class AdminManageUserController : Controller
     {
         // GET: AdminManageUser
 
-        mydatabase db = new mydatabase();
+        testdbs2425Entities db = new testdbs2425Entities();
         public ActionResult Index()
         {
             return View();

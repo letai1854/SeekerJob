@@ -1,5 +1,5 @@
 ﻿@using SeekerJob.Controllers
- 
+@using SeekerJob.Models
 <script>
              var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
 
@@ -13,41 +13,41 @@
     <ul class=" nav navbar-nav">
         @foreach (var item in tablemenus)
         {
-    if (item.name != "anhdaidien")
-                {
-            if (item.name == "Trang chủ" && (item.hide ?? true))
+            if (item.name != "anhdaidien")
             {
-                <li class="has-mega-menu">
-                    <a href="/@item.meta" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
-                </li>
-            }
-            else
-            {
-                if (item.hide ?? true)
+                if (item.name == "Trang chủ" && (item.hide ?? true))
                 {
-                    <li class="has-child">
-                        <a href="/@item.link" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
-                        @if (tablemenuparts.Any(p => p.idtable == item.id))
-                        {
-                            <ul class="sub-menu">
-                                @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
-                                {
-                                    <li><a style="color: rgb(60, 161, 207);" href="/@part.meta">@part.name</a></li>
-                                }
-                            </ul>
-                        }
+                    <li class="has-mega-menu">
+                        <a href="/@item.meta" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
                     </li>
+                }
+                else
+                {
+                    if (item.hide ?? true)
+                    {
+                        <li class="has-child">
+                            <a href="/@item.link" style="font-weight: 700; color: rgb(60, 161, 207); background-color: rgb(222, 152, 23) ">@item.name</a>
+                            @if (tablemenuparts.Any(p => p.idtable == item.id))
+                            {
+                                <ul class="sub-menu">
+                                    @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
+                                    {
+                                        <li><a style="color: rgb(60, 161, 207);" href="/@part.meta">@part.name</a></li>
+                                    }
+                                </ul>
+                            }
+                        </li>
 
+                    }
                 }
+
             }
-                    
-                }
 
 
         }
     </ul>
 </div>
-@using Newtonsoft.Json 
+@using Newtonsoft.Json
 @{
     var menuItems = tablemenus
         .Where(item => item.name == "anhdaidien" && (item.hide ?? true))
