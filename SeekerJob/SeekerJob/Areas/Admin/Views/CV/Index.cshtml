@@ -1,7 +1,6 @@
-﻿
-
+﻿@using SeekerJob.Models
 @{
-    var table = ViewData["table"] as List<SeekerJob.AddCV>;
+    var table = ViewData["table"] as List<SeekerJob.Models.AddCV>;
 
 }
 @section _header{
@@ -26,6 +25,7 @@
     .custom-toltip:hover .custom-toltip-block {
         display: block; /* Hiển thị tooltip khi rê chuột */
     }
+
     .twm-media-pic img {
         width: 100px; /* Chiều rộng ảnh */
         height: 100px; /* Chiều cao ảnh */
@@ -34,7 +34,6 @@
         border: 2px solid #ddd; /* Đường viền mỏng quanh ảnh */
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
     }
-
 </style>
 <div class="card shadow mb-4">
 
