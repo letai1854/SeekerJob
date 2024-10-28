@@ -9,13 +9,7 @@ namespace SeekerJob.Controllers
 {
     public class HomeController : Controller
     {
-
-
-
         testdbs2425Entities db = new testdbs2425Entities();
-
-
-
 
         public ActionResult Index()
         {

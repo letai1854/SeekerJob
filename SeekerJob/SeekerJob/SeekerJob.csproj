@@ -4716,9 +4716,7 @@
     <Content Include="Areas\Admin\Views\BannerAndTitle\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Advertise\Index.cshtml" />
-
     <Content Include="Areas\Admin\Views\CV\Create.cshtml" />
-
     <Content Include="Areas\Admin\Views\ListJob\Index.cshtml" />
     <Content Include="Areas\Admin\Views\ListJob\Create.cshtml" />
     <EntityDeploy Include="Models\mydb.edmx">
