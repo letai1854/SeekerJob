@@ -61,7 +61,7 @@ namespace SeekerJob
             routes.MapRoute(
                 name: "Đổi mật khẩu tuyển dụng",
                 url: "doi-mat-khau-tuyen-dung",
-                defaults: new { controller = "ChangePassworCompany", action = "IndexViewChangePassword", id = UrlParameter.Optional },
+                defaults: new { controller = "ChangePassworCompany", action = "IndexViewChangePassword", id = UrlParameter.Optional }, 
                 namespaces: new[] { "SeekerJob.Controllers" }
             );
             routes.MapRoute(
