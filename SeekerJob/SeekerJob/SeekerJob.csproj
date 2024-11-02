@@ -160,6 +160,7 @@
     <Compile Include="Controllers\ChangepasswordCandidateController.cs" />
     <Compile Include="Controllers\EditNewsController.cs" />
     <Compile Include="Controllers\EditPostJobController.cs" />
+    <Compile Include="Controllers\errorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobAppliedController.cs" />
     <Compile Include="Controllers\JobDetailController.cs" />
@@ -3308,6 +3309,7 @@
     <Content Include="ContentImage\images\candidates\pic7.jpg" />
     <Content Include="ContentImage\images\candidates\pic8.jpg" />
     <Content Include="ContentImage\images\candidates\pic9.jpg" />
+    <Content Include="ContentImage\images\error-404.png" />
     <Content Include="ContentImage\images\icons8-facebook-50.png" />
     <Content Include="ContentImage\images\icons8-instagram-48.png" />
     <Content Include="ContentImage\images\icons8-like-50-blue.png" />
@@ -4883,6 +4885,7 @@
     <Content Include="Views\JobApplied\GetListAppliedJob.cshtml" />
     <Content Include="Views\JobApplied\GetListAppliedJobCandidate.cshtml" />
     <Content Include="Views\JobApplied\GetListJobApplied.cshtml" />
+    <Content Include="Views\error\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

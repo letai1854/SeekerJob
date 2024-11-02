@@ -29,6 +29,12 @@ namespace SeekerJob
                 namespaces: new[] { "SeekerJob.Controllers" }
             );
             routes.MapRoute(
+                name: "không tìm thấy trang",
+                url: "error",
+                defaults: new { controller = "error", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "SeekerJob.Controllers" }
+            );
+            routes.MapRoute(
                 name: "Tạo cv",
                 url: "admin-tao-cv",
                 defaults: new { controller = "AddManagerCV", action = "IndexCV", id = UrlParameter.Optional },
