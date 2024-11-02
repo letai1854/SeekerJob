@@ -1,6 +1,11 @@
 ﻿
+@using SeekerJob.Models
 @{
-    ViewBag.Title = "Create";
+    Login user = Session["admin"] as Login;
+
+}
+@{
+ViewBag.Title = "Create";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
 }
 
@@ -69,7 +74,7 @@
                                         <label>Mô Tả</label>
                                         <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi."></textarea>
                                     </div>
-                                    <p id="msmota" style="padding:2px;display:none; color:aliceblue"></p>
+                                    <p id="msmota" style="padding: 2px; display: none; color: red";>Nhập đầy đủ thông tin mô tả</p>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="twm-candidate-profile-pic">
@@ -83,21 +88,23 @@
                                         </div>
 
                                     </div>
-                                        <p id="msanh" style="padding:2px;display:none; color:aliceblue"></p>
+                                    <p id="msanh" style="padding:2px;display:none; color:aliceblue"></p>
                                 </div>
 
 
 
                                 <!--Start Date-->
                                 <!--End Date-->
-
-
+                                @*<div class="col-lg-12 col-md-12">
+                                        <div class="text-left">
+                                            <div onclick="AddNews()" type="submit" class="site-button m-r5">Đăng Tin Tức</div>
+                                        </div>
+                                    </div>*@
                                 <div class="col-lg-12 col-md-12">
                                     <div class="text-left">
-                                        <div onclick="AddNews()"  type="submit" class="site-button m-r5">Đăng Tin Tức</div>
+                                        <div onclick="AddNews()" class="site-button m-r5">Đăng Tin Tức</div>
                                     </div>
                                 </div>
-
 
 
 
@@ -112,6 +119,7 @@
             </div>
         </div>
     </div>
+
 </div>
 @section _Footer
 {
@@ -143,72 +151,62 @@
 }
 
 
-<script>
-    function AddNews() {
 
-        var mota = CKEDITOR.instances.editor.getData();
-        var tieude = $('#tieude').val();
-        var noidung = $('#noidung').val();
-        var email = $('#email').val();
-        var phone = $('#phone').val();
-        var anh = $('#file-uploader')[0].files[0];
-        var today = new Date();
-        var day = today.toISOString().split('T')[0];
-        var meta = convertToMeta(tieude);
+<script type="text/javascript">
+        function AddNews() {
 
-        @*var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;*@
-        var phoneRegex = /^(0[35789])[0-9]{8}$/;
-        $('#msmota, #mstieude, #msemail, #msnoidung, #msphone', '#msanh').html('');
+            var mota = encodeURIComponent(CKEDITOR.instances.editor.getData());
+            var tieude = $('#tieude').val();
+            var noidung = $('#noidung').val();
+            var email = $('#email').val();
+            var phone = $('#phone').val();
+            var anh = $('#file-uploader')[0].files[0];
+            var today = new Date();
+            var day = today.toISOString().split('T')[0];
+            var meta = convertToMeta(tieude);
 
+            var phoneRegex = /^(0[35789])[0-9]{8}$/;
+            $('#msmota, #mstieude, #msemail, #msnoidung, #msphone', '#msanh').html('');
+            console.log(CKEDITOR.instances.editor.getData());
 
-        flag = true
-
-
-        
-
-
-
-
-        if (!mota.trim()) {
-            $('#msmota').html('Phải nhập đủ tất cả thông tin mô tả');
-            $('#msmota').css('border-color', 'red');
-            $('#msmota').css('color', 'red');
+           flag = true
+        if (mota=='') {
+            //$('#msmota').html('Phải nhập đủ tất cả thông tin mô tả');
+            //$('#msmota').css('border-color', 'red');
+            //$('#msmota').css('color', 'red');
             $('#msmota').css('display', 'block');
             flag = false
         }
-        if (!tieude.trim()) {
+        if (tieude=='') {
             $('#mstieude').html('Phải nhập đủ tất cả thông tin tiêu đề');
             $('#mstieude').css('border-color', 'red');
             $('#mstieude').css('color', 'red');
             $('#mstieude').css('display', 'block');
             flag = false
         }
-        if (!noidung.trim()) {
+        if (noidung=='') {
             $('#msnoidung').html('Phải nhập đủ tất cả thông tin nội dung');
             $('#msnoidung').css('border-color', 'red');
             $('#msnoidung').css('color', 'red');
             $('#msnoidung').css('display', 'block');
             flag = false
         }
-        if (!email.trim()) {
+            if (email =='') {
             $('#msemail').html('Phải nhập đủ tất cả thông tin email');
             $('#msemail').css('border-color', 'red');
             $('#msemail').css('color', 'red');
             $('#msemail').css('display', 'block');
             flag = false
         }
-        //} else if (!emailRegex.test(email)) {
-        //    $('#msemail').html('Email không đúng định dạng');
-        //}
-        if (!phone.trim()) {
+        if (phone=='') {
             $('#msphone').html('Phải nhập đủ tất cả thông tin số điện thoại');
             $('#msphone').css('border-color', 'red');
             $('#msphone').css('color', 'red');
             $('#msphone').css('display', 'block');
             flag = false
-       
+
         }
-        if (!(phone.length === 10 && /^\d+$/.test(phone))) {  // Check format only if not empty
+        if (!(phone.length === 10 && /^\d+$/.test(phone))) {  
             $('#msphone').html('Số điện thoại không đúng định dạng (10 số)');
             $('#msphone').css({
                 'border-color': 'red',
@@ -224,56 +222,35 @@
             $('#msanh').css('display', 'block');
             flag = false
         }
-        if (!flag) {
-            return
-        }
-        
-
-        if (anh) {
-            var formData = new FormData();
-            formData.append("imageFile", anh);
-            formData.forEach((value, key) => {
-                console.log(key, value);
-            });
-            $.ajax({
-                url: '/Image/UploadImage',
-                type: 'Post',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    if (response.success) {
-                        newsData.nameImage = response.nameImage;
+            if (flag) {
 
 
-                        var newsData = {
-                            mota: mota,
-                            tieude: tieude,
-                            noidung: noidung,
-                            email: email,
-                            phone: phone,
-                            day: day,
-                            meta: meta,
-                            anh: newsData.nameImage
-                        };
-
-
-                        SendNewsData(username,mota,tieude,noidung,email,phone,day,meta,anh)
-                        alert("Image uploaded successfully: " + response.nameImage);
-                    } else {
-                        console.error("Error uploading image:", response.message);
+                var form = new FormData()
+                form.append('mota', mota);
+                form.append('tieude', tieude);
+                form.append('noidung', noidung);
+                form.append('email', email);
+                form.append('phone', phone);
+                form.append('day', day);
+                form.append('meta', meta);
+                form.append('anh', anh);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '/news/CreateNews', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var content = xhr.responseText;
+                        var json_ct = JSON.parse(content);
+                        if (json_ct.Data.status == "OK") {
+                            alert("Success");
+                        }
+                        else {
+                            alert("Error");
+                        }
                     }
-                },
-                error: function (err) {
-                    console.error("AJAX error:", err);
                 }
-            });
+                xhr.send(form);
 
-        }
-
-
-
-
+            }
 
         console.log("Tiêu đề:", tieude);
         console.log("Nội dung:", noidung);
@@ -283,21 +260,36 @@
         console.log("Ngày hôm nay:", day);
         console.log("Meta:", meta);
         console.log("anh:", anh);
-
-
-
-
-
-
-
-
-
-
     }
-    SendNewsData(username, mota, tieude, noidung, email, phone, day, meta, anh)
+
+    function SendNewsData( mota, tieude, noidung, email, phone, day, meta, anh)
     {
         var form = new FormData()
-        form.append('username', newsData.);
+        form.append('mota', mota);
+        form.append('tieude', tieude);
+        form.append('noidung', noidung);
+        form.append('email', email);
+        form.append('phone', phone);
+        form.append('day', day);
+        form.append('meta', meta);
+        form.append('anh', anh);
+        var xhr = new XMLHttpRequest();
+        var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+        xhr.open("POST",'/news/testnews', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var content = xhr.responseText;
+                var json_ct = JSON.parse(content);
+                if (json_ct.Data.status == "OK") {
+                    alert("Success");
+                }
+                else {
+                    alert("Error");
+                }
+            }
+        }
+        xhr.send(form);
+
     }
 
 

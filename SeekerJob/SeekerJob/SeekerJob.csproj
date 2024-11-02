@@ -279,6 +279,7 @@
       <DependentUpon>mydb.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IO.cs" />
     <Compile Include="Services\JotFormService.cs" />
   </ItemGroup>
   <ItemGroup>

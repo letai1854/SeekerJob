@@ -24,7 +24,7 @@ namespace SeekerJob.Areas.Admin.Controllers
                     uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
                     var path = Path.Combine(Server.MapPath("~/ContentImage/images"), uniqueFileName); // Check this path!
                     file.SaveAs(path);
-                    return Json(new { success = true, fileName = fileName,nameImage = uniqueFileName });
+                    return Json(new { success = true, fileName = uniqueFileName, nameImage = uniqueFileName });
                 }
                 else
                 {

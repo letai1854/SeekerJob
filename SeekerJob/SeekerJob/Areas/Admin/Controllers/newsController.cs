@@ -5,6 +5,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SeekerJob.Models;
+using SeekerJob.Services;
+using System.IO;
 namespace SeekerJob.Areas.Admin.Controllers
 {
     public class newsController : Controller
@@ -48,6 +50,101 @@ namespace SeekerJob.Areas.Admin.Controllers
         {
 
             return View();
+        }
+
+        
+        [HttpPost]
+        public JsonResult testnews(FormCollection Data)
+        {
+
+            string description = Data["mota"];
+            string title = Data["tieude"];
+            string shortbrief = Data["noidung"];
+            string email = Data["email"];
+            string phone = Data["phone"];
+            string day = Data["day"];
+            string meta = Data["meta"];
+            string img = Data["anh"];
+
+            var file = Request.Files["anh"];
+            string uniqueFileName = null;
+
+            if (file != null && file.ContentLength > 0)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/ContentImage/images"), uniqueFileName); // Check this path!
+                file.SaveAs(path);
+            }
+
+            IO io = new IO();
+            JsonResult js = new JsonResult();
+            Login user = Session["admin"] as Login;
+
+            News news = new News()
+            {
+                username = "Admin01",
+                title = title,
+                image = uniqueFileName,
+                meta = meta,
+                daypost = DateTime.Now,
+                shortbref = shortbrief,
+                description = description,
+            };
+            io.AddObject(news);
+            io.Save();
+            js.Data = new
+            {
+                status = "OK"
+            };
+            return Json(js, JsonRequestBehavior.AllowGet);
+        }
+    
+
+
+
+            [HttpPost]
+        public JsonResult CreateNews(FormCollection Data)
+        {
+            string description = HttpUtility.UrlDecode(Data["mota"]);
+            string title = Data["tieude"];
+            string shortbrief = Data["noidung"];
+            string email = Data["email"];
+            string phone = Data["phone"];
+            string day = Data["day"];
+            string meta = Data["meta"];
+            string img = Data["anh"];
+
+            var file = Request.Files["anh"];
+            string uniqueFileName = null;
+
+            if (file != null && file.ContentLength > 0)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/ContentImage/images"), uniqueFileName); // Check this path!
+                file.SaveAs(path);
+            }
+
+            IO io = new IO();
+            JsonResult js = new JsonResult();
+            Login user = Session["admin"] as Login;
+
+            News news = new News()
+            {
+                username = "Admin01",
+                title = title,
+                image = uniqueFileName,
+                meta = meta,
+                daypost = DateTime.Now,
+                shortbref = shortbrief,
+                description = description,
+            };
+            io.AddObject(news);
+            io.Save();
+            js.Data = new
+            {
+                status = "OK"
+            };
+            return Json(js, JsonRequestBehavior.AllowGet);
         }
     }
 }
