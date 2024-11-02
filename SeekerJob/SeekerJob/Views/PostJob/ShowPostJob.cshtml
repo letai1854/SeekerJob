@@ -213,7 +213,19 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-xl-4 col-lg-6 col-md-12">
+                                            <div class="twm-candidate-profile-pic">
+                                                <label>Ảnh bìa công việc</label>
+                                                <img src="~/ContentImage/images/blog/blog-single/1.jpg" alt="">
+                                                <div class="upload-btn-wrapper">
 
+                                                    <div id="upload-image-grid"></div>
+                                                    <button class="site-button button-sm">Tải ảnh lên</button>
+                                                    <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+                                                </div>
+
+                                            </div>
+                                        </div>
                                         <div class="col-xl-12 col-lg-6 col-md-12">
                                             <div class="form-group">
                                                 <label>Địa Chỉ Hoàn Chỉnh</label>
@@ -291,3 +303,47 @@
     </script>
 }
 
+
+
+<script>
+    document.getElementById('file-uploader').addEventListener('change', function (e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const previewImage = document.querySelector('.twm-candidate-profile-pic img');
+                previewImage.src = e.target.result;
+
+                // Hiển thị đường dẫn (tùy chọn, có thể không hoạt động trong một số trình duyệt vì lý do bảo mật)
+                const filePathSpan = document.createElement('span');
+                filePathSpan.textContent = file.name;
+                document.getElementById('upload-image-grid').appendChild(filePathSpan);
+
+                // Hoặc hiển thị tên file
+                //console.log(file.name);
+
+
+                //  Gửi dữ liệu ảnh lên server (ví dụ sử dụng AJAX)
+                const formData = new FormData();
+                formData.append('coverImage', file); // 'coverImage' là tên của trường dữ liệu bạn muốn gửi lên server
+
+                fetch('/upload', { // Thay '/upload' bằng đường dẫn đến API của bạn
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Thành công:', data);
+                        // Xử lý phản hồi từ server, ví dụ hiển thị thông báo thành công
+                    })
+                    .catch((error) => {
+                        console.error('Lỗi:', error);
+                        // Xử lý lỗi
+                    });
+            }
+
+            reader.readAsDataURL(file);
+        }
+    });
+</script>

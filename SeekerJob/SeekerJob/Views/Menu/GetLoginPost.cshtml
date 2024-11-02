@@ -6,41 +6,81 @@
 }
 
 <div class="extra-nav header-2-nav">
-
     <div class="extra-cell">
         <div class="header-nav-btn-section">
 
             @foreach (var item in Model)
             {
-                if (item.meta == "dang-nhap")
+                if (Session["candidate"] == null && Session["employer"] == null && Session["admin"] == null)
                 {
-                    <div class="twm-nav-btn-left">
-                        <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
-                            <i data-feather="log-in"></i> @item.name
-                        </a>
-                    </div>
-                    //# sign_up_popup
+                    if (item.meta == "dang-nhap")
+                    {
+                        <div class="twm-nav-btn-left">
+                            <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
+                                <i data-feather="log-in"></i> @item.name
+                            </a>
+                        </div>
+                    }
+                    else if (item.meta == "dang-tuyen")
+                    {
+                        <div class="twm-nav-btn-right">
+                            <a href="/Dang-nhap" class="twm-nav-post-a-job">
+                                <i data-feather="briefcase"></i> @item.name
+                            </a>
+                        </div>
+                    }
                 }
-                else if (item.meta == "dang-tuyen")
+                else if (Session["employer"] != null)
                 {
-                    <div class="twm-nav-btn-right">
-                        <a href="/@item.link" class="twm-nav-post-a-job">
-                            <i data-feather="briefcase"></i> @item.name
-                        </a>
-                    </div>
+
+                    if (item.meta == "dang-tuyen")
+                    {
+                        <div class="twm-nav-btn-right">
+                            <a href="/@item.link" class="twm-nav-post-a-job">
+                                <i data-feather="briefcase"></i> @item.name
+                            </a>
+                        </div>
+                    }
+                    if (item.meta == "dang-nhap")
+                    {
+                        <div class="twm-nav-btn-left">
+                            <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
+                                <i data-feather="log-in"></i> @item.name
+                            </a>
+                        </div>
+                    }
+                }
+                else if (Session["candidate"] != null)
+                {
+
+                    if (item.meta == "Dang-tin-tuc")
+                    {
+                        <div class="twm-nav-btn-right">
+                            <a href="/@item.link" class="twm-nav-post-a-job">
+                                <i data-feather="briefcase"></i> @item.name
+                            </a>
+                        </div>
+                    }
+                    if (item.meta == "dang-nhap")
+                    {
+                        <div class="twm-nav-btn-left">
+                            <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
+                                <i data-feather="log-in"></i> @item.name
+                            </a>
+                        </div>
+                    }
                 }
             }
-            <div class="twm-nav-btn-right" style="margin-left: 50px;">
-                <a href="/@ViewBag.metaprofile/@inforcandidate.username">
-                    <div class="has-children" id="menuToggle" style="cursor:pointer; width: 55px; height: 55px; border-radius: 50px; background-image: url('@Url.Content("~/ContentImage/images/" + inforcandidate.image)'); background-size: cover; background-position: center; border: 3px solid white; position: relative;">
-                    </div>
 
-                </a>
-            </div>
-
-
-
+            @if (Session["candidate"] != null || Session["employer"] != null || Session["admin"] != null)
+            {
+                <div class="twm-nav-btn-right" style="margin-left: 50px;">
+                    <a href="/@ViewBag.metaprofile/@inforcandidate.username">
+                        <div class="has-children" id="menuToggle" style="cursor:pointer; width: 55px; height: 55px; border-radius: 50px; background-image: url('@Url.Content("~/ContentImage/images/" + inforcandidate.image)'); background-size: cover; background-position: center; border: 3px solid white; position: relative;">
+                        </div>
+                    </a>
+                </div>
+            }
         </div>
     </div>
-
 </div>

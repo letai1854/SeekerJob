@@ -23,10 +23,20 @@ namespace SeekerJob.Controllers
 
             
             var item = db.Logins.Where(t=>t.username==uid && t.password==pwd && t.typeRow=="Thí sinh").FirstOrDefault();
+            var admin = db.Logins.Where(t => t.username == uid && t.password == pwd && t.typeRow == "Admin").FirstOrDefault();
             if (item != null)
             {
-                Session["candidate"] = 1;
-                Session.Timeout = 5;
+                Session["candidate"] = item;
+                //Session.Timeout = 5;
+                jr.Data = new
+                {
+                    status = "OK"
+                };
+            }
+            else if (admin != null)
+            {
+                Session["admin"] = admin;
+                //Session.Timeout = 5;
                 jr.Data = new
                 {
                     status = "OK"
@@ -53,12 +63,21 @@ namespace SeekerJob.Controllers
             string pwd = collection["pwd"];
             JsonResult jr = new JsonResult();
 
-
+            var admin = db.Logins.Where(t => t.username == uid && t.password == pwd && t.typeRow == "Admin").FirstOrDefault();
             var item = db.Logins.Where(t => t.username == uid && t.password == pwd && t.typeRow == "Tuyển dụng").FirstOrDefault();
             if (item != null)
             {
-                Session["employer"] = 1;
-                Session.Timeout = 5;
+                Session["employer"] = item;
+                //Session.Timeout = 5;
+                jr.Data = new
+                {
+                    status = "OK"
+                };
+            }
+            else if (admin != null)
+            {
+                Session["admin"] = admin;
+                //Session.Timeout = 5;
                 jr.Data = new
                 {
                     status = "OK"
