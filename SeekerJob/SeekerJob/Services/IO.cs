@@ -13,6 +13,21 @@ namespace SeekerJob.Services
         {
             myDb.Set(obj.GetType()).Add(obj);
         }
+        public News GetNews(int id)
+        {
+            return myDb.News.Where(m =>m.id==id).FirstOrDefault();
+        }
+        public bool DeleteNews(int id)
+        {
+
+            var itemNew = myDb.News.FirstOrDefault(n => n.id == id);
+            if (itemNew != null)
+            {
+                myDb.News.Remove(itemNew);
+                return true;
+            }
+            return false;
+        }
         public void Save()
         {
             myDb.SaveChanges();

@@ -4730,6 +4730,8 @@
     <Content Include="Models\mydb.edmx.diagram">
       <DependentUpon>mydb.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\news\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\news\ViewNewsDetail.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

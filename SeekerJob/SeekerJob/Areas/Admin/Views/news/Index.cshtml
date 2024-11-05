@@ -1,7 +1,8 @@
-﻿
+﻿@using SeekerJob.Models;
 @{
     var listnewscandidate = ViewData["listnewscandidate"] as List<SeekerJob.DTO.NewsCandidate>;
     var listnewsemployer = ViewData["listnewsemployer"] as List<SeekerJob.DTO.NewsEmployee>;
+    Login user = Session["admin"] as Login;
 
 }
 @section _header{
@@ -26,7 +27,6 @@
     .custom-toltip:hover .custom-toltip-block {
         display: block; /* Hiển thị tooltip khi rê chuột */
     }
-
 </style>
 <div class="card shadow mb-4">
 
@@ -63,93 +63,102 @@
             @{var Number = 1; }
             @foreach (var item in listnewsemployer)
             {
+                    <tr id="tr_@item.newsinfo.id">
 
-                <tr>
+                        <td>
+                            @Html.Raw(Number++)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.newsinfo.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.inforEmployer.namecompany)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", item.newsinfo.daypost.Value)
+                        </td>
 
-                    <td>
-                        @Html.Raw(Number++)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.newsinfo.title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.inforEmployer.namecompany)
-                    </td>
-                    <td>
-                        @string.Format("{0:dd/MM/yyyy}", item.newsinfo.daypost.Value)
-                    </td>
+                        <td>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+                                    <li>
+                                        <a  href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id"  class="custom-toltip">
+                                            <span class="fa fa-eye"></span>
+                                            <span class="custom-toltip-block">View</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        @if (item.inforEmployer.username == user.username && user.username != "")
+                                        {
+                                        <li>
+                                            <a href="@Url.Action("Edit", "news", new { id = item.newsinfo.id })" role="button" class="custom-toltip" data-modal="">
+                                                <span class="fa fa-edit"></span>
+                                                <span class="custom-toltip-block">Edit</span>
+                                            </a>
+                                        </li>
+                                        }
+                                        <li>
+                                            <a data-bs-toggle="modal" href="javascript:Delete('@item.newsinfo.id')" role="button" class="custom-toltip">
+                                                <span class="far fa-trash-alt"></span>
+                                                <span class="custom-toltip-block">Delete</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                @foreach (var item in listnewscandidate)
+                {
 
-                    <td>
-                        <div class="twm-table-controls">
-                            <ul class="twm-DT-controls-icon list-unstyled">
-                                <li>
-                                    <a data-bs-toggle="modal" href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id" role="button" class="custom-toltip">
-                                        <span class="fa fa-eye"></span>
-                                        <span class="custom-toltip-block"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="modal" href="@Url.Action("Sửa", "menus", new { id = item.newsinfo.id})" role="button" class="custom-toltip">
-                                        <span class="fa fa-edit"></span>
-                                        <span class="custom-toltip-block"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="modal" href="@Url.Action("Xóa", "menus", new { id = item.newsinfo.id})" role="button" class="custom-toltip">
-                                        <span class="far fa-trash-alt"></span>
-                                        <span class="custom-toltip-block"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            }
-            @foreach (var item in listnewscandidate)
-            {
+                    <tr id="tr_@item.newsinfo.id">
 
-                <tr>
+                        <td>
+                            @Html.Raw(Number++)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.newsinfo.title)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.inforCandidate.name)
+                        </td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", item.newsinfo.daypost.Value)
+                        </td>
 
-                    <td>
-                        @Html.Raw(Number++)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.newsinfo.title)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.inforCandidate.name)
-                    </td>
-                    <td>
-                        @string.Format("{0:dd/MM/yyyy}", item.newsinfo.daypost.Value)
-                    </td>
-
-                    <td>
-                        <div class="twm-table-controls">
-                            <ul class="twm-DT-controls-icon list-unstyled">
-                                <li>
-                                    <a data-bs-toggle="modal"  href="@Url.Content("~/@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id")" role="button" class="custom-toltip">
-                                        <span class="fa fa-eye"></span>
-                                        <span class="custom-toltip-block"></span>
-                                    </a>
-                                </li>
-                                <li>
+                        <td>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+                                    <li>
+                                        <a href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id"  class="custom-toltip">
+                                            <span class="fa fa-eye"></span>
+                                            <span class="custom-toltip-block">View</span>
+                                        </a>
+                                    </li>
+                                    @*<li>
                                     <a data-bs-toggle="modal" href="@Url.Action("Edit", "menus", new { id = item.newsinfo.id})" role="button" class="custom-toltip">
                                         <span class="fa fa-edit"></span>
                                         <span class="custom-toltip-block"></span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a data-bs-toggle="modal" href="@Url.Action("Edit", "menus", new { id = item.newsinfo.id})" role="button" class="custom-toltip">
-                                        <span class="far fa-trash-alt"></span>
-                                        <span class="custom-toltip-block"></span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            }
-        </table>
+                                </li>*@
+                                    <li>
+                                        <a href="@Url.Action("Edit", "news", new { id = item.newsinfo.id })" role="button" class="custom-toltip" data-modal="">
+                                            @Html.Raw("<span class=\"fa fa-edit\"></span><span class=\"custom-toltip-block\">Edit</span>")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a  href="javascript:Delete('@item.newsinfo.id','@item.newsinfo.title')"  class="custom-toltip">
+                                            <span class="far fa-trash-alt"></span>
+                                            <span class="custom-toltip-block">Delete</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
     </div>
 </div>
 </div>
@@ -160,6 +169,29 @@
     <!-- Page level custom scripts -->
     <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
 }
+<script>
+    function Delete(id,title) {
+        if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/Admin/news/DeleteNews', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr_' +id ).remove();
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+</script>
 
 
 
