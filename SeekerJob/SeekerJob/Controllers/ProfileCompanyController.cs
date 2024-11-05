@@ -1,9 +1,13 @@
 ﻿using SeekerJob.Models;
+using SeekerJob.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Security.Policy;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace SeekerJob.Controllers
 {
@@ -27,7 +31,8 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetImageNameCompany()
         {
-            var tablemenus = db.InforEmployers.Where(t => t.username == "tuanta").FirstOrDefault();
+            Login login = Session["employer"] as Login;
+            var tablemenus = db.InforEmployers.Where(t => t.username == login.username).FirstOrDefault();
             return PartialView(tablemenus);
         }
         public ActionResult GetListTitle()
@@ -37,8 +42,40 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetInfoCompany() 
         {
-            var info = db.InforEmployers.Where(t => t.username == "tuanta").FirstOrDefault();
+
+            object info = null;
+            Login login = Session["employer"] as Login;
+            info = db.InforEmployers.Where(t => t.username == login.username).FirstOrDefault();
             return PartialView(info);
+        }
+        [HttpPost]
+        public JsonResult UpdateInfoCompany(FormCollection Data)
+        {
+            // Giải mã nội dung từ CKEditor
+            string description = HttpUtility.UrlDecode(Data["brief"]);
+            string name = Data["name"];
+            string phone = Data["phone"];
+            string email = Data["email"];
+            string country = Data["country"];
+            string addressfull = Data["addressfull"];
+            string facebook = Data["facebook"];
+            string Twitter = Data["Twitter"];
+            string linkedin = Data["linkedin"];
+            string Instagram = Data["Instagram"];
+            string Website = Data["web"];
+            
+
+
+            IO io = new IO();
+            JsonResult js = new JsonResult();
+            Login user = new Login();
+           
+            io.Save();
+            js.Data = new
+            {
+                status = "OK"
+            };
+            return Json(js, JsonRequestBehavior.AllowGet);
         }
     }
 }

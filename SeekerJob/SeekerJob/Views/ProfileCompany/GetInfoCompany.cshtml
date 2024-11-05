@@ -22,9 +22,10 @@
                             <div class="form-group">
                                 <label>Tên công ty</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_name" type="text" value="@Model.namecompany" placeholder="tên công ty">
+                                    <input id="namecompany" class="form-control" name="company_name" type="text" value="@Model.namecompany" placeholder="tên công ty">
                                     <i class="fs-input-icon fa fa-building"></i>
                                 </div>
+                                <p id="msname" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -32,9 +33,10 @@
                             <div class="form-group">
                                 <label>Điện thoại</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_phone" type="text" value="@Model.phone" placeholder="(251) 1234-456-7890">
+                                    <input id="phone" class="form-control" name="company_phone" type="text" value="@Model.phone" placeholder="(251) 1234-456-7890">
                                     <i class="fs-input-icon fa fa-phone-alt"></i>
                                 </div>
+                                <p id="msphone" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -42,9 +44,10 @@
                             <div class="form-group">
                                 <label>Mail</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_Email" type="email" value="@Model.email" placeholder="Devid@example.com">
+                                    <input id="email" class="form-control" name="company_Email" type="email" value="@Model.email" placeholder="Devid@example.com">
                                     <i class="fs-input-icon fas fa-at"></i>
                                 </div>
+                                <p id="msemail" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -121,7 +124,7 @@
                                         <option value="Vĩnh Phúc">Vĩnh Phúc</option>
                                         <option value="Yên Bái">Yên Bái</option>
                                     </select>
-                                    <p id="ms" style="color:red;"></p>
+                                    <p id="mscountry" style="padding:2px;display:none; color:aliceblue"></p>
 
                                     <i class="fs-input-icon fa fa-globe-americas"></i>
                                 </div>
@@ -131,10 +134,10 @@
                             <div class="form-group city-outer-bx has-feedback">
                                 <label>Địa chỉ đầy đủ</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" value="@Model.addressDetail" placeholder="Sunset Blvd Angeles, CA 90026 ,USA">
+                                    <input id="fulladdress" class="form-control" name="company_since" type="text" value="@Model.addressDetail" placeholder="Sunset Blvd Angeles, CA 90026 ,USA">
                                     <i class="fs-input-icon fas fa-map-marker-alt"></i>
                                 </div>
-
+                                <p id="msfulladdress" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -167,9 +170,10 @@
                             <div class="form-group">
                                 <label>Facebook</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.facebook" placeholder="https://www.facebook.com/">
+                                    <input id="facebook" class="form-control wt-form-control" name="company_name" type="text" value="@Model.facebook" placeholder="https://www.facebook.com/">
                                     <i class="fs-input-icon fab fa-facebook-f"></i>
                                 </div>
+                                <p id="msfacebook" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -177,7 +181,7 @@
                             <div class="form-group">
                                 <label>Twitter</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.twitter" placeholder="https://twitter.com/">
+                                    <input id="twitter" class="form-control wt-form-control" name="company_name" type="text" value="@Model.twitter" placeholder="https://twitter.com/">
                                     <i class="fs-input-icon fab fa-twitter"></i>
                                 </div>
                             </div>
@@ -187,7 +191,7 @@
                             <div class="form-group">
                                 <label>linkedin</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text"  value="@Model.linkedin" placeholder="https://in.linkedin.com/">
+                                    <input id="linkedin" class="form-control wt-form-control" name="company_name" type="text" value="@Model.linkedin" placeholder="https://in.linkedin.com/">
                                     <i class="fs-input-icon fab fa-linkedin-in"></i>
                                 </div>
                             </div>
@@ -198,7 +202,7 @@
                             <div class="form-group">
                                 <label>Instagram</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.instagram" placeholder="https://www.instagram.com/">
+                                    <input id="instagram" class="form-control wt-form-control" name="company_name" type="text" value="@Model.instagram" placeholder="https://www.instagram.com/">
                                     <i class="fs-input-icon fab fa-instagram"></i>
                                 </div>
                             </div>
@@ -207,14 +211,14 @@
                             <div class="form-group">
                                 <label>Website</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_website" type="text" value="@Model.linkweb" placeholder="https://devsmith.net">
+                                    <input id="web" class="form-control" name="company_website" type="text" value="@Model.linkweb" placeholder="https://devsmith.net">
                                     <i class="fs-input-icon fa fa-globe-americas"></i>
                                 </div>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12">
                             <div class="text-left">
-                                <button type="submit" class="site-button">Lưu thay đổi</button>
+                                <div onclick="UpdateProfile()" class="site-button">Lưu thay đổi</div>
                             </div>
                         </div>
 
@@ -226,3 +230,86 @@
         </form>
     </div>
 </div>
+
+<script>
+    function UpdateProfile() {
+        var name = $('#namecompany').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var country = $('#country').val();
+        var addressfull = $('#fulladdress').val();
+        var brief = encodeURIComponent(CKEDITOR.instances.editor.getData());
+        var facebook = $('#facebook').val();
+        var twitter = $('#twitter').val();
+        var linkedin = $('#linkedin').val();
+        var instagram = $('#instagram').val();
+        var web = $('#web').val();
+        flag = true
+        if (name == '') {
+            $('#msname').html('Phải nhập đủ thông tin tiêu đề');
+            $('#msname').css('border-color', 'red');
+            $('#msname').css('color', 'red');
+            $('#msname').css('display', 'block');
+            flag = false
+        }
+        if (phone == '') {
+            $('#msphone').html('Phải nhập đủ thông tin tiêu đề');
+            $('#msphone').css('border-color', 'red');
+            $('#msphone').css('color', 'red');
+            $('#msphone').css('display', 'block');
+            flag = false
+        }
+        if (email == '') {
+            $('#msemail').html('Phải nhập đủ thông tin tiêu đề');
+            $('#msemail').css('border-color', 'red');
+            $('#msemail').css('color', 'red');
+            $('#msemail').css('display', 'block');
+            flag = false
+        }
+        if (country == '') {
+            $('#mscountry').html('Phải nhập đủ thông tin tiêu đề');
+            $('#mscountry').css('border-color', 'red');
+            $('#mscountry').css('color', 'red');
+            $('#mscountry').css('display', 'block');
+            flag = false
+        }
+        if (addressfull == '') {
+            $('#msaddressfull').html('Phải nhập đủ thông tin tiêu đề');
+            $('#msaddressfull').css('border-color', 'red');
+            $('#msaddressfull').css('color', 'red');
+            $('#msaddressfull').css('display', 'block');
+            flag = false
+        }
+        if (flag) {
+            var form = new FormData()
+            form.append('name', name);
+            form.append('phone', phone);
+            form.append('email', email);
+            form.append('country', country);
+            form.append('addressfull', addressfull);
+            form.append('brief', brief);
+            form.append('facebook', facebook);
+            form.append('twitter', twitter);
+            form.append('linkedin', linkedin);
+            form.append('instagram', instagram);
+            form.append('web', web);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/ProfileCompany/UpdateInfoCompany', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        alert("Success");
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+        
+        
+    }
+</script>

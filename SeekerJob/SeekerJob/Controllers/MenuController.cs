@@ -36,10 +36,28 @@ namespace SeekerJob.Controllers
 
         public ActionResult GetLoginPost()
         {
-            var inforcandidate = db.InforCandidates.Where(t => t.username == "totenla").FirstOrDefault();
+            object info = null;
+            if (Session["candidate"]!=null)
+            {
+                Login login = Session["candidate"] as Login;
+                info = db.InforCandidates.Where(t => t.username == login.username).FirstOrDefault();
+            }
+            else if (Session["employer"] != null)
+            {
+                Login login = Session["employer"] as Login;
+                info = db.InforEmployers.Where(t => t.username == login.username).FirstOrDefault();
+            }
+            else if (Session["admin"] != null)
+            {
+                Login login = Session["admin"] as Login;
+                info = db.InforCandidates.Where(t => t.username == login.username).FirstOrDefault();
+
+            }
+            //var inforcandidate = db.InforCandidates.Where(t => t.username == "totenla").FirstOrDefault();
             var tableLoginPost = db.tablemenufunctions.Where( t =>t.hide == true).OrderBy(t => t.arrange).ToList();
             ViewBag.metaprofile = "ho-so-thi-sinh";
-            ViewData["infocandidate"] = inforcandidate;
+            ViewData["profileE"] = "ho-so-cong-ty";
+            ViewData["info"] = info;
             return PartialView(tableLoginPost);
         }
         
