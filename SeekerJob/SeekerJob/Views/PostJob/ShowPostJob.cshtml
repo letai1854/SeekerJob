@@ -23,7 +23,7 @@
 
                         @{ Html.RenderAction("GetListTitle", "PostJob");}
 
-              
+
 
                     </div>
 
@@ -43,10 +43,10 @@
                                             <div class="form-group">
                                                 <label>Tiêu đề việc làm</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_name" type="text" placeholder="Devid Smith">
-                                                    <p id="ms" style="color:red;"></p>
+                                                    <input id="title" class="form-control" name="company_name" type="text" placeholder="Devid Smith">
                                                     <i class="fs-input-icon fa fa-address-card"></i>
                                                 </div>
+                                                <p id="mstitle" style="padding:2px;display:none; color:aliceblue"></p>
                                             </div>
                                         </div>
 
@@ -54,7 +54,7 @@
                                             <div class="form-group">
                                                 <label>Loại việc làm</label>
                                                 <div class="ls-inputicon-box">
-                                                    <select class="wt-select-box selectpicker" data-live-search="true" title="" id="s-category" data-bv-field="size">
+                                                    <select class="wt-select-box selectpicker" data-live-search="true" title="" id="category" data-bv-field="size">
                                                         <option class="bs-title-option" value="">Chọn Danh Mục</option>
                                                         <option>Toàn thời gian</option>
                                                         <option>Tự do</option>
@@ -62,8 +62,7 @@
                                                         <option>Thực tập</option>
                                                         <option>Tạm thời</option>
                                                     </select>
-                                                    <p id="ms" style="color:red;"></p>
-
+                                                    <p id="mscategory" style="padding:2px;display:none; color:aliceblue"></p>
                                                     <i class="fs-input-icon fa fa-file-alt"></i>
                                                 </div>
                                             </div>
@@ -74,11 +73,10 @@
                                             <div class="form-group">
                                                 <label>Lương đề nghị</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_Salary" type="salary" placeholder="E.g. 3000">
-                                                    <p id="ms" style="color:red;"></p>
-
+                                                    <input id="offer" class="form-control" name="company_Salary" type="salary" placeholder="E.g. 3000">
                                                     <i class="fs-input-icon fa fa-dollar-sign"></i>
                                                 </div>
+                                                <p id="msoffer" style="padding:2px;display:none; color:aliceblue"></p>
                                             </div>
                                         </div>
 
@@ -86,11 +84,13 @@
                                             <div class="form-group">
                                                 <label>Kinh nghiệm</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_Email" type="email" placeholder="E.g. ít nhất 3 năm kinh nghiệm">
-                                                    <p id="ms" style="color:red;"></p>
+                                                    <input id="experience" class="form-control" name="company_Email" placeholder="E.g. ít nhất 3 năm kinh nghiệm">
+
 
                                                     <i class="fs-input-icon fa fa-user-edit"></i>
                                                 </div>
+                                                <p id="msexperience" style="padding:2px;display:none; color:aliceblue"></p>
+
                                             </div>
                                         </div>
 
@@ -98,11 +98,10 @@
                                             <div class="form-group">
                                                 <label>Trình độ</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_Email" type="email" placeholder="trình độ">
-                                                    <p id="ms" style="color:red;"></p>
-
+                                                    <input id="limit" class="form-control" name="company_Email"  placeholder="trình độ">
                                                     <i class="fs-input-icon fa fa-user-graduate"></i>
                                                 </div>
+                                                <p id="mslimit" style="padding:2px;display:none; color:aliceblue"></p>
                                             </div>
                                         </div>
 
@@ -116,10 +115,10 @@
                                                         <option>Nữ</option>
                                                         <option>không yêu cầu</option>
                                                     </select>
-                                                    <p id="ms" style="color:red;"></p>
 
                                                     <i class="fs-input-icon fa fa-venus-mars"></i>
                                                 </div>
+                                                    <p id="msgender" style="padding:2px;display:none; color:aliceblue"></p>
                                             </div>
                                         </div>
 
@@ -197,7 +196,9 @@
 
                                                     <i class="fs-input-icon fa fa-globe-americas"></i>
                                                 </div>
+
                                             </div>
+                                            <p id="mscountry" style="padding:2px;display:none; color:aliceblue"></p>
                                         </div>
 
 
@@ -205,36 +206,41 @@
                                             <div class="form-group">
                                                 <label>Email </label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
+                                                    <input id="emailcompany" class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
                                                     <p id="ms" style="color:red;"></p>
 
                                                     <i class="fs-input-icon fas fa-at"></i>
                                                 </div>
+                                                <p id="msemailcompany" style="padding:2px;display:none; color:aliceblue"></p>
+
                                             </div>
                                         </div>
 
                                         <div class="col-xl-4 col-lg-6 col-md-12">
                                             <div class="twm-candidate-profile-pic">
-                                                <label>Ảnh bìa công việc</label>
+                                                <label>Ảnh bìa</label>
                                                 <img src="~/ContentImage/images/blog/blog-single/1.jpg" alt="">
                                                 <div class="upload-btn-wrapper">
 
                                                     <div id="upload-image-grid"></div>
                                                     <button class="site-button button-sm">Tải ảnh lên</button>
-                                                    <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
+                                                    <input type="file" name="myfile" id="taianhlen" accept=".jpg, .jpeg, .png">
                                                 </div>
 
                                             </div>
+                                            <p id="ms" style="padding:2px;display:none; color:aliceblue"></p>
                                         </div>
                                         <div class="col-xl-12 col-lg-6 col-md-12">
                                             <div class="form-group">
                                                 <label>Địa Chỉ Hoàn Chỉnh</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Los Angeles, CA 90026, USA">
+                                                    <input id="address" class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Los Angeles, CA 90026, USA">
                                                     <p id="ms" style="color:red;"></p>
 
                                                     <i class="fs-input-icon fa fa-home"></i>
                                                 </div>
+                                                <p id="msaddress" style="padding:2px;display:none; color:aliceblue"></p>
+
                                             </div>
                                         </div>
 
@@ -245,35 +251,39 @@
                                                 <p id="ms" style="color:red;"></p>
 
                                             </div>
+                                            <p id="msmota" style="padding: 2px; display: none; color: red" ;>Nhập đầy đủ thông tin mô tả</p>
                                         </div>
 
-                                        <div class="col-md-6">
+                                        @*<div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Ngày bắt đầu</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
-                                                    <p id="ms" style="color:red;"></p>
+                                                    <input id="startday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
 
                                                     <i class="fs-input-icon far fa-calendar"></i>
                                                 </div>
+                                                <p id="msstart" style="padding:2px;display:none; color:aliceblue"></p>
+
                                             </div>
-                                        </div>
+                                        </div>*@
 
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Ngày kết thúc</label>
                                                 <div class="ls-inputicon-box">
-                                                    <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
+                                                    <input id="endday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
                                                     <p id="ms" style="color:red;"></p>
 
                                                     <i class="fs-input-icon far fa-calendar"></i>
                                                 </div>
+                                                <p id="msend" style="padding:2px;display:none; color:aliceblue"></p>
+
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12 col-md-12">
                                             <div class="text-left">
-                                                <div id="btnpostjobg" onclick="PostJob()" class="site-button m-r5">Đăng Tin Tuyển Dụng</div>
+                                                <div onclick="PostJob()" class="site-button m-r5">Đăng tuyển dụng</div>
                                             </div>
                                         </div>
 
@@ -305,45 +315,172 @@
 
 
 
-<script>
-    document.getElementById('file-uploader').addEventListener('change', function (e) {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
+<script type="text/javascript">
+    function PostJob() {
 
-            reader.onload = function (e) {
-                const previewImage = document.querySelector('.twm-candidate-profile-pic img');
-                previewImage.src = e.target.result;
-
-                // Hiển thị đường dẫn (tùy chọn, có thể không hoạt động trong một số trình duyệt vì lý do bảo mật)
-                const filePathSpan = document.createElement('span');
-                filePathSpan.textContent = file.name;
-                document.getElementById('upload-image-grid').appendChild(filePathSpan);
-
-                // Hoặc hiển thị tên file
-                //console.log(file.name);
-
-
-                //  Gửi dữ liệu ảnh lên server (ví dụ sử dụng AJAX)
-                const formData = new FormData();
-                formData.append('coverImage', file); // 'coverImage' là tên của trường dữ liệu bạn muốn gửi lên server
-
-                fetch('/upload', { // Thay '/upload' bằng đường dẫn đến API của bạn
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => response.json())
-                    .then(data => {
-                        console.log('Thành công:', data);
-                        // Xử lý phản hồi từ server, ví dụ hiển thị thông báo thành công
-                    })
-                    .catch((error) => {
-                        console.error('Lỗi:', error);
-                        // Xử lý lỗi
-                    });
-            }
-
-            reader.readAsDataURL(file);
+        var mota = encodeURIComponent(CKEDITOR.instances.editor.getData());
+        var tieude = $('#title').val();
+        var category = $('#category').val();
+        var salary = $('#offer').val();
+        var experience = $('#experience').val();
+        var trinhdo = $('#limit').val();
+        var gender = $('#gender').val();
+        var country = $('#country').val();
+        var email = $('#emailcompany').val();
+        var img = $('#taianhlen')[0].files[0];
+        if (img) {
+            console.log("Tên file:", img.name); // In tên file để kiểm tra
+        } else {
+            console.log("Chưa có file nào được chọn.");
         }
-    });
+        var address = $('#address').val();
+        var endday = $('#endday').val();
+        var today = new Date();
+        var day = today.toISOString().split('T')[0];
+        var meta = convertToMeta(tieude)
+/*        var meta = convertToMeta(tieude);*/
+       
+        var phoneRegex = /^(0[35789])[0-9]{8}$/;
+        //$('#mstitle, #msmota, #msemailcompany, #mscategory, #ms', '#msanh').html('');
+        console.log(CKEDITOR.instances.editor.getData());
+
+        flag = true
+        if (mota == '') {
+
+            $('#msmota').css('display', 'block');
+            flag = false
+        }
+        if (tieude == '') {
+            $('#mstitle').html('Phải nhập đủ thông tin tiêu đề');
+            $('#mstitle').css('border-color', 'red');
+            $('#mstitle').css('color', 'red');
+            $('#mstitle').css('display', 'block');
+            flag = false
+        }
+        if (category == '') {
+            $('#mscategory').html('Phải nhâp loại công việc');
+            $('#mscategory').css('border-color', 'red');
+            $('#mscategory').css('color', 'red');
+            $('#mscategory').css('display', 'block');
+            flag = false
+        }
+        if (email == '') {
+            $('#msemailcompany').html('Phải nhập đủ thông tin email');
+            $('#msemailcompany').css('border-color', 'red');
+            $('#msemailcompany').css('color', 'red');
+            $('#msemailcompany').css('display', 'block');
+            flag = false
+        }
+        if (salary == '') {
+            $('#msoffer').html('Phải nhập đủ thông tin mức lương');
+            $('#msoffer').css('border-color', 'red');
+            $('#msoffer').css('color', 'red');
+            $('#msoffer').css('display', 'block');
+            flag = false
+
+        }
+        if (experience == '') {
+            $('#msexperience').html('Phải nhập kinh nghiệm');
+            $('#msexperience').css('border-color', 'red');
+            $('#msexperience').css('color', 'red');
+            $('#msexperience').css('display', 'block');
+            flag = false
+        }
+        if (trinhdo == '') {
+            $('#mslimit').html('Phải nhập trình độ');
+            $('#mslimit').css('border-color', 'red');
+            $('#mslimit').css('color', 'red');
+            $('#mslimit').css('display', 'block');
+            flag = false
+        }
+        if (gender == '') {
+            $('#msgender').html('Phải chọn giới tính');
+            $('#msgender').css('border-color', 'red');
+            $('#msgender').css('color', 'red');
+            $('#msgender').css('display', 'block');
+            flag = false
+        }
+        if (country == null) {
+            $('#mscountry').html('Phải chọn Tỉnh/Thành phố');
+            $('#mscountry').css('border-color', 'red');
+            $('#mscountry').css('color', 'red');
+            $('#mscountry').css('display', 'block');
+            flag = false
+        }
+
+        if (address == '') {
+            $('#msaddress').html('Phải nhập thông tin');
+            $('#msaddress').css('border-color', 'red');
+            $('#msaddress').css('color', 'red');
+            $('#msaddress').css('display', 'block');
+            flag = false
+        }
+        if (endday == '') {
+            $('#msend').html('Phải nhập ngày kết thúc');
+            $('#msend').css('border-color', 'red');
+            $('#msend').css('color', 'red');
+            $('#msend').css('display', 'block');
+            flag = false
+        }
+        if (!img) {
+            $('#msimg').html('Phải chọn ảnh');
+            $('#msimg').css('border-color', 'red');
+            $('#msimg').css('color', 'red');
+            $('#msimg').css('display', 'block');
+            flag = false
+        }
+        if (flag) {
+
+
+            var form = new FormData()
+            form.append('mota', mota);
+            form.append('tieude', tieude);
+            form.append('category', category); // Thêm category vào form
+            form.append('salary', salary); // Thêm salary vào form
+            form.append('experience', experience); // Thêm experience vào form
+            form.append('trinhdo', trinhdo); // Thêm trinhdo vào form
+            form.append('gender', gender); // Thêm gender vào form
+            form.append('country', country); // Thêm country vào form
+            form.append('email', email);
+            form.append('img', img); // Đổi tên từ 'anh' thành 'img' để đồng nhất với biến
+            form.append('address', address); // Thêm address vào form
+            form.append('endday', endday); // Thêm endday vào form
+            form.append('day', day); // Thêm day vào form
+            form.append('meta',meta)
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/PostJob/CreateJob', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        alert("Success");
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+
+        }
+
+    }
+
+    function convertToMeta(text) {
+        return text.toLowerCase().trim()
+            .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
+            .replace(/\s+/g, '-')
+            .replace(/đ/g, "d")
+            .replace(/ỳ|ý|ỵ|ỷ|ỹ|ỳ/g, "y")
+            .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ù/g, "u")
+            .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ò/g, "o")
+            .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|è/g, "e")
+            .replace(/ì|í|ị|ỉ|ĩ|ì/g, "i");
+    }
+
+
+
+
 </script>
+
