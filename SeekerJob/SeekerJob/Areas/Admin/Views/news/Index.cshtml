@@ -82,7 +82,7 @@
                             <div class="twm-table-controls">
                                 <ul class="twm-DT-controls-icon list-unstyled">
                                     <li>
-                                        <a  href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id"  class="custom-toltip">
+                                        <a  href="@Url.Action("ViewNewsDetail", "news", new { id = item.newsinfo.id })"  class="custom-toltip">
                                             <span class="fa fa-eye"></span>
                                             <span class="custom-toltip-block">View</span>
                                         </a>
@@ -130,7 +130,7 @@
                             <div class="twm-table-controls">
                                 <ul class="twm-DT-controls-icon list-unstyled">
                                     <li>
-                                        <a href="@ViewBag.tintuc/@item.newsinfo.meta/@item.newsinfo.id"  class="custom-toltip">
+                                        <a href="@Url.Action("ViewNewsDetail", "news", new { id = item.newsinfo.id })"  class="custom-toltip">
                                             <span class="fa fa-eye"></span>
                                             <span class="custom-toltip-block">View</span>
                                         </a>
