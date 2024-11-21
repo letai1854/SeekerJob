@@ -28,9 +28,33 @@ namespace SeekerJob.Services
             }
             return false;
         }
+        public Login GetAccount(string username)
+        {
+            return myDb.Logins.Where(m=>m.username==username).FirstOrDefault();
+        }
+        public tablemenupart GetTablemenupart(int id)
+        {
+            return myDb.tablemenuparts.Where(m=> m.id==id).FirstOrDefault();
+        }
+        public tablemenu GetTablemenu(int id)
+        {
+            return myDb.tablemenus.Where(m => m.id == id).FirstOrDefault();
+        }
+        public bool DeleteJobs(int id)
+        {
+
+            var itemJob = myDb.Jobs.FirstOrDefault(n => n.id == id);
+            if (itemJob != null)
+            {
+                myDb.Jobs.Remove(itemJob);
+                return true;
+            }
+            return false;
+        }
         public void Save()
         {
             myDb.SaveChanges();
         }
+
     }
 }

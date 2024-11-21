@@ -27,7 +27,7 @@
                 @{ var Number = 1;}
                 @foreach (var item in table)
                 {
-                    <tr style="background-color: #fff; color: black;">
+                    <tr id="tr_@item.username" style="background-color: #fff; color: black;">
                         <td>@Html.Raw(Number++)</td>
                         <td>@Html.DisplayFor(modelItem => item.username)</td>
                         <td>@Html.DisplayFor(modelItem => item.typeRow)</td>
@@ -35,24 +35,24 @@
 
                             @if (item.status == true)
                             {
-                                <p>On</p>
+                                <p id="status_@item.username">On</p>
                             }
                             else
                             {
-                                <p>Off</p>
+                                <p id="status_@item.username">Off</p>
                             }
 
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "menus", new { id = item.username }) "
-                               title="Sửa"
+                            <a href="javascript:@(item.typeRow == "Admin" ? "void(0)" : $"EditAccount('{item.username}', 'status_{item.username}')")"
+                               title="@(item.typeRow == "Admin" ? "Không thể chỉnh sửa Admin" : "Sửa")"
                                data-bs-toggle="tooltip"
                                data-bs-placement="top"
-                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
+                               style="background-color: @(item.typeRow == "Admin" ? "gray" : "green"); color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; cursor: @(item.typeRow == "Admin" ? "not-allowed" : "pointer");">
                                 <span class="far fa-edit"></span>
                             </a>
-
                         </td>
+                    
                     </tr>
                 }
             </tbody>
@@ -70,3 +70,54 @@
     <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
 
 }
+<script type="text/javascript">
+        function EditAccount(username,statusid) {
+
+            var user = username;
+            var status = $('#' + statusid).text();
+            console.log(status + "ne");
+
+
+                var form = new FormData()
+                form.append('user', user);
+                form.append('status', status);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '/Admin/Account/EditAccount', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var content = xhr.responseText;
+                        var json_ct = JSON.parse(content);
+                        if (json_ct.Data.status == "OK") {
+                            alert("Success");
+                            $('#' + statusid).text(json_ct.Data.Type);
+
+                        }
+                        else {
+                            alert("Error");
+                        }
+                    }
+                }
+                xhr.send(form);
+
+            
+
+
+    }
+
+
+
+
+        function convertToMeta(text) {
+            return text.toLowerCase().trim()
+                .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
+                .replace(/\s+/g, '-')
+                .replace(/đ/g, "d")
+                .replace(/ỳ|ý|ỵ|ỷ|ỹ|ỳ/g, "y")
+                .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ù/g, "u")
+                .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ò/g, "o")
+                .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|è/g, "e")
+                .replace(/ì|í|ị|ỉ|ĩ|ì/g, "i");
+        }
+
+
+</script>

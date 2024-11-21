@@ -1,9 +1,25 @@
 ﻿
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+    SeekerJob.Models.AddCV inforcv = ViewBag.cv as SeekerJob.Models.AddCV;
+
 }
 
+@*<h2>Edit</h2>*@
+
+
+
+@*@using SeekerJob.Models;
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_MyLayout.cshtml";
+    var inforcv = ViewBag.cv;
+
+}*@
+<div>
+    <input id="id" value="@inforcv.id" style="display:none;">
+</div>
 <div class="row">
     <div class="col-lg-12">
         <div class="panel panel-red">
@@ -26,7 +42,7 @@
                                     <div class="form-group">
                                         <label>Tiêu đề chính</label>
                                         <div class="ls-inputicon-box">
-                                            <input id="tieude" class="form-control" name="company_name" type="text" placeholder="Devid Smith">
+                                            <input id="tieude" class="form-control" name="company_name" type="text" placeholder="Devid Smith" value="@inforcv.tilteBig">
                                             <i class="fs-input-icon fa fa-newspaper"></i>
                                         </div>
                                         <p id="mstieude" style="padding:2px;display:none; color:aliceblue"></p>
@@ -36,37 +52,32 @@
                                     <div class="form-group">
                                         <label>Tiêu đề phụ</label>
                                         <div class="ls-inputicon-box">
-                                            <input id="short" class="form-control" name="company_short" type="text" placeholder="short brief">
+                                            <input id="short" class="form-control" name="company_short" type="text" placeholder="short brief" value="@inforcv.titleMall">
                                             <i class="fs-input-icon fa fa-hacker-news-square"></i>
                                         </div>
                                         <p id="msnoidung" style="padding:2px;display:none; color:aliceblue"></p>
                                     </div>
                                 </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12">
-                                    <div class="form-group">
-                                        <label>Mã CV</label>
-                                        <div class="ls-inputicon-box">
-                                            <input id="link" class="form-control" name="company_Email"  placeholder="#cv1_up_popup/242814337652458">
-                                            <i class="fs-input-icon fas fa-id-badge"></i>
-                                        </div>
-                                        <p id="msmeta" style="padding:2px;display:none; color:aliceblue"></p>
+                                @if (inforcv.typeCv == "Tiêu chuẩn")
+                                {
+                                    <div class="col-xl-4 col-lg-6 col-md-12">
+                                        <div class="form-group">
+                                            <label>Mã CV</label>
+                                            <div class="ls-inputicon-box">
+                                                <input id="link" class="form-control" name="company_Email" placeholder="#cv1_up_popup/242814337652458" value="@inforcv.meta">
+                                                <i class="fs-input-icon fas fa-id-badge"></i>
+                                            </div>
+                                            <p id="msmeta" style="padding:2px;display:none; color:aliceblue"></p>
 
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-6 col-md-12">
-                                    <div class="form-group">
-                                        <label>Loại CV</label>
-                                        <div class="ls-inputicon-box">
-                                            <select class="form-control" name="typeCv">
-                                                <option value="Tiêu chuẩn">Tiêu chuẩn</option>
-                                                <option value="Chuyên nghiệp">Chuyên nghiệp</option>
-                                            </select>
                                         </div>
                                     </div>
-                                </div>
+
+                                }
+
                                 <div class="col-md-4">
                                     <div class="twm-candidate-profile-pic">
                                         <label>Ảnh bìa</label>
+                                        @inforcv.image
                                         <img src="~/ContentImage/images/blog/blog-single/1.jpg" alt="">
                                         <div class="upload-btn-wrapper">
 
@@ -87,7 +98,7 @@
 
                                 <div class="col-lg-12 col-md-12">
                                     <div class="text-left">
-                                        <div onclick="AddCV()" class="site-button m-r5">Thêm CV</div>
+                                        <div onclick="AddCV()" class="site-button m-r5">Sửa CV</div>
                                     </div>
                                 </div>
 

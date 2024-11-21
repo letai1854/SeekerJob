@@ -54,7 +54,7 @@
                 @{ var Number = 1;}
                 @foreach (var item in listnewsemployer)
                 {
-                    <tr style="background-color: #fff; color: black;">
+                    <tr id="tr_@item.job.id" style="background-color: #fff; color: black;">
                         <td>@Html.Raw(Number++)</td>
                         <td>@Html.DisplayFor(modelItem => item.job.title)</td>
                         <td>@Html.DisplayFor(modelItem => item.employer.namecompany)</td>
@@ -91,14 +91,14 @@
                             }
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "menus", new { id = item.job.id }) "
-                               title="Sửa"
+                            <a href="@Url.Action("ViewJobDetail", "ListJob", new { id = item.job.id }) "
+                               title="Xem"
                                data-bs-toggle="tooltip"
                                data-bs-placement="top"
                                style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
-                                <span class="far fa-edit"></span>
+                                <span class="far fa-eye"></span>
                             </a>
-                            <a href="@Url.Action("Delete", "menus", new { id = item.job.id })"
+                            <a href="javascript:Delete('@item.job.id','@item.job.title')"
                                title="Xóa"
                                data-bs-toggle="tooltip"
                                data-bs-placement="top"
@@ -124,4 +124,26 @@
     <script src="~/Areas/admin/Content/js_/demo/datatables-demo.js"></script>
 
 }
-
+<script>
+    function Delete(id, title) {
+        if (confirm('Bạn có chắc muốn xóa bài tuyển dụng này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/Admin/ListJob/DeleteJobs', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr_' + id).remove();
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+</script>

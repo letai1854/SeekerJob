@@ -34,6 +34,12 @@
         border: 2px solid #ddd; /* Đường viền mỏng quanh ảnh */
         box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng nhẹ */
     }
+    .modal.show {
+        display: block !important;
+        opacity: 1 !important;
+    }
+
+
 </style>
 <div class="card shadow mb-4">
 
@@ -68,7 +74,7 @@
                         @Html.Raw(Number++)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.tilteBig)
+                        @Html.DisplayFor(modelItem => item.tilteBig)  
                     </td>
                     <td>
                         @Html.DisplayFor(modelItem => item.titleMall)
@@ -109,7 +115,7 @@
 
                                 </li>
                                 <li>
-                                    <a data-bs-toggle="modal" href="@Url.Action("Sửa", "menus", new { id = item.id})" role="button" class="custom-toltip">
+                                    <a href="@Url.Action("Edit", "CV", new { id = item.id })" role="button" class="custom-toltip">
                                         <span class="fa fa-edit"></span>
                                         <span class="custom-toltip-block">Sửa</span>
                                     </a>
