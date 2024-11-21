@@ -24,12 +24,12 @@
     @if (!string.IsNullOrEmpty(Model.linkweb))
     {
         <a href="@Model.linkweb" class="twm-job-title">
-            <h4>@Model.namecompany</h4>
+            <h4 id="namect">@Model.namecompany</h4>
         </a>
     }
     else
     {
-        <h4>@Model.namecompany</h4>
+        <h4 id="namect">@Model.namecompany</h4>
     }
 </div>
 

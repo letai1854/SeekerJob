@@ -45,16 +45,19 @@
                                 <div class="twm-table-controls">
                                     <ul class="twm-DT-controls-icon list-unstyled">
                                         <li>
-                                            <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                            <a dhref="ViewBag.detail/@item.meta/@item.id" role="button" class="custom-toltip">
                                                 <span class="fa fa-eye"></span>
                                                 <span class="custom-toltip-block">Veiw</span>
                                             </a>
                                         </li>
                                         <li>
-                                            <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
-                                                <span class="far fa-download"></span>
-                                            </button>
+                                            <a href="~/Content/Files/@item.filecandidate" download="@item.filecandidate">
+                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                    <span class="far fa-download"></span>
+                                                </button>
+                                            </a>
                                         </li>
+
                                     </ul>
                                 </div>
                             </td>
@@ -62,46 +65,7 @@
 
                     }
                     <!--1-->
-                    <tr>
-                        <td>
-                            <div class="twm-candidate-save-job-list">
-                                <div class="twm-media">
-                                    <div class="twm-media-pic">
-                                        <img src="~/ContentImage/images/pic1.jpg" alt="#">
-                                    </div>
-                                </div>
-                                <div class="twm-mid-content">
-
-                                    <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
-                                        <h4>Senior Web Designer</h4>
-                                    </a>
-                                </div>
-
-                            </div>
-                        </td>
-                        <td><a href="javascript:;">Herbal Ltd</a></td>
-                        <td>
-                            <div>28/06/2023</div>
-                        </td>
-
-                        <td>
-                            <div class="twm-table-controls">
-                                <ul class="twm-DT-controls-icon list-unstyled">
-                                    <li>
-                                        <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
-                                            <span class="fa fa-eye"></span>
-                                            <span class="custom-toltip-block">Veiw</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
-                                            <span class="far fa-download"></span>
-                                        </button>
-                                    </li>
-                                </ul>
-                            </div>
-                        </td>
-                    </tr>
+                    
 
 
 

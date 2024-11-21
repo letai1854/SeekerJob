@@ -22,7 +22,8 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetImageNameCompany()
         {
-            var tablemenus = db.InforEmployers.Where(t => t.username == "tuanta").FirstOrDefault();
+            Login login = Session["employer"] as Login;
+            var tablemenus = db.InforEmployers.Where(t => t.username == login.username).FirstOrDefault();
             return PartialView(tablemenus);
         }
         public ActionResult TitleSavedJob()
@@ -39,9 +40,10 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListApplyJob()
         {
+            Login login = Session["employer"] as Login;
             var result = (from j in db.Jobs
                           join l in db.ListCandidates on j.id equals l.idjob
-                          where j.username == "tuanta"
+                          where j.username == login.username
                           group l by new
                           {
                               j.meta,

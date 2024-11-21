@@ -28,6 +28,7 @@ namespace SeekerJob.Services
             }
             return false;
         }
+
         public Login GetAccount(string username)
         {
             return myDb.Logins.Where(m=>m.username==username).FirstOrDefault();
@@ -47,10 +48,37 @@ namespace SeekerJob.Services
             if (itemJob != null)
             {
                 myDb.Jobs.Remove(itemJob);
+
+
+
+        public bool DeleteSavedJob(int id)
+        {
+
+            var itemNew = myDb.SaveJobs.FirstOrDefault(n => n.idjob==id);
+            if (itemNew != null)
+            {
+                myDb.SaveJobs.Remove(itemNew);
                 return true;
             }
             return false;
         }
+
+
+        public InforEmployer GetInfoCompany(string id)
+        {
+            return myDb.InforEmployers.Where(m => m.username == id).FirstOrDefault();
+        }
+
+        public InforCandidate GetInfoCandidte(string id)
+        {
+            return myDb.InforCandidates.Where(m => m.username == id).FirstOrDefault();
+        }
+
+        public Login GetLogin(string username)
+        {
+            return myDb.Logins.Where(t=>t.username== username).FirstOrDefault();
+        }
+>>>>>>> origin/dev_tien
         public void Save()
         {
             myDb.SaveChanges();

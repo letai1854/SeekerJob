@@ -299,7 +299,9 @@
                 if (xhr.readyState == 4 && xhr.status == 200) {
                     var content = xhr.responseText;
                     var json_ct = JSON.parse(content);
+                    console.log(json_ct); // Kiểm tra dữ liệu JSON
                     if (json_ct.Data.status == "OK") {
+                        $('#namect').text(json_ct.Data.name)
                         alert("Success");
                     }
                     else {
@@ -312,4 +314,31 @@
         
         
     }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#namecompany').on('input', function () {
+            $('#msname').html('');
+        });
+
+        $('#phone').on('input', function () {
+            $('#msphone').html('');
+        });
+
+
+        $('#country').on('input', function () {
+            $('#mscountry').html('');
+        });
+
+        $('#email').on('input', function () {
+            $('#msemail').html('');
+        });
+
+        $('#fulladdress').on('input', function () {
+            $('#msaddressfull').html('');
+        });
+
+    });
 </script>

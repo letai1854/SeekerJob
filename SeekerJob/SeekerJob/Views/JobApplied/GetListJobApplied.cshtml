@@ -46,16 +46,20 @@
                                 <div class="twm-table-controls">
                                     <ul class="twm-DT-controls-icon list-unstyled">
                                         <li>
-                                            <a data-bs-toggle="modal" href="#saved-jobs-view" role="button" class="custom-toltip">
+                                            <a href="@ViewBag.detail/@item.meta/@item.id"  class="custom-toltip">
                                                 <span class="fa fa-eye"></span>
                                                 <span class="custom-toltip-block">Veiw</span>
                                             </a>
                                         </li>
+
                                         <li>
-                                            <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
-                                                <span class="far fa-download"></span>
-                                            </button>
+                                            <a href="~/Content/Files/@item.filecandidate" download="@item.filecandidate">
+                                                <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                    <span class="far fa-download"></span>
+                                                </button>
+                                            </a>
                                         </li>
+
                                     </ul>
                                 </div>
                             </td>

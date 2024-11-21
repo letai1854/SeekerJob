@@ -20,9 +20,10 @@
                             <div class="form-group">
                                 <label>Tên của bạn</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_name" type="text" placeholder="Devid Smith"  value="@Model.name">
+                                    <input id="name" class="form-control" name="company_name" type="text" placeholder="Devid Smith" value="@Model.name">
                                     <i class="fs-input-icon fa fa-user "></i>
                                 </div>
+                                <p id="msname" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12">
@@ -32,28 +33,32 @@
                                     <select class="wt-select-box selectpicker" data-live-search="true" title="" id="gender" data-bv-field="size">
                                         <option value="Nam" @(Model.gender == "Nam" ? "selected" : "")>Nam</option>
                                         <option value="Nữ" @(Model.gender == "Nữ" ? "selected" : "")>Nữ</option>
- 
+
                                     </select>
+
                                     <i class="fs-input-icon fa fa-venus-mars"></i>
                                 </div>
+                                <p id="msgender" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label>Ngày sinh</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy" value="@Model.birthday.Value.ToString("MM/dd/yyyy")">
+                                    <input id="birthday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy" value="@Model.birthday.Value.ToString("MM/dd/yyyy")">
                                     <i class="fs-input-icon far fa-calendar"></i>
                                 </div>
+                                <p id="msbirthday" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
                         <div class="col-xl-6 col-lg-6 col-md-12">
                             <div class="form-group">
                                 <label>Số điện thoại</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_phone" type="text" placeholder="(251) 1234-456-7890"value="@Model.phone">
+                                    <input id="phone" class="form-control" name="company_phone" type="text" placeholder="(251) 1234-456-7890" value="@Model.phone">
                                     <i class="fs-input-icon fa fa-phone-alt"></i>
                                 </div>
+                                <p id="msphone" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -61,9 +66,10 @@
                             <div class="form-group">
                                 <label>Mail</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com" value="@Model.email">
+                                    <input id="email" class="form-control" name="company_Email" type="email" placeholder="Devid@example.com" value="@Model.email">
                                     <i class="fs-input-icon fas fa-at"></i>
                                 </div>
+                                <p id="msemail" style="padding:2px;display:none; color:aliceblue"></p>
                             </div>
                         </div>
 
@@ -74,9 +80,10 @@
                             <div class="form-group">
                                 <label>Trình độ</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" placeholder="BTech" value="@Model.qualification">
+                                    <input id="qualifiaction" class="form-control" name="company_since" type="text" placeholder="BTech" value="@Model.qualification">
                                     <i class="fs-input-icon fa fa-user-graduate"></i>
                                 </div>
+
                             </div>
                         </div>
 
@@ -84,7 +91,7 @@
                             <div class="form-group">
                                 <label>Kĩ năng</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" placeholder="e.x English, Spanish" value="@Model.skill">
+                                    <input id="skill" class="form-control" name="company_since" type="text" placeholder="e.x English, Spanish" value="@Model.skill">
                                     <i class="fs-input-icon fa fa-language"></i>
                                 </div>
                             </div>
@@ -94,7 +101,7 @@
                             <div class="form-group city-outer-bx has-feedback">
                                 <label>Chuyên ngành</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" placeholder="IT & Software" value="@Model.jobcategory">
+                                    <input id="jobcategory" class="form-control" name="company_since" type="text" placeholder="IT & Software" value="@Model.jobcategory">
                                     <i class="fs-input-icon fa fa-border-all"></i>
                                 </div>
 
@@ -105,7 +112,7 @@
                             <div class="form-group city-outer-bx has-feedback">
                                 <label>Kinh nghiệm</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" placeholder="05 Years"value="@Model.experience">
+                                    <input id="experience" class="form-control" name="company_since" type="text" placeholder="05 Years" value="@Model.experience">
                                     <i class="fs-input-icon fa fa-user-edit"></i>
                                 </div>
 
@@ -123,7 +130,7 @@
                             <div class="form-group city-outer-bx has-feedback">
                                 <label>Địa chỉ đầy đủ</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Angeles, CA 90026 ,USA" value="@Model.adrress">
+                                    <input id="address" class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Angeles, CA 90026 ,USA" value="@Model.adrress">
                                     <i class="fs-input-icon fas fa-map-marker-alt"></i>
                                 </div>
 
@@ -135,7 +142,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Mô tả</label>
-                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="" >@Model.description</textarea>
+                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="">@Model.description</textarea>
                             </div>
                         </div>
 
@@ -161,7 +168,7 @@
                             <div class="form-group">
                                 <label>Facebook</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.facebook" placeholder="https://www.facebook.com/">
+                                    <input id="facebook" class="form-control wt-form-control" name="company_name" type="text" value="@Model.facebook" placeholder="https://www.facebook.com/">
                                     <i class="fs-input-icon fab fa-facebook-f"></i>
                                 </div>
                             </div>
@@ -171,7 +178,7 @@
                             <div class="form-group">
                                 <label>Twitter</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.twitter" placeholder="https://twitter.com/">
+                                    <input id="twitter" class="form-control wt-form-control" name="company_name" type="text" value="@Model.twitter" placeholder="https://twitter.com/">
                                     <i class="fs-input-icon fab fa-twitter"></i>
                                 </div>
                             </div>
@@ -181,7 +188,7 @@
                             <div class="form-group">
                                 <label>linkedin</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.linkedin" placeholder="https://in.linkedin.com/">
+                                    <input id="linkedin" class="form-control wt-form-control" name="company_name" type="text" value="@Model.linkedin" placeholder="https://in.linkedin.com/">
                                     <i class="fs-input-icon fab fa-linkedin-in"></i>
                                 </div>
                             </div>
@@ -193,7 +200,7 @@
                             <div class="form-group">
                                 <label>Instagram</label>
                                 <div class="ls-inputicon-box">
-                                    <input class="form-control wt-form-control" name="company_name" type="text" value="@Model.instagram" placeholder="https://www.instagram.com/">
+                                    <input id="instagram" class="form-control wt-form-control" name="company_name" type="text" value="@Model.instagram" placeholder="https://www.instagram.com/">
                                     <i class="fs-input-icon fab fa-instagram"></i>
                                 </div>
                             </div>
@@ -205,7 +212,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="text-left">
-                                <button type="submit" class="site-button">Lưu thay đổi</button>
+                                <div onclick="UpdateProfile()" class="site-button">Lưu thay đổi</div>
                             </div>
                         </div>
 
@@ -217,3 +224,127 @@
         </form>
     </div>
 </div>
+
+<script>
+    function UpdateProfile() {
+        var name = $('#name').val();
+        var gender = $('#gender').val();
+        var birthday = $('#birthday').val();
+        var phone = $('#phone').val();
+        var email = $('#email').val();
+        var qualifiaction = $('#qualifiaction').val();
+        var skill = $('#skill').val();
+        var jobcategory = $('#jobcategory').val();
+        var experience = $('#experience').val();
+        var address = $('#address').val();
+        var brief = encodeURIComponent(CKEDITOR.instances.editor.getData());
+        var twitter = $('#twitter').val();
+        var facebook = $('#facebook').val();
+        var linkedin = $('#linkedin').val();
+        var instagram = $('#instagram').val();
+        flag = true;
+        if (name == '') {
+            $('#msname').html('Phải nhập đủ thông tin');
+            $('#msname').css('border-color', 'red');
+            $('#msname').css('color', 'red');
+            $('#msname').css('display', 'block');
+            flag = false;
+        }
+        if (gender == '') {
+            $('#msgender').html('Phải nhập đủ thông tin');
+            $('#msgender').css('border-color', 'red');
+            $('#msgender').css('color', 'red');
+            $('#msgender').css('display', 'block');
+            flag = false;
+        }
+        if (birthday == '') {
+            $('#msnbirthday').html('Phải nhập đủ thông tin');
+            $('#msbirthday').css('border-color', 'red');
+            $('#msbirthday').css('color', 'red');
+            $('#msbirthday').css('display', 'block');
+            flag = false;
+        }
+        if (phone == '') {
+            $('#msphone').html('Phải nhập đủ thông tin');
+            $('#msphone').css('border-color', 'red');
+            $('#msphone').css('color', 'red');
+            $('#msphone').css('display', 'block');
+            flag = false;
+        }
+        if (email == '') {
+            $('#msemail').html('Phải nhập đủ thông tin');
+            $('#msemail').css('border-color', 'red');
+            $('#msemail').css('color', 'red');
+            $('#msemail').css('display', 'block');
+            flag = false;
+        }
+        if (flag) {
+            var form = new FormData()
+            form.append('name', name);
+            form.append('gender', gender);
+            form.append('birthday', birthday); // Thêm category vào form
+            form.append('phone', phone); // Thêm salary vào form
+            form.append('email', email); // Thêm experience vào form
+            form.append('qualifiaction', qualifiaction); // Thêm trinhdo vào form
+            form.append('skill', skill); // Thêm gender vào form
+            form.append('jobcategory', jobcategory); // Thêm country vào form
+            form.append('experience', experience);
+            form.append('address', address); // Đổi tên từ 'anh' thành 'img' để đồng nhất với biến
+            form.append('brief', brief); // Thêm address vào form
+            form.append('facebook', facebook); // Thêm day vào form
+            form.append('linkedin', linkedin);
+            form.append('instagram', instagram);
+            form.append('twitter', twitter);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/ProfileCandidates/UpdateProfile', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#namecan').text(json_ct.Data.name)
+                        alert("Success");
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+
+</script>
+
+@section scripts
+    {
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#name').on('input', function () {
+            $('#msname').html('');
+        });
+
+        $('#phone').on('input', function () {
+            $('#msphone').html('');
+        });
+
+
+        $('#gender').on('input', function () {
+            $('#msgender').html('');
+        });
+
+        $('#email').on('input', function () {
+            $('#msemail').html('');
+        });
+
+        $('#birthday').on('input', function () {
+            $('#msbirthday').html('');
+        });
+
+    });
+</script>

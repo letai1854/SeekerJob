@@ -170,6 +170,13 @@ namespace SeekerJob
                 defaults: new { controller = "PostNews", action = "IndexPostNews", id = UrlParameter.Optional },
                 namespaces: new[] { "SeekerJob.Controllers" }
             );
+
+            routes.MapRoute(
+                name: "Đăng xuất",
+                url: "dang-xuat",
+                defaults: new { controller = "Logout", action = "Logout", id = UrlParameter.Optional },
+                namespaces: new[] { "SeekerJob.Controllers" }
+            );
             routes.MapRoute(
                 name: "Việc làm đã lưu",
                 url: "Viec-lam-da-luu",
