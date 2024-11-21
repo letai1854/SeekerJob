@@ -49,8 +49,10 @@ namespace SeekerJob.Services
             {
                 myDb.Jobs.Remove(itemJob);
 
-
-
+                return true;
+            }
+            return false;
+        }
         public bool DeleteSavedJob(int id)
         {
 
@@ -78,7 +80,6 @@ namespace SeekerJob.Services
         {
             return myDb.Logins.Where(t=>t.username== username).FirstOrDefault();
         }
->>>>>>> origin/dev_tien
         public void Save()
         {
             myDb.SaveChanges();
