@@ -3,6 +3,7 @@ using SeekerJob.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -25,7 +26,8 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetImageNameCompany()
         {
-            var tablemenus = db.InforCandidates.Where(t => t.username == "nguyenalexJR").FirstOrDefault();
+            Login user = Session["candidate"] as Login;
+            var tablemenus = db.InforCandidates.Where(t => t.username == user.username).FirstOrDefault();
             return PartialView(tablemenus);
         }
         public ActionResult GetListTitle()
@@ -36,22 +38,53 @@ namespace SeekerJob.Controllers
 
         public ActionResult GetListJobApplied()
         {
-            var result = (from j in db.Jobs
-                          join l in db.ListCandidates on j.id equals l.idjob
-                          join i in db.InforCandidates on l.usernamecandidate equals i.username
-                          join e in db.InforEmployers on j.username equals e.username
-                          where l.usernamecandidate == "totenla"
-                          select new ListCandidateApplyJob
-                          {
-                              id = j.id,
-                              image = e.image,
-                              name = e.namecompany,
-                              filecandidate = l.filecandiate,
-                              datesend = l.datesend
-                          }).ToList();
+            if (Session["candidate"] is SeekerJob.Models.Login candidate)
+            {
+                var result = (from j in db.Jobs
+                              join l in db.ListCandidates on j.id equals l.idjob
+                              join i in db.InforCandidates on l.usernamecandidate equals i.username
+                              join e in db.InforEmployers on j.username equals e.username
+                              where l.usernamecandidate == candidate.username
+                              select new ListCandidateApplyJob
+                              {
+                                  id = j.id,
+                                  image = e.image,
+                                  name = e.namecompany,
+                                  filecandidate = l.filecandiate,
+                                  datesend = l.datesend,
+                                  meta = j.meta
+                              }).ToList();
 
-            ViewData["applyjobcandidate"] = result;
-            return PartialView();
+                ViewData["applyjobcandidate"] = result;
+                ViewBag.detail = "Chi-tiet-viec-lam";
+                return PartialView();
+            }
+            else if (Session["admin"] is SeekerJob.Models.Login admin)
+            {
+                var result = (from j in db.Jobs
+                              join l in db.ListCandidates on j.id equals l.idjob
+                              join i in db.InforCandidates on l.usernamecandidate equals i.username
+                              join e in db.InforEmployers on j.username equals e.username
+                              where l.usernamecandidate == admin.username
+                              select new ListCandidateApplyJob
+                              {
+                                  id = j.id,
+                                  image = e.image,
+                                  name = e.namecompany,
+                                  filecandidate = l.filecandiate,
+                                  datesend = l.datesend,
+                                  meta = j.meta
+                              }).ToList();
+
+                ViewData["applyjobcandidate"] = result;
+                ViewBag.detail = "Chi-tiet-viec-lam";
+                return PartialView();
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "User not logged in");
+            }
+            return new EmptyResult();
         }
     }
 }

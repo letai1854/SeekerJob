@@ -169,6 +169,7 @@
     <Compile Include="Controllers\ListCVController.cs" />
     <Compile Include="Controllers\ListJobController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\ManagerJobController.cs" />
     <Compile Include="Controllers\ManagerNewsController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
@@ -4732,6 +4733,7 @@
     </Content>
     <Content Include="Areas\Admin\Views\news\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\news\ViewNewsDetail.cshtml" />
+    <Content Include="Content\Files\Laudon_MIS13_ch02.pdf" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4901,6 +4903,7 @@
     <Folder Include="FILES\" />
     <Folder Include="Images\" />
     <Folder Include="Views\JotFormt\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

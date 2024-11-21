@@ -68,12 +68,24 @@ namespace SeekerJob.Controllers
 
             IO io = new IO();
             JsonResult js = new JsonResult();
-            Login user = new Login();
-           
+            Login user = Session["employer"] as Login;
+            InforEmployer info = io.GetInfoCompany(user.username);
+            info.namecompany = name;
+            info.description = description;
+            info.phone = int.Parse(phone);
+            info.email = email;
+            info.adrress = country;
+            info.addressDetail = addressfull;
+            info.facebook = facebook;
+            info.twitter = Twitter;
+            info.linkedin = linkedin;
+            info.instagram = Instagram;
+            info.linkweb = Website;
             io.Save();
             js.Data = new
             {
-                status = "OK"
+                status = "OK", 
+                name = name
             };
             return Json(js, JsonRequestBehavior.AllowGet);
         }

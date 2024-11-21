@@ -12,5 +12,6 @@ namespace SeekerJob.DTO
         public string name;
         public string filecandidate;
         public DateTime? datesend;
+        public string meta;
     }
 }

@@ -173,7 +173,7 @@
 @{
     List<object> menuItems = null;
 
-    if (Session["candidate"] != null)
+    if (Session["candidate"] != null || Session["admin"] != null)
     {
         menuItems = tablemenus
             .Where(item => item.meta == "profile-candidate" && (item.hide ?? true))

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SeekerJob.Models;
+using SeekerJob.Services;
 namespace SeekerJob.Controllers
 {
     public class ChangepasswordCandidateController : Controller
@@ -11,14 +12,14 @@ namespace SeekerJob.Controllers
         // GET: ChangepasswordCandidate
 
         testdbs2425Entities db = new testdbs2425Entities();
-        public ActionResult Index()
-        {
-            return View();
-        }
-        public ActionResult IndexChangePasswordCandidate()
-        {
-            return View();
-        }
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+        //public ActionResult IndexChangePasswordCandidate()
+        //{
+        //    return View();
+        //}
         public ActionResult IndexViewChangePassword()
         {
             return View();
@@ -43,6 +44,37 @@ namespace SeekerJob.Controllers
         {
 
             return PartialView();
+        }
+
+
+
+        [HttpPost]
+        public JsonResult ChangePassword(FormCollection Data)
+        {
+            JsonResult js = new JsonResult();
+            string passold = Data["passold"];
+            string passnew = Data["passnew"]; // Cập nhật từ "noidung" thành "category"
+            string passnewagain = Data["passnewagain"]; // Lấy thô
+            Login user = Session["candidate"] as Login;
+            if (user.password != passold)
+            {
+                js.Data = new
+                {
+                    status = "ERROR"
+                };
+                return Json(js, JsonRequestBehavior.AllowGet);
+            }
+            IO io = new IO();
+            Login login = io.GetLogin(user.username);
+            login.password = passnew;
+            io.Save();
+            Session["candidate"] = login;
+            js.Data = new
+            {
+                status = "OK"
+            };
+
+            return Json(js, JsonRequestBehavior.AllowGet);
         }
     }
 }
