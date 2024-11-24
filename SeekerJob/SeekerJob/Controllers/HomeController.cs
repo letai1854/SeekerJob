@@ -47,27 +47,330 @@ namespace SeekerJob.Controllers
             ViewData["title"] = title;
             return PartialView("GetTitlePageHomeNews");
         }
-        public ActionResult GetListAttractiveJobInHome()
+        //public ActionResult GetListAttractiveJobInHome()
+        //{
+        //     var listjobuser = new List<CombineJobUser>();
+        //    var listjob = db.Jobs.Where(t => t.endday>=DateTime.Now).OrderByDescending(t=>t.endday).ToList();
+
+
+        //    foreach(var job in listjob)
+        //    {
+        //        var inforEmployer = db.InforEmployers
+        //                             .Where(t => t.username == job.username)
+        //                             .FirstOrDefault();
+        //        listjobuser.Add(new CombineJobUser()
+        //        {
+        //            job=job,
+        //            employer=inforEmployer
+        //        });
+        //    }
+        //    ViewBag.metacontroller = "chi-tiet-viec-lam";
+        //    ViewData["listjobuser"] = listjobuser;
+        //    return PartialView("GetListAttractiveJobInHome");
+        //}
+        // public ActionResult GetListAttractiveJobInHome(int page = 1)
+        // {
+        //     int pageSize = 12;
+        //     var listjobuser = new List<CombineJobUser>();
+        //     var listjob = db.Jobs.Where(t => t.endday >= DateTime.Now)
+        //                         .OrderByDescending(t => t.endday)
+        //                         .Skip((page - 1) * pageSize)
+        //                         .Take(pageSize)
+        //                         .ToList();
+
+        //     foreach (var job in listjob)
+        //     {
+        //         var inforEmployer = db.InforEmployers
+        //                             .Where(t => t.username == job.username)
+        //                             .FirstOrDefault();
+        //         listjobuser.Add(new CombineJobUser()
+        //         {
+        //             job = job,
+        //             employer = inforEmployer
+        //         });
+        //     }
+
+        //     // Tính tổng số trang
+        //     int totalJobs = db.Jobs.Where(t => t.endday >= DateTime.Now).Count();
+        //     int totalPages = (int)Math.Ceiling((double)totalJobs / pageSize);
+
+        //     ViewBag.CurrentPage = page;
+        //     ViewBag.TotalPages = totalPages;
+        //     ViewBag.metacontroller = "chi-tiet-viec-lam";
+        //     ViewData["listjobuser"] = listjobuser;
+
+        //     if (Request.IsAjaxRequest())
+        //         return PartialView("JobListPartial", listjobuser);
+        //     return PartialView("GetListAttractiveJobInHome");
+        // }
+ public ActionResult GetListAttractiveJobInHome(int page = 1)
+{
+    int pageSize = 12;
+    var listjobuser = new List<CombineJobUser>();
+    
+    // Nếu không phải là AJAX request (tức là load trang), reset session tìm kiếm
+    if (!Request.IsAjaxRequest())
+    {
+        Session["IsSearching"] = false;
+        Session["SearchResults"] = null;
+        Session["SearchParams"] = null;
+    }
+    
+    // Kiểm tra xem có đang trong chế độ tìm kiếm không
+    bool isSearching = Session["IsSearching"] != null && (bool)Session["IsSearching"];
+    
+    if (isSearching && Session["SearchResults"] != null)
+    {
+        // Sử dụng kết quả tìm kiếm đã lưu
+        var searchResults = Session["SearchResults"] as List<Job>;
+        var pagedResults = searchResults.OrderByDescending(t => t.endday)
+                                      .Skip((page - 1) * pageSize)
+                                      .Take(pageSize)
+                                      .ToList();
+
+        foreach (var job in pagedResults)
         {
-             var listjobuser = new List<CombineJobUser>();
-            var listjob = db.Jobs.Where(t => t.endday>=DateTime.Now).OrderByDescending(t=>t.endday).Take(12).ToList();
-
-
-            foreach(var job in listjob)
+            var inforEmployer = db.InforEmployers
+                                .Where(t => t.username == job.username)
+                                .FirstOrDefault();
+            listjobuser.Add(new CombineJobUser()
             {
-                var inforEmployer = db.InforEmployers
-                                     .Where(t => t.username == job.username)
-                                     .FirstOrDefault();
-                listjobuser.Add(new CombineJobUser()
-                {
-                    job=job,
-                    employer=inforEmployer
-                });
-            }
-            ViewBag.metacontroller = "chi-tiet-viec-lam";
-            ViewData["listjobuser"] = listjobuser;
-            return PartialView("GetListAttractiveJobInHome");
+                job = job,
+                employer = inforEmployer
+            });
         }
+
+        // Tính tổng số trang dựa trên kết quả tìm kiếm
+        int totalJobs = searchResults.Count;
+        ViewBag.TotalPages = (int)Math.Ceiling((double)totalJobs / pageSize);
+    }
+    else
+    {
+        // Truy vấn bình thường nếu không có tìm kiếm
+        var listjob = db.Jobs.Where(t => t.endday >= DateTime.Now)
+                            .OrderByDescending(t => t.endday)
+                            .Skip((page - 1) * pageSize)
+                            .Take(pageSize)
+                            .ToList();
+
+        foreach (var job in listjob)
+        {
+            var inforEmployer = db.InforEmployers
+                                .Where(t => t.username == job.username)
+                                .FirstOrDefault();
+            listjobuser.Add(new CombineJobUser()
+            {
+                job = job,
+                employer = inforEmployer
+            });
+        }
+
+        int totalJobs = db.Jobs.Where(t => t.endday >= DateTime.Now).Count();
+        ViewBag.TotalPages = (int)Math.Ceiling((double)totalJobs / pageSize);
+    }
+
+    ViewBag.CurrentPage = page;
+    ViewBag.metacontroller = "chi-tiet-viec-lam";
+    ViewData["listjobuser"] = listjobuser;
+
+    if (Request.IsAjaxRequest())
+        return PartialView("JobListPartial", listjobuser);
+    return PartialView("GetListAttractiveJobInHome");
+}
+[HttpPost]
+public ActionResult SearchJobs1(string position, string location, string jobType, string salaryRange, int page = 1)
+{
+    int pageSize = 12;
+    var query = db.Jobs.Where(t => t.endday >= DateTime.Now);
+
+    // Tìm theo vị trí
+    if (!string.IsNullOrEmpty(position))
+    {
+        query = query.Where(j => j.title.Contains(position));
+    }
+
+    // Tìm theo địa điểm
+    if (!string.IsNullOrEmpty(location))
+    {
+        query = query.Where(j => j.address == location);
+    }
+
+    // Tìm theo loại công việc
+    if (!string.IsNullOrEmpty(jobType) && jobType != "alljob")
+    {
+        string jobCategory = "";
+        switch (jobType)
+        {
+            case "fulltime": jobCategory = "Toàn thời gian"; break;
+            case "parttime": jobCategory = "Bán thời gian"; break;
+            case "intern": jobCategory = "Thực tập"; break;
+            case "freelance": jobCategory = "Tự do"; break;
+        }
+        query = query.Where(j => j.jobcategory == jobCategory);
+    }
+
+    // Tìm theo mức lương
+    if (!string.IsNullOrEmpty(salaryRange))
+    {
+        switch (salaryRange)
+        {
+            case "under500":
+                query = query.Where(j => j.offer < 500);
+                break;
+            case "500to2000":
+                query = query.Where(j => j.offer >= 500 && j.offer <= 2000);
+                break;
+            case "2000to4000":
+                query = query.Where(j => j.offer > 2000 && j.offer <= 4000);
+                break;
+            case "4000to7000":
+                query = query.Where(j => j.offer > 4000 && j.offer <= 7000);
+                break;
+            case "7000to10000":
+                query = query.Where(j => j.offer > 7000 && j.offer <= 10000);
+                break;
+            case "above10000":
+                query = query.Where(j => j.offer > 10000);
+                break;
+        }
+    }
+
+    // Lưu điều kiện tìm kiếm vào Session
+    Session["SearchParams"] = new Dictionary<string, string>
+    {
+        {"position", position},
+        {"location", location},
+        {"jobType", jobType},
+        {"salaryRange", salaryRange}
+    };
+
+    // Lưu kết quả query vào Session
+    var searchResults = query.ToList();
+    Session["SearchResults"] = searchResults;
+    Session["IsSearching"] = true;
+
+    // Phân trang kết quả
+    var pagedResults = searchResults.OrderByDescending(t => t.endday)
+                                  .Skip((page - 1) * pageSize)
+                                  .Take(pageSize)
+                                  .ToList();
+
+    // Tạo danh sách kết hợp job và employer
+    var listjobuser = new List<CombineJobUser>();
+    foreach (var job in pagedResults)
+    {
+        var inforEmployer = db.InforEmployers
+                            .Where(t => t.username == job.username)
+                            .FirstOrDefault();
+        listjobuser.Add(new CombineJobUser()
+        {
+            job = job,
+            employer = inforEmployer
+        });
+    }
+
+    // Tính tổng số trang
+    int totalJobs = searchResults.Count;
+    ViewBag.TotalPages = (int)Math.Ceiling((double)totalJobs / pageSize);
+    ViewBag.CurrentPage = page;
+    ViewBag.metacontroller = "chi-tiet-viec-lam";
+    ViewData["listjobuser"] = listjobuser;
+
+    return PartialView("GetListAttractiveJobInHome", listjobuser);
+}
+[HttpPost]
+public ActionResult ResetPaginationState()
+{
+    Session["IsPaginationCreated"] = false;
+    return Json(new { success = true });
+}
+    
+
+        // [HttpPost]
+        // public ActionResult SearchJobs1(string position, string location, string jobType, string salaryRange, int page = 1)
+        // {
+        //     int pageSize = 12;
+        //     var query = db.Jobs.Where(t => t.endday >= DateTime.Now);
+
+        //     // Tìm theo vị trí
+        //     if (!string.IsNullOrEmpty(position))
+        //     {
+        //         query = query.Where(j => j.title.Contains(position));
+        //     }
+
+        //     // Tìm theo địa điểm
+        //     if (!string.IsNullOrEmpty(location))
+        //     {
+        //         query = query.Where(j => j.address == location);
+        //     }
+
+        //     // Tìm theo loại công việc
+        //     if (!string.IsNullOrEmpty(jobType) && jobType != "alljob")
+        //     {
+        //         string jobCategory = "";
+        //         switch (jobType)
+        //         {
+        //             case "fulltime": jobCategory = "Toàn thời gian"; break;
+        //             case "parttime": jobCategory = "Bán thời gian"; break;
+        //             case "intern": jobCategory = "Thực tập"; break;
+        //             case "freelance": jobCategory = "Tự do"; break;
+        //         }
+        //         query = query.Where(j => j.jobcategory == jobCategory);
+        //     }
+
+        //     // Tìm theo mức lương
+        //     if (!string.IsNullOrEmpty(salaryRange))
+        //     {
+        //         switch (salaryRange)
+        //         {
+        //             case "under500":
+        //                 query = query.Where(j => j.offer < 500);
+        //                 break;
+        //             case "500to2000":
+        //                 query = query.Where(j => j.offer >= 500 && j.offer <= 2000);
+        //                 break;
+        //             case "2000to4000":
+        //                 query = query.Where(j => j.offer > 2000 && j.offer <= 4000);
+        //                 break;
+        //             case "4000to7000":
+        //                 query = query.Where(j => j.offer > 4000 && j.offer <= 7000);
+        //                 break;
+        //             case "7000to10000":
+        //                 query = query.Where(j => j.offer > 7000 && j.offer <= 10000);
+        //                 break;
+        //             case "above10000":
+        //                 query = query.Where(j => j.offer > 10000);
+        //                 break;
+        //         }
+        //     }
+        //     int totalJobs = query.Count();
+        //     int totalPages = (int)Math.Ceiling((double)totalJobs / pageSize);
+        //     var listjob = query.OrderByDescending(t => t.endday)
+        //                       .Skip((page - 1) * pageSize)
+        //                       .Take(pageSize)
+        //                       .ToList();
+
+        //     var listjobuser = new List<CombineJobUser>();
+        //     foreach (var job in listjob)
+        //     {
+        //         var inforEmployer = db.InforEmployers
+        //                             .Where(t => t.username == job.username)
+        //                             .FirstOrDefault();
+        //         listjobuser.Add(new CombineJobUser()
+        //         {
+        //             job = job,
+        //             employer = inforEmployer
+        //         });
+        //     }
+
+        //     ViewBag.CurrentPage = page;
+        //     ViewBag.TotalPages = (int)Math.Ceiling((double)query.Count() / pageSize);
+        //     ViewBag.metacontroller = "chi-tiet-viec-lam";
+        //     ViewData["listjobuser"] = listjobuser;
+
+        //     return PartialView("JobListPartial", listjobuser);
+        // }
+
         public ActionResult GetTitleListCompany()
         {
             var title = db.TitlePages.Where(t => t.hide == true && t.typePage == EnumType.TypeTitleHome.titlepagehomecompany.ToString()).OrderBy(t => t.datebegin).FirstOrDefault();

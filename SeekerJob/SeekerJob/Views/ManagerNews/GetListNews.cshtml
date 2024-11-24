@@ -21,7 +21,7 @@
                     <!--1-->
                     @foreach (var item in Model)
                     {
-                        <tr>
+                        <tr id="tr_@item.id">
                             <td>
                                 <div class="twm-candidate-save-job-list">
                                     <div class="twm-media">
@@ -58,9 +58,10 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <button title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
-                                                <span class="far fa-trash-alt"></span>
-                                            </button>
+                                            <a  href="javascript:Delete('@item.id','@item.title')"  class="custom-toltip">
+                                            <span class="far fa-trash-alt"></span>
+                                            <span class="custom-toltip-block">Delete</span>
+                                            </a>
                                         </li>
                                     </ul>
                                 </div>
@@ -77,3 +78,26 @@
         </div>
     </div>
 </div>
+<script>
+    function Delete(id, title) {
+        if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/PostNews/DeleteNews', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr_' + id).remove();
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+</script>

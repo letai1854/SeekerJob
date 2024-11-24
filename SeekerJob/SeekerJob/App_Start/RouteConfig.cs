@@ -17,10 +17,6 @@ namespace SeekerJob
                  url: "Chi-tiet-tin-tuc/{meta}/{id}",
                  defaults: new { controller = "NewsDetail", action = "ViewNewsDetail", id = UrlParameter.Optional },
                  namespaces: new[] { "SeekerJob.Controllers" });
-            //routes.MapRoute(
-            //name: "Admin_ChiTietTinTuc",
-            //url: "Admin/Chi-tiet-tin-tuc/{meta}/{id}",
-            //defaults: new { controller = "news", action = "ViewNewsDetail", id = UrlParameter.Optional });
             routes.MapRoute(
                 name: "Mẫu cv",
                 url: "mau-cv",

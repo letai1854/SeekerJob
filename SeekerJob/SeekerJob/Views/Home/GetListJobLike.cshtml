@@ -25,23 +25,27 @@
                     <p class="job-address text-muted mb-2" style="font-size: 13px">@item.job.addressdetail</p>
                 </div>
                 <div class="job-card-right-content text-right">
-                    @if (item.job.jobcategory == "Fulltime")
+                    @if (item.job.jobcategory == "Toàn thời gian")
                     {
                         <div class="job-category badge badge-fulltime" style="font-size: 11px">@item.job.jobcategory</div>
 
                     }
-                    else if (item.job.jobcategory == "Parttime")
+                    else if (item.job.jobcategory == "Bán thời gian")
                     {
                         <div class="job-category badge " style="font-size: 11px; background-color:brown">@item.job.jobcategory</div>
 
                     }
-                    else
+                    else if (item.job.jobcategory == "Tự do")
                     {
                         <div class="job-category badge" style="font-size: 11px; background-color:chartreuse">@item.job.jobcategory</div>
 
                     }
+                    else
+                    {
+                        <div class="job-category badge" style="font-size: 11px; background-color:gold">@item.job.jobcategory</div>
+                    }
                     <div class="job-salary text-dark font-weight-bold" style="font-size: 13px">$1500 <span class="text-success" style="font-size: 13px">/ Tháng</span></div>
-                    <a href="job-detail.html" class="job-browse text-primary font-weight-bold" style="font-size: 13px">Browse Job</a>
+                    <a href="job-detail.html" class="job-browse text-primary font-weight-bold" style="font-size: 13px">Xem thêm</a>
                 </div>
             </div>
 

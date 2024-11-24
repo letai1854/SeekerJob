@@ -11,6 +11,18 @@
 
 </div>
 
+<style>
+   
+    .fixed-width-badge {
+        display: inline-block;
+        width: 85px !important; /* Chiều rộng cố định cho tất cả badge */
+        text-align: center;
+        padding: 5px;
+        color: white;
+    }
+
+</style>
+
 <div class="section-full p-t120 p-b90 site-bg-light-purple twm-bg-ring-wrap" style="background-color: rgb(223, 223, 223);">
 
 
@@ -31,7 +43,7 @@
             <div class="custom-search-bar" style="display: flex; flex-wrap: wrap; gap: 10px; padding: 5px 20px">
                 <input type="text" placeholder="Vị trí tuyển dụng" class="custom-search-input" style="flex: 1;">
                 <div class="custom-dropdown-container" style="display: flex; gap: 10px; flex: 1;">
-                    <select class="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size" data-size="10" style="flex: 1;">
+                    <select class="wt-search-bar-select " data-live-search="true" id="j-All_Category1" data-bv-field="size" data-size="10">
                         <option disabled selected value="">Chọn địa điểm</option>
                         <option value="An Giang">An Giang</option>
                         <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
@@ -103,22 +115,24 @@
                         <option value="fulltime">Toàn thời gian</option>
                         <option value="parttime">Bán thời gian</option>
                         <option value="parttime">Thực tập</option>
+                        <option value="parttime">Tự do</option>
                     </select>
                     <select class="custom-dropdown" style="flex: 1;">
-                        <option disabled selected value="">Chọn mức lương</option>
-                        <option value="alljob">Tất cả</option>
-                        <option value="fulltime">Toàn thời gian</option>
-                        <option value="parttime">Bán thời gian</option>
-                        <option value="parttime">Thực tập</option>
+                        <option disabled selected value="">Mức lương</option>
+                        <option value="under500">< 500$</option>
+                        <option value="500to2000">500$ - 2000$</option>
+                        <option value="2000to4000">2000$ - 4000$</option>
+                        <option value="4000to7000">4000$ - 7000$</option>
+                        <option value="7000to10000">7000$ - 10000$</option>
+                        <option value="above10000">> 10000$</option>
                     </select>
                 </div>
-                <button type="button" class="site-button" style="flex-shrink: 0; background-color:rgb(35, 168, 234)">Tìm kiếm</button>
+                <div onclick="Search()" class="site-button" id="searchButton" style="flex-shrink: 0; background-color:rgb(35, 168, 234)">Tìm kiếm</div>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row" id="jobListContainer">
             @{ Html.RenderAction("GetListAttractiveJobInHome", "Home");}
-        
         </div>
 
         <div class="text-center">
@@ -174,3 +188,61 @@
     @{ Html.RenderAction("GetTitleListCompany", "Home");}
 </div>
 @{ Html.RenderAction("GetImageCompanyHome", "Home");}
+
+
+
+// ... existing code ...
+
+<script>
+    function Search() {
+        var position = $('.custom-search-input').val();
+        var location = $('#j-All_Category1').val();
+        var jobType = $('.custom-dropdown:eq(0)').val();
+        var salaryRange = $('.custom-dropdown:eq(1)').val();
+
+        $.ajax({
+            url: '/Home/SearchJobs1',
+            type: 'POST',
+            data: {
+                position: position,
+                location: location,
+                jobType: jobType,
+                salaryRange: salaryRange,
+                page: 1
+            },
+            success: function (result) {
+                $('#jobList').html(result); // Cập nhật nội dung vào #jobList
+                updatePagination(1);
+            },
+            error: function (err) {
+                console.error('Lỗi khi tìm kiếm:', err);
+            }
+        });
+    }
+
+    $(document).on('click', '.page-btn', function (e) {
+        e.preventDefault();
+        var page = $(this).data('page');
+        loadJobs(page);
+    });
+
+   function loadJobs(page) {
+    $.ajax({
+        url: '/Home/SearchJobs1',
+        type: 'POST',
+        data: {
+            ...searchParams,
+            page: page
+        },
+        success: function (result) {
+            $('#jobListContainer').html(result);
+            updatePagination(page);
+        },
+        error: function (err) {
+            console.error('Lỗi khi tải dữ liệu:', err);
+        }
+    });
+}
+</script>
+
+// ... existing code ...

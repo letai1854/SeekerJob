@@ -131,7 +131,7 @@ namespace SeekerJob.Areas.Admin.Controllers
 
             IO io = new IO();
             JsonResult js = new JsonResult();
-            Login user = Session["admin"] as Login;
+            Login user = Session["candidate"] as Login;
 
             News news = new News()
             {

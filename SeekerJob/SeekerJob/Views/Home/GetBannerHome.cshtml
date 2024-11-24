@@ -46,7 +46,7 @@
             }
 
             <div class="twm-bnr-search-bar">
-                <form>
+                <form id="searchForm">
                     <div class="row">
                         <!--Title-->
                         <div class="form-group col-xl-3 col-lg-6 col-md-6">
@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group col-xl-3 col-lg-6 col-md-6">
-                            <button type="button" class="site-button">Tìm kiếm</button>
+                            <div onclick="searchJobs()"  class="site-button" id="searchButton">Tìm kiếm</div>
                         </div>
 
                     </div>
@@ -175,6 +175,41 @@
         </div>
     </div>
 </div>
+<!-- Đặt script này ở đầu file -->
+<script>
+$(document).ready(function() {
+    // Thêm event listener cho nút tìm kiếm
+    $('#searchButton').on('click', function() {
+        searchJobs();
+    });
+    
+    function searchJobs() {
+        console.log("Function called"); // Debug
+            
+        var jobTitle = $('#job-title').val();
+        var location = $('#j-All_Category').val();
+        
+        console.log("Title:", jobTitle); // Debug
+        console.log("Location:", location); // Debug
+        
+        $.ajax({
+            url: '/ListJob/SaveSearchParams',
+            type: 'POST',
+            data: {
+                jobTitle: jobTitle,
+                location: location
+            },
+            success: function(response) {
+                console.log("Ajax success"); // Debug
+                window.location.href = '/Danh-sach-viec-lam';
+            },
+            error: function(xhr, status, error) {
+                console.log("Ajax error:", error); // Debug
+            }
+        });
+    }
+});
+</script>
 
 
 

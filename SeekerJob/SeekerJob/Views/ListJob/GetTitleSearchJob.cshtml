@@ -5,23 +5,19 @@
     var tablebannerpart = ViewData["tablebannerparts"] as List<tablebannerpart>;
 }
 
-
-
 <div class="col-lg-4 col-md-12 rightSidebar">
-
     <div class="side-bar" style="background-color: rgb(35,168,234);">
-
         <div class="sidebar-elements search-bx">
-
             <form>
-
                 @foreach (var item in tablebanner)
                 {
                     if (item.meta == EnumType.Type.Diadiem.ToString())
                     {
+
                         <div class="form-group mb-4">
+                            @*địa điểm*@
                             <h4 class="section-head-small mb-4">@item.name</h4>
-                            <select class="wt-search-bar-select selectpicker" data-live-search="true" title="" id="j-All_Category" data-bv-field="size" data-size="10">
+                            <select class="wt-search-bar-select " data-live-search="true" id="j-All_Category" data-bv-field="size" data-size="10">
                                 <option disabled selected value="">Chọn địa điểm</option>
                                 <option value="An Giang">An Giang</option>
                                 <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
@@ -94,183 +90,156 @@
                         <div class="twm-sidebar-ele-filter">
                             <h4 class="section-head-small mb-4">@item.name</h4>
                             <ul>
-
                                 @foreach (var itemElement in tablebannerpart)
                                 {
-                                    if (item.id == itemElement.idtable && item.meta == EnumType.Type.Loaicongviec.ToString())
+                                    if (item.id == itemElement.idtable && item.meta == EnumType.Type.Loaicongviec.ToString() && itemElement.content != "Tạm thời" && itemElement.content != "Tình nguyện")
                                     {
                                         <li>
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1 @itemElement.meta">
-                                                <label class="form-check-label" for="exampleCheck1" style="color:black">@itemElement.content</label>
+                                                <input type="checkbox" class="form-check-input" id="exampleCheck1_@itemElement.meta">
+                                                <label class="form-check-label" for="exampleCheck1_@itemElement.meta" style="color:black">@itemElement.content</label>
                                             </div>
                                         </li>
                                     }
                                     if (item.id == itemElement.idtable && item.meta == EnumType.Type.Ngaydang.ToString())
                                     {
-
                                         <li>
                                             <div class="form-check">
-                                                <input type="radio" class="form-check-input" name="radioGroup" id="exampleradio1 @itemElement.meta">
-                                                <label class="form-check-label" for="exampleradio1"  style="color:black">@itemElement.content</label>
+                                                <input type="radio" class="form-check-input" name="radioGroup" id="exampleradio1_@itemElement.meta">
+                                                <label class="form-check-label" for="exampleradio1_@itemElement.meta" style="color:black">@itemElement.content</label>
                                             </div>
                                         </li>
-
                                     }
                                     if (item.id == itemElement.idtable && item.meta == EnumType.Type.Mucluong.ToString())
                                     {
+                                        <li>
+                                            <div class="form-group">
+                                                <label for="@itemElement.meta" style="color:black">@itemElement.content</label>
+                                                <input type="number" class="form-control" id="@itemElement.meta" name="@itemElement.meta"
+                                                       placeholder="Nhập @itemElement.content $" min="0" step="500">
+                                                <div class="salary-error" style="color:red">Lương khởi điểm không được lớn hơn lương kết thúc</div>
 
-                                        <div class="form-group">
-                                            <label for="@itemElement.meta"  style="color:black">@itemElement.content</label>
-                                            <input type="number" class="form-control" id="@itemElement.meta" name="@itemElement.meta"
-                                                   placeholder="Nhập @itemElement.content  $" min="0" step="500">
-                                        </div>
+                                            </div>
+                                        </li>
                                     }
-
                                 }
                             </ul>
-
-
                         </div>
                     }
+                }
+                <div class="form-group">
+                    <button type="button" class="site-button" style="background-color: rgb(222,152,23);">Tìm kiếm</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#Luong-khoi-diem, #Luong-ket-thuc').on('input', function() {
+        var salaryFrom = parseFloat($('#Luong-khoi-diem').val()) || 0;
+        var salaryTo = parseFloat($('#Luong-ket-thuc').val()) || 0;
+        
+        // Ẩn thông báo lỗi khi người dùng thay đổi giá trị
+            $('.salary-error').hide();
+        });
+        $('.site-button').click(function () {
+            // Lấy giá trị địa điểm
+            var salaryFrom = parseFloat($('#Luong-khoi-diem').val()) || 0;
+        var salaryTo = parseFloat($('#Luong-ket-thuc').val()) || 0;
+
+        // Kiểm tra lương
+        if (salaryFrom > salaryTo) {
+            $('.salary-error').show();
+                return false; // Ngăn không cho thực hiện tìm kiếm
+            }
+            var address = $('#j-All_Category').val();
+
+            // Lấy danh sách loại công việc được chọn
+            var jobCategories = [];
+            $('input[type="checkbox"]:checked').each(function () {
+                var label = $(this).siblings('label').text();
+                jobCategories.push(label);
+            });
+
+            // Lấy giá trị thời gian đăng
+            var postDayType = '';
+            // Kiểm tra từng radio button theo ID
+            if ($('#exampleradio1_Trong-gio-qua').is(':checked')) {
+                postDayType = "1hour";
+            } else if ($('#exampleradio1_Trong-24-gio-qua').is(':checked')) {
+                postDayType = "24hours";
+            } else if ($('#exampleradio1_Trong-7-ngay-qua').is(':checked')) {
+                postDayType = "7days";
+            } else if ($('#exampleradio1_Trong-14-ngay-qua').is(':checked')) {
+                postDayType = "14days";
+            } else if ($('#exampleradio1_Trong-30-ngay-qua').is(':checked')) {
+                postDayType = "30days";
+            } else if ($('#exampleradio1_Tat-ca').is(':checked')) {
+                postDayType = "all";
             }
 
+            // Lấy giá trị lương
+            var salaryFrom = $('#Luong-khoi-diem').val();
+            var salaryTo = $('#Luong-ket-thuc').val();
 
+            // Chuyển đổi sang số nếu có giá trị
+            salaryFrom = salaryFrom ? parseFloat(salaryFrom) : null;
+            salaryTo = salaryTo ? parseFloat(salaryTo) : null;
 
+            // Gửi Ajax request
+            $.ajax({
+                url: '/ListJob/SearchJobs',
+                type: 'POST',
+                data: {
+                    address: address,
+                    jobCategories: jobCategories,
+                    postDayType: postDayType,
+                    salaryFrom: salaryFrom,
+                    salaryTo: salaryTo
+                },
+                success: function (response) {
+                    // Cập nhật nội dung bảng
+                    var tableContainer = $('#jobs_bookmark_table2').closest('.twm-jobs-list-wrap');
+                    tableContainer.html(response);
 
+                    // Khởi tạo lại DataTable
+                    //initializeDataTable();
+                },
+                error: function (xhr, status, error) {
+                    console.error('Lỗi khi tìm kiếm:', error);
+                    console.log('Request data:', {
+                        address: address,
+                        jobCategories: jobCategories,
+                        postDayType: postDayType,
+                        salaryFrom: salaryFrom,
+                        salaryTo: salaryTo
+                    });
+                }
+            });
+        });
+    });
 
-                            @*<div class="twm-sidebar-ele-filter">
-                                <h4 class="section-head-small mb-4">Loại công việc</h4>
-                                <ul>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                            <label class="form-check-label" for="exampleCheck1">Tự Do</label>
-                                        </div>
-                                        <span class="twm-job-type-count">09</span>
-                                    </li>
+    function initializeDataTable() {
+        // Hủy DataTable nếu đã tồn tại
+        if ($.fn.DataTable.isDataTable('#jobs_bookmark_table2')) {
+            $('#jobs_bookmark_table2').DataTable().destroy();
+        }
 
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck2">
-                                            <label class="form-check-label" for="exampleCheck2">Toàn thời gian</label>
-                                        </div>
-                                        <span class="twm-job-type-count">07</span>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck3">
-                                            <label class="form-check-label" for="exampleCheck3">Thực tập</label>
-                                        </div>
-                                        <span class="twm-job-type-count">15</span>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck4">
-                                            <label class="form-check-label" for="exampleCheck4">Bán thời gian</label>
-                                        </div>
-                                        <span class="twm-job-type-count">20</span>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck5">
-                                            <label class="form-check-label" for="exampleCheck5">Tạm thời</label>
-                                        </div>
-                                        <span class="twm-job-type-count">22</span>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck6">
-                                            <label class="form-check-label" for="exampleCheck6">Tình nguyện</label>
-                                        </div>
-                                        <span class="twm-job-type-count">25</span>
-                                    </li>
-                                </ul>
-                            </div>*@
-
-                            @*<div class="twm-sidebar-ele-filter">
-                                <h4 class="section-head-small mb-4">Ngày đăng</h4>
-                                <ul>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio1">
-                                            <label class="form-check-label" for="exampleradio1">Trong giờ qua</label>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio2">
-                                            <label class="form-check-label" for="exampleradio2">Trong 24 giờ qua</label>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio3">
-                                            <label class="form-check-label" for="exampleradio3">Trong 7 ngày qua</label>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio4">
-                                            <label class="form-check-label" for="exampleradio4">Trong 14 ngày qua</label>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio5">
-                                            <label class="form-check-label" for="exampleradio5">Trong 30 ngày qua</label>
-                                        </div>
-                                    </li>
-
-                                    <li>
-                                        <div class="form-check">
-                                            <input type="radio" class="form-check-input" id="exampleradio6">
-                                            <label class="form-check-label" for="exampleradio6">Tất cả</label>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>*@
-
-
-                            <!--<div class="twm-sidebar-ele-filter">
-                                <h4 class="section-head-small mb-4">Mức lương</h4>-->
-
-                                <!-- Lương khởi điểm -->
-                                <!--<div class="form-group">
-                                    <label for="SalaryStart">Lương khởi điểm</label>
-                                    <input type="number" class="form-control" id="SalaryStart" name="SalaryStart"
-                                           placeholder="Nhập lương khởi điểm $" min="0" step="500">
-                                </div>-->
-
-                                <!-- Lương kết thúc -->
-                                <!--<div class="form-group">
-                                    <label for="SalaryEnd">Lương kết thúc</label>
-                                    <input type="number" class="form-control" id="SalaryEnd" name="SalaryEnd"
-                                           placeholder="Nhập lương kết thúc $" min="0" step="500">
-                                </div>
-                            </div>-->
-
-                            <div class="form-group col-xl-6 col-lg-6 col-md-6">
-                                <button type="button" class="site-button" style="background-color: rgb(222,152,23);">Tìm kiếm</button>
-                            </div>
-
-                    </form>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-</div>
-
+        // Khởi tạo lại DataTable
+        $('#jobs_bookmark_table2').DataTable({
+            "paging": true,
+            "pageLength": 10,
+            "lengthChange": false,
+            "searching": true,
+            "info": false,
+            "autoWidth": false,
+            "language": {
+                "paginate": {
+                    "previous": "Trước",
+                    "next": "Sau"
+                }
+            }
+        });
+    }
+</script>

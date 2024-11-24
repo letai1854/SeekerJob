@@ -151,7 +151,7 @@
                         </div>
 
                         <div class="form-group col-xl-3 col-lg-6 col-md-6">
-                            <button type="button" class="site-button" style="background-color: rgb(35, 168, 234);">Tìm kiếm</button>
+                            <button type="button" id="Tim" class="site-button" style="background-color: rgb(35, 168, 234);">Tìm kiếm</button>
                         </div>
 
                     </div>
@@ -172,6 +172,28 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $('#Tim').click(function () {
+            var jobTitle = $('#job-title').val();
+            var location = $('#j-All_Category').val();
+
+            // Gửi Ajax để lưu vào Session
+            $.ajax({
+                url: '/ListJob/SaveSearchParams',
+                type: 'POST',
+                data: {
+                    jobTitle: jobTitle,
+                    location: location
+                },
+                success: function () {
+                    // Chuyển trang sau khi lưu thành công
+                    window.location.href = '/Danh-sach-viec-lam';
+                }
+            });
+        });
+    });
+</script>
 
 
 
