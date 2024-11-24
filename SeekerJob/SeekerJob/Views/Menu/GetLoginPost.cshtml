@@ -42,7 +42,7 @@
                             </a>
                         </div>
                     }
-                    if (item.meta == "dang-nhap")
+                    if (item.meta == "Dang-tin-tuc")
                     {
                         <div class="twm-nav-btn-left">
                             <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
@@ -62,17 +62,25 @@
                             </a>
                         </div>
                     }
-                    if (item.meta == "dang-nhap")
-                    {
-                        <div class="twm-nav-btn-left">
-                            <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
-                                <i data-feather="log-in"></i> @item.name
-                            </a>
-                        </div>
-                    }
+                    @*if (item.meta == "dang-nhap")
+                {
+                    <div class="twm-nav-btn-left">
+                        <a style="background-color: rgb(35, 168, 234);" class="twm-nav-sign-up" href="/@item.link">
+                            <i data-feather="log-in"></i> @item.name
+                        </a>
+                    </div>
+                }*@
                 }
-            }
 
+            }
+            @if (Session["admin"] != null)
+            {
+                <div class="twm-nav-btn-right">
+                    <a href="/Admin" class="twm-nav-post-a-job">
+                        <i data-feather="briefcase"></i> Admin
+                    </a>
+                </div>
+            }
             @if (Session["candidate"] != null || Session["admin"] != null)
             {
                 <div class="twm-nav-btn-right" style="margin-left: 50px;">

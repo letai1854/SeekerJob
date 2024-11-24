@@ -31,20 +31,26 @@
                     {
                         if (item.hide ?? true)
                         {
-                            <li class="has-child">
-                                <a href="/@item.link" style="font-weight: 700; color: orange; background-color: blue ">@item.name</a>
-                                @if (tablemenuparts.Any(p => p.idtable == item.id))
-                                {
-                                    <ul class="sub-menu">
-                                        @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
-                                        {
-                                            if (part.meta != "ho-so-tuyen-dung")
-                                            {
-                                                <li><a style="color: orange;" href="/@part.meta">@part.name</a></li>
 
-                                            }
+
+                                <li class="has-child">
+                                @if (item.meta != "Admin")
+                                {
+                                        <a href="/@item.link" style="font-weight: 700; color: orange; background-color: blue ">@item.name</a>
+                                        if (tablemenuparts.Any(p => p.idtable == item.id))
+                                        {
+                                            <ul class="sub-menu">
+                                                @foreach (var part in tablemenuparts.Where(p => p.idtable == item.id && (p.hide ?? true)))
+                                                {
+                                                    if (part.meta != "ho-so-tuyen-dung")
+                                                    {
+                                                        <li><a style="color: orange;" href="/@part.meta">@part.name</a></li>
+
+                                                    }
+                                                }
+                                            </ul>
                                         }
-                                    </ul>
+
                                 }
                             </li>
 
@@ -53,9 +59,13 @@
                     }
                     else
                     {
-                        <li class="has-mega-menu">
-                            <a href="/@item.meta" style="font-weight: 700; color: orange; background-color: blue ">@item.name</a>
-                        </li>
+                        if (item.meta != "Admin")
+                            {
+                                <li class="has-mega-menu">
+                                    <a href="/@item.meta" style="font-weight: 700; color: orange; background-color: blue ">@item.name</a>
+                                </li>
+
+                            }
                     }
                 }
                 else if (Session["candidate"] != null && item.name != "Tuyển dụng" && item.name != "Admin")
@@ -136,7 +146,7 @@
                         else if (item.name == "Hồ sơ & CV")
                         {
                             <li class="has-mega-menu">
-                                <a href="/@item.meta" style="font-weight: 700; color: orange; background-color: blue ">Mẫu CV</a>
+                                <a href="/mau-cv" style="font-weight: 700; color: orange; background-color: blue ">Mẫu CV</a>
                             </li>
                         }
                         else

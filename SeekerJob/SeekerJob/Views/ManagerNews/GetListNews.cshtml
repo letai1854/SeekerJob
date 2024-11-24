@@ -4,82 +4,116 @@
 
 
 
-<div class="col-xl-9 col-lg-8 col-md-12 m-b30">
-    <!--Filter Short By-->
-    <div class="twm-right-section-panel candidate-save-job " style="background-color:white">
-        <div class="twm-D_table table-responsive">
-            <table id="jobs_bookmark_table" class="table table-bordered twm-candidate-save-job-list-wrap">
-                <thead>
-                    <tr>
-                        <th>Tiêu đề tin tức</th>
-                        <th>Ngày</th>
-                        <th>Hành động</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    <!--1-->
-                    @foreach (var item in Model)
-                    {
-                        <tr id="tr_@item.id">
-                            <td>
-                                <div class="twm-candidate-save-job-list">
-                                    <div class="twm-media">
-                                        <div class="twm-media-pic">
-                                            <img src="~/ContentImage/images/jobs-company/@item.image" alt="#">
-                                        </div>
-                                    </div>
-                                    <div class="twm-mid-content">
-                                        <a href="#" class="twm-job-title">
-                                            <h4>Senior Web Designer</h4>
-                                        </a>
-
-                                    </div>
-
-                                </div>
-                            </td>
-                            <td>
-                                <div>@item.daypost.Value.ToString("dd/MM/yyyy")</div>
-                            </td>
-
-                            <td>
-                                <div class="twm-table-controls">
-                                    <ul class="twm-DT-controls-icon list-unstyled">
-                                        <li>
-                                            <a href="@ViewBag.tintuc/@item.meta/@item.id" class="custom-toltip">
-                                                <span class="fa fa-eye"></span>
-                                                <span class="custom-toltip-block">Veiw</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="@ViewBag.suatintuc/@item.meta/@item.id" class="custom-toltip">
-                                                <span class="fa fa-edit"></span>
-                                                <span class="custom-toltip-block">Edit</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a  href="javascript:Delete('@item.id','@item.title')"  class="custom-toltip">
-                                            <span class="far fa-trash-alt"></span>
-                                            <span class="custom-toltip-block">Delete</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                    }
-
-
-
-
-                </tbody>
-
-            </table>
-        </div>
+<!-- Div chứa bảng hiện tại -->
+<div class="col-xl-9 col-lg-8 col-md-12 m-b30" id="newsListTable">
+    <div class="twm-right-section-panel site-bg-gray">
+        <form>
+            <div class="panel panel-default">
+                <div class="panel-heading wt-panel-heading p-a20">
+                    <h4 class="panel-tittle m-a0"><i class="fa fa-newspaper"></i>Quản Lý Tin Tức</h4>
+                </div>
+                <div class="panel-body wt-panel-body m-b30">
+                    <div class="twm-D_table p-a20 table-responsive">
+                        <table id="jobs_bookmark_table" class="table table-bordered twm-bookmark-list-wrap">
+                            <thead>
+                                <tr>
+                                    <th>Tiêu đề tin tức</th>
+                                    <th>Ngày</th>
+                                    <th>Hành động</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr id="tr_@item.id">
+                                        <td>
+                                            <div class="twm-bookmark-list">
+                                                <div class="twm-media">
+                                                    <img src="~/ContentImage/images/@item.image" alt="#">
+                                                </div>
+                                                <div class="twm-mid-content">
+                                                    <h4>@item.title</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>@item.daypost.Value.ToString("dd/MM/yyyy")</td>
+                                        <td>
+                                            <div class="twm-table-controls">
+                                                <ul class="twm-DT-controls-icon list-unstyled">
+                                                    <li>
+                                                        <a href="@ViewBag.tintuc/@item.meta/@item.id" class="custom-toltip">
+                                                            <span class="fa fa-eye"></span>
+                                                            <span class="custom-toltip-block">Xem</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"
+                                                           onclick="loadEditForm(@item.id)"
+                                                           class="custom-toltip">
+                                                            <span class="fa fa-edit"></span>
+                                                            <span class="custom-toltip-block">Sửa</span>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="javascript:void(0)"
+                                                           onclick="DeleteNews(@item.id, '@item.title')"
+                                                           class="custom-toltip">
+                                                            <span class="far fa-trash-alt"></span>
+                                                            <span class="custom-toltip-block">Xóa</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
+<!-- Div mới để chứa form edit -->
+<div id="editNewsForm" style="display:none;" class="col-xl-9 col-lg-8 col-md-12 m-b30">
+</div>
 <script>
-    function Delete(id, title) {
+
+
+    function loadEditForm(id) {
+        $.ajax({
+            url: '/PostNews/GetNewsDetailById',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                $('#newsListTable').hide();
+                $('#editNewsForm').html(response).show();
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Không thể tải form chỉnh sửa. Vui lòng thử lại sau.');
+            }
+        });
+    }
+    
+
+    function backToList() {
+        $('#editNewsForm').hide();
+        $('#newsListTable').show();
+
+        // Reset form
+        $.ajax({
+            url: '/PostNews/GetNewsDetail',
+            success: function (response) {
+                $('#editNewsForm').html(response);
+            }
+        });
+    }
+
+
+    function DeleteNews(id, title) {
         if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
             var form = new FormData();
             form.append('id', id);
@@ -90,7 +124,10 @@
                     var content = xhr.responseText;
                     var json_ct = JSON.parse(content);
                     if (json_ct.Data.status == "OK") {
-                        $('#tr_' + id).remove();
+                        
+                        $('#tr_' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
                     }
                     else {
                         alert("Error");

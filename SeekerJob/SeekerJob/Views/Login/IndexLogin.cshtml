@@ -3,6 +3,74 @@
     ViewBag.Title = "IndexLogin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
+<style>
+    .input-group-append button {
+        cursor: pointer;
+        padding: 0.375rem 0.75rem;
+        background-color: white;
+        border: 1px solid #ced4da;
+        border-left: none; /* Loại bỏ viền trái để không bị đè */
+    }
+
+        .input-group-append button:hover {
+            background-color: #f8f9fa;
+        }
+
+    .input-group-append {
+        display: flex;
+    }
+
+        .input-group-append button i {
+            width: 16px;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .input-group-append button:hover i {
+            color: #5a6268;
+        }
+
+    /* Đảm bảo input và button cùng chiều cao */
+    .input-group {
+        display: flex;
+        align-items: stretch;
+    }
+
+        .input-group .form-control {
+            border-right: none; /* Loại bỏ viền phải của input */
+        }
+
+            /* Tránh viền kép khi focus */
+            .input-group .form-control:focus {
+                border-right: none;
+                box-shadow: none;
+            }
+
+                .input-group .form-control:focus + .input-group-append button {
+                    border-color: #80bdff;
+                }
+    /* CSS tùy chỉnh cho nút ẩn/hiện */
+    #togglePassword {
+        cursor: pointer;
+        padding: 0.375rem 0.75rem;
+        background-color: white;
+    }
+
+        #togglePassword:hover {
+            background-color: #f8f9fa;
+        }
+
+    .input-group-append {
+        display: flex;
+    }
+
+    /* Đảm bảo icon nằm giữa nút */
+    #togglePassword i {
+        width: 16px;
+        text-align: center;
+    }
+</style>
 <style>
     /* Container để căn giữa nút */
     .login-btn-container {
@@ -27,6 +95,30 @@
         /* Hiệu ứng khi hover */
         .login-btn:hover {
             background-color: #555; /* Thay đổi màu nền khi hover */
+        }
+    /* CSS cho nút ẩn/hiện */
+    .input-group-append button {
+        cursor: pointer;
+        padding: 0.375rem 0.75rem;
+        background-color: white;
+    }
+
+        .input-group-append button:hover {
+            background-color: #f8f9fa;
+        }
+
+    .input-group-append {
+        display: flex;
+    }
+
+        .input-group-append button i {
+            width: 16px;
+            text-align: center;
+            color: #6c757d;
+        }
+
+        .input-group-append button:hover i {
+            color: #5a6268;
         }
 </style>
 <div class="page-wraper" style="margin-top:110px;">
@@ -94,7 +186,15 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <input id="candidatepassword" name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                        <div class="input-group">
+                                                            <input id="candidatepassword" name="password" type="password" class="form-control" required="" placeholder="Mật khẩu*">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-outline-secondary" type="button" id="toggleCandidatePassword" style="border: 1px solid #ced4da;">
+                                                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <p id="mscandidatepassword" style="color: red; display: none;"></p>
                                                     </div>
                                                 </div>
 
@@ -139,7 +239,15 @@
 
                                                 <div class="col-lg-12">
                                                     <div class="form-group mb-3">
-                                                        <input id="employerpassword" name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                        <div class="input-group">
+                                                            <input id="employerpassword" name="password" type="password" class="form-control" required="" placeholder="Mật khẩu*">
+                                                            <div class="input-group-append">
+                                                                <button class="btn btn-outline-secondary" type="button" id="toggleEmployerPassword" style="border: 1px solid #ced4da;">
+                                                                    <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <p id="msemployerpassword" style="color: red; display: none;"></p>
                                                     </div>
                                                 </div>
 
@@ -223,41 +331,72 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                                <input name="username" type="text" class="form-control" placeholder="Tên đăng nhập" id="canuser">
+                                                <p id="msusername" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
+                                        <!-- Mật khẩu -->
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                <div class="input-group">
+                                                    <input name="password" type="password" class="form-control" placeholder="Mật khẩu" id="canpass">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button" id="togglePassword" style="border: 1px solid #ced4da;">
+                                                            <i class="fa fa-eye-slash" aria-hidden="true"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <p id="mspassword" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
+                                        <!-- Họ và tên -->
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="phone" type="text" class="form-control" required="" placeholder="Email*">
+                                                <input name="fullname" type="text" class="form-control" placeholder="Họ và tên" id="canname">
+                                                <p id="msname" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
+                                        <!-- Email -->
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="phone" type="text" class="form-control" required="" placeholder="Số điện thoại*">
+                                                <input name="email" type="email" class="form-control" placeholder="Email" id="canemail">
+                                                <p id="msemail" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
+                                        <!-- Số điện thoại -->
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <div class=" form-check">
+                                                <input name="phone" type="text" class="form-control" placeholder="Số điện thoại" id="canphone">
+                                                <p id="msphone" style="color: red; display: none;"></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Địa chỉ -->
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input name="address" type="text" class="form-control" placeholder="Địa chỉ" id="canaddress">
+                                                <p id="msaddress" style="color: red; display: none;"></p>
+                                            </div>
+                                        </div>
+
+                                        <!-- Checkbox đồng ý -->
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <div class="form-check">
                                                     <input type="checkbox" class="form-check-input" id="agree1">
-                                                    <label class="form-check-label" for="agree1">Tôi đồng ý <a href="javascript:;">điều khoản và điều kiện</a></label>
-                                                    <p>
-                                                        đã đọc?
-                                                    </p>
+                                                    <label class="form-check-label" for="agree1">Tôi đồng ý với <a href="javascript:;">Điều khoản và điều kiện</a></label>
+                                                    <p id="msagree" style="color: red; display: none;"></p>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        <!-- Nút đăng ký -->
                                         <div class="col-md-12">
-                                            <button type="submit" class="site-button">Đăng ký</button>
+                                            <div onclick="signup()" class="site-button">Đăng ký</div>
                                         </div>
 
                                     </div>
@@ -268,29 +407,44 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên đăng nhập*">
+                                                <input id="employerUsernamesignup" name="username" type="text" class="form-control" placeholder="Tên đăng nhập*">
+                                                <p id="msEmployerUsername" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="email" type="text" class="form-control" required="" placeholder="Mật khẩu*">
+                                                <div class="input-group">
+                                                    <input id="employerPasswordSignup" name="password" type="password"
+                                                           class="form-control" placeholder="Mật khẩu*">
+                                                    <div class="input-group-append">
+                                                        <button class="btn btn-outline-secondary" type="button"
+                                                                id="toggleEmployerPasswordSignup">
+                                                            <i class="fa fa-eye-slash"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <p id="msEmployerPassword" style="color: red; display: none;"></p>
+                                            </div>
+                                        </div>
+                                        <!-- Company Name -->
+                                        <div class="col-lg-12">
+                                            <div class="form-group mb-3">
+                                                <input id="employerCompany" name="company" type="text" class="form-control" placeholder="Tên công ty*">
+                                                <p id="msEmployerCompany" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="username" type="text" required="" class="form-control" placeholder="Tên công ty*">
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <div class="form-group mb-3">
-                                                <input name="phone" type="text" class="form-control" required="" placeholder="Email*">
+                                                <input id="employerEmail" name="email" type="email" class="form-control" placeholder="Email*">
+                                                <p id="msEmployerEmail" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="phone" type="text" class="form-control" required="" placeholder="Số điện thoại*">
+                                                <input id="employerPhone" name="phone" type="text" class="form-control" placeholder="Số điện thoại*">
+                                                <p id="msEmployerPhone" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
@@ -372,23 +526,22 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input name="phone" type="text" class="form-control" required="" placeholder="Địa chỉ*">
+                                                <input id="employerAddress" name="address" type="text" class="form-control" placeholder="Địa chỉ*">
+                                                <p id="msEmployerAddress" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <div class=" form-check">
-                                                    <input type="checkbox" class="form-check-input" id="agree1">
-                                                    <label class="form-check-label" for="agree1">Tôi đồng ý <a href="javascript:;"> điều khoản và điều kiện</a></label>
-                                                    <p>
-                                                        đã đọc?
-                                                    </p>
+                                                <div class="form-check">
+                                                    <input type="checkbox" class="form-check-input" id="employerAgree">
+                                                    <label class="form-check-label" for="employerAgree">Tôi đồng ý với <a href="javascript:;">điều khoản và điều kiện</a></label>
+                                                    <p id="msEmployerAgree" style="color: red; display: none;"></p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
-                                            <button type="submit" class="site-button">Đăng ký</button>
+                                            <button type="button" class="site-button" onclick="signupEmployer()">Đăng ký</button>
                                         </div>
 
                                     </div>
@@ -740,6 +893,420 @@
 
         $('#employerpassword').on('input', function () {
             $('#mse').html('');
+        });
+    });
+</script>
+
+
+
+<script>
+
+    $(document).ready(function () {
+        $('#canuser').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#msusername').hide();
+            }
+        });
+
+        $('#canpass').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#mspassword').hide();
+            }
+        });
+
+        $('#canemail').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#msemail').hide();
+            }
+        });
+
+        $('#canphone').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#msphone').hide();
+            }
+        });
+
+        $('#canaddress').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#msaddress').hide();
+            }
+        });
+        $('#canname').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#msname').hide();
+            }
+        });
+
+        $('#agree1').on('change', function () {
+            if ($(this).is(':checked')) {
+                $('#msagree').hide();
+            }
+        });
+    });
+
+    function signupEmployer() {
+    var username = $('#employerUsername').val().trim();
+    var password = $('#employerPassword').val().trim();
+    var company = $('#employerCompany').val().trim();
+    var email = $('#employerEmail').val().trim();
+    var phone = $('#employerPhone').val().trim();
+    var city = $('#country').val();
+    var address = $('#employerAddress').val().trim();
+    var agree = $('#employerAgree').is(':checked');
+
+    var flag = true;
+
+    // Validation username
+    if (!username) {
+        $('#msEmployerUsername').html('Vui lòng nhập tên đăng nhập').show();
+        flag = false;
+    } else {
+        $('#msEmployerUsername').hide();
+    }
+
+    // Validation password
+    if (!password) {
+        $('#msEmployerPassword').html('Vui lòng nhập mật khẩu').show();
+        flag = false;
+    } else if (password.length < 6) {
+        $('#msEmployerPassword').html('Mật khẩu phải có ít nhất 6 ký tự').show();
+        flag = false;
+    } else {
+        $('#msEmployerPassword').hide();
+    }
+
+    // Validation company name
+    if (!company) {
+        $('#msEmployerCompany').html('Vui lòng nhập tên công ty').show();
+        flag = false;
+    } else {
+        $('#msEmployerCompany').hide();
+    }
+
+    // Validation email
+    var emailRegex = /^[\w-]+(\.[\w-]+)*@@([\w-]+\.)+[a-zA-Z]{2,}$/;
+    if (!email) {
+        $('#msEmployerEmail').html('Vui lòng nhập email').show();
+        flag = false;
+    } else if (!emailRegex.test(email)) {
+        $('#msEmployerEmail').html('Email không hợp lệ (ví dụ: example@domain.com)').show();
+        flag = false;
+    } else {
+        $('#msEmployerEmail').hide();
+    }
+
+    // Validation phone
+    var phoneRegex = /^(0[35789])[0-9]{8}$/;
+    if (!phone) {
+        $('#msEmployerPhone').html('Vui lòng nhập số điện thoại').show();
+        flag = false;
+    } else if (!phoneRegex.test(phone)) {
+        $('#msEmployerPhone').html('Số điện thoại không hợp lệ (phải bắt đầu bằng 03, 05, 07, 08, 09 và có 10 số)').show();
+        flag = false;
+    } else {
+        $('#msEmployerPhone').hide();
+    }
+
+    // Validation city
+    if (!city) {
+        $('#ms').html('Vui lòng chọn tỉnh/thành phố').show();
+        flag = false;
+    } else {
+        $('#ms').hide();
+    }
+
+    // Validation address
+    if (!address) {
+        $('#msEmployerAddress').html('Vui lòng nhập địa chỉ').show();
+        flag = false;
+    } else {
+        $('#msEmployerAddress').hide();
+    }
+
+    // Validation agreement
+    if (!agree) {
+        $('#msEmployerAgree').html('Vui lòng đồng ý với điều khoản').show();
+        flag = false;
+    } else {
+        $('#msEmployerAgree').hide();
+    }
+
+    if (flag) {
+        var formData = new FormData();
+        formData.append('username', username);
+        formData.append('password', password);
+        formData.append('company', company);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('city', city);
+        formData.append('address', address);
+
+        $.ajax({
+            url: '/Account/SignUpEmployer',
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function(response) {
+                if (response.status === "OK") {
+                    // Reset form
+                    $('#employerUsername').val('');
+                    $('#employerPassword').val('');
+                    $('#employerCompany').val('');
+                    $('#employerEmail').val('');
+                    $('#employerPhone').val('');
+                    $('#country').val('');
+                    $('#employerAddress').val('');
+                    $('#employerAgree').prop('checked', false);
+
+                    alert("Đăng ký thành công!");
+                    window.location.href = '/Account/Login';
+                } else if (response.status === "EXIST") {
+                    if (response.message.includes("email")) {
+                        $('#msEmployerEmail').html('Email đã được sử dụng').show();
+                    } else {
+                        $('#msEmployerUsername').html('Tài khoản đã tồn tại').show();
+                    }
+                } else {
+                    alert("Lỗi: " + response.message);
+                }
+            },
+            error: function(xhr, status, error) {
+                alert("Có lỗi xảy ra: " + error);
+            }
+        });
+    }
+}
+
+// Thêm validation realtime
+$(document).ready(function() {
+    // Email validation
+    $('#employerEmail').on('input', function() {
+        var email = $(this).val().trim();
+        var emailRegex = /^[\w-]+(\.[\w-]+)*@@[\w-]+\.)+[a-zA-Z]{2,}$/;
+
+        if (!email) {
+            $('#msEmployerEmail').html('Vui lòng nhập email').show();
+        } else if (!emailRegex.test(email)) {
+            $('#msEmployerEmail').html('Email không hợp lệ (ví dụ: example@domain.com)').show();
+        } else {
+            $('#msEmployerEmail').hide();
+        }
+    });
+
+    // Phone validation
+    $('#employerPhone').on('input', function() {
+        var phone = $(this).val().trim();
+        var phoneRegex = /^(0[35789])[0-9]{8}$/;
+
+        if (!phone) {
+            $('#msEmployerPhone').html('Vui lòng nhập số điện thoại').show();
+        } else if (!phoneRegex.test(phone)) {
+            $('#msEmployerPhone').html('Số điện thoại không hợp lệ (phải bắt đầu bằng 03, 05, 07, 08, 09 và có 10 số)').show();
+        } else {
+            $('#msEmployerPhone').hide();
+        }
+    });
+});
+
+
+
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Xử lý ẩn/hiện mật khẩu
+        $('#togglePassword').click(function () {
+            // Đổi loại input
+            const type = $('#canpass').attr('type') === 'password' ? 'text' : 'password';
+            $('#canpass').attr('type', type);
+
+            // Đổi icon
+            const icon = $(this).find('i');
+            if (type === 'password') {
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Xử lý ẩn/hiện mật khẩu cho nhà tuyển dụng
+        $('#toggleEmployerPassword').click(function () {
+            // Đổi loại input
+            const type = $('#employerpassword').attr('type') === 'password' ? 'text' : 'password';
+            $('#employerpassword').attr('type', type);
+
+            // Đổi icon
+            const icon = $(this).find('i');
+            if (type === 'password') {
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        // Xử lý ẩn/hiện mật khẩu cho ứng viên
+        $('#toggleCandidatePassword').click(function () {
+            // Đổi loại input
+            const type = $('#candidatepassword').attr('type') === 'password' ? 'text' : 'password';
+            $('#candidatepassword').attr('type', type);
+
+            // Đổi icon
+            const icon = $(this).find('i');
+            if (type === 'password') {
+                icon.removeClass('fa-eye').addClass('fa-eye-slash');
+            } else {
+                icon.removeClass('fa-eye-slash').addClass('fa-eye');
+            }
+        });
+
+        // Validation khi nhập
+        $('#candidatepassword').on('input', function () {
+            if ($(this).val().trim() !== '') {
+                $('#mscandidatepassword').hide();
+            }
+        });
+    });
+</script>
+
+
+
+
+
+<script>
+    // Xử lý ẩn/hiện mật khẩu
+    $('#toggleEmployerPassword').click(function () {
+        const type = $('#employerPassword').attr('type') === 'password' ? 'text' : 'password';
+        $('#employerPassword').attr('type', type);
+        $(this).find('i').toggleClass('fa-eye fa-eye-slash');
+    });
+
+    // Clear validation messages on input
+    $(document).ready(function () {
+        $('#employerUsernamesignup').on('input', function () { $('#employerUsernamesignup').hide(); });
+        $('#employerPasswordsignup').on('input', function () { $('#employerPasswordsignup').hide(); });
+        $('#employerCompany').on('input', function () { $('#msEmployerCompany').hide(); });
+        $('#employerEmail').on('input', function () { $('#msEmployerEmail').hide(); });
+        $('#employerPhone').on('input', function () { $('#msEmployerPhone').hide(); });
+        $('#country').on('change', function () { $('#ms').hide(); });
+        $('#employerAddress').on('input', function () { $('#msEmployerAddress').hide(); });
+        $('#employerAgree').on('change', function () { $('#msEmployerAgree').hide(); });
+    });
+
+    function signupEmployer() {
+        var username = $('#employerUsernamesignup').val().trim();
+        var password = $('#employerPasswordsignup').val().trim();
+        var company = $('#employerCompany').val().trim();
+        var email = $('#employerEmail').val().trim();
+        var phone = $('#employerPhone').val().trim();
+        var city = $('#country').val();
+        var address = $('#employerAddress').val().trim();
+        var agree = $('#employerAgree').is(':checked');
+
+        var flag = true;
+
+        // Validation
+        if (!username) {
+            $('#msEmployerUsername').html('Vui lòng nhập tên đăng nhập').show();
+            flag = false;
+        }
+        if (!password) {
+            $('#msEmployerPassword').html('Vui lòng nhập mật khẩu').show();
+            flag = false;
+        }
+        if (!company) {
+            $('#msEmployerCompany').html('Vui lòng nhập tên công ty').show();
+            flag = false;
+        }
+        if (!email) {
+            $('#msEmployerEmail').html('Vui lòng nhập email').show();
+            flag = false;
+        }
+        if (!phone) {
+            $('#msEmployerPhone').html('Vui lòng nhập số điện thoại').show();
+            flag = false;
+        }
+        if (!city) {
+            $('#ms').html('Vui lòng chọn tỉnh/thành phố').show();
+            flag = false;
+        }
+        if (!address) {
+            $('#msEmployerAddress').html('Vui lòng nhập địa chỉ').show();
+            flag = false;
+        }
+        if (!agree) {
+            $('#msEmployerAgree').html('Vui lòng đồng ý với điều khoản').show();
+            flag = false;
+        }
+
+        if (flag) {
+            var formData = new FormData();
+            formData.append('username', username);
+            formData.append('password', password);
+            formData.append('company', company);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('city', city);
+            formData.append('address', address);
+
+            $.ajax({
+                url: '/Menu/SignUpEmployer',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status === "OK") {
+                        // Reset form
+                        $('#employerUsername').val('');
+                        $('#employerPasswordsignup').val('');
+                        $('#employerCompany').val('');
+                        $('#employerEmail').val('');
+                        $('#employerPhone').val('');
+                        $('#country').val('');
+                        $('#employerAddress').val('');
+                        $('#employerAgree').prop('checked', false);
+
+                        alert("Đăng ký thành công!");
+                    } else if (response.status === "EXIST") {
+                        $('#msEmployerUsername').html('Tài khoản đã tồn tại').show();
+                    } else {
+                        alert("Lỗi: " + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Có lỗi xảy ra: " + error);
+                }
+            });
+        }
+    }
+
+    $(document).ready(function () {
+        // Xử lý ẩn/hiện mật khẩu cho form đăng ký nhà tuyển dụng
+        $('#toggleEmployerPasswordSignup').click(function (e) {
+            e.preventDefault();
+
+            // Lấy input password
+            const passwordInput = $('#employerPasswordSignup');
+
+            // Toggle type của input
+            if (passwordInput.attr('type') === 'password') {
+                passwordInput.attr('type', 'text');
+                $(this).find('i').removeClass('fa-eye-slash').addClass('fa-eye');
+            } else {
+                passwordInput.attr('type', 'password');
+                $(this).find('i').removeClass('fa-eye').addClass('fa-eye-slash');
+            }
         });
     });
 </script>

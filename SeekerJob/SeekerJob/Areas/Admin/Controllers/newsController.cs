@@ -83,8 +83,19 @@ namespace SeekerJob.Areas.Admin.Controllers
 
             IO io = new IO();
             JsonResult js = new JsonResult();
-            Login user = Session["admin"] as Login;
-
+            Login user = null;
+            if (Session["candidate"] != null)
+            {
+                user = Session["candidate"] as Login;
+            }
+            if (Session["admin"] != null)
+            {
+                user = Session["admin"] as Login;
+            }
+            if (Session["employer"] != null)
+            {
+                user = Session["employer"] as Login;
+            }
             News news = new News()
             {
                 username = user.username,
@@ -131,8 +142,18 @@ namespace SeekerJob.Areas.Admin.Controllers
 
             IO io = new IO();
             JsonResult js = new JsonResult();
-            Login user = Session["candidate"] as Login;
-
+            Login user =null;
+            if (Session["candidate"] != null) {
+                user = Session["candidate"] as Login;
+            }
+            if (Session["admin"] != null)
+            {
+                user = Session["admin"] as Login;
+            }
+            if (Session["employer"] != null)
+            {
+                user = Session["employer"] as Login;
+            }
             News news = new News()
             {
                 username = user.username,

@@ -1,0 +1,265 @@
+﻿@{
+    var news = ViewData["news"] as SeekerJob.Models.News;
+}
+
+
+<div class="col-xl-12 col-lg-12 col-md-12">
+    <!--Filter Short By-->
+    <div class="twm-right-section-panel site-bg-gray">
+        <form>
+            <!--Basic Information-->
+            <div class="panel panel-default">
+                <div class="panel-heading wt-panel-heading p-a20">
+                    <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Chi tiết tin tức</h4>
+                </div>
+                <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                    <div class="row">
+                        <!--Job title-->
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Tiêu đề tin tức</label>
+                                <div class="ls-inputicon-box">
+                                    <input id="tieude" class="form-control" name="company_name" type="text" placeholder="Devid Smith" value="@news.title">
+                                    <i class="fs-input-icon fa fa-newspaper"></i>
+                                    <p id="mstieude" style="padding:2px;display:none; color:aliceblue"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-lg-6 col-md-12">
+                            <div class="form-group">
+                                <label>Nội dung chính</label>
+                                <div class="ls-inputicon-box">
+                                    <input id="noidung" class="form-control" name="company_short" type="text" placeholder="short brief" value="@news.shortbref">
+                                    <i class="fs-input-icon fa fa-hacker-news-square"></i>
+                                    <p id="msnoidung" style="padding:2px;display:none; color:aliceblue"></p>
+                                </div>
+                            </div>
+                        </div>
+                        @*<div class="col-xl-4 col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label>Email </label>
+                                    <div class="ls-inputicon-box">
+                                        <input class="form-control" name="company_Email" type="email" placeholder="Devid@example.com">
+                                        <i class="fs-input-icon fas fa-mail-bulk"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-6 col-md-12">
+                                <div class="form-group">
+                                    <label>Số điện thoại </label>
+                                    <div class="ls-inputicon-box">
+                                        <input class="form-control" name="company_Email" type="" placeholder="1111111">
+                                        <i class="fs-input-icon fas fa-phone"></i>
+                                    </div>
+                                </div>
+                            </div>*@
+
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Mô Tả</label>
+                                <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi.">@news.description</textarea>
+                            </div>
+                            <p id="msmota" style="padding: 2px; display: none; color: red" ;>Nhập đầy đủ thông tin mô tả</p>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="twm-candidate-profile-pic">
+                                <label>Ảnh bìa</label>
+                                <img src="~/ContentImage/images/@news.image" alt="">
+                                <div class="upload-btn-wrapper">
+
+                                    <div id="upload-image-grid"></div>
+                                    <button class="site-button button-sm">Tải ảnh lên</button>
+                                    <input type="file" name="myfile" id="file-uploader" class="file-uploader-n" accept=".jpg, .jpeg, .png">
+                                </div>
+
+                            </div>
+                            <p id="msanh" style="padding:2px;display:none; color:aliceblue"></p>
+
+                        </div>
+
+
+
+                        <!--Start Date-->
+                        <!--End Date-->
+                        @*<div class="col-lg-12 col-md-12">
+                                <div class="text-left">
+                                    <button type="submit" class="site-button m-r5">Đăng Tin Tức</button>
+                                </div>
+                            </div>*@
+                        <div class="col-lg-12 col-md-12" style="display:flex; justify-content:space-between">
+                            <div class="text-left">
+                                <div onclick="UpdateNews()" class="site-button m-r5">Sửa Tin Tức</div>
+                            </div>
+                            <div class="text-right">
+                                <button type="button" class="site-button outline-primary" onclick="backToList()">Quay lại</button>
+                            </div>
+                        </div>
+
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+    <script>
+        CKEDITOR.replace("editor");
+    </script>
+    <script src="~/Areas/admin/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/admin/Content/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        var editor = CKEDITOR.replace("description");
+        var editor = CKEDITOR.replace("description", { height: '600px' });
+        customConfig: '/Areas/admin/Content/ckeditor/config.js';
+    </script>
+    <script>
+        $(function () {
+            $("#name").keyup(function () {
+                var text = $.trim($(this).val().toLowerCase());
+                var text_create;
+                text_create = text.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a").replace(/\ /g, '-').replace(/đ/g, "d").replace(/đ/g, "d").replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y").replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u").replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ.+/g, "o").replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ.+/g, "e").replace(/ì|í|ị|ỉ|ĩ/g, "i");
+                $('#meta').val(text_create);
+            }).keyup();
+        });
+    </script>
+
+
+<script type="text/javascript">
+        function UpdateNews() {
+            var id = @news.id;
+            var mota = encodeURIComponent(CKEDITOR.instances.editor.getData());
+            var tieude = $('#tieude').val();
+            var noidung = $('#noidung').val();
+            //var email = $('#email').val();
+            //var phone = $('#phone').val();
+            var anh = $('.file-uploader-n')[0].files[0];
+            var today = new Date();
+            var day = today.toISOString().split('T')[0];
+            var meta = convertToMeta(tieude);
+
+            $('#msmota, #mstieude, #msemail, #msnoidung, #msphone', '#msanh').html('');
+
+           flag = true
+        if (mota=='') {
+            //$('#msmota').html('Phải nhập đủ tất cả thông tin mô tả');
+            //$('#msmota').css('border-color', 'red');
+            //$('#msmota').css('color', 'red');
+            $('#msmota').html('Phải nhập đủ tất cả thông tin mô tả');
+            $('#msmota').css('display', 'block');
+            flag = false
+        }
+        if (tieude=='') {
+            $('#mstieude').html('Phải nhập đủ tất cả thông tin tiêu đề');
+            $('#mstieude').css('border-color', 'red');
+            $('#mstieude').css('color', 'red');
+            $('#mstieude').css('display', 'block');
+            flag = false
+        }
+        if (noidung=='') {
+            $('#msnoidung').html('Phải nhập đủ tất cả thông tin nội dung');
+            $('#msnoidung').css('border-color', 'red');
+            $('#msnoidung').css('color', 'red');
+            $('#msnoidung').css('display', 'block');
+            flag = false
+        }
+
+            if (flag) {
+
+
+                var form = new FormData()
+                form.append('mota', mota);
+                form.append('tieude', tieude);
+                form.append('noidung', noidung);
+                //form.append('email', email);
+                //form.append('phone', phone);
+                form.append('day', day);
+                form.append('meta', meta);
+                form.append('anh', anh);
+                form.append('id', id);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", '/PostNews/UpdateNews', true);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var content = xhr.responseText;
+                        var json_ct = JSON.parse(content);
+                        if (json_ct.Data.status == "OK") {
+                            alert("Success");
+
+                    // Ẩn tất cả thông báo lỗi
+                    $('#msmota, #mstieude, #msnoidung, #msanh').hide().html('');
+
+                    // Reset màu border và text của các thông báo
+                    $('#mstieude, #msnoidung, #msanh').css({
+                        'border-color': '',
+                        'color': ''
+                    });
+
+                    // Reset preview ảnh nếu có
+                    $('#upload-image-grid').html('');
+                        }
+                        else {
+                            alert("Error");
+                        }
+                    }
+                }
+                xhr.send(form);
+
+            }
+
+
+    }
+
+    function SendNewsData( mota, tieude, noidung, email, phone, day, meta, anh)
+    {
+        var form = new FormData()
+        form.append('mota', mota);
+        form.append('tieude', tieude);
+        form.append('noidung', noidung);
+        form.append('email', email);
+        form.append('phone', phone);
+        form.append('day', day);
+        form.append('meta', meta);
+        form.append('anh', anh);
+        var xhr = new XMLHttpRequest();
+        var domain = '@Request.Url.Scheme://@Request.Url.Host:@Request.Url.Port';
+        xhr.open("POST",'/PostNews/testnews', true);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var content = xhr.responseText;
+                var json_ct = JSON.parse(content);
+                if (json_ct.Data.status == "OK") {
+                    alert("Success");
+                }
+                else {
+                    alert("Error");
+                }
+            }
+        }
+        xhr.send(form);
+
+    }
+
+
+        function convertToMeta(text) {
+            return text.toLowerCase().trim()
+                .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
+                .replace(/\s+/g, '-')
+                .replace(/đ/g, "d")
+                .replace(/ỳ|ý|ỵ|ỷ|ỹ|ỳ/g, "y")
+                .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ù/g, "u")
+                .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ò/g, "o")
+                .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|è/g, "e")
+                .replace(/ì|í|ị|ỉ|ĩ|ì/g, "i");
+        }
+
+
+</script>

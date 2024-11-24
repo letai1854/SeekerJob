@@ -70,8 +70,22 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListTitle()
         {
-            var tablemenus = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
-            return PartialView(tablemenus);
+            if (Session["candidate"] is SeekerJob.Models.Login user)
+            {
+                var tablemenus = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
+                return PartialView(tablemenus);
+            }
+            else if (Session["admin"] is SeekerJob.Models.Login admin)
+            {
+                var tablemenus = db.tablebanners.Where(t => t.hide == true && t.id != 20 && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
+                return PartialView(tablemenus);
+
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "User not logged in");
+            }
+            return new EmptyResult();
         }
         public ActionResult GetInfoCandidate()
         {

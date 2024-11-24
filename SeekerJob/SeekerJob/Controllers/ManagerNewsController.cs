@@ -36,12 +36,30 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListTitle()
         {
-            var tablemenus = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Type.listNews.ToString()).OrderBy(t => t.arrange).ToList();
+            var tablemenus = db.tablebanners
+                  .Where(t => t.hide == true &&
+                             t.typeRow == EnumType.Type.listNews.ToString() &&
+                             t.id!=26)  // Thêm điều kiện này
+                  .OrderBy(t => t.arrange)
+                  .ToList();
             return PartialView(tablemenus);
         }
         public ActionResult GetListNews()
         {
-            var table = db.News.Where(t => t.username == "tuanta").OrderBy(t => t.daypost).ToList();
+            Login user = null;
+            if (Session["candidate"] != null)
+            {
+                user = Session["candidate"] as Login;
+            }
+            if (Session["employer"] != null)
+            {
+                user = Session["employer"] as Login;
+            }
+            if (Session["admin"] != null)
+            {
+                user = Session["employer"] as Login;
+            }
+            var table = db.News.Where(t => t.username == user.username).OrderBy(t => t.daypost).ToList();
             ViewBag.tintuc = "Chi-tiet-tin-tuc";
             ViewBag.suatintuc = "sua-tin-tuc";
             return PartialView(table);

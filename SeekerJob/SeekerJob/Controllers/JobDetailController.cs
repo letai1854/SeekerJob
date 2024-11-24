@@ -38,7 +38,7 @@ namespace SeekerJob.Controllers
                 info = Session["candidate"] as Login;
 
             }
-            if (Session["adimin"] != null)
+            if (Session["admin"] != null)
             {
                 info = Session["admin"] as Login;
             }

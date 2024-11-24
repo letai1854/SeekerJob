@@ -6,6 +6,7 @@
         <ul>
             @foreach (var item in Model)
             {
+                
                 if (item.meta == "Quan-ly-tin-tuc")
                 {
                     <li class="@item.active"><a href="@item.meta"><i class="@item.icon"></i> @item.name</a></li>

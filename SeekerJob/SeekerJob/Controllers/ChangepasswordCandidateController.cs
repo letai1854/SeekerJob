@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SeekerJob.Models;
@@ -36,9 +37,25 @@ namespace SeekerJob.Controllers
         }
         public ActionResult GetListChoosen()
         {
-            var tablemenus = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
-            ViewData["list"] = tablemenus;
-            return PartialView();
+            
+            if (Session["candidate"] is SeekerJob.Models.Login user)
+            {
+                var tablemenus = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
+                ViewData["list"] = tablemenus;
+                return PartialView();
+            }
+            else if (Session["admin"] is SeekerJob.Models.Login admin)
+            {
+                var tablemenus = db.tablebanners.Where(t => t.hide == true && t.id!=20 && t.typeRow == EnumType.Type.listCandidate.ToString()).OrderBy(t => t.arrange).ToList();
+                ViewData["list"] = tablemenus;
+                return PartialView();
+
+            }
+            else
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "User not logged in");
+            }
+            return new EmptyResult();
         }
         public ActionResult GetInfoChangepassword()
         {
@@ -55,7 +72,19 @@ namespace SeekerJob.Controllers
             string passold = Data["passold"];
             string passnew = Data["passnew"]; // Cập nhật từ "noidung" thành "category"
             string passnewagain = Data["passnewagain"]; // Lấy thô
-            Login user = Session["candidate"] as Login;
+            Login user = null;
+            if (Session["candidate"] != null)
+            {
+                user = Session["candidate"] as Login;
+            }
+            if (Session["employer"] != null)
+            {
+                user = Session["employer"] as Login;
+            }
+            if (Session["admin"]!= null)
+            {
+                user = Session["admin"] as Login;
+            }
             if (user.password != passold)
             {
                 js.Data = new
