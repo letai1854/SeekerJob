@@ -16,6 +16,7 @@ namespace SeekerJob.DTO
         public int IdJob { get; set; }
         public int CandidateCount { get; set; }
         public string meta { get; set; }
+
     }
 
 }

@@ -5,7 +5,8 @@
     var jobuser = ViewData["jobuser"] as SeekerJob.DTO.CombineJobUser;
     var listjob = ViewData["listjobuser"] as List<SeekerJob.DTO.CombineJobUser>;
     var relativeTime = data.GetRelativeTime((DateTime)jobuser.job.startday);
-
+    var idjob = jobuser.job.id;
+    bool check = ViewData["check"] != null ? (bool)ViewData["check"] : false;
 }
 
 
@@ -13,7 +14,55 @@
     ViewBag.Title = "ViewJobDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .custom-file-upload {
+        border: 2px dashed #ddd;
+        padding: 15px;
+        text-align: center;
+        margin-bottom: 10px;
+        background: #f9f9f9;
+        cursor: pointer;
+    }
 
+    .selected-file {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 8px 12px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        margin-top: 10px;
+        border: 1px solid #e0e0e0;
+    }
+
+    .btn-remove-file {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #ff4444;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s ease;
+        margin-left: 10px;
+    }
+
+        .btn-remove-file:hover {
+            background: #cc0000;
+            transform: scale(1.1);
+        }
+
+    .file-name {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 80%;
+    }
+</style>
 <div class="page-content" style="margin-top:-100px; ">
 
     <!-- INNER PAGE BANNER -->
@@ -71,11 +120,18 @@
                                             </div>
 
                                             <div class="twm-job-self-bottom" style="display: flex; align-items: center; gap: 10px;">
-                                                <div style=" padding: 2px 3px; border-radius: 3px; display: flex; align-items: center;">
-                                                    <img style="width: 30px; height: 30px; margin-left: 5px;" src="~/ContentImage/images/icons8-like-50_gray.png" />
-                                                </div>
-                                                <img style="width: 30px; height: 30px;" src="~/ContentImage/images/icons8-save-50_gray.png" />
-                                                <a class="site-button" data-bs-toggle="modal" href="#apply_job_popup" role="button">
+                                                @if (check)
+                                                { 
+                                                    
+                                                
+                                                   <img onclick="savejob()" style="width: 30px; height: 30px; cursor:pointer" src="~/ContentImage/images/icons8-save-50_green.png" />
+                                                    
+                                                }
+                                                else
+                                                {
+                                                    <img onclick="savejob()" style="width: 30px; height: 30px; cursor:pointer" src="~/ContentImage/images/icons8-save-50_gray.png" />
+                                                }
+                                                <a class="site-button" href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#apply_job_popup">
                                                     Ứng tuyển ngay
                                                 </a>
                                             </div>
@@ -101,7 +157,7 @@
                                 <a href="@jobuser.employer.instagram" class="whats-clr">Instagram</a>
                             </div>
 
-                     
+
 
 
 
@@ -245,75 +301,75 @@
 
 
             </div>
-                <div class="row" style="margin-top:30px">
-                    <div class="col-8">
+            <div class="row" style="margin-top:30px">
+                <div class="col-8">
 
                     <h3 style="margin-bottom:10px">Các việc làm liên quan</h3>
-                        <div class="col-12">
-                            @foreach (var item in listjob)
-                            {
-                                <div class="col-12 mb-4" >
-                                    <div class="job-card bg-white border p-3 d-flex flex-column align-items-stretch">
-                                        <div class="d-flex">
-                                            <div class="job-card-image-wrapper position-relative">
-                                                <img src="~/ContentImage/images/@item.job.image" alt="job-image" class="job-card-image">
-                                            </div>
-                                            <div class="twm-mid-content" >
-                                                <div style="display:flex;">
+                    <div class="col-12">
+                        @foreach (var item in listjob)
+                        {
+                            <div class="col-12 mb-4">
+                                <div class="job-card bg-white border p-3 d-flex flex-column align-items-stretch">
+                                    <div class="d-flex">
+                                        <div class="job-card-image-wrapper position-relative">
+                                            <img src="~/ContentImage/images/@item.job.image" alt="job-image" class="job-card-image">
+                                        </div>
+                                        <div class="twm-mid-content">
+                                            <div style="display:flex;">
 
-                                                    <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-job-title">
-                                                        <h4>@item.job.title</h4>
-                                                    </a>
-                                                    <p class="twm-job-post-duration"  style="margin-right:10px">/@relativeTime</p>
-                                                    <div style="display:flex; justify-content:flex-end">
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Fulltime.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category green"><span class="twm-bg-green">@item.job.jobcategory</span></div>
+                                                <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-job-title">
+                                                    <h4>@item.job.title</h4>
+                                                </a>
+                                                <p class="twm-job-post-duration" style="margin-right:10px">/@relativeTime</p>
+                                                <div style="display:flex; justify-content:flex-end">
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Fulltime.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category green"><span class="twm-bg-green">@item.job.jobcategory</span></div>
 
-                                                        }
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Parttime.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.job.jobcategory</span></div>
+                                                    }
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Parttime.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.job.jobcategory</span></div>
 
-                                                        }
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Internship.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.job.jobcategory</span></div>
+                                                    }
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Internship.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.job.jobcategory</span></div>
 
-                                                        }
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Volunteer.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.job.jobcategory</span></div>
+                                                    }
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Volunteer.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.job.jobcategory</span></div>
 
-                                                        }
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Freelance.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.job.jobcategory</span></div>
+                                                    }
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Freelance.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.job.jobcategory</span></div>
 
-                                                        }
-                                                        @if (@item.job.jobcategory == EnumType.jobCategory.Temporary.ToString())
-                                                        {
-                                                            <div class="twm-jobs-category red"><span class="twm-bg-red">@item.job.jobcategory</span></div>
-                                                        }
-                                                    </div>
+                                                    }
+                                                    @if (@item.job.jobcategory == EnumType.jobCategory.Temporary.ToString())
+                                                    {
+                                                        <div class="twm-jobs-category red"><span class="twm-bg-red">@item.job.jobcategory</span></div>
+                                                    }
                                                 </div>
-                                                    <p class="twm-job-address" style="margin-right:10px">@item.job.addressdetail</p>
-
-
                                             </div>
+                                            <p class="twm-job-address" style="margin-right:10px">@item.job.addressdetail</p>
+
 
                                         </div>
-                                        <div class="twm-right-content" style="display:flex; justify-content:flex-end">
-                                            
-                                            <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
-                                        </div>
+
+                                    </div>
+                                    <div class="twm-right-content" style="display:flex; justify-content:flex-end">
+
+                                        <a href="/@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
                                     </div>
                                 </div>
-                            }
+                            </div>
+                        }
 
-                        </div>
                     </div>
                 </div>
+            </div>
 
         </div>
 
@@ -321,4 +377,196 @@
     <!-- OUR BLOG END -->
 
 </div>
+
+<div class="modal fade" id="apply_job_popup" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="sign_up_popupLabel">Ứng tuyển công việc</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="apl-job-inpopup">
+                    <!--Basic Information-->
+                    <div class="panel panel-default">
+
+                        <div class="panel-body wt-panel-body p-a20 ">
+
+                            <div class="twm-tabs-style-1">
+
+                                <div class="row">
+
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <label>Tải hồ sơ</label>
+                                            <div class="custom-file-upload">
+                                                <input type="file" id="cv-upload" class="form-control" accept=".pdf,.doc,.docx">
+                                                <div id="file-name-display"></div>
+                                            </div>
+                                            <small>
+                                                Nếu bạn không có tài liệu sơ yếu lý lịch, bạn có thể viết hồ sơ chuyên môn ngắn gọn của mình <a class="site-text-primary" href="javascript:void(0);">here</a>
+                                            </small>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-xl-12 col-lg-12 col-md-12">
+                                        <div class="text-left">
+                                            <div onclick="sendfile()" class="site-button">Gửi đơn</div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+$(document).ready(function() {
+    // Xử lý khi click vào nút ứng tuyển
+    $('.site-button[data-bs-toggle="modal"]').click(function(e) {
+        e.preventDefault(); // Ngăn chặn chuyển trang
+        $('#apply_job_popup').modal('show');
+    });
+
+    // Đảm bảo modal được khởi tạo đúng cách
+    var applyModal = new bootstrap.Modal(document.getElementById('apply_job_popup'), {
+        keyboard: false
+    });
+});
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#cv-upload').change(function () {
+            var fileName = $(this).val().split('\\').pop();
+            if (fileName) {
+                $('#file-name-display').html(
+                    '<div class="selected-file">' +
+                    '<span class="file-name">' + fileName + '</span>' +
+                    '<button type="button" class="btn-remove-file" onclick="removeFile()">&times;</button>' +
+                    '</div>'
+                );
+            }
+        });
+    });
+
+    function removeFile() {
+        $('#cv-upload').val('');
+        $('#file-name-display').empty();
+    }
+</script>
+
+
+
+<script>
+    function sendfile() {
+        var file = $('#cv-upload')[0].files[0];
+        var id = @idjob;
+        flag = true;
+
+        // Kiểm tra file
+        if (!file) {
+            // Thêm div để hiển thị lỗi nếu chưa có
+            if ($('#msfile').length === 0) {
+                $('.custom-file-upload').after('<div id="msfile" style="color: red; margin-top: 5px;"></div>');
+            }
+            $('#msfile').html('Vui lòng chọn file');
+            flag = false;
+        }
+
+        if (flag) {
+            var formData = new FormData();
+            formData.append('file', file);
+            formData.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/JobDetail/UploadCV', true); // Thay đổi đường dẫn API của bạn
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        try {
+                            var response = JSON.parse(xhr.responseText);
+                            if (response.Data.status == "OK") {
+                                alert("Gửi CV thành công!");
+                                // Reset form
+                                $('#cv-upload').val('');
+                                $('#file-name-display').empty();
+                            } else {
+                                alert("Có lỗi xảy ra: " + response.Data.message);
+                            }
+                        } catch (e) {
+                            alert("Có lỗi xảy ra khi xử lý phản hồi từ server");
+                        }
+                    } else {
+                        alert("Có lỗi xảy ra khi gửi file");
+                    }
+                }
+            };
+
+            // Hiển thị loading nếu cần
+            xhr.upload.onprogress = function (event) {
+                if (event.lengthComputable) {
+                    var percentComplete = (event.loaded / event.total) * 100;
+                    // Có thể thêm progress bar ở đây
+                }
+            };
+
+            xhr.send(formData);
+        }
+    }
+
+    // Xóa thông báo lỗi khi user chọn file
+    $(document).ready(function () {
+        $('#cv-upload').change(function () {
+            $('#msfile').html('');
+        });
+    });
+</script>
+
+<script>
+function savejob() {
+    var id = @idjob; // Lấy id từ biến Razor
+
+    $.ajax({
+        url: '/JobDetail/SaveJob',
+        type: 'POST',
+        data: { id: id },
+        success: function(response) {
+            if (response.Data.status === "OK") {
+                var imgElement = $('img[onclick="savejob()"]');
+                if (response.Data.saved) {
+                    // Nếu đã save thì đổi sang ảnh xanh
+                    imgElement.attr('src', '/ContentImage/images/icons8-save-50_green.png');
+                } else {
+                    // Nếu bỏ save thì đổi sang ảnh xám
+                    imgElement.attr('src', '/ContentImage/images/icons8-save-50_gray.png');
+                }
+            } else if (response.Data.status === "ERROR") {
+                if (response.Data.message === "LOGIN_REQUIRED") {
+                    alert("Vui lòng đăng nhập để lưu công việc");
+                   
+                } else {
+                    alert(response.Data.message);
+                }
+            }
+        },
+        error: function() {
+            alert("Có lỗi xảy ra, vui lòng thử lại sau");
+        }
+    });
+}
+</script>
 

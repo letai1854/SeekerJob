@@ -111,11 +111,19 @@ namespace SeekerJob.Controllers
             string jobcategory = Data["jobcategory"];
             string experience = Data["experience"];
             string address = Data["address"];
+            string img = Data["img"];
+            var file = Request.Files["img"];
+            string uniqueFileName = null;
             string facebook = Data["facebook"];
             string twitter = Data["twitter"];
             string linkedin = Data["linkedin"];
             string instagram = Data["instagram"];
-
+            if (file != null && file.ContentLength > 0)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/ContentImage/images"), uniqueFileName); // Check this path!
+                file.SaveAs(path);
+            }
 
 
             IO io = new IO();
@@ -137,11 +145,16 @@ namespace SeekerJob.Controllers
             info.experience = !string.IsNullOrEmpty(experience) ? (double?)double.Parse(experience) : null;
             info.gender = gender;
             info.birthday = ParseExactDateTime(birthday);
+            if (uniqueFileName != null)
+            {
+                info.image = uniqueFileName;
+            }
             io.Save();
             js.Data = new
             {
                 status = "OK",
-                name = name
+                name = name,
+                imgnew = uniqueFileName
             };
             return Json(js, JsonRequestBehavior.AllowGet);
         }

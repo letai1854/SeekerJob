@@ -16,7 +16,7 @@
 <div class="twm-candidate-profile-pic">
     @if (!string.IsNullOrEmpty(Model?.image))
     {
-        <img src="~/ContentImage/images/@Model.image" alt="Company Image">
+        <img id="img_info" src="~/ContentImage/images/@Model.image" alt="Company Image">
     }
     else
     {
@@ -25,7 +25,7 @@
 
     <div class="upload-btn-wrapper">
         <div id="upload-image-grid"></div>
-        <div onclick="uploadfile()" class="site-button button-sm">Tải ảnh lên</div>
+        <button class="site-button button-sm">Tải ảnh lên</button>
         <input type="file" name="myfile" id="file-uploader" accept=".jpg, .jpeg, .png">
     </div>
 </div>
@@ -35,24 +35,4 @@
         <h4 id="namecan">@ViewData["name"]</h4> <!-- Sử dụng .name để Razor hiểu là truy cập biến động `info` -->
 
 </div>
-<script>
-    function uploadfile() {
-        var img = $('#file-uploader')[0].files[0];
-        form.append('img', img); // Đổi tên từ 'anh' thành 'img' để đồng nhất với biến
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", '/ProfileCandidates/UploadImage', true);
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                var content = xhr.responseText;
-                var json_ct = JSON.parse(content);
-                if (json_ct.Data.status == "OK") {
-                    alert("Success");
-                }
-                else {
-                    alert("Error");
-                }
-            }
-        }
-        xhr.send(form);
-    }
-</script>
+

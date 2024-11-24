@@ -63,7 +63,15 @@ namespace SeekerJob.Controllers
             string linkedin = Data["linkedin"];
             string Instagram = Data["Instagram"];
             string Website = Data["web"];
-            
+            var file = Request.Files["img"];
+            string uniqueFileName = null;
+            if (file != null && file.ContentLength > 0)
+            {
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
+                var path = Path.Combine(Server.MapPath("~/ContentImage/images"), uniqueFileName); // Check this path!
+                file.SaveAs(path);
+            }
+
 
 
             IO io = new IO();
@@ -81,11 +89,13 @@ namespace SeekerJob.Controllers
             info.linkedin = linkedin;
             info.instagram = Instagram;
             info.linkweb = Website;
+            info.image = uniqueFileName;
             io.Save();
             js.Data = new
             {
                 status = "OK", 
-                name = name
+                name = name,
+                imgnew = uniqueFileName
             };
             return Json(js, JsonRequestBehavior.AllowGet);
         }

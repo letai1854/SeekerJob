@@ -4733,11 +4733,8 @@
     </Content>
     <Content Include="Areas\Admin\Views\news\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\news\ViewNewsDetail.cshtml" />
-
     <Content Include="Areas\Admin\Views\ListJob\ViewJobDetail.cshtml" />
     <Content Include="Areas\Admin\Views\CV\Edit.cshtml" />
-
-
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -4896,6 +4893,9 @@
     <Content Include="Views\JobApplied\GetListAppliedJobCandidate.cshtml" />
     <Content Include="Views\JobApplied\GetListJobApplied.cshtml" />
     <Content Include="Views\error\Index.cshtml" />
+    <Content Include="Views\ManagerJob\EditJob.cshtml" />
+    <Content Include="Views\ManagerJob\GetJobDetail.cshtml" />
+    <Content Include="Views\ManagerJob\GetJobDetailById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4903,6 +4903,7 @@
     <Folder Include="Areas\Admin\Views\Image\" />
     <Folder Include="ContentImage\images\client-logo\" />
     <Folder Include="ContentImage\images\home-18\banner\" />
+    <Folder Include="Content\CVs\" />
     <Folder Include="DATA\" />
     <Folder Include="FILES\" />
     <Folder Include="Images\" />

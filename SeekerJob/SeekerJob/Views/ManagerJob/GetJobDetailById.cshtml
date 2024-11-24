@@ -1,0 +1,543 @@
+﻿<!-- Bootstrap CSS -->
+<!-- Bootstrap-select CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+
+<!-- jQuery first, then Bootstrap's JavaScript -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap-select JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+@{
+    SeekerJob.Models.Job job = ViewData["job"] as SeekerJob.Models.Job;
+    var i = job.jobcategory.ToLower();
+    var idjob = job.id;
+}
+<div class="twm-right-section-panel site-bg-gray">
+    <form>
+        <div class="panel panel-default">
+            <div class="panel-heading wt-panel-heading p-a20">
+                <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Sửa việc làm</h4>
+            </div>
+            <div class="panel-body wt-panel-body p-a20 m-b30 ">
+
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Tiêu đề việc làm</label>
+                            <div class="ls-inputicon-box">
+                                <input id="title" class="form-control" name="company_name" type="text" value="@job.title">
+                                <i class="fs-input-icon fa fa-address-card"></i>
+                            </div>
+                            <p id="mstitle" style="padding:2px;display:none; color:aliceblue"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Loại việc làm</label>
+                            <div class="ls-inputicon-box">
+                                <select class="wt-select-box selectpicker" data-live-search="true" title="" id="category" name="jobcategory">
+                                    <option value="">Chọn Danh Mục</option>
+                                    <option value="@job.jobcategory" selected>@job.jobcategory</option>
+                                    <option>Toàn thời gian</option>
+                                    <option>Tự do</option>
+                                    <option>Bán thời gian</option>
+                                    <option>Thực tập</option>
+                                    <option>Tạm thời</option>
+
+                                </select>
+                                <p id="mscategory" style="padding:2px;display:none; color:aliceblue"></p>
+                                <i class="fs-input-icon fa fa-file-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Lương đề nghị</label>
+                            <div class="ls-inputicon-box">
+                                <input id="offer" class="form-control" name="company_Salary" type="salary" placeholder="E.g. 3000" value="@job.offer">
+                                <i class="fs-input-icon fa fa-dollar-sign"></i>
+                            </div>
+                            <p id="msoffer" style="padding:2px;display:none; color:aliceblue"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Kinh nghiệm</label>
+                            <div class="ls-inputicon-box">
+                                <input id="experience" class="form-control" name="company_Email" placeholder="E.g. ít nhất 3 năm kinh nghiệm" value="@job.experience">
+
+
+                                <i class="fs-input-icon fa fa-user-edit"></i>
+                            </div>
+                            <p id="msexperience" style="padding:2px;display:none; color:aliceblue"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Trình độ</label>
+                            <div class="ls-inputicon-box">
+                                <input id="limit" class="form-control" name="company_Email" placeholder="trình độ" value="@job.degree">
+                                <i class="fs-input-icon fa fa-user-graduate"></i>
+                            </div>
+                            <p id="mslimit" style="padding:2px;display:none; color:aliceblue"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Giới tính</label>
+                            <div class="ls-inputicon-box">
+                                @*<select class="wt-select-box selectpicker" data-live-search="true" title="" id="gender" name="gender">
+                                        <option value="">Giới tính</option>
+                                        <option value="Nam" @(job.gender == "Nam" ? "selected" : "") data-content="Nam">Nam</option>
+                                        <option value="Nữ" @(job.gender == "Nữ" ? "selected" : "") data-content="Nữ">Nữ</option>
+                                        <option value="Không yêu cầu" @(job.gender == "Không yêu cầu" ? "selected" : "") data-content="Không yêu cầu">Không yêu cầu</option>
+                                    </select>*@
+                                <select class="wt-select-box selectpicker" data-live-search="true" title="" id="gender" data-bv-field="size">
+                                    <option class="bs-title-option" value="">Giới tính</option>
+                                    <option value="@job.gender" selected>@job.gender</option>
+                                    <option>Nam</option>
+                                    <option>Nữ</option>
+                                    <option>không yêu cầu</option>
+
+                                </select>
+
+
+
+                                <i class="fs-input-icon fa fa-venus-mars"></i>
+                            </div>
+                            <p id="msgender" style="padding:2px;display:none; color:aliceblue"></p>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Tỉnh/ Thành phố</label>
+                            <div class="ls-inputicon-box">
+                                <select class="wt-select-box selectpicker" data-live-search="true" title="" id="country" data-bv-field="size">
+                                    <option value="@job.address" selected>@job.address</option>
+
+                                    <option value="An Giang">An Giang</option>
+                                    <option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+                                    <option value="Bạc Liêu">Bạc Liêu</option>
+                                    <option value="Bắc Giang">Bắc Giang</option>
+                                    <option value="Bắc Kạn">Bắc Kạn</option>
+                                    <option value="Bắc Ninh">Bắc Ninh</option>
+                                    <option value="Bến Tre">Bến Tre</option>
+                                    <option value="Bình Dương">Bình Dương</option>
+                                    <option value="Bình Định">Bình Định</option>
+                                    <option value="Bình Phước">Bình Phước</option>
+                                    <option value="Bình Thuận">Bình Thuận</option>
+                                    <option value="Cà Mau">Cà Mau</option>
+                                    <option value="Cao Bằng">Cao Bằng</option>
+                                    <option value="Cần Thơ">Cần Thơ</option>
+                                    <option value="Đà Nẵng">Đà Nẵng</option>
+                                    <option value="Đắk Lắk">Đắk Lắk</option>
+                                    <option value="Đắk Nông">Đắk Nông</option>
+                                    <option value="Điện Biên">Điện Biên</option>
+                                    <option value="Đồng Nai">Đồng Nai</option>
+                                    <option value="Đồng Tháp">Đồng Tháp</option>
+                                    <option value="Gia Lai">Gia Lai</option>
+                                    <option value="Hà Giang">Hà Giang</option>
+                                    <option value="Hà Nam">Hà Nam</option>
+                                    <option value="Hà Nội">Hà Nội</option>
+                                    <option value="Hà Tĩnh">Hà Tĩnh</option>
+                                    <option value="Hải Dương">Hải Dương</option>
+                                    <option value="Hải Phòng">Hải Phòng</option>
+                                    <option value="Hậu Giang">Hậu Giang</option>
+                                    <option value="Hòa Bình">Hòa Bình</option>
+                                    <option value="Hưng Yên">Hưng Yên</option>
+                                    <option value="Khánh Hòa">Khánh Hòa</option>
+                                    <option value="Kiên Giang">Kiên Giang</option>
+                                    <option value="Kon Tum">Kon Tum</option>
+                                    <option value="Lai Châu">Lai Châu</option>
+                                    <option value="Lâm Đồng">Lâm Đồng</option>
+                                    <option value="Lạng Sơn">Lạng Sơn</option>
+                                    <option value="Lào Cai">Lào Cai</option>
+                                    <option value="Long An">Long An</option>
+                                    <option value="Nam Định">Nam Định</option>
+                                    <option value="Nghệ An">Nghệ An</option>
+                                    <option value="Ninh Bình">Ninh Bình</option>
+                                    <option value="Ninh Thuận">Ninh Thuận</option>
+                                    <option value="Phú Thọ">Phú Thọ</option>
+                                    <option value="Phú Yên">Phú Yên</option>
+                                    <option value="Quảng Bình">Quảng Bình</option>
+                                    <option value="Quảng Nam">Quảng Nam</option>
+                                    <option value="Quảng Ngãi">Quảng Ngãi</option>
+                                    <option value="Quảng Ninh">Quảng Ninh</option>
+                                    <option value="Quảng Trị">Quảng Trị</option>
+                                    <option value="Sóc Trăng">Sóc Trăng</option>
+                                    <option value="Sơn La">Sơn La</option>
+                                    <option value="Tây Ninh">Tây Ninh</option>
+                                    <option value="Thái Bình">Thái Bình</option>
+                                    <option value="Thái Nguyên">Thái Nguyên</option>
+                                    <option value="Thanh Hóa">Thanh Hóa</option>
+                                    <option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+                                    <option value="Tiền Giang">Tiền Giang</option>
+                                    <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                                    <option value="Trà Vinh">Trà Vinh</option>
+                                    <option value="Tuyên Quang">Tuyên Quang</option>
+                                    <option value="Vĩnh Long">Vĩnh Long</option>
+                                    <option value="Vĩnh Phúc">Vĩnh Phúc</option>
+                                    <option value="Yên Bái">Yên Bái</option>
+                                </select>
+
+                                <p id="ms" style="color:red;"></p>
+
+                                <i class="fs-input-icon fa fa-globe-americas"></i>
+                            </div>
+
+                        </div>
+                        <p id="mscountry" style="padding:2px;display:none; color:aliceblue"></p>
+                    </div>
+
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Email </label>
+                            <div class="ls-inputicon-box">
+                                <input id="emailcompany" class="form-control" name="company_Email" type="email" placeholder="Devid@example.com" value="@job.email">
+                                <p id="ms" style="color:red;"></p>
+
+                                <i class="fs-input-icon fas fa-at"></i>
+                            </div>
+                            <p id="msemailcompany" style="padding:2px;display:none; color:aliceblue"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-6 col-md-12">
+                        <div class="twm-candidate-profile-pic">
+                            <label>Ảnh bìa</label>
+                            <img src="~/ContentImage/images/@job.image" alt="">
+                            <div class="upload-btn-wrapper">
+
+                                <div id="upload-image-grid"></div>
+                                <button class="site-button button-sm">Tải ảnh lên</button>
+                                <input type="file" name="myfile" id="taianhlen" accept=".jpg, .jpeg, .png">
+                            </div>
+
+                        </div>
+                        <p id="ms" style="padding:2px;display:none; color:aliceblue"></p>
+                    </div>
+                    <div class="col-xl-12 col-lg-6 col-md-12">
+                        <div class="form-group">
+                            <label>Địa Chỉ Hoàn Chỉnh</label>
+                            <div class="ls-inputicon-box">
+                                <input id="address" class="form-control" name="company_since" type="text" placeholder="1363-1385 Sunset Blvd Los Angeles, CA 90026, USA" value="@job.addressdetail">
+                                <p id="ms" style="color:red;"></p>
+
+                                <i class="fs-input-icon fa fa-home"></i>
+                            </div>
+                            <p id="msaddress" style="padding:2px;display:none; color:aliceblue"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label>Mô Tả</label>
+                            <textarea class="form-control" name="content" id="editor" rows="3" placeholder="Xin chào! Chúng tôi là Công ty Phát triển Phần mềm Galaxy. Chúng tôi hy vọng bạn sẽ hài lòng với dịch vụ và chất lượng của chúng tôi.">
+                                        @job.description
+                            </textarea>
+                            <p id="ms" style="color:red;"></p>
+
+                        </div>
+                        <p id="msmota" style="padding: 2px; display: none; color: red" ;>Nhập đầy đủ thông tin mô tả</p>
+                    </div>
+
+                    @*<div class="col-md-6">
+                            <div class="form-group">
+                                <label>Ngày bắt đầu</label>
+                                <div class="ls-inputicon-box">
+                                    <input id="startday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
+
+                                    <i class="fs-input-icon far fa-calendar"></i>
+                                </div>
+                                <p id="msstart" style="padding:2px;display:none; color:aliceblue"></p>
+
+                            </div>
+                        </div>*@
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Ngày kết thúc</label>
+                            <div class="ls-inputicon-box">
+                                <input id="endday"
+                                       class="form-control datepicker"
+                                       name="enday"
+                                       type="text"
+                                       value="@(job.endday?.ToString("MM/dd/yyyy"))"
+                                       placeholder="mm/dd/yyyy">
+                                <p id="ms" style="color:red;"></p>
+
+                                <i class="fs-input-icon far fa-calendar"></i>
+                            </div>
+                            <p id="msend" style="padding:2px;display:none; color:aliceblue"></p>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="text-left">
+                            <div onclick="UpdateJob()" class="site-button m-r5">Lưu thay đổi</div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+<div class="mt-3">
+    <button type="button" class="btn btn-secondary" onclick="backToList()">Quay lại</button>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+    function UpdateJob() {
+
+        var mota = encodeURIComponent(CKEDITOR.instances.editor.getData());
+        var tieude = $('#title').val();
+        var category = $('#category').val();
+        var salary = $('#offer').val();
+        var experience = $('#experience').val();
+        var trinhdo = $('#limit').val();
+        var gender = $('#gender').val();
+        var country = $('#country').val();
+        var email = $('#emailcompany').val();
+        var img = $('#taianhlen')[0].files[0];
+        var address = $('#address').val();
+        var endday = $('#endday').val();
+        var today = new Date();
+        var day = today.toISOString().split('T')[0];
+        var meta = convertToMeta(tieude)
+        /*        var meta = convertToMeta(tieude);*/
+
+        var phoneRegex = /^(0[35789])[0-9]{8}$/;
+        //$('#mstitle, #msmota, #msemailcompany, #mscategory, #ms', '#msanh').html('');
+        console.log(CKEDITOR.instances.editor.getData());
+
+        flag = true
+        if (mota == '') {
+
+            $('#msmota').css('display', 'block');
+            flag = false
+        }
+        if (tieude == '') {
+            $('#mstitle').html('Phải nhập đủ thông tin tiêu đề');
+            $('#mstitle').css('border-color', 'red');
+            $('#mstitle').css('color', 'red');
+            $('#mstitle').css('display', 'block');
+            flag = false
+        }
+        if (category == '') {
+            $('#mscategory').html('Phải nhâp loại công việc');
+            $('#mscategory').css('border-color', 'red');
+            $('#mscategory').css('color', 'red');
+            $('#mscategory').css('display', 'block');
+            flag = false
+        }
+        if (email == '') {
+            $('#msemailcompany').html('Phải nhập đủ thông tin email');
+            $('#msemailcompany').css('border-color', 'red');
+            $('#msemailcompany').css('color', 'red');
+            $('#msemailcompany').css('display', 'block');
+            flag = false
+        }
+        if (salary == '') {
+            $('#msoffer').html('Phải nhập đủ thông tin mức lương');
+            $('#msoffer').css('border-color', 'red');
+            $('#msoffer').css('color', 'red');
+            $('#msoffer').css('display', 'block');
+            flag = false
+
+        }
+        if (experience == '') {
+            $('#msexperience').html('Phải nhập kinh nghiệm');
+            $('#msexperience').css('border-color', 'red');
+            $('#msexperience').css('color', 'red');
+            $('#msexperience').css('display', 'block');
+            flag = false
+        }
+        if (trinhdo == '') {
+            $('#mslimit').html('Phải nhập trình độ');
+            $('#mslimit').css('border-color', 'red');
+            $('#mslimit').css('color', 'red');
+            $('#mslimit').css('display', 'block');
+            flag = false
+        }
+        if (gender == '') {
+            $('#msgender').html('Phải chọn giới tính');
+            $('#msgender').css('border-color', 'red');
+            $('#msgender').css('color', 'red');
+            $('#msgender').css('display', 'block');
+            flag = false
+        }
+        if (country == null) {
+            $('#mscountry').html('Phải chọn Tỉnh/Thành phố');
+            $('#mscountry').css('border-color', 'red');
+            $('#mscountry').css('color', 'red');
+            $('#mscountry').css('display', 'block');
+            flag = false
+        }
+
+        if (address == '') {
+            $('#msaddress').html('Phải nhập thông tin');
+            $('#msaddress').css('border-color', 'red');
+            $('#msaddress').css('color', 'red');
+            $('#msaddress').css('display', 'block');
+            flag = false
+        }
+        if (endday == '') {
+            $('#msend').html('Phải nhập ngày kết thúc');
+            $('#msend').css('border-color', 'red');
+            $('#msend').css('color', 'red');
+            $('#msend').css('display', 'block');
+            flag = false
+        }
+        if (flag) {
+
+
+            var form = new FormData()
+            form.append('mota', mota);
+            form.append('tieude', tieude);
+            form.append('category', category); // Thêm category vào form
+            form.append('salary', salary); // Thêm salary vào form
+            form.append('experience', experience); // Thêm experience vào form
+            form.append('trinhdo', trinhdo); // Thêm trinhdo vào form
+            form.append('gender', gender); // Thêm gender vào form
+            form.append('country', country); // Thêm country vào form
+            form.append('email', email);
+            form.append('img', img); // Đổi tên từ 'anh' thành 'img' để đồng nhất với biến
+            form.append('address', address); // Thêm address vào form
+            form.append('endday', endday); // Thêm endday vào form
+            form.append('day', day); // Thêm day vào form
+            form.append('meta', meta);
+            form.append('id',@idjob);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/ManagerJob/UpdateJob', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        alert("Success");
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+
+        }
+
+    }
+
+    function convertToMeta(text) {
+        return text.toLowerCase().trim()
+            .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
+            .replace(/\s+/g, '-')
+            .replace(/đ/g, "d")
+            .replace(/ỳ|ý|ỵ|ỷ|ỹ|ỳ/g, "y")
+            .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ù/g, "u")
+            .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ò/g, "o")
+            .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|è/g, "e")
+            .replace(/ì|í|ị|ỉ|ĩ|ì/g, "i");
+    }
+
+
+
+
+</script>
+
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#endday').datepicker({
+            format: 'mm/dd/yyyy',
+            autoclose: true,
+            startDate: new Date(), // Chỉ cho phép chọn từ ngày hiện tại
+            todayHighlight: true
+        }).on('changeDate', function (e) {
+            validateEndDate();
+        });
+    });
+
+    function validateEndDate() {
+        var endDate = $('#endday').datepicker('getDate');
+        var startDate = new Date(); // hoặc lấy từ startday nếu có
+
+        if (endDate < startDate) {
+            $('#ms').text('Ngày kết thúc phải lớn hơn ngày hiện tại');
+            return false;
+        }
+
+        $('#ms').text('');
+        return true;
+    }
+    function convertToMeta(text) {
+        return text.toLowerCase().trim()
+            .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
+            .replace(/\s+/g, '-')
+            .replace(/đ/g, "d")
+            .replace(/ỳ|ý|ỵ|ỷ|ỹ|ỳ/g, "y")
+            .replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ|ù/g, "u")
+            .replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ|ò/g, "o")
+            .replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ|è/g, "e")
+            .replace(/ì|í|ị|ỉ|ĩ|ì/g, "i");
+    }
+</script>
+
+
+<script>
+    CKEDITOR.replace("editor");
+</script>
+
+
+
+<script>
+    function normalizeString(input) {
+        if (!input) return '';
+
+        // Chuyển về chữ thường và xóa khoảng trắng ở đầu/cuối
+        input = input.toLowerCase().trim();
+
+        // Chuẩn hóa chuỗi thành dạng tổ hợp (NFD)
+        input = input.normalize('NFD');
+
+        // Loại bỏ các dấu không phải ký tự cơ bản
+        return input.replace(/[\u0300-\u036f]/g, '');
+    }
+
+
+
+    $(document).ready(function () {
+        $('.selectpicker').selectpicker({
+            noneSelectedText: 'Giới tính'
+        });
+    });
+
+</script>

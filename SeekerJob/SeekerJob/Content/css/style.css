@@ -12480,6 +12480,33 @@ strong {
   left: 5px;
   bottom: 5px;
 }
+@keyframes downloadComplete {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+/* Animation khi tải xong */
+@keyframes downloadComplete {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 .dashboard-profile-photo .upload-btn-wrapper button {
   left: 50%;
   transform: translateX(-50%);

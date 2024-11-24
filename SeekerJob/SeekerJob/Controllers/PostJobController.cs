@@ -72,7 +72,7 @@ namespace SeekerJob.Controllers
 
             IO io = new IO();
             JsonResult js = new JsonResult();
-            Login user = new Login();
+            Login user = null;
             if (Session["employer"] != null)
             {
                 user = Session["employer"] as Login;
@@ -82,11 +82,14 @@ namespace SeekerJob.Controllers
             {
                 user = Session["admin"] as Login;
             }
-
+            else if (Session["candidate"]!=null)
+            {
+                user = Session["candidate"] as Login;
+            }
 
             Job job = new Job()
             {
-                username = user?.username,
+                username = user.username,
                 title = title,
                 email = email,
                 address = country,

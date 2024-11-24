@@ -20,7 +20,7 @@
                 <tbody>
                     @foreach (var item in table)
                     {
-                        <tr>
+                        <tr id="tr_@item.id">
                             <td>
                                 <div class="twm-candidate-save-job-list">
                                     <div class="twm-media">
@@ -29,50 +29,79 @@
                                         </div>
                                     </div>
                                     <div class="twm-mid-content">
-
                                         <a class="twm-nav-sign-up" data-bs-toggle="modal" href="#popup_account" role="button">
                                             <h4>@item.name</h4>
                                         </a>
                                     </div>
-
                                 </div>
                             </td>
-                            <td><a href="javascript:;">Herbal Ltd</a></td>
+                            <td><a href="javascript:;">@item.filecandidate</a></td>
                             <td>
                                 <div>@item.datesend</div>
                             </td>
-
                             <td>
                                 <div class="twm-table-controls">
                                     <ul class="twm-DT-controls-icon list-unstyled">
                                         <li>
-                                            <a href="@ViewBag.detail/@item.meta/@item.id"  class="custom-toltip">
+                                            <a href="@ViewBag.detail/@item.meta/@item.id" class="custom-toltip">
                                                 <span class="fa fa-eye"></span>
-                                                <span class="custom-toltip-block">Veiw</span>
+                                                <span class="custom-toltip-block">View</span>
                                             </a>
                                         </li>
-
                                         <li>
-                                            <a href="~/Content/Files/@item.filecandidate" download="@item.filecandidate">
+                                            <a href="~/Content/CVs/@item.filecandidate" download="@item.filecandidate">
                                                 <button title="Download" data-bs-toggle="tooltip" data-bs-placement="top">
-                                                    <span class="far fa-download"></span>
+                                                    <i class="fa fa-download"></i> <!-- Dùng fa thay vì far -->
                                                 </button>
                                             </a>
                                         </li>
-
+                                        <li>
+                                            <a href="javascript:DeleteApply('@item.id', '@item.name')" title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                <span class="far fa-trash-alt"></span>
+                                            </a>
+                                        </li>
                                     </ul>
                                 </div>
                             </td>
                         </tr>
-
                     }
-                    <!--1-->
-
-
-
-
                 </tbody>
             </table>
         </div>
     </div>
 </div>
+
+<script>
+    function DeleteApply(id, name) {
+        if (confirm('Bạn có chắc muốn xóa đơn ứng tuyển của: ' + name)) {
+            var form = new FormData();
+            form.append('id', id);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/JobApplied/DeleteApply', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.Data.status == "OK") {
+                            // Xóa hàng khỏi bảng
+                            $('#tr_' + id).remove();
+
+                            // Cập nhật số lượng đơn ứng tuyển
+                            var totalRows = $('#jobs_bookmark_table tbody tr').length;
+                            $('#total_applications').text(totalRows);
+
+                            // Thông báo thành công
+                            alert("Đã xóa đơn ứng tuyển thành công!");
+                        } else {
+                            alert("Lỗi: " + response.Data.message);
+                        }
+                    } catch (e) {
+                        alert("Có lỗi xảy ra khi xử lý phản hồi từ server");
+                    }
+                }
+            };
+            xhr.send(form);
+        }
+    }
+</script>

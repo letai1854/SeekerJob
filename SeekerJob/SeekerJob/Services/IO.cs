@@ -17,6 +17,12 @@ namespace SeekerJob.Services
         {
             return myDb.News.Where(m =>m.id==id).FirstOrDefault();
         }
+
+        public Job GetInfoJob(int id)
+        {
+            return myDb.Jobs.Where(m => m.id == id).FirstOrDefault();
+        }
+
         public bool DeleteNews(int id)
         {
 
@@ -28,7 +34,26 @@ namespace SeekerJob.Services
             }
             return false;
         }
-
+        public bool deletesavejob(int id, string username)
+        {
+            var item = myDb.SaveJobs.FirstOrDefault(n => n.idjob==id && n.usernamecandidate == username);
+            if (item != null)
+            {
+                myDb.SaveJobs.Remove(item);
+                return true;
+            }
+            return false;
+        }
+        public bool deleteappliedjobcandidate(int id, string username)
+        {
+            var item = myDb.ListCandidates.FirstOrDefault(t=>t.usernamecandidate == username && t.idjob==id);
+            if (item != null)
+            {
+                myDb.ListCandidates.Remove(item);
+                return true;
+            }
+            return false;
+        }
         public Login GetAccount(string username)
         {
             return myDb.Logins.Where(m=>m.username==username).FirstOrDefault();

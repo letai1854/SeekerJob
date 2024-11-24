@@ -1,7 +1,9 @@
 ﻿using SeekerJob.DTO;
 using SeekerJob.Models;
+using SeekerJob.Services;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -85,6 +87,58 @@ namespace SeekerJob.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.Unauthorized, "User not logged in");
             }
             return new EmptyResult();
+        }
+
+
+        [HttpPost]
+        public JsonResult DeleteApply(int id)
+        {
+            JsonResult js = new JsonResult();
+            try
+            {
+                // Kiểm tra đăng nhập
+                Login user = null;
+                if (Session["candidate"] != null)
+                {
+                    user = Session["candidate"] as Login;
+                }
+                else
+                {
+                    user = Session["admin"] as Login;
+                }
+                if (user == null)
+                {
+                    js.Data = new
+                    {
+                        status = "ERROR",
+                        message = "Vui lòng đăng nhập"
+                    };
+                    return Json(js, JsonRequestBehavior.AllowGet);
+                }
+
+
+
+                // Xóa đơn ứng tuyển
+                IO io = new IO();
+                io.deleteappliedjobcandidate(id,user.username);
+                io.Save();
+
+                js.Data = new
+                {
+                    status = "OK",
+                    message = "Xóa đơn ứng tuyển thành công"
+                };
+            }
+            catch (Exception ex)
+            {
+                js.Data = new
+                {
+                    status = "ERROR",
+                    message = "Có lỗi xảy ra: " + ex.Message
+                };
+            }
+
+            return Json(js, JsonRequestBehavior.AllowGet);
         }
     }
 }

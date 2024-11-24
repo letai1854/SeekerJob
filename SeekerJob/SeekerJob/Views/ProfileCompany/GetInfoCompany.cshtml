@@ -243,6 +243,7 @@
         var twitter = $('#twitter').val();
         var linkedin = $('#linkedin').val();
         var instagram = $('#instagram').val();
+        var img = $('#file-uploader')[0].files[0];
         var web = $('#web').val();
         flag = true
         if (name == '') {
@@ -293,6 +294,7 @@
             form.append('linkedin', linkedin);
             form.append('instagram', instagram);
             form.append('web', web);
+            form.append('img',img)
             var xhr = new XMLHttpRequest();
             xhr.open("POST", '/ProfileCompany/UpdateInfoCompany', true);
             xhr.onreadystatechange = function () {
@@ -301,7 +303,9 @@
                     var json_ct = JSON.parse(content);
                     console.log(json_ct); // Kiểm tra dữ liệu JSON
                     if (json_ct.Data.status == "OK") {
-                        $('#namect').text(json_ct.Data.name)
+                        $('#namecan').text(json_ct.Data.name)
+                        var imageUrl = '@Url.Content("~/ContentImage/images/")' + json_ct.Data.imgnew;
+                        $('#menuToggle').css('background-image', 'url("' + imageUrl + '")');
                         alert("Success");
                     }
                     else {
@@ -311,8 +315,8 @@
             }
             xhr.send(form);
         }
-        
-        
+
+
     }
 </script>
 

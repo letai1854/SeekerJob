@@ -2,109 +2,434 @@
 
 @{
     var table = ViewData["applyjob"] as List<SeekerJob.DTO.JobApplicationViewModel>;
+    var filesByJob = ViewBag.FilesByJob as Dictionary<int, List<string>>;
 }
 
 
-<div class="col-xl-9 col-lg-8 col-md-12 m-b30">
-    <div class="twm-right-section-panel site-bg-gray">
-        <form>
-            <div class="panel panel-default">
-                <div class="panel-heading wt-panel-heading p-a20" style="background-color: rgba(168, 168, 172, 0.17) !important;">
-                    <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Quản Lý Công Việc</h4>
-                </div>
-                <div class="panel-body wt-panel-body m-b30 " style="background-color: rgba(168, 168, 172, 0.17) !important;">
-                    <div class="twm-D_table p-a20 table-responsive">
-                        <table id="jobs_bookmark_table" class="table table-bordered twm-bookmark-list-wrap">
-                            <thead>
-                                <tr>
-                                    <th>Tiêu Đề</th>
-                                    <th>Lương</th>
-                                    <th>Ngày Đăng</th>
-                                    <th>Loại công việc</th>
-                                    <th>Số Lượng</th>
-                                    <th>Hành Động</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in table)
-                                {
-                                    <tr>
-                                        <td>
-                                            <div class="twm-bookmark-list">
-                                                <div class="twm-mid-content">
-                                                    <h4>@item.Title</h4>
-                                                    <p class="twm-bookmark-address">
-                                                        <i data-feather="map-pin"></i>@item.Address
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>@item.Offer</td>
-                                        <td>@item.StartDay.Value.ToString("dd/MM/yyyy")</td>
-                                        <td>
-                                            @if (@item.JobCategory == EnumType.jobCategory.Fulltime.ToString())
-                                            {
-                                                <div class="twm-jobs-category green"><span class="twm-bg-green">@item.JobCategory</span></div>
 
-                                            }
-                                            @if (@item.JobCategory == EnumType.jobCategory.Parttime.ToString())
-                                            {
-                                                <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.JobCategory</span></div>
 
-                                            }
-                                            @if (@item.JobCategory == EnumType.jobCategory.Internship.ToString())
-                                            {
-                                                <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.JobCategory</span></div>
-
-                                            }
-                                            @if (@item.JobCategory == EnumType.jobCategory.Volunteer.ToString())
-                                            {
-                                                <div class="twm-jobs-category "><span class="twm-bg-candi-pattern">@item.JobCategory</span></div>
-
-                                            }
-                                            @if (@item.JobCategory == EnumType.jobCategory.Freelance.ToString())
-                                            {
-                                                <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.JobCategory</span></div>
-
-                                            }
-                                            @if (@item.JobCategory == EnumType.jobCategory.Temporary.ToString())
-                                            {
-                                                <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
-                                            }
-                                        </td>
-                                        <td><a class="twm-nav-sign-up" data-bs-toggle="modal" href="/#sign_up_popup2" role="button">@item.CandidateCount Applied</a></td>
-                                        <td>
-                                            <div class="twm-table-controls">
-                                                <ul class="twm-DT-controls-icon list-unstyled">
-                                                    <li>
-                                                        <a href="/chi-tiet-viec-lam/@item.meta/@item.IdJob" class="custom-toltip">
-                                                            <span class="fa fa-eye"></span>
-                                                            <span class="custom-toltip-block">Veiw</span>
-                                                        </a>
-
-                                                    </li>
-                                                    <li>
-                                                        <a href="/sua-viec-lam/@item.meta/@item.IdJob" class="custom-toltip">
-                                                            <span class="fa fa-edit"></span>
-                                                            <span class="custom-toltip-block">Edit</span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <button title="Delete" data-bs-toggle="tooltip" data-bs-placement="top">
-                                                            <span class="far fa-trash-alt"></span>
-                                                        </button>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                }
-                            </tbody>
-                        </table>
-                    </div>
+<!-- Trong _Layout.cshtml -->
+<!-- Trong _Layout.cshtml hoặc view -->
+<!-- Trong _Layout.cshtml -->
+<!-- Thứ tự include scripts đúng -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+<div class="modal fade" id="cvListModal" tabindex="-1" aria-labelledby="cvListModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content" style="background-color: #f5f5f5;">
+            <div class="modal-header" style="background-color: #e9ecef; border-bottom: 1px solid #dee2e6;">
+                <h5 class="modal-title" id="cvListModalLabel">Danh sách CV</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cv-list" id="modalCvList">
+                    <!-- CV items will be inserted here dynamically -->
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
 
+<!-- Div chứa bảng hiện tại -->
+
+    <div class="col-xl-9 col-lg-8 col-md-12 m-b30" id="jobListTable">
+        <div class="twm-right-section-panel site-bg-gray">
+            <form>
+                <div class="panel panel-default">
+                    <div class="panel-heading wt-panel-heading p-a20" style="background-color: rgba(168, 168, 172, 0.17) !important;">
+                        <h4 class="panel-tittle m-a0"><i class="fa fa-suitcase"></i>Quản Lý Công Việc</h4>
+                    </div>
+                    <div class="panel-body wt-panel-body m-b30 " style="background-color: rgba(168, 168, 172, 0.17) !important;">
+                        <div class="twm-D_table p-a20 table-responsive">
+                            <table id="jobs_bookmark_table" class="table table-bordered twm-bookmark-list-wrap">
+                                <thead>
+                                    <tr>
+                                        <th>Tiêu Đề</th>
+                                        <th>Lương</th>
+                                        <th>Ngày Đăng</th>
+                                        <th>Loại công việc</th>
+                                        <th>Số Lượng</th>
+                                        <th>Hành Động</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in table)
+                                    {
+                                        <tr id="tr_@item.IdJob">
+                                            <td>
+                                                <div class="twm-bookmark-list">
+                                                    <div class="twm-mid-content">
+                                                        <h4>@item.Title</h4>
+                                                        <p class="twm-bookmark-address">
+                                                            <i data-feather="map-pin"></i>@item.Address
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>@item.Offer</td>
+                                            <td>@item.StartDay.Value.ToString("dd/MM/yyyy")</td>
+                                            <td>
+                                                @if (@item.JobCategory == EnumType.jobCategory.Fulltime.ToString())
+                                                {
+                                                    <div class="twm-jobs-category green"><span class="twm-bg-green">@item.JobCategory</span></div>
+                                                }
+                                                @if (@item.JobCategory == EnumType.jobCategory.Parttime.ToString())
+                                                {
+                                                    <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.JobCategory</span></div>
+                                                }
+                                                @if (@item.JobCategory == EnumType.jobCategory.Internship.ToString())
+                                                {
+                                                    <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.JobCategory</span></div>
+                                                }
+                                                @if (@item.JobCategory == EnumType.jobCategory.Volunteer.ToString())
+                                                {
+                                                    <div class="twm-jobs-category"><span class="twm-bg-candi-pattern">@item.JobCategory</span></div>
+                                                }
+                                                @if (@item.JobCategory == EnumType.jobCategory.Freelance.ToString())
+                                                {
+                                                    <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.JobCategory</span></div>
+                                                }
+                                                @if (@item.JobCategory == EnumType.jobCategory.Temporary.ToString())
+                                                {
+                                                    <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a class="twm-nav-sign-up" data-bs-toggle="modal" href="/#sign_up_popup2" role="button">
+                                                    @item.CandidateCount Applied
+                                                </a>
+                                            </td>
+                                            <td>
+                                                <div class="twm-table-controls">
+                                                    <ul class="twm-DT-controls-icon list-unstyled">
+                                                        <li>
+                                                            <a href="/chi-tiet-viec-lam/@item.meta/@item.IdJob" class="custom-toltip">
+                                                                <span class="fa fa-eye"></span>
+                                                                <span class="custom-toltip-block">View</span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                               onclick="loadEditForm(@item.IdJob)"
+                                                               class="custom-toltip">
+                                                                <span class="fa fa-edit"></span>
+                                                                <span class="custom-toltip-block">Edit</span>
+                                                            </a>
+                                                        </li>
+                                                        <!-- Phần dropdown menu trong table -->
+                                                        <li>
+                                                            @if (filesByJob.ContainsKey(item.IdJob) && filesByJob[item.IdJob].Any())
+                                                            {
+                                                                <button class="btn custom-toltip"
+                                                                        type="button"
+                                                                        data-bs-toggle="modal"
+                                                                        data-bs-target="#cvListModal"
+                                                                        data-files='@Html.Raw(Json.Encode(filesByJob[item.IdJob]))'
+                                                                        data-jobid="@item.IdJob"
+                                                                        title="Tải CV">
+                                                                    <span class="fa fa-download"></span>
+                                                                    <span class="custom-toltip-block">Download CV</span>
+                                                                </button>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="text-muted">Không có CV</span>
+                                                            }
+                                                        </li>
+
+                                                        <li>
+                                                            <a href="javascript:void(0)"
+                                                               onclick="DeleteJob(@item.IdJob, '@item.Title')"
+                                                               title="Xóa" data-bs-toggle="tooltip" data-bs-placement="top">
+                                                                <span class="far fa-trash-alt"></span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+<!-- Div mới để chứa form edit -->
+<div id="editJobForm" style="display:none;" class="col-xl-9 col-lg-8 col-md-12 m-b30">
+</div>
+
+
+
+<style>
+    .cv-list {
+        max-height: 400px;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    .cv-item {
+        display: flex;
+        align-items: center;
+        padding: 12px 15px;
+        border-bottom: 1px solid #dee2e6;
+        transition: all 0.3s ease;
+        background-color: white;
+        border-radius: 6px;
+        margin-bottom: 8px;
+    }
+
+        .cv-item:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .cv-item:hover {
+            background-color: #f8f9fa;
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+    .cv-name {
+        flex-grow: 1;
+        margin-right: 15px;
+        font-size: 14px;
+        color: #333;
+    }
+
+    .cv-download-btn {
+        padding: 6px 15px;
+        border-radius: 4px;
+        border: 1px solid #0d6efd;
+        background-color: white;
+        color: #0d6efd;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 13px;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+        .cv-download-btn:hover {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+    .cv-item.downloaded {
+        background-color: #e8f5e9;
+        border-color: #4caf50;
+    }
+
+        .cv-item.downloaded .cv-download-btn {
+            background-color: #4caf50;
+            border-color: #4caf50;
+            color: white;
+            pointer-events: none;
+        }
+
+    .cv-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .cv-list::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 3px;
+    }
+
+    .cv-list::-webkit-scrollbar-thumb {
+        background: #bdbdbd;
+        border-radius: 3px;
+    }
+
+        .cv-list::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+
+    /* Thêm style cho nút download */
+    .btn.custom-toltip {
+        padding: 6px;
+        background: transparent;
+        border: none;
+        position: relative;
+    }
+
+        .btn.custom-toltip:hover {
+            background-color: #f8f9fa;
+        }
+</style>
+<script>
+    function DeleteJob(id, title) {
+        if (confirm('Bạn có chắc muốn xóa công việc: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", '/ManagerJob/DeleteJob', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    try {
+                        var response = JSON.parse(xhr.responseText);
+                        if (response.Data.status == "OK") {
+                            // Xóa hàng khỏi bảng
+                            $('#tr_' + id).fadeOut(300, function () {
+                                $(this).remove();
+                            });
+
+                            // Thông báo thành công
+                            alert("Xóa công việc thành công!");
+                        } else {
+                            alert("Lỗi: " + response.Data.message);
+                        }
+                    } catch (e) {
+                        console.error(e);
+                        alert("Có lỗi xảy ra khi xử lý phản hồi từ server");
+                    }
+                }
+            };
+            xhr.send(form);
+        }
+    }
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        // Xử lý sự kiện khi modal được mở
+        $('#cvListModal').on('show.bs.modal', function (event) {
+            const button = $(event.relatedTarget);
+            const files = button.data('files');
+            const jobId = button.data('jobid');
+
+            console.log('Files:', files); // Debug
+            console.log('JobId:', jobId); // Debug
+
+            const modalList = document.getElementById('modalCvList');
+            modalList.innerHTML = '';
+
+            if (files && files.length > 0) {
+                files.forEach(file => {
+                    const item = document.createElement('div');
+                    item.className = 'cv-item';
+                    item.id = `cv-${file.replace(/\./g, '-')}`;
+
+                    item.innerHTML = `
+                    <span class="cv-name">${file}</span>
+                    <a href="/ManagerJob/DownloadCV?fileName=${encodeURIComponent(file)}"
+                       class="cv-download-btn"
+                       data-filename="${file}">
+                        <i class="fa fa-download me-1"></i>
+                        <span>Tải xuống</span>
+                    </a>
+                `;
+
+                    modalList.appendChild(item);
+                });
+
+                // Thêm event listener cho các nút download
+                $('.cv-download-btn').on('click', function (e) {
+                    e.preventDefault();
+                    const fileName = $(this).data('filename');
+                    const button = this;
+
+                    $.ajax({
+                        url: '/ManagerJob/DownloadCV',
+                        type: 'GET',
+                        data: { fileName: fileName },
+                        xhrFields: {
+                            responseType: 'blob'
+                        },
+                        success: function (response) {
+                            // Tạo URL cho blob
+                            const url = window.URL.createObjectURL(new Blob([response]));
+                            const link = document.createElement('a');
+                            link.href = url;
+                            link.setAttribute('download', fileName);
+                            document.body.appendChild(link);
+                            link.click();
+                            link.remove();
+                            window.URL.revokeObjectURL(url);
+
+                            // Đánh dấu đã tải
+                            const cvItem = $(button).closest('.cv-item');
+                            markAsDownloaded(cvItem[0]);
+
+                            // Lưu vào localStorage
+                            const downloadedFiles = JSON.parse(localStorage.getItem('downloadedCVs') || '[]');
+                            if (!downloadedFiles.includes(fileName)) {
+                                downloadedFiles.push(fileName);
+                                localStorage.setItem('downloadedCVs', JSON.stringify(downloadedFiles));
+                            }
+                        },
+                        error: function (xhr, status, error) {
+                            console.error('Download error:', error);
+                            alert('Không thể tải file. Vui lòng thử lại sau.');
+                        }
+                    });
+                });
+            } else {
+                modalList.innerHTML = '<div class="text-center p-3">Không có file CV nào cho công việc này</div>';
+            }
+        });
+
+        // Xử lý sự kiện sau khi modal hiển thị
+        $('#cvListModal').on('shown.bs.modal', function () {
+            checkDownloadedFiles();
+        });
+    });
+
+    function markAsDownloaded(cvItem) {
+        $(cvItem).addClass('downloaded');
+        const button = $(cvItem).find('.cv-download-btn');
+        button.html('<i class="fa fa-check me-1"></i><span>Đã tải</span>');
+        button.css('pointer-events', 'none');
+
+        cvItem.style.transform = 'scale(1.05)';
+        setTimeout(() => {
+            cvItem.style.transform = 'scale(1)';
+        }, 250);
+    }
+
+    function checkDownloadedFiles() {
+        const downloadedFiles = JSON.parse(localStorage.getItem('downloadedCVs') || '[]');
+        downloadedFiles.forEach(fileName => {
+            const cvItem = document.getElementById(`cv-${fileName.replace(/\./g, '-')}`);
+            if (cvItem) {
+                markAsDownloaded(cvItem);
+            }
+        });
+    }
+</script>
+
+<script>
+    function loadEditForm(id) {
+        $.ajax({
+            url: '/ManagerJob/GetJobDetailById',
+            type: 'POST',
+            data: { id: id },
+            success: function (response) {
+                $('#jobListTable').hide();
+                $('#editJobForm').html(response).show(); // Thay thế nội dung cũ bằng form có dữ liệu
+            }
+        });
+    }
+
+    function backToList() {
+        $('#editJobForm').hide();
+        $('#jobListTable').show();
+
+        // Nếu muốn reset về form trống
+        $.ajax({
+            url: '/ManagerJob/GetJobDetail',
+            success: function (response) {
+                $('#editJobForm').html(response);
+            }
+        });
+    }
+</script>

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Text;
 using System.Web;
 
 namespace SeekerJob
@@ -74,6 +76,29 @@ namespace SeekerJob
             infofooter,
             copyright,
             connectdiff
+        }
+        public static string NormalizeString(string input)
+        {
+            if (string.IsNullOrEmpty(input))
+            {
+                return string.Empty;
+            }
+
+            var normalizedString = input.Normalize(NormalizationForm.FormD);
+            var stringBuilder = new StringBuilder();
+
+            foreach (var c in normalizedString)
+            {
+                var unicodeCategory = CharUnicodeInfo.GetUnicodeCategory(c);
+
+                // Giữ lại ký tự không phải là dấu và không phải khoảng trắng
+                if (unicodeCategory != UnicodeCategory.NonSpacingMark && !char.IsWhiteSpace(c))
+                {
+                    stringBuilder.Append(char.ToLower(c));
+                }
+            }
+
+            return stringBuilder.ToString().Normalize(NormalizationForm.FormC);
         }
     }
 }

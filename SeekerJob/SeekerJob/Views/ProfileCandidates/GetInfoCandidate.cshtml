@@ -242,6 +242,7 @@
         var facebook = $('#facebook').val();
         var linkedin = $('#linkedin').val();
         var instagram = $('#instagram').val();
+        var img = $('#file-uploader')[0].files[0];
         flag = true;
         if (name == '') {
             $('#msname').html('Phải nhập đủ thông tin');
@@ -295,6 +296,7 @@
             form.append('linkedin', linkedin);
             form.append('instagram', instagram);
             form.append('twitter', twitter);
+            form.append('img',img)
             var xhr = new XMLHttpRequest();
             xhr.open("POST", '/ProfileCandidates/UpdateProfile', true);
             xhr.onreadystatechange = function () {
@@ -303,6 +305,8 @@
                     var json_ct = JSON.parse(content);
                     if (json_ct.Data.status == "OK") {
                         $('#namecan').text(json_ct.Data.name)
+                        var imageUrl = '@Url.Content("~/ContentImage/images/")' + json_ct.Data.imgnew;
+                        $('#menuToggle').css('background-image', 'url("' + imageUrl + '")');
                         alert("Success");
                     }
                     else {
