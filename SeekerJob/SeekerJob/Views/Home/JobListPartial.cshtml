@@ -1,0 +1,46 @@
+﻿
+@model List<SeekerJob.DTO.CombineJobUser>
+@using SeekerJob.Controllers
+@using SeekerJob.DataSystem
+
+@foreach (var item in Model)
+{
+    var relativeTime = data.GetRelativeTime((DateTime)item.job.startday);
+    <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+        <div class="job-card bg-white border p-3 d-flex align-items-center">
+            <div class="job-card-image-wrapper position-relative">
+                <img src="~/ContentImage/images/@item.employer.image" alt="job-image" class="job-card-image">
+            </div>
+            <div class="job-card-content flex-grow-1 pl-4">
+                <a href="@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="job-title text-dark font-weight-bold">
+                    <h4 style="font-size: 15px">@item.job.title<span class="text-success job-duration" style="font-size: 13px">/ @relativeTime</span></h4>
+                </a>
+                <p class="job-address text-muted mb-2" style="font-size: 13px">@item.job.addressdetail</p>
+            </div>
+            <div class="job-card-right-content text-right">
+
+                @if (item.job.jobcategory == "Toàn thời gian")
+                {
+                    <div class="job-category badge badge-fulltime fixed-width-badge" style="font-size: 11px; ">@item.job.jobcategory</div>
+
+                }
+                else if (item.job.jobcategory == "Bán thời gian")
+                {
+                    <div class="job-category badge fixed-width-badge " style="font-size: 11px; background-color: coral; ">@item.job.jobcategory</div>
+
+                }
+                else if (item.job.jobcategory == "Tự do")
+                {
+                    <div class="job-category badge fixed-width-badge" style="font-size: 11px; background-color: chartreuse; ">@item.job.jobcategory</div>
+
+                }
+                else
+                {
+                    <div class="job-category badge fixed-width-badge" style="font-size: 11px; background-color:darkblue; ">@item.job.jobcategory</div>
+                }
+                <div class="job-salary text-dark font-weight-bold" style="font-size: 13px">$@item.job.offer <span class="text-success" style="font-size: 13px">/ Tháng</span></div>
+                <a href="@ViewBag.metacontroller/@item.job.meta/@item.job.id" class="job-browse text-primary font-weight-bold" style="font-size: 13px">Xem thêm</a>
+            </div>
+        </div>
+    </div>
+}

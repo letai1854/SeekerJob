@@ -4893,9 +4893,13 @@
     <Content Include="Views\JobApplied\GetListAppliedJobCandidate.cshtml" />
     <Content Include="Views\JobApplied\GetListJobApplied.cshtml" />
     <Content Include="Views\error\Index.cshtml" />
+
     <Content Include="Views\ManagerJob\EditJob.cshtml" />
     <Content Include="Views\ManagerJob\GetJobDetail.cshtml" />
     <Content Include="Views\ManagerJob\GetJobDetailById.cshtml" />
+
+    <Content Include="Views\Home\JobListPartial.cshtml" />
+
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
