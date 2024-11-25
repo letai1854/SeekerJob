@@ -21,9 +21,12 @@
                 {
                     foreach (var item in listadv)
                     {
-                        <a href="/3452345" style="width: 240px; height: 170px; display: inline-block;">
-                            <img style="width:240px; height:170px" src="~/ContentImage/images/@item.link" alt="Image @part">
-                        </a>
+<a href="@(item.content.StartsWith("http://") || item.content.StartsWith("https://") ?
+          item.content :
+          "/" + item.content)"
+   style="width: 240px; height: 170px; display: inline-block;">
+    <img style="width:240px; height:170px" src="~/ContentImage/images/@item.link" alt="Image @part">
+</a>
 
                         part++;
                     }

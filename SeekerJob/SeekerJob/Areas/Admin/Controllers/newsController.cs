@@ -330,5 +330,10 @@ namespace SeekerJob.Areas.Admin.Controllers
             return View();
         }
 
+
+
+
+
+
     }
 }

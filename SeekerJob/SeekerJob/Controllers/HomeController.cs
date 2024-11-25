@@ -380,7 +380,13 @@ public ActionResult ResetPaginationState()
         public ActionResult AdvertiseHomeFirst()
         {
             var adv = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Adertise.advertisehome1.ToString()).FirstOrDefault();
-            var listadv = db.tablebannerparts.Where(t => t.hide == true && t.link != null && t.idtable == adv.id).Take(8).ToList();
+            var listadv = db.tablebannerparts
+    .Where(t => t.hide == true &&
+           t.link != null &&
+           t.idtable == adv.id)
+    .OrderByDescending(t => t.datebegin)  // Sắp xếp theo datebegin mới nhất
+    .Take(8)
+    .ToList();
             ViewData["listadv"] = listadv;
             return PartialView("AdvertiseHomeFirst");
         }
@@ -390,7 +396,7 @@ public ActionResult ResetPaginationState()
 
             var listjob = db.Jobs
                             .Where(t => t.endday >= DateTime.Now)
-                            .OrderByDescending(t => t.likeNumber)
+                            .OrderByDescending(t => t.startday)
                             .Take(8)
                             .ToList();
             foreach (var job in listjob)
@@ -410,7 +416,14 @@ public ActionResult ResetPaginationState()
         public ActionResult AdvertiseHomeSecond()
         {
             var adv = db.tablebanners.Where(t => t.hide == true && t.typeRow == EnumType.Adertise.advertisehome2.ToString()).FirstOrDefault();
-            var listadv = db.tablebannerparts.Where(t => t.hide == true && t.link != null && t.idtable == adv.id).Take(3).ToList();
+            var listadv = db.tablebannerparts
+    .Where(t => t.hide == true &&
+           t.link != null &&
+           t.idtable == adv.id &&
+           t.datebegin != null)  // Kiểm tra datebegin không null
+    .OrderByDescending(t => t.datebegin)  // Sắp xếp theo ngày mới nhất
+    .Take(3)  // Lấy 3 bản ghi
+    .ToList();
             ViewData["listadv"] = listadv;
             return PartialView("AdvertiseHomeSecond");
         }

@@ -1,20 +1,39 @@
-﻿<!-- Bootstrap CSS -->
-<!-- Bootstrap-select CSS -->
+﻿<!-- CSS -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
-<!-- jQuery first, then Bootstrap's JavaScript -->
+<!-- JavaScript -->
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
-<!-- Bootstrap-select JavaScript -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+
+
 @{
     SeekerJob.Models.Job job = ViewData["job"] as SeekerJob.Models.Job;
     var i = job.jobcategory.ToLower();
     var idjob = job.id;
 }
+
+<style>
+    .datepicker {
+        z-index: 1060 !important; /* Đảm bảo hiển thị trên các phần tử khác */
+    }
+
+    .input-group.date {
+        width: 100%;
+    }
+
+    .input-group-text {
+        background-color: #fff;
+        cursor: pointer;
+    }
+
+    .datepicker-dropdown {
+        margin-top: 5px;
+    }
+</style>
 <div class="twm-right-section-panel site-bg-gray">
     <form>
         <div class="panel panel-default">
@@ -256,34 +275,34 @@
                     </div>
 
                     @*<div class="col-md-6">
-                            <div class="form-group">
-                                <label>Ngày bắt đầu</label>
-                                <div class="ls-inputicon-box">
-                                    <input id="startday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy">
+                                                    <div class="form-group">
+                                                        <label>Ngày bắt đầu</label>
+                                                        <div class="ls-inputicon-box">
+                                                            <input id="startday" class="form-control datepicker" data-provide="datepicker" name="company_since" type="text" placeholder="mm/dd/yyyy" value="@(job.endday?.ToString("dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture) ?? "N/A")
+                        ">
 
-                                    <i class="fs-input-icon far fa-calendar"></i>
-                                </div>
-                                <p id="msstart" style="padding:2px;display:none; color:aliceblue"></p>
+                                                            <i class="fs-input-icon far fa-calendar"></i>
+                                                        </div>
+                                                        <p id="msstart" style="padding:2px;display:none; color:aliceblue"></p>
 
-                            </div>
-                        </div>*@
+                                                    </div>
+                                                </div>*@
 
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label>Ngày kết thúc</label>
+                            <label>Ngày kết thúc</label>
                             <div class="ls-inputicon-box">
                                 <input id="endday"
-                                       class="form-control datepicker"
+                                       class="form-control"
                                        name="enday"
                                        type="text"
-                                       value="@(job.endday?.ToString("MM/dd/yyyy"))"
-                                       placeholder="mm/dd/yyyy">
-                                <p id="ms" style="color:red;"></p>
-
+                                       value="@(job.endday?.ToString("dd/MM/yyyy"))"
+                                       placeholder="dd/mm/yyyy"
+                                       maxlength="10"
+                                       onchange="updateEndDate(this.value)">
                                 <i class="fs-input-icon far fa-calendar"></i>
                             </div>
-                            <p id="msend" style="padding:2px;display:none; color:aliceblue"></p>
-
+                            <p id="msend" style="padding:2px;display:none; color:red"></p>
                         </div>
                     </div>
 
@@ -312,6 +331,12 @@
 
 
 <script type="text/javascript">
+    var currentEndDate = ''; // Biến global để lưu giá trị ngày
+
+    function updateEndDate(value) {
+        currentEndDate = value;
+        console.log('Ngày đã được cập nhật:', currentEndDate);
+    }
     function UpdateJob() {
 
         var mota = encodeURIComponent(CKEDITOR.instances.editor.getData());
@@ -325,7 +350,7 @@
         var email = $('#emailcompany').val();
         var img = $('#taianhlen')[0].files[0];
         var address = $('#address').val();
-        var endday = $('#endday').val();
+        var endday = currentEndDate || $('#endday').val();
         var today = new Date();
         var day = today.toISOString().split('T')[0];
         var meta = convertToMeta(tieude)
@@ -439,7 +464,9 @@
                     var content = xhr.responseText;
                     var json_ct = JSON.parse(content);
                     if (json_ct.Data.status == "OK") {
+
                         alert("Success");
+
                     }
                     else {
                         alert("Error");
@@ -475,29 +502,29 @@
 
 
 <script>
-    $(document).ready(function () {
-        $('#endday').datepicker({
-            format: 'mm/dd/yyyy',
-            autoclose: true,
-            startDate: new Date(), // Chỉ cho phép chọn từ ngày hiện tại
-            todayHighlight: true
-        }).on('changeDate', function (e) {
-            validateEndDate();
-        });
-    });
+    //$(document).ready(function () {
+    //    $('#endday').datepicker({
+    //        format: 'mm/dd/yyyy',
+    //        autoclose: true,
+    //        startDate: new Date(), // Chỉ cho phép chọn từ ngày hiện tại
+    //        todayHighlight: true
+    //    }).on('changeDate', function (e) {
+    //        validateEndDate();
+    //    });
+    //});
 
-    function validateEndDate() {
-        var endDate = $('#endday').datepicker('getDate');
-        var startDate = new Date(); // hoặc lấy từ startday nếu có
+    //function validateEndDate() {
+    //    var endDate = $('#endday').datepicker('getDate');
+    //    var startDate = new Date(); // hoặc lấy từ startday nếu có
 
-        if (endDate < startDate) {
-            $('#ms').text('Ngày kết thúc phải lớn hơn ngày hiện tại');
-            return false;
-        }
+    //    if (endDate < startDate) {
+    //        $('#ms').text('Ngày kết thúc phải lớn hơn ngày hiện tại');
+    //        return false;
+    //    }
 
-        $('#ms').text('');
-        return true;
-    }
+    //    $('#ms').text('');
+    //    return true;
+    //}
     function convertToMeta(text) {
         return text.toLowerCase().trim()
             .replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ|à/g, "a")
@@ -534,10 +561,62 @@
 
 
 
+
+</script>
+
+
+<script>
     $(document).ready(function () {
+        // Khởi tạo selectpicker trước
         $('.selectpicker').selectpicker({
-            noneSelectedText: 'Giới tính'
+            noneSelectedText: 'Chọn...'
+        });
+
+        // Sau đó khởi tạo datepicker
+        $('#endday').datepicker({
+            format: 'dd/mm/yyyy',
+            autoclose: true,
+            startDate: new Date(),
+            todayHighlight: true,
+            language: 'vi',
+            orientation: 'bottom auto',
+            container: '.input-group.date'
+        });
+
+        // Xử lý giá trị ban đầu
+        var initialDate = $('#endday').val();
+        if (initialDate) {
+            try {
+                var parts = initialDate.split('/');
+                if (parts.length === 3) {
+                    var date = new Date(parts[2], parts[1] - 1, parts[0]);
+                    if (!isNaN(date.getTime())) {
+                        $('#endday').datepicker('update', date);
+                    }
+                }
+            } catch (e) {
+                console.log('Error parsing initial date:', e);
+            }
+        }
+
+        // Xử lý sự kiện change
+        $('#endday').on('changeDate', function (e) {
+            validateEndDate();
         });
     });
 
+    function validateEndDate() {
+        var endday = currentEndDate || $('#endday').val();
+        var startDate = new Date();
+        startDate.setHours(0, 0, 0, 0);
+
+        if (endDate < startDate) {
+            $('#ms').text('Ngày kết thúc phải lớn hơn ngày hiện tại');
+            return false;
+        }
+        $('#ms').text('');
+        return true;
+    }
 </script>
+@*<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.vi.min.js"></script>*@

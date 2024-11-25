@@ -30,7 +30,7 @@
 
                     @foreach (var item in table)
                     {
-                        <tr id="tr_@item.saveJob.idjob">
+                        <tr id="trs_@item.saveJob.idjob">
                             <td>
                                 <div class="twm-candidate-save-job-list">
                                     <div class="twm-media">
@@ -105,7 +105,10 @@
                     var json_ct = JSON.parse(content);
                     if (json_ct.Data.status == "OK") {
                         // Xóa hàng khỏi DOM
-                        $('#tr_' + id).remove();
+                        
+                        $('#trs_' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
 
                         // Gọi AJAX để cập nhật lại danh sách sau khi xóa
                         //$.ajax({

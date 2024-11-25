@@ -57,7 +57,7 @@
                                 <tbody>
                                     @foreach (var item in table)
                                     {
-                                        <tr id="tr_@item.IdJob">
+                                        <tr id="trc_@item.IdJob">
                                             <td>
                                                 <div class="twm-bookmark-list">
                                                     <div class="twm-mid-content">
@@ -70,32 +70,46 @@
                                             </td>
                                             <td>@item.Offer</td>
                                             <td>@item.StartDay.Value.ToString("dd/MM/yyyy")</td>
-                                            <td>
-                                                @if (@item.JobCategory == EnumType.jobCategory.Fulltime.ToString())
+                                            @{
+                                                string NormalizeString(string str)
                                                 {
-                                                    <div class="twm-jobs-category green"><span class="twm-bg-green">@item.JobCategory</span></div>
+                                                    if (string.IsNullOrEmpty(str)) return str;
+                                                    str = str.Trim().ToLower();
+                                                    str = str.Normalize(System.Text.NormalizationForm.FormD);
+                                                    var chars = str.Where(c => System.Globalization.CharUnicodeInfo.GetUnicodeCategory(c) != System.Globalization.UnicodeCategory.NonSpacingMark).ToArray();
+                                                    return new string(chars).Normalize(System.Text.NormalizationForm.FormC);
                                                 }
-                                                @if (@item.JobCategory == EnumType.jobCategory.Parttime.ToString())
-                                                {
-                                                    <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.JobCategory</span></div>
-                                                }
-                                                @if (@item.JobCategory == EnumType.jobCategory.Internship.ToString())
-                                                {
-                                                    <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.JobCategory</span></div>
-                                                }
-                                                @if (@item.JobCategory == EnumType.jobCategory.Volunteer.ToString())
-                                                {
-                                                    <div class="twm-jobs-category"><span class="twm-bg-candi-pattern">@item.JobCategory</span></div>
-                                                }
-                                                @if (@item.JobCategory == EnumType.jobCategory.Freelance.ToString())
-                                                {
-                                                    <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.JobCategory</span></div>
-                                                }
-                                                @if (@item.JobCategory == EnumType.jobCategory.Temporary.ToString())
-                                                {
-                                                    <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
-                                                }
-                                            </td>
+                                            }
+                                        <td>
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Toàn thời gian"))
+                                            {
+                                                <div class="twm-jobs-category green"><span class="twm-bg-green">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Bán thời gian"))
+                                            {
+                                                <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Thực tập"))
+                                            {
+                                                <div class="twm-jobs-category brown"><span class="twm-bg-brown">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Tình nguyện"))
+                                            {
+                                                <div class="twm-jobs-category"><span class="twm-bg-candi-pattern">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Tự do"))
+                                            {
+                                                <div class="twm-jobs-category purple"><span class="twm-bg-purple">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Tạm thời"))
+                                            {
+                                                <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
+                                            }
+                                            @if (NormalizeString(item.JobCategory) == NormalizeString("Tất cả"))
+                                            {
+                                                <div class="twm-jobs-category red"><span class="twm-bg-red">@item.JobCategory</span></div>
+                                            }
+                                        </td>
                                             <td>
                                                 <a class="twm-nav-sign-up" data-bs-toggle="modal" href="/#sign_up_popup2" role="button">
                                                     @item.CandidateCount Applied
@@ -278,7 +292,7 @@
                         var response = JSON.parse(xhr.responseText);
                         if (response.Data.status == "OK") {
                             // Xóa hàng khỏi bảng
-                            $('#tr_' + id).fadeOut(300, function () {
+                            $('#trc_' + id).fadeOut(300, function () {
                                 $(this).remove();
                             });
 

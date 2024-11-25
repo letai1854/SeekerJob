@@ -27,7 +27,7 @@ namespace SeekerJob.Controllers
             if (item != null)
             {
                 Session["candidate"] = item;
-                //Session.Timeout = 5;
+                Session.Timeout = 525600;
                 jr.Data = new
                 {
                     status = "OK"
@@ -36,7 +36,7 @@ namespace SeekerJob.Controllers
             else if (admin != null)
             {
                 Session["admin"] = admin;
-                //Session.Timeout = 5;
+                Session.Timeout = 525600;
                 jr.Data = new
                 {
                     status = "OK"
@@ -68,7 +68,7 @@ namespace SeekerJob.Controllers
             if (item != null)
             {
                 Session["employer"] = item;
-                //Session.Timeout = 5;
+                Session.Timeout = 525600;
                 jr.Data = new
                 {
                     status = "OK"
@@ -77,7 +77,7 @@ namespace SeekerJob.Controllers
             else if (admin != null)
             {
                 Session["admin"] = admin;
-                //Session.Timeout = 5;
+                Session.Timeout = 525600;
                 jr.Data = new
                 {
                     status = "OK"

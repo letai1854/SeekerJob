@@ -407,7 +407,7 @@
 
                                         <div class="col-lg-12">
                                             <div class="form-group mb-3">
-                                                <input id="employerUsernamesignup" name="username" type="text" class="form-control" placeholder="Tên đăng nhập*">
+                                                <input id="employerUsername" name="username" type="text" class="form-control" placeholder="Tên đăng nhập*">
                                                 <p id="msEmployerUsername" style="color: red; display: none;"></p>
                                             </div>
                                         </div>
@@ -943,174 +943,114 @@
             }
         });
     });
+    function signup() {
+        // Lấy giá trị và trim()
+        var username = $('#canuser').val().trim();
+        var password = $('#canpass').val().trim();
+        var email = $('#canemail').val().trim();
+        var phone = $('#canphone').val().trim();
+        var address = $('#canaddress').val().trim();
+        var agree = $('#agree1').is(':checked');
+        var name = $('#canname').val().trim();
+        // Reset thông báo lỗi
+        $('#msusername, #mspassword, #msemail, #msphone, #msaddress, #msagree').hide().html('');
 
-    function signupEmployer() {
-    var username = $('#employerUsername').val().trim();
-    var password = $('#employerPassword').val().trim();
-    var company = $('#employerCompany').val().trim();
-    var email = $('#employerEmail').val().trim();
-    var phone = $('#employerPhone').val().trim();
-    var city = $('#country').val();
-    var address = $('#employerAddress').val().trim();
-    var agree = $('#employerAgree').is(':checked');
+        // Validation
+        var flag = true;
 
-    var flag = true;
+        // Kiểm tra các trường (giữ nguyên phần validation)
+        if (username === '') {
+            $('#msusername').html('Vui lòng nhập tên đăng nhập').show();
+            flag = false;
+        }
+        // Kiểm tra password
+        if (password === '') {
+            $('#mspassword').html('Vui lòng nhập mật khẩu').show();
+            flag = false;
+        }
+        if (name === '') {
+            $('#msname').html('Vui lòng điền họ và tên').show();
+            flag = false;
+        }
 
-    // Validation username
-    if (!username) {
-        $('#msEmployerUsername').html('Vui lòng nhập tên đăng nhập').show();
-        flag = false;
-    } else {
-        $('#msEmployerUsername').hide();
-    }
+        // Kiểm tra email
+        var emailRegex = /^[\w-]+(\.[\w-]+)*@@([\w-]+\.)+[a-zA-Z]{2,}$/;
 
-    // Validation password
-    if (!password) {
-        $('#msEmployerPassword').html('Vui lòng nhập mật khẩu').show();
-        flag = false;
-    } else if (password.length < 6) {
-        $('#msEmployerPassword').html('Mật khẩu phải có ít nhất 6 ký tự').show();
-        flag = false;
-    } else {
-        $('#msEmployerPassword').hide();
-    }
 
-    // Validation company name
-    if (!company) {
-        $('#msEmployerCompany').html('Vui lòng nhập tên công ty').show();
-        flag = false;
-    } else {
-        $('#msEmployerCompany').hide();
-    }
-
-    // Validation email
-    var emailRegex = /^[\w-]+(\.[\w-]+)*@@([\w-]+\.)+[a-zA-Z]{2,}$/;
-    if (!email) {
-        $('#msEmployerEmail').html('Vui lòng nhập email').show();
-        flag = false;
-    } else if (!emailRegex.test(email)) {
-        $('#msEmployerEmail').html('Email không hợp lệ (ví dụ: example@domain.com)').show();
-        flag = false;
-    } else {
-        $('#msEmployerEmail').hide();
-    }
-
-    // Validation phone
-    var phoneRegex = /^(0[35789])[0-9]{8}$/;
-    if (!phone) {
-        $('#msEmployerPhone').html('Vui lòng nhập số điện thoại').show();
-        flag = false;
-    } else if (!phoneRegex.test(phone)) {
-        $('#msEmployerPhone').html('Số điện thoại không hợp lệ (phải bắt đầu bằng 03, 05, 07, 08, 09 và có 10 số)').show();
-        flag = false;
-    } else {
-        $('#msEmployerPhone').hide();
-    }
-
-    // Validation city
-    if (!city) {
-        $('#ms').html('Vui lòng chọn tỉnh/thành phố').show();
-        flag = false;
-    } else {
-        $('#ms').hide();
-    }
-
-    // Validation address
-    if (!address) {
-        $('#msEmployerAddress').html('Vui lòng nhập địa chỉ').show();
-        flag = false;
-    } else {
-        $('#msEmployerAddress').hide();
-    }
-
-    // Validation agreement
-    if (!agree) {
-        $('#msEmployerAgree').html('Vui lòng đồng ý với điều khoản').show();
-        flag = false;
-    } else {
-        $('#msEmployerAgree').hide();
-    }
-
-    if (flag) {
-        var formData = new FormData();
-        formData.append('username', username);
-        formData.append('password', password);
-        formData.append('company', company);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('city', city);
-        formData.append('address', address);
-
-        $.ajax({
-            url: '/Account/SignUpEmployer',
-            type: 'POST',
-            data: formData,
-            processData: false,
-            contentType: false,
-            success: function(response) {
-                if (response.status === "OK") {
-                    // Reset form
-                    $('#employerUsername').val('');
-                    $('#employerPassword').val('');
-                    $('#employerCompany').val('');
-                    $('#employerEmail').val('');
-                    $('#employerPhone').val('');
-                    $('#country').val('');
-                    $('#employerAddress').val('');
-                    $('#employerAgree').prop('checked', false);
-
-                    alert("Đăng ký thành công!");
-                    window.location.href = '/Account/Login';
-                } else if (response.status === "EXIST") {
-                    if (response.message.includes("email")) {
-                        $('#msEmployerEmail').html('Email đã được sử dụng').show();
-                    } else {
-                        $('#msEmployerUsername').html('Tài khoản đã tồn tại').show();
-                    }
-                } else {
-                    alert("Lỗi: " + response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                alert("Có lỗi xảy ra: " + error);
-            }
-        });
-    }
-}
-
-// Thêm validation realtime
-$(document).ready(function() {
-    // Email validation
-    $('#employerEmail').on('input', function() {
-        var email = $(this).val().trim();
-        var emailRegex = /^[\w-]+(\.[\w-]+)*@@[\w-]+\.)+[a-zA-Z]{2,}$/;
-
-        if (!email) {
-            $('#msEmployerEmail').html('Vui lòng nhập email').show();
+        if (email === '') {
+            $('#msemail').html('Vui lòng nhập email').show();
+            flag = false;
         } else if (!emailRegex.test(email)) {
-            $('#msEmployerEmail').html('Email không hợp lệ (ví dụ: example@domain.com)').show();
+            $('#msemail').html('Email không hợp lệ (ví dụ: example@domain.com)').show();
+            flag = false;
         } else {
-            $('#msEmployerEmail').hide();
+            $('#msemail').hide(); // Ẩn thông báo lỗi nếu email hợp lệ
         }
-    });
 
-    // Phone validation
-    $('#employerPhone').on('input', function() {
-        var phone = $(this).val().trim();
+        // Regex kiểm tra số điện thoại
         var phoneRegex = /^(0[35789])[0-9]{8}$/;
-
-        if (!phone) {
-            $('#msEmployerPhone').html('Vui lòng nhập số điện thoại').show();
+        if (phone === '') {
+            $('#msphone').html('Vui lòng nhập số điện thoại').show();
+            flag = false;
         } else if (!phoneRegex.test(phone)) {
-            $('#msEmployerPhone').html('Số điện thoại không hợp lệ (phải bắt đầu bằng 03, 05, 07, 08, 09 và có 10 số)').show();
+            $('#msphone').html('Số điện thoại không hợp lệ (phải bắt đầu bằng 03, 05, 07, 08, 09 và có 10 số)').show();
+            flag = false;
         } else {
-            $('#msEmployerPhone').hide();
+            $('#msphone').hide(); // Ẩn thông báo lỗi nếu số điện thoại hợp lệ
         }
-    });
-});
 
+        // Kiểm tra địa chỉ
+        if (address === '') {
+            $('#msaddress').html('Vui lòng nhập địa chỉ').show();
+            flag = false;
+        }
 
+        // Kiểm tra đồng ý điều khoản
+        if (!agree) {
+            $('#msagree').html('Vui lòng đồng ý với điều khoản').show();
+            flag = false;
+        }
 
+        if (flag) {
+            var formData = new FormData();
+            formData.append('username', username);
+            formData.append('password', password);
+            formData.append('email', email);
+            formData.append('phone', phone);
+            formData.append('address', address);
+            formData.append('name', name);
+            $.ajax({
+                url: '/Menu/SignUp',
+                type: 'POST',
+                data: formData,
+                processData: false,
+                contentType: false,
+                success: function (response) {
+                    if (response.status === "OK") {
+                        // Reset form khi đăng ký thành công
+                        $('#canuser').val('');
+                        $('#canpass').val('');
+                        $('#canemail').val('');
+                        $('#canphone').val('');
+                        $('#canaddress').val('');
+                        $('#canname').val('');
+                        $('#agree1').prop('checked', false);
+
+                        alert("Đăng ký thành công!");
+                        window.location.href = '/Dang-nhap';
+                    } else if (response.status === "EXIST") {
+                        // Hiển thị thông báo tài khoản đã tồn tại
+                        $('#msusername').html('Tài khoản đã tồn tại').show();
+                    } else {
+                        alert("Lỗi: " + response.message);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    alert("Có lỗi xảy ra: " + error);
+                }
+            });
+        }
+    }
 </script>
 
 
@@ -1186,15 +1126,15 @@ $(document).ready(function() {
 <script>
     // Xử lý ẩn/hiện mật khẩu
     $('#toggleEmployerPassword').click(function () {
-        const type = $('#employerPassword').attr('type') === 'password' ? 'text' : 'password';
-        $('#employerPassword').attr('type', type);
+        const type = $('#employerPasswordsign').attr('type') === 'password' ? 'text' : 'password';
+        $('#employerPasswordsign').attr('type', type);
         $(this).find('i').toggleClass('fa-eye fa-eye-slash');
     });
 
     // Clear validation messages on input
     $(document).ready(function () {
-        $('#employerUsernamesignup').on('input', function () { $('#employerUsernamesignup').hide(); });
-        $('#employerPasswordsignup').on('input', function () { $('#employerPasswordsignup').hide(); });
+        $('#employerUsername').on('input', function () { $('#msEmployerUsername').hide(); });
+        $('#employerPasswordSignup').on('input', function () { $('#msEmployerPassword').hide(); });
         $('#employerCompany').on('input', function () { $('#msEmployerCompany').hide(); });
         $('#employerEmail').on('input', function () { $('#msEmployerEmail').hide(); });
         $('#employerPhone').on('input', function () { $('#msEmployerPhone').hide(); });
@@ -1204,8 +1144,8 @@ $(document).ready(function() {
     });
 
     function signupEmployer() {
-        var username = $('#employerUsernamesignup').val().trim();
-        var password = $('#employerPasswordsignup').val().trim();
+        var username = $('#employerUsername').val().trim();
+        var password = $('#employerPasswordSignup').val().trim();
         var company = $('#employerCompany').val().trim();
         var email = $('#employerEmail').val().trim();
         var phone = $('#employerPhone').val().trim();
@@ -1269,7 +1209,7 @@ $(document).ready(function() {
                     if (response.status === "OK") {
                         // Reset form
                         $('#employerUsername').val('');
-                        $('#employerPasswordsignup').val('');
+                        $('#employerPasswordSignup').val('');
                         $('#employerCompany').val('');
                         $('#employerEmail').val('');
                         $('#employerPhone').val('');
@@ -1278,6 +1218,7 @@ $(document).ready(function() {
                         $('#employerAgree').prop('checked', false);
 
                         alert("Đăng ký thành công!");
+                        window.location.href = '/Dang-nhap';
                     } else if (response.status === "EXIST") {
                         $('#msEmployerUsername').html('Tài khoản đã tồn tại').show();
                     } else {
@@ -1290,6 +1231,7 @@ $(document).ready(function() {
             });
         }
     }
+
 
     $(document).ready(function () {
         // Xử lý ẩn/hiện mật khẩu cho form đăng ký nhà tuyển dụng

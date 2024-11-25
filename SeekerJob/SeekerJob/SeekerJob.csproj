@@ -4735,6 +4735,8 @@
     <Content Include="Areas\Admin\Views\news\ViewNewsDetail.cshtml" />
     <Content Include="Areas\Admin\Views\ListJob\ViewJobDetail.cshtml" />
     <Content Include="Areas\Admin\Views\CV\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Advertise\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Advertise\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

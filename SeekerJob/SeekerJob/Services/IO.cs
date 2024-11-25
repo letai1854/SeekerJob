@@ -34,6 +34,19 @@ namespace SeekerJob.Services
             }
             return false;
         }
+
+        public bool DeleteTablebannerpart(int id)
+        {
+
+            var itemNew = myDb.tablebannerparts.FirstOrDefault(n => n.id == id);
+            if (itemNew != null)
+            {
+                myDb.tablebannerparts.Remove(itemNew);
+                return true;
+            }
+            return false;
+        }
+
         public bool deletesavejob(int id, string username)
         {
             var item = myDb.SaveJobs.FirstOrDefault(n => n.idjob==id && n.usernamecandidate == username);

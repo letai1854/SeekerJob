@@ -38,26 +38,43 @@
                                     <a href="@item.InforEmployer.linkweb" class="twm-job-websites site-text-primary">@item.InforEmployer.linkweb</a>
                                 </div>
                                 <div class="twm-right-content">
-                                    @if (@item.Job.jobcategory.Equals("Toàn thời gian"))
-                                    {
-                                        <div class="twm-jobs-category green"><span class="twm-bg-green">@item.Job.jobcategory</span></div>
-
+                                    @{
+                                        var jobCategory = item.Job.jobcategory;
                                     }
-                                    @if (@item.Job.jobcategory.Equals("Bán thời gian"))
-                                    {
-                                        <div class="twm-jobs-category golden"><span class="twm-bg-golden">@item.Job.jobcategory</span></div>
 
-                                    }
-                                    @if (@item.Job.jobcategory.Equals("Thực tập"))
+                                    @if (jobCategory.Equals("Toàn thời gian"))
                                     {
-                                        <div class="twm-jobs-category circle-yellow"><span class="twm-bg-brown">@item.Job.jobcategory</span></div>
-
+                                        <div class="twm-jobs-category green">
+                                            <span class="twm-bg-green">@jobCategory</span>
+                                        </div>
                                     }
-                                    @if (@item.Job.jobcategory.Equals("Tự do"))
+                                    else if (jobCategory.Equals("Bán thời gian"))
                                     {
-                                        <div class="twm-jobs-category purple "><span class="twm-bg-candi-pattern">@item.Job.jobcategory</span></div>
-
+                                        <div class="twm-jobs-category golden">
+                                            <span class="twm-bg-golden">@jobCategory</span>
+                                        </div>
                                     }
+                                    else if (jobCategory.Equals("Thực tập"))
+                                    {
+                                        <div class="twm-jobs-category circle-yellow">
+                                            <span class="twm-bg-brown">@jobCategory</span>
+                                        </div>
+                                    }
+                                    else if (jobCategory.Equals("Tự do"))
+                                    {
+                                        <div class="twm-jobs-category purple">
+                                            <span class="twm-bg-candi-pattern">@jobCategory</span>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <!-- Mặc định: Nếu không rơi vào trường hợp nào -->
+                                        <div class="twm-jobs-category default">
+                                            <span class="twm-bg-default">Danh mục không xác định</span>
+                                        </div>
+                                    }
+
+
                                     <div class="twm-jobs-amount">@item.Job.offer <span>/ Month</span></div>
                                     <a href="/@ViewBag.metacontroller/@item.Job.meta/@item.Job.id" class="twm-jobs-browse site-text-primary">Browse Job</a>
                                 </div>

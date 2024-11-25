@@ -13,18 +13,26 @@
     <link href="~/Areas/admin/Content/vendor_/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 }
 
+
+<div class="card shadow mb-4">
+
+    <div class="card-header py-3">
+        <a href="@Url.Action("Create")" class="custom-button">+ Thêm mới</a>
+    </div>
+</div>
+
 <div class="card-body">
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th>STT</th>
-                    <th>Loại quảng cáo</th>
                     <th>Ảnh</th>
-                    <th>Link</th>
-                    <th>meta</th>
-                    <th>hide</th>
-                    <th>Sắp xếp</th>
+                    <th>Đường dẫn quảng cáo</th>
+                    <th>file ảnh</th>
+                    <th>Loại quảng cáo</th>
+                    <th>Ẩn/hiện</th>
+                    
                     <th>Ngày</th>
                     <th>Hành động</th>
                 </tr>
@@ -33,102 +41,113 @@
                 @{ var Number = 1;}
                 @foreach (var item in tablepro)
                 {
-                    <tr style="background-color: #fff; color: black;">
+                    <tr id="tr1_@item.id" style="background-color: #fff; color: black;">
                         <td>@Html.Raw(Number++)</td>
-                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td>@Html.DisplayFor(modelItem => item.link)</td>
                         <td>@Html.DisplayFor(modelItem => item.meta)</td>
                         <td>
 
-                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
-                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
-                            }, new { @class = "form-control" })
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.arrange)
+                            @Html.DisplayFor(modelItem => item.hide)
+                       
                         </td>
                         <td>
                             @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
-                               title="Sửa"
-                               data-bs-toggle="tooltip"
-                               data-bs-placement="top"
-                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
-                                <span class="far fa-edit"></span>
-                            </a>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+
+                                    <li>
+                                        <a href="@Url.Action("Edit", "Advertise", new { id = item.id, idtable = item.idtable })" role="button" class="custom-toltip" data-modal="">
+                                            @Html.Raw("<span class=\"fa fa-edit\"></span><span class=\"custom-toltip-block\">Edit</span>")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:Delete1('@item.id','@item.idtable')" class="custom-toltip">
+                                            <span class="far fa-trash-alt"></span>
+                                            <span class="custom-toltip-block">Delete</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
 
                         </td>
                     </tr>
                 }
                 @foreach (var item in tablenews)
                 {
-                    <tr style="background-color: #fff; color: black;">
+                    <tr id="tr2_@item.id" style="background-color: #fff; color: black;">
                         <td>@Html.Raw(Number++)</td>
-                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td>@Html.DisplayFor(modelItem => item.link)</td>
                         <td>@Html.DisplayFor(modelItem => item.meta)</td>
                         <td>
 
-                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
-                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
-                            }, new { @class = "form-control" })
+                            @Html.DisplayFor(modelItem => item.hide)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.arrange)
-                        </td>
+
                         <td>
                             @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
-                               title="Sửa"
-                               data-bs-toggle="tooltip"
-                               data-bs-placement="top"
-                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
-                                <span class="far fa-edit"></span>
-                            </a>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+                     
+                                    <li>
+                                        <a href="@Url.Action("Edit", "Advertise", new { id = item.id, idtable = item.idtable })" role="button" class="custom-toltip" data-modal="">
+                                            @Html.Raw("<span class=\"fa fa-edit\"></span><span class=\"custom-toltip-block\">Edit</span>")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:Delete2('@item.id','@item.idtable')" class="custom-toltip">
+                                            <span class="far fa-trash-alt"></span>
+                                            <span class="custom-toltip-block">Delete</span>
+                                        </a>
+                                    </li>
 
+                                </ul>
+                            </div>
                         </td>
                     </tr>
                 }
                 @foreach (var item in tablecompany)
                 {
-                    <tr style="background-color: #fff; color: black;">
+                    <tr id="tr3_@item.id" style="background-color: #fff; color: black;">
                         <td>@Html.Raw(Number++)</td>
-                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td><img src="~/ContentImage/images/@item.link" /></td>
+                        <td>@Html.DisplayFor(modelItem => item.content)</td>
                         <td>@Html.DisplayFor(modelItem => item.link)</td>
                         <td>@Html.DisplayFor(modelItem => item.meta)</td>
                         <td>
 
-                            @Html.DropDownListFor(modelItem => item.hide, new List<SelectListItem>
-                            {
-                                new SelectListItem { Text = "True", Value = "True", Selected = item.hide == true },
-                                new SelectListItem { Text = "False", Value = "False", Selected = item.hide == false }
-                            }, new { @class = "form-control" })
+                            @Html.DisplayFor(modelItem => item.hide)
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.arrange)
-                        </td>
+                       
                         <td>
                             @string.Format("{0:dd/MM/yyyy}", item.datebegin.Value)
                         </td>
                         <td>
-                            <a href="@Url.Action("Edit", "menus", new { id = item.id }) "
-                               title="Sửa"
-                               data-bs-toggle="tooltip"
-                               data-bs-placement="top"
-                               style="background-color: green; color: white; padding: 8px 10px; text-decoration: none; border-radius: 4px; ">
-                                <span class="far fa-edit"></span>
-                            </a>
+                            <div class="twm-table-controls">
+                                <ul class="twm-DT-controls-icon list-unstyled">
+
+                                    <li>
+                                        <a href="@Url.Action("Edit", "Advertise", new { id = item.id, idtable = item.idtable })" role="button" class="custom-toltip" data-modal="">
+                                            @Html.Raw("<span class=\"fa fa-edit\"></span><span class=\"custom-toltip-block\">Edit</span>")
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="javascript:Delete3('@item.id','@item.idtable')" class="custom-toltip">
+                                            <span class="far fa-trash-alt"></span>
+                                            <span class="custom-toltip-block">Delete</span>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </div>
 
                         </td>
                     </tr>
@@ -149,3 +168,79 @@
 
 }
 
+
+
+
+<script>
+    function Delete1(id, title) {
+        if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/Advertise/Delete1', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr1_' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+
+    function Delete2(id, title) {
+        if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/Advertise/Delete1', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr2_' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+
+    function Delete3(id, title) {
+        if (confirm('Bạn có chắc muốn xóa tin tức này không: ' + title)) {
+            var form = new FormData();
+            form.append('id', id);
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", domain + '/Advertise/Delete1', true);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    var content = xhr.responseText;
+                    var json_ct = JSON.parse(content);
+                    if (json_ct.Data.status == "OK") {
+                        $('#tr3_' + id).fadeOut(300, function () {
+                            $(this).remove();
+                        });
+                    }
+                    else {
+                        alert("Error");
+                    }
+                }
+            }
+            xhr.send(form);
+        }
+    }
+</script>

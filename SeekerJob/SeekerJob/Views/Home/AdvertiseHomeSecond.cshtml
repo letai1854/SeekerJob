@@ -23,7 +23,9 @@
                     if (part > 0)
                     {
                         <div class="carousel-item">
-                            <a href="">
+                            <a href="@(item.content.StartsWith("http://") || item.content.StartsWith("https://") ?
+          item.content :
+          "/" + item.content)">
                                 <img style="height: 700px; width:300px" src="~/ContentImage/images/@item.link" class="d-block w-100" alt="...">
 
                             </a>

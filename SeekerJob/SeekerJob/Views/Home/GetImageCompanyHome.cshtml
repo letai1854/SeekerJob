@@ -19,7 +19,9 @@
                     <div class="item ">
                         <div class="ow-client-logo ">
                             <div class="client-logo client-logo-media ">
-                                <a href="# "><img src="~/ContentImage/images/@item.link " alt=" "></a>
+                                <a href="@(item.content.StartsWith("http://") || item.content.StartsWith("https://") ?
+          item.content :
+          "/" + item.content) "><img src="~/ContentImage/images/@item.link " alt=" "></a>
                             </div>
                         </div>
                     </div>
