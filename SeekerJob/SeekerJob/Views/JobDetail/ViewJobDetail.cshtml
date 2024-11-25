@@ -118,6 +118,12 @@
                                                     <span class="twm-job-apllication-date">@jobuser.job.endday</span>
                                                 </div>
                                             </div>
+                                            @if(check==false && Session["candidate"]==null && Session["employer"]==null && Session["admin"] == null)
+            {
+
+            }
+else
+            {
 
                                             <div class="twm-job-self-bottom" style="display: flex; align-items: center; gap: 10px;">
                                                 @if (check)
@@ -146,6 +152,7 @@
                                                 </a>
                                                     }
                                             </div>
+            }
 
                                         </div>
                                     </div>

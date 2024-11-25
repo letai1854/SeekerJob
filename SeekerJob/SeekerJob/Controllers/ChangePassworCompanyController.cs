@@ -67,5 +67,56 @@ namespace SeekerJob.Controllers
 
             return Json(js, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult ChangePasswordForgot(FormCollection Data)
+        {
+            JsonResult js = new JsonResult();
+
+            try
+            {
+                string passnew = Data["passnew"];
+                string passnewagain = Data["passnewagain"];
+
+                // Lấy username từ session đã lưu
+                string username = Session["Username"]?.ToString();
+
+                if (string.IsNullOrEmpty(username))
+                {
+                    js.Data = new { status = "ERROR", message = "Phiên làm việc đã hết hạn" };
+                    return Json(js, JsonRequestBehavior.AllowGet);
+                }
+
+                if (passnew != passnewagain)
+                {
+                    js.Data = new { status = "ERROR", message = "Mật khẩu xác nhận không khớp" };
+                    return Json(js, JsonRequestBehavior.AllowGet);
+                }
+
+                IO io = new IO();
+                Login login = io.GetLogin(username);
+
+                if (login == null)
+                {
+                    js.Data = new { status = "ERROR", message = "Không tìm thấy tài khoản" };
+                    return Json(js, JsonRequestBehavior.AllowGet);
+                }
+
+                // Cập nhật mật khẩu mới
+                login.password = passnew;
+                io.Save();
+
+                // Xóa session
+                Session.Remove("Username");
+
+                js.Data = new { status = "OK" };
+                return Json(js, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                js.Data = new { status = "ERROR", message = "Có lỗi xảy ra: " + ex.Message };
+                return Json(js, JsonRequestBehavior.AllowGet);
+            }
+        }
     }
+
 }
