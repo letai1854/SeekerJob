@@ -46,7 +46,13 @@ namespace SeekerJob.Controllers
             {
                 info = Session["employer"] as Login;
             }
-            var checkinfo = db.SaveJobs.FirstOrDefault(t=>t.idjob==id && t.usernamecandidate ==info.username);
+            SaveJob checkinfo = null;
+            if (info != null)
+            {
+                 checkinfo = db.SaveJobs.FirstOrDefault(t => t.idjob == id && t.usernamecandidate == info.username);
+
+            }
+            
             bool checkexist = false;
             if (checkinfo != null)
             {
@@ -149,7 +155,15 @@ namespace SeekerJob.Controllers
 
                     // Tạo tên file unique
                     uniqueFileName = "CV-" + DateTime.Now.ToString("ddMMyyyyHHmmss") + "_" + Path.GetFileName(file.FileName);// Lưu file
-                    var path = Path.Combine(Server.MapPath("~/Content/CVs"), uniqueFileName);
+                    //var path = Path.Combine(Server.MapPath("~/Content/CVs"), uniqueFileName);
+                    string uploadDir = Server.MapPath("~/Content/CVs");
+
+                    // Kiểm tra và tạo thư mục nếu chưa tồn tại
+                    if (!Directory.Exists(uploadDir))
+                    {
+                        Directory.CreateDirectory(uploadDir);
+                    }
+                    var path = Path.Combine(uploadDir, uniqueFileName);
                     file.SaveAs(path);
              
                 }

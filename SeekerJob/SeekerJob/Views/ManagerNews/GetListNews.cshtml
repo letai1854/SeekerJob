@@ -25,7 +25,7 @@
                             <tbody>
                                 @foreach (var item in Model)
                                 {
-                                    <tr id="tr_@item.id">
+                                    <tr id="trT_@item.id">
                                         <td>
                                             <div class="twm-bookmark-list">
                                                 <div class="twm-media">
@@ -98,19 +98,64 @@
         });
     }
     
-
-    function backToList() {
-        $('#editNewsForm').hide();
-        $('#newsListTable').show();
-
-        // Reset form
+    // Hàm mới để cập nhật nội dung tin tức
+    function updateNewsRow(newsId) {
         $.ajax({
-            url: '/PostNews/GetNewsDetail',
+            url: '/PostNews/GetNewsById',
+            type: 'GET',
+            data: { id: newsId },
             success: function (response) {
-                $('#editNewsForm').html(response);
+                if (response.status === "OK") {
+                    var newsData = response.data;
+
+                    // Cập nhật nội dung của hàng trong bảng
+                    var row = $('#trT_' + newsId);
+                    row.find('.twm-mid-content h4').text(newsData.title);
+                    if (newsData.image) {
+                        row.find('.twm-media img').attr('src', '/ContentImage/images/' + newsData.image);
+                    }
+
+                    // Cập nhật link xem chi tiết nếu cần
+                    row.find('.fa-eye').closest('a').attr('href', ViewBag.tintuc + '/' + newsData.meta + '/' + newsData.id);
+                } else {
+                    console.error('Không thể lấy thông tin tin tức');
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Không thể cập nhật thông tin. Vui lòng tải lại trang.');
             }
         });
     }
+
+    // Sửa lại hàm backToList
+    function backToList() {
+        // Lấy ID của tin tức đang được chỉnh sửa từ form
+        var newsId = $('#editNewsForm').find('input[name="id"]').val();
+
+        // Cập nhật nội dung tin tức trước khi ẩn form
+        updateNewsRow(newsId);
+        if (newsId) {
+        }
+
+        // Ẩn form edit và hiện bảng tin tức
+        $('#editNewsForm').hide();
+        $('#newsListTable').show();
+    }
+
+
+    // function backToList() {
+    //     $('#editNewsForm').hide();
+    //     $('#newsListTable').show();
+
+    //     // Reset form
+    //     $.ajax({
+    //         url: '/PostNews/GetNewsDetail',
+    //         success: function (response) {
+    //             $('#editNewsForm').html(response);
+    //         }
+    //     });
+    // }
 
 
     function DeleteNews(id, title) {
@@ -125,7 +170,7 @@
                     var json_ct = JSON.parse(content);
                     if (json_ct.Data.status == "OK") {
                         
-                        $('#tr_' + id).fadeOut(300, function () {
+                        $('#trT_' + id).fadeOut(300, function () {
                             $(this).remove();
                         });
                     }

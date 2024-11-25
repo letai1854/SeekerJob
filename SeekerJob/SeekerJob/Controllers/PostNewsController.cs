@@ -151,7 +151,7 @@ namespace SeekerJob.Controllers
             {
                 user = Session["admin"] as Login;
             }
-            if (Session["candiate"] != null)
+            if (Session["candidate"] != null)
             {
                 user = Session["candidate"] as Login;
             }
@@ -185,8 +185,27 @@ namespace SeekerJob.Controllers
             };
             return Json(js, JsonRequestBehavior.AllowGet);
         }
-
-
+        [HttpPost]
+public JsonResult GetNewsById(int id)
+{
+    var news = db.News.FirstOrDefault(t => t.id == id);
+    if (news != null)
+    {
+        return Json(new
+        {
+            status = "OK",
+            data = new
+            {
+                id = news.id,
+                title = news.title,
+                image = news.image,
+                daypost = news.daypost?.ToString("dd/MM/yyyy"),
+                meta = news.meta
+            }
+        }, JsonRequestBehavior.AllowGet);
+    }
+    return Json(new { status = "ERROR" }, JsonRequestBehavior.AllowGet);
+}
     }
 
 }

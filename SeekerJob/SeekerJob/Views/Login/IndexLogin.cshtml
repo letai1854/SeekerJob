@@ -713,11 +713,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12" id="confirmBtn" style="display: none;">
-                                            <a type="submit" class="site-button" class="twm-nav-sign-up" data-bs-toggle="modal" href="#changepass_up_popup" role="button">
-                                                Xác nhận
-                                            </a>
+                                        <div class="col-md-12" id="confirmBtnContainer" >
+                                            <button type="button" id="btnConfirmCode" class="site-button">
+                                                    Xác nhận
+                                            </button>
                                         </div>
+                                      
                                     </div>
                                 </div>
                             </div>
@@ -1251,4 +1252,142 @@
             }
         });
     });
+</script>
+
+
+
+<script>
+$(document).ready(function() {
+    let countdown;
+    let isProcessing = false;
+
+    // Xử lý nút Gửi
+    $('#sendBtn').click(function() {
+        if (isProcessing) return;
+
+        const email = $('#emailInput').val().trim();
+        const emailRegex = new RegExp('^[a-zA-Z0-9._-]+@@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$');
+
+        if (!email) {
+            toastr.warning('Vui lòng nhập email');
+            return;
+        }
+
+        if (!emailRegex.test(email)) {
+            toastr.warning('Email không hợp lệ');
+            return;
+        }
+
+        isProcessing = true;
+        $('#sendBtn').prop('disabled', true).html('<i class="fas fa-spinner fa-spin"></i> Đang gửi...');
+
+        // Gửi request đến server
+        $.ajax({
+            url: '/Login/SendVerificationEmail',
+            type: 'POST',
+            data: { email: email },
+            success: function(response) {
+                if (response.status === "OK") {
+                    alert('Mã xác thực đã được gửi đến email của bạn');
+
+                    // Hiển thị phần nhập mã xác thực
+                    $('#verificationInput').show();
+                    $('#confirmBtn').show();
+                    $('#countdownTimer').show();
+
+                    // Bắt đầu đếm ngược 2 phút
+                    let timeLeft = 120;
+                    countdown = setInterval(function() {
+                        const minutes = Math.floor(timeLeft / 60);
+                        const seconds = timeLeft % 60;
+                        $('#time').text(
+                            (minutes < 10 ? '0' : '') + minutes + ':' +
+                            (seconds < 10 ? '0' : '') + seconds
+                        );
+
+                        if (timeLeft <= 0) {
+                            clearInterval(countdown);
+                            $('#countdownTimer').hide();
+                            $('#sendBtn').prop('disabled', false).html('Gửi lại');
+                            toastr.warning('Mã xác thực đã hết hạn');
+                        }
+                        timeLeft--;
+                    }, 1000);
+                } else {
+                    toastr.error(response.message || 'Có lỗi xảy ra');
+                    $('#sendBtn').prop('disabled', false).html('Gửi');
+                }
+            },
+            error: function() {
+                toastr.error('Có lỗi xảy ra khi gửi yêu cầu');
+                $('#sendBtn').prop('disabled', false).html('Gửi');
+            },
+            complete: function() {
+                isProcessing = false;
+            }
+        });
+    });
+
+    // Xử lý nút Xác nhận
+    $('#btnConfirmCode').click(function() {
+        if (isProcessing) return;
+        
+        const code = $('#verificationCode').val().trim();
+        
+        if (!code) {
+            alert('Vui lòng nhập mã xác thực');
+            return;
+        }
+        
+        isProcessing = true;
+        $('#btnConfirmCode').prop('disabled', true);
+        
+        $.ajax({
+            url: '/Login/VerifyCode',
+            type: 'POST',
+            data: { code: code },
+            success: function(response) {
+                if (response.status === "OK") {
+                    alert('Xác thực thành công');
+                    clearInterval(countdown);
+                    
+                    // Lưu email đã xác thực
+                    localStorage.setItem('verifiedEmail', response.email);
+                    
+                    // Chuyển sang modal đổi mật khẩu
+                    $('#forgot_password_popup').modal('hide');
+                    setTimeout(function() {
+                        $('#changepass_up_popup').modal('show');
+                    }, 500);
+                } else {
+                    alert(response.message);
+                    $('#btnConfirmCode').prop('disabled', false);
+                }
+            },
+            error: function() {
+                alert('Có lỗi xảy ra khi xác thực');
+                $('#btnConfirmCode').prop('disabled', false);
+            },
+            complete: function() {
+                isProcessing = false;
+            }
+        });
+    });
+    
+    // Xử lý khi đóng modal
+    $('#forgot_password_popup').on('hidden.bs.modal', function () {
+        clearInterval(countdown);
+        resetForm();
+    });
+    
+    function resetForm() {
+        $('#emailInput').val('');
+        $('#verificationCode').val('');
+        $('#verificationInput').hide();
+        $('#confirmBtnContainer').hide();
+        $('#countdownTimer').hide();
+        $('#sendBtn').prop('disabled', false).html('Gửi');
+        isProcessing = false;
+    }
+});
 </script>

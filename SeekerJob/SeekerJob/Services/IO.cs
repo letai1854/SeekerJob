@@ -79,6 +79,10 @@ namespace SeekerJob.Services
         {
             return myDb.tablemenus.Where(m => m.id == id).FirstOrDefault();
         }
+        //public Login GetLogin(string user)
+        //{
+        //    return myDb.Logins.Where(t=>t.username==user).FirstOrDefault();
+        //}
         public bool DeleteJobs(int id)
         {
 
@@ -117,6 +121,14 @@ namespace SeekerJob.Services
         public Login GetLogin(string username)
         {
             return myDb.Logins.Where(t=>t.username== username).FirstOrDefault();
+        }
+        public InforCandidate GetInforCandidate(string email)
+        {
+            return myDb.InforCandidates.Where(t=>t.email ==email).FirstOrDefault();
+        }
+        public InforEmployer GetInforEmployer(string email)
+        {
+            return myDb.InforEmployers.Where(t => t.email == email).FirstOrDefault();
         }
         public void Save()
         {
