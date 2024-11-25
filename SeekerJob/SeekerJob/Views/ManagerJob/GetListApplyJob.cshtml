@@ -435,15 +435,17 @@
     }
 
     function backToList() {
+        window.location.href = '/Quan-ly-bai-tuyen-dung'
         $('#editJobForm').hide();
         $('#jobListTable').show();
-
         // Nếu muốn reset về form trống
         $.ajax({
             url: '/ManagerJob/GetJobDetail',
             success: function (response) {
                 $('#editJobForm').html(response);
             }
+            
         });
+             
     }
 </script>
